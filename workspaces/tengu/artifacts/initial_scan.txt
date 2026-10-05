@@ -1,0 +1,10 @@
+# Nmap 7.99 scan initiated Mon Oct  5 13:01:15 2026 as: /usr/lib/nmap/nmap --privileged -Pn -sV -T3 --top-ports 1000 -oN /home/kali/ctfagent/workspaces/tengu/artifacts/initial_scan.txt 10.13.38.40
+Nmap scan report for 10.13.38.40
+Host is up (0.14s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Oct  5 13:01:19 2026 -- 1 IP address (1 host up) scanned in 4.58 seconds

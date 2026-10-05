@@ -1,0 +1,14 @@
+{
+  "id": "alchemy",
+  "title": "Alchemy",
+  "category": "pwn",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "10.10.110.0/24",
+  "attachments": [],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "No fuzzing PLCs/OT. Evidence-first: start with nmap sweep of 10.10.110.0/24, then service enum on discovered hosts, then web triage on ALCHEMY-WEB01/WEB02."
+  ]
+}

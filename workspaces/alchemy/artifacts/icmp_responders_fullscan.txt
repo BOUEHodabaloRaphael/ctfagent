@@ -1,0 +1,93 @@
+# Nmap 7.99 scan initiated Mon Oct  5 12:12:11 2026 as: /usr/lib/nmap/nmap -Pn -sV -T4 -p- --min-rate 1000 -oN /home/kali/ctfagent/workspaces/alchemy/artifacts/icmp_responders_fullscan.txt 10.10.110.1 10.10.110.2 10.10.110.21 10.10.110.100
+Warning: 10.10.110.100 giving up on port because retransmission cap hit (6).
+Nmap scan report for 10.10.110.1
+Host is up (0.10s latency).
+Not shown: 65533 filtered tcp ports (no-response)
+PORT    STATE SERVICE   VERSION
+22/tcp  open  ssh       OpenSSH 9.4 (protocol 2.0)
+443/tcp open  ssl/https nginx
+
+Nmap scan report for firewall.dante.local (10.10.110.2)
+Host is up (0.10s latency).
+Not shown: 65534 filtered tcp ports (no-response)
+PORT     STATE  SERVICE        VERSION
+4000/tcp closed remoteanything
+
+Nmap scan report for 10.10.110.21
+Host is up (0.10s latency).
+Not shown: 65532 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+80/tcp   open  http    Rocket
+3000/tcp open  http    Golang net/http server
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.99%I=7%D=10/5%Time=6AC395C8%P=x86_64-pc-linux-gnu%r(HTTP
+SF:Options,101,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-type:\x20text/
+SF:plain;\x20charset=utf-8\r\nserver:\x20Rocket\r\nx-frame-options:\x20SAM
+SF:EORIGIN\r\nx-content-type-options:\x20nosniff\r\npermissions-policy:\x2
+SF:0interest-cohort=\(\)\r\ncontent-length:\x2015\r\ndate:\x20Mon,\x2005\x
+SF:20Oct\x202026\x2012:19:26\x20GMT\r\n\r\nError\x20Code:\x20404")%r(RTSPR
+SF:equest,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r
+SF:\ndate:\x20Mon,\x2005\x20Oct\x202026\x2012:19:26\x20GMT\r\n\r\n")%r(X11
+SF:Probe,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\
+SF:ndate:\x20Mon,\x2005\x20Oct\x202026\x2012:19:26\x20GMT\r\n\r\n")%r(Four
+SF:OhFourRequest,101,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-type:\x2
+SF:0text/plain;\x20charset=utf-8\r\nserver:\x20Rocket\r\nx-frame-options:\
+SF:x20SAMEORIGIN\r\nx-content-type-options:\x20nosniff\r\npermissions-poli
+SF:cy:\x20interest-cohort=\(\)\r\ncontent-length:\x2015\r\ndate:\x20Mon,\x
+SF:2005\x20Oct\x202026\x2012:19:26\x20GMT\r\n\r\nError\x20Code:\x20404")%r
+SF:(RPCCheck,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x20
+SF:0\r\ndate:\x20Mon,\x2005\x20Oct\x202026\x2012:19:32\x20GMT\r\n\r\n")%r(
+SF:DNSVersionBindReqTCP,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-
+SF:length:\x200\r\ndate:\x20Mon,\x2005\x20Oct\x202026\x2012:19:32\x20GMT\r
+SF:\n\r\n")%r(DNSStatusRequestTCP,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r
+SF:\ncontent-length:\x200\r\ndate:\x20Mon,\x2005\x20Oct\x202026\x2012:19:3
+SF:2\x20GMT\r\n\r\n")%r(Help,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncon
+SF:tent-length:\x200\r\ndate:\x20Mon,\x2005\x20Oct\x202026\x2012:19:32\x20
+SF:GMT\r\n\r\n")%r(SSLSessionReq,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\
+SF:ncontent-length:\x200\r\ndate:\x20Mon,\x2005\x20Oct\x202026\x2012:19:32
+SF:\x20GMT\r\n\r\n")%r(TerminalServerCookie,54,"HTTP/1\.1\x20400\x20Bad\x2
+SF:0Request\r\ncontent-length:\x200\r\ndate:\x20Mon,\x2005\x20Oct\x202026\
+SF:x2012:19:32\x20GMT\r\n\r\n")%r(TLSSessionReq,54,"HTTP/1\.1\x20400\x20Ba
+SF:d\x20Request\r\ncontent-length:\x200\r\ndate:\x20Mon,\x2005\x20Oct\x202
+SF:026\x2012:19:33\x20GMT\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port3000-TCP:V=7.99%I=7%D=10/5%Time=6AC395C3%P=x86_64-pc-linux-gnu%r(Ge
+SF:nericLines,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20t
+SF:ext/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x
+SF:20Request")%r(Help,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Ty
+SF:pe:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\
+SF:x20Bad\x20Request")%r(HTTPOptions,14A,"HTTP/1\.0\x20500\x20Internal\x20
+SF:Server\x20Error\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nSet
+SF:-Cookie:\x20lang=en-US;\x20Path=/;\x20Max-Age=2147483647\r\nX-Content-T
+SF:ype-Options:\x20nosniff\r\nDate:\x20Mon,\x2005\x20Oct\x202026\x2012:19:
+SF:26\x20GMT\r\nContent-Length:\x20108\r\n\r\ntemplate:\x20base/footer:15:
+SF:47:\x20executing\x20\"base/footer\"\x20at\x20<\.PageStartTime>:\x20inva
+SF:lid\x20value;\x20expected\x20time\.Time\n")%r(RTSPRequest,67,"HTTP/1\.1
+SF:\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=ut
+SF:f-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%r(SSLSession
+SF:Req,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/pla
+SF:in;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Reque
+SF:st")%r(LPDString,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type
+SF::\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x2
+SF:0Bad\x20Request")%r(SIPOptions,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r
+SF:\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close
+SF:\r\n\r\n400\x20Bad\x20Request")%r(Socks5,67,"HTTP/1\.1\x20400\x20Bad\x2
+SF:0Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection
+SF::\x20close\r\n\r\n400\x20Bad\x20Request")%r(OfficeScan,A3,"HTTP/1\.1\x2
+SF:0400\x20Bad\x20Request:\x20missing\x20required\x20Host\x20header\r\nCon
+SF:tent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\
+SF:r\n400\x20Bad\x20Request:\x20missing\x20required\x20Host\x20header");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for 10.10.110.100
+Host is up (0.17s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT     STATE SERVICE  VERSION
+22/tcp   open  ssh      OpenSSH 8.4p1 Debian 5+deb11u3 (protocol 2.0)
+1194/tcp open  openvpn?
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Oct  5 12:20:27 2026 -- 4 IP addresses (4 hosts up) scanned in 496.19 seconds

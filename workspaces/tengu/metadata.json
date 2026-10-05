@@ -1,0 +1,14 @@
+{
+  "id": "tengu",
+  "title": "Tengu",
+  "category": "web",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "10.13.38.40",
+  "attachments": [],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "No brute forcing needed per general HTB Pro Lab conventions unless stated otherwise. Scan gently (top-ports first, moderate timing) - do not repeat the full -p- --min-rate 1000 mistake from Alchemy. Entry point is a single IP (10.13.38.40), not a /24 sweep."
+  ]
+}
