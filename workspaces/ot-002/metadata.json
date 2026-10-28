@@ -1,0 +1,17 @@
+{
+  "id": "ot-002",
+  "title": "OT#002",
+  "category": "ot",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "169.58.126.107:6001",
+  "attachments": [],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "Platform shows 0/3 attempts remaining for flag submission - be careful, do not guess-submit.",
+    "No source, no binary, no protocol doc - protocol must be discovered by black-box probing of the TCP service.",
+    "No memory-corruption bug involved (explicitly stated).",
+    "Goal is logical: replicate Aurora Generator Test (out-of-phase reclose) via the custom 5-byte binary protocol."
+  ]
+}

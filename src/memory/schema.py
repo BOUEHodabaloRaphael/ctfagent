@@ -30,6 +30,7 @@ class Status(str, Enum):
     SOLVED = "solved"
     ACTIVE = "active"
     ARCHIVED = "archived"
+    REFERENCE = "reference"  # external source notes, not an own solve/pattern
 
 
 class Category(str, Enum):

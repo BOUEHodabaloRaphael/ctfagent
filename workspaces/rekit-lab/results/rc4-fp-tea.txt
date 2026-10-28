@@ -1,0 +1,18 @@
+
+    ██████╗ ███████╗██╗  ██╗██╗████████╗
+    ██╔══██╗██╔════╝██║ ██╔╝██║╚══██╔══╝
+    ██████╔╝█████╗  █████╔╝ ██║   ██║   
+    ██╔══██╗██╔══╝  ██╔═██╗ ██║   ██║   
+    ██║  ██║███████╗██║  ██╗██║   ██║   
+    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   
+       Reverse Engineering Toolkit v2.1
+
+Modules actifs : Capstone
+
+
+═══ [11] DÉTECTION D'ALGORITHMES ═══
+  (aucun algorithme connu détecté)
+  ⚠ Masque 0xff fréquent → RC4/XOR loop probable
+
+[✓] Analyse terminée.
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html><html class="" data-bs-theme="light" style="--world-color: #00e5ff; --world-accent: #d500f9;"><head>
+  <title>kBxAc CTF</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#02040c">
+  <link rel="shortcut icon" href="/files/dfe80695cd42ca3419abcfa531159e1f/kbxac_32x32.png" type="image/x-icon">
+
+  
+
+  <script type="text/javascript">
+    // UI mode (Game / Simple) is a per-browser preference. Applied here,
+    // before first paint, so Simple mode never flashes the game scene.
+    (function () {
+      // Suppress switch transitions until the first paint() below has set
+      // the real state; otherwise the knob visibly slides over on every
+      // reload when Simple mode is stored.
+      document.documentElement.classList.add("ui-mode-noanim");
+      try {
+        if (localStorage.getItem("arena_ui_mode") === "simple") {
+          document.documentElement.classList.add("ui-simple");
+        }
+      } catch (err) {}
+      window.addEventListener("DOMContentLoaded", function () {
+        function get() {
+          try {
+            return localStorage.getItem("arena_ui_mode") === "simple" ? "simple" : "game";
+          } catch (err) {
+            return "game";
+          }
+        }
+        function paint() {
+          var simple = get() === "simple";
+          document.documentElement.classList.toggle("ui-simple", simple);
+          Array.prototype.forEach.call(document.querySelectorAll("[data-ui-mode-toggle]"), function (btn) {
+            btn.setAttribute("aria-pressed", simple ? "true" : "false");
+            btn.setAttribute("title", simple ? (btn.getAttribute("data-title-game") || "Switch to Game mode") : (btn.getAttribute("data-title-simple") || "Switch to Simple mode"));
+          });
+          // State is correct now; one style recalc covers all changes.
+          // (Transitions stay suppressed until load/fonts release them.)
+        }
+        // Transitions stay off until the page (and its fonts, which resize
+        // the knob) has settled; late layout otherwise replays the slide.
+        // A click releases immediately, so this never blocks interaction.
+        var released = false;
+        function releaseNoAnim() {
+          if (released) return;
+          released = true;
+          document.documentElement.classList.remove("ui-mode-noanim");
+        }
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(releaseNoAnim);
+        }
+        window.addEventListener("load", releaseNoAnim);
+        Array.prototype.forEach.call(document.querySelectorAll("[data-ui-mode-toggle]"), function (btn) {
+          btn.addEventListener("click", function () {
+            var mode;
+            try {
+              mode = get() === "simple" ? "game" : "simple";
+              localStorage.setItem("arena_ui_mode", mode);
+            } catch (err) {
+              mode = get();
+            }
+            paint();
+            releaseNoAnim();
+            // Scene loops (arena_scene.js) hold/resume on this.
+            window.dispatchEvent(new CustomEvent("arena:ui-mode", { detail: { mode: mode } }));
+          });
+        });
+        paint();
+      });
+    })();
+  </script>
+
+  
+    <link rel="stylesheet" href="/themes/aero/static/assets/main.6a6c2d29.css">
+  
+
+  
+
+  <script src="/themes/aero/static/assets/color_mode_switcher.4575377f.js"></script>
+
+  <script type="text/javascript">
+      window.init = {
+          'urlRoot': "",
+          'csrfNonce': "d6708664dd95bbb739889d87fd795d0838df6b603349d8823f1e4163da52ab7e",
+          'userMode': "teams",
+          'userId': 701,
+          'userName': "L\u0026_M@z4rt",
+          'userEmail': "raphboue022@gmail.com",
+          'userVerified': true,
+          'teamId': 76,
+          'teamName': "GBT_Hackers",
+          'start': 1791570600,
+          'end': 1791657000,
+          'themeSettings': null,
+          'worlds': ["web", "pwn", "rev", "forensics", "crypto", "misc"],
+          'eventSounds': [
+            "/themes/core/static/sounds/notification.webm",
+            "/themes/core/static/sounds/notification.mp3",
+          ],
+      }
+  </script>
+
+  
+</head>
+<body class="authed">
+
+  <canvas id="intro-bg-canvas" width="1366" height="900"></canvas>
+  <div id="arena-entrance-flash" class="arena-entrance-flash"></div>
+
+
+
+
+<main role="main">
+  
+  <div class="countdown-screen">
+    <header class="countdown-top">
+      <a href="/" class="arena-auth-brand">kBxAc CTF</a>
+      
+      <button type="button" class="ui-mode-switch" data-ui-mode-toggle="" aria-pressed="false" title="Switch to Simple mode" data-title-game="Switch to Game mode" data-title-simple="Switch to Simple mode"><span class="ums-opt" data-ums-game="">Game</span><span class="ums-opt" data-ums-simple="">Simple</span></button>
+      <a href="/logout" class="countdown-logout">Log out</a>
+    </header>
+
+    <main class="countdown-center" data-cd-start="1791570600">
+      <p class="countdown-hello">You are registered, <span>L&amp;_M@z4rt</span></p>
+      <h1 class="countdown-title">The CTF starts in</h1>
+
+      <div class="countdown-units" role="timer" aria-live="off">
+        <span><b id="cd-days">00</b><small>days</small></span>
+        <span><b id="cd-hours">04</b><small>hours</small></span>
+        <span><b id="cd-mins">41</b><small>min</small></span>
+        <span><b id="cd-secs">27</b><small>sec</small></span>
+      </div>
+
+      
+        <p class="countdown-when">10 Oct 2026, 00:00 IST</p>
+        <p class="countdown-local" data-event-local="1791570600" data-prefix="Your time: ">Your time: Fri, Oct 9, 06:30 PM GMT</p>
+      
+
+      <p class="countdown-note">The challenges open here automatically at the start. Keep this page open or come back then.</p>
+      <p class="countdown-note">Playing blind? Flip the Game / Simple switch above for a plain challenge list instead of the platformer.</p>
+      <p class="countdown-note hidden" id="cd-server-note">The CTF is starting. You will enter automatically.</p>
+
+      <nav class="countdown-links" aria-label="Your pages">
+        <a href="/team" class="countdown-logout">Équipe</a>
+        <a href="/user" class="countdown-logout">Compte</a>
+        <a href="/settings" class="countdown-logout">Paramètres</a>
+      </nav>
+
+      <div class="countdown-support">
+        <span>Facing issues? Contact support at</span>
+        <a href="mailto:admin@kbxac.xyz" class="countdown-support-link" title="Contact Support">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: -1px; margin-right: 4px;">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          admin@kbxac.xyz
+        </a>
+      </div>
+    </main>
+  </div>
+
+</main>
+
+
+
+
+
+<div x-data="">
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div x-ref="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+      <div class="toast-header">
+        <strong class="me-auto" x-text="$store.toast.title"></strong>
+        <small>just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" x-html="$store.toast.html">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div x-data="">
+  <div class="modal fade" x-ref="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" x-text="$store.modal.title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p x-html="$store.modal.html"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script type="module" src="/themes/aero/static/assets/arena_scene.faec25a4.js"></script><script type="module" src="/themes/aero/static/assets/event_time.83a62ffe.js"></script><script type="module" src="/themes/aero/static/assets/countdown_page.ac51e97d.js"></script>
+  <script>
+  // The countdown tick and the zero redirect. Polls the server before
+  // leaving: /api/v1/challenges answers 403 until the pre-event lock lifts,
+  // so an early client clock waits here instead of bouncing off /challenges.
+  (function () {
+    var center = document.querySelector(".countdown-center");
+    if (!center) return;
+    var start = Number(center.dataset.cdStart);
+    var els = {
+      days: document.getElementById("cd-days"),
+      hours: document.getElementById("cd-hours"),
+      mins: document.getElementById("cd-mins"),
+      secs: document.getElementById("cd-secs")
+    };
+    // No start time: frozen zero, the message above says it all.
+    if (!els.days || !Number.isFinite(start) || start <= 0) return;
+    function pad(n) { return String(Math.max(0, n)).padStart(2, "0"); }
+    function paint(total) {
+      els.days.textContent = pad(Math.floor(total / 86400));
+      els.hours.textContent = pad(Math.floor((total % 86400) / 3600));
+      els.mins.textContent = pad(Math.floor((total % 3600) / 60));
+      els.secs.textContent = pad(total % 60);
+    }
+    var root = (window.init && window.init.urlRoot) || "";
+    var note = document.getElementById("cd-server-note");
+    var timer = null;
+    function pollServer() {
+      fetch(root + "/api/v1/challenges", { headers: { Accept: "application/json" } })
+        .then(function (res) {
+          // Any 2xx goes to /challenges and lets the server route (open =
+          // challenges, lost session = login). Anything else waits here.
+          if (res.ok) {
+            window.location.href = root + "/challenges";
+          } else {
+            setTimeout(pollServer, 3000);
+          }
+        })
+        .catch(function () { setTimeout(pollServer, 5000); });
+    }
+    function tick() {
+      var left = Math.floor(start - Date.now() / 1000);
+      if (left > 0) { paint(left); return; }
+      paint(0);
+      clearInterval(timer);
+      if (note) note.classList.remove("hidden");
+      pollServer();
+    }
+    timer = setInterval(tick, 1000);
+    tick();
+  })();
+  </script>
+
+
+
+
+
+
+</body></html>

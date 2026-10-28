@@ -1,0 +1,6 @@
+# Never commit credentials or live session material for this competition.
+.env
+*.env
+session/
+logs/
+*.credentials.json

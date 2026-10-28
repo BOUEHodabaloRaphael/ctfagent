@@ -1,0 +1,8 @@
+2026-10-03T11:57:51.6810446440Z svc_preview svc_preview 755 /home/svc_preview/.config
+2026-10-03T11:57:51.6810446440Z svc_preview svc_preview 755 /home/svc_preview/.config/systemd
+2026-10-03T12:08:27.7938142900Z svc_preview svc_preview 755 /home/svc_preview/.config/systemd/user
+2026-10-03T12:08:27.7938142900Z svc_preview svc_preview 644 /home/svc_preview/.config/systemd/user/agent-cache.service
+2026-10-03T12:08:27.7938142900Z svc_preview svc_preview 644 /home/svc_preview/.config/systemd/user/agent-cache.timer
+2026-10-03T12:08:27.7938142900Z svc_preview svc_preview 777 /home/svc_preview/.config/systemd/user/agent-cache.timer.enabled
+2026-10-03T12:08:07.1651575210Z svc_preview svc_preview 700 /home/svc_preview/.ssh
+2026-10-03T12:08:07.1651575210Z svc_preview svc_preview 664 /home/svc_preview/.ssh/authorized_keys

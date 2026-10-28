@@ -1,0 +1,18 @@
+
+    ██████╗ ███████╗██╗  ██╗██╗████████╗
+    ██╔══██╗██╔════╝██║ ██╔╝██║╚══██╔══╝
+    ██████╔╝█████╗  █████╔╝ ██║   ██║   
+    ██╔══██╗██╔══╝  ██╔═██╗ ██║   ██║   
+    ██║  ██║███████╗██║  ██╗██║   ██║   
+    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   
+       Reverse Engineering Toolkit v2.1
+
+Modules actifs : Capstone
+
+
+═══ [16] UNPACKING AUTOMATIQUE ═══
+[1/3] UPX détecté
+  ✓ Unpacked : plain_upx.unpacked
+
+[✓] Analyse terminée.
+

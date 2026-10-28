@@ -1,0 +1,13 @@
+SESSION EXPIRED at word=lines, relogging in and retrying
+SESSION EXPIRED at word=process, relogging in and retrying
+SESSION EXPIRED at word=processes, relogging in and retrying
+SESSION EXPIRED at word=plant, relogging in and retrying
+SESSION EXPIRED at word=facility, relogging in and retrying
+SESSION EXPIRED at word=whoami, relogging in and retrying
+SESSION EXPIRED at word=.env, relogging in and retrying
+SESSION EXPIRED at word=readme.md, relogging in and retrying
+SESSION EXPIRED at word=swagger, relogging in and retrying
+SESSION EXPIRED at word=overpressure, relogging in and retrying
+SESSION EXPIRED at word=meltdown, relogging in and retrying
+SESSION EXPIRED at word=incidents, relogging in and retrying
+done, tested 52 words

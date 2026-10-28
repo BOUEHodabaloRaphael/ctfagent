@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "challenges": [],
+  "error": "Page.goto: net::ERR_ADDRESS_UNREACHABLE at https://ctf.bugpwn.com/\nCall log:\n  - navigating to \"https://ctf.bugpwn.com/\", waiting until \"networkidle\"\n"
+}

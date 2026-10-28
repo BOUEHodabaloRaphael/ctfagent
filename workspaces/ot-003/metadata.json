@@ -1,0 +1,8 @@
+{
+  "id": "ot-003",
+  "name": "OT#003",
+  "points": 100,
+  "target": "169.58.126.107:6002",
+  "category": "web/ot",
+  "status": "in_progress"
+}

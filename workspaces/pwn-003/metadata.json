@@ -1,0 +1,16 @@
+{
+  "id": "pwn-003",
+  "title": "PWN#003",
+  "category": "pwn",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "",
+  "attachments": [
+    "attachments/notes"
+  ],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "No flag submission until exploit verified locally/remote."
+  ]
+}

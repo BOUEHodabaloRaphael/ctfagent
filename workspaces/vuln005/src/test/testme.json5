@@ -1,0 +1,52 @@
+{
+    compiler: {
+        c: {
+            gcc: {
+                flags: [
+                    '-Wformat', '-Wformat-security', '-Wsign-compare', '-Wsign-conversion',
+                    '-I../src', '-L../build/bin',
+                    '-Wl,-rpath,${CONFIGDIR}/../build/bin'
+                ],
+                libraries: ['m', 'crypto', 'ssl'],
+            },
+            msvc: {
+                flags: [
+                    '-GR-', '-MDd', '-wd4100',
+                    '/I../src',
+                    '/LIBPATH:../build/bin',
+                    '/I${ME_COM_OPENSSL_PATH}/include',
+                    '/LIBPATH:${ME_COM_OPENSSL_PATH}/lib/VC/${ARCH}/MDd',
+                    '/I${USERPROFILE}/vcpkg/installed/${ARCH}-windows/include',
+                    '/LIBPATH:${USERPROFILE}/vcpkg/installed/${ARCH}-windows/lib',
+                ],
+                libraries: ['libcrypto', 'libssl', 'ws2_32.lib', 'advapi32.lib', 'user32.lib', 'kernel32.lib', 'oldnames.lib', 'shell32.lib'],
+            },
+        },
+    },
+    environment: {
+        default: {
+            PATH: '../build/bin:${PATH}',
+            TM_HTTP: 'http://127.0.0.1:18080',
+            TM_HTTPS: 'https://127.0.0.1:14443',
+            TM_HTTPV6: 'http://[::1]:18090',
+            TM_HTTPSV6: 'https://[::1]:14453',
+            /*
+                Feature gates for conditional tests. Values mirror compile-time ME_GOAHEAD_*
+                defaults in src/goahead.h; tests use thas('NAME') to skip when a feature is off.
+             */
+            ME_GOAHEAD_AUTH: '1',
+            ME_GOAHEAD_CGI: '1',
+            ME_GOAHEAD_UPLOAD: '1',
+            ME_SSL: '1',
+        },
+        windows: {
+            PATH: '../build/bin;C:/Program Files/OpenSSL;${USERPROFILE}/vcpkg/installed/${ARCH}-windows/bin;${PATH}',
+        },
+    },
+    services: {
+        setup: './setup.sh',
+        prep: './prep.sh',
+        cleanup: './cleanup.sh',
+        healthcheck: { url: 'http://localhost:18080/index.html' },
+    },
+}

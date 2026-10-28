@@ -1,0 +1,30 @@
+#!/bin/sh
+
+PATH=/bin:/sbin
+
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t devtmpfs devtmpfs /dev
+if test -w /proc/sys/kernel/dmesg_restrict; then
+	echo 1 > /proc/sys/kernel/dmesg_restrict
+fi
+
+if ! insmod /lib/modules/spi_tpm_dma.ko ||
+   ! insmod /lib/modules/spi_tpm_client.ko; then
+	echo 'device initialization failed'
+	poweroff -f
+fi
+
+for attempt in 1 2 3 4 5 6 7 8 9 10; do
+	test ! -e /dev/spi-tpm0 || break
+	sleep 1
+done
+if test ! -e /dev/spi-tpm0; then
+	echo 'device initialization failed'
+	poweroff -f
+fi
+
+echo
+echo 'SPI TPM challenge'
+/bin/spi_tpm_unpriv /bin/sh
+poweroff -f

@@ -1,0 +1,3 @@
+RATE LIMITED at word=debug (count=21), backing off 600s
+RATE LIMITED at word=commands (count=41), backing off 600s
+HIT cmd: 

@@ -1,0 +1,2 @@
+route uri=/private/ auth=basic abilities=manage
+route uri=/

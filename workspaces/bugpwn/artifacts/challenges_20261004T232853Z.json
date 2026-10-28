@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "challenges": [
+    {
+      "id": 10,
+      "type": "standard",
+      "name": "Discord",
+      "value": 4,
+      "position": 0,
+      "solves": 5,
+      "solved_by_me": false,
+      "category": "out context",
+      "module_id": null,
+      "tags": [],
+      "template": "/plugins/challenges/assets/view.html",
+      "script": "/plugins/challenges/assets/view.js"
+    },
+    {
+      "id": 9,
+      "type": "standard",
+      "name": "0byte",
+      "value": 50,
+      "position": 0,
+      "solves": 0,
+      "solved_by_me": false,
+      "category": "out context",
+      "module_id": null,
+      "tags": [],
+      "template": "/plugins/challenges/assets/view.html",
+      "script": "/plugins/challenges/assets/view.js"
+    }
+  ],
+  "source": "api"
+}

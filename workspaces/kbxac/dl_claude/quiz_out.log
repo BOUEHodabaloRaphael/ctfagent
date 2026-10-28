@@ -1,0 +1,45 @@
+
+========================================
+               C-Laude
+========================================
+
+C-Laude AI noticed unusual activity on one of its preview workers.
+Several systems contain traces of the same intrusion.
+
+Answer all 9 questions correctly to recover the flag.
+Answers are case-sensitive.
+Leading/trailing whitespace is ignored.
+
+[1/9] How many unique production configuration settings were modified as part of the incident-related database activity?
+> Correct.
+
+[2/9] After the intrusion, a user-level scheduled task was established on edge-runner-02. What is the full filename of the systemd unit?
+> Correct.
+
+[3/9] During the intrusion, a configuration file was retrieved from the release-assets storage bucket. What is its full object path?
+> Correct.
+
+[4/9] Which external IP address initiated the preview request associated with the anomalous execution on edge-runner-02?
+> Correct.
+
+[5/9] The retrieved release profile contained multiple candidate credentials. Which credential ID was successfully accepted by the Atlas configuration service when accessing the production profile?
+> Correct.
+
+[6/9] Following the anomalous preview execution, a file was created on edge-runner-02 and subsequently used for SSH authentication. What is the full path of this file?
+> Correct.
+
+[7/9] Which MySQL username was used by edge-runner-02 when connecting to the production database and modifying configuration data?
+> Correct.
+
+[8/9] Before the production configuration was modified, a database operation was attempted to determine whether the server permitted file-writing through the database. What MySQL error code was returned?
+> Correct.
+
+[9/9] After the intrusion, edge-runner-02 generated recurring outbound network connections to an external host. What external IP address was contacted?
+> Correct.
+
+========================================
+All 9 answers are correct.
+========================================
+
+Flag: kBxAc{y35_f1n477y_y0u_f0und_17_r1ght_175_r3l473d_t0_th3_4g3n71c_r4n50mw4r3_4tt4ck}
+

@@ -1,0 +1,4 @@
+role name=user abilities=view
+role name=administrator abilities=user,manage
+
+user name=admin password=BF1:00128:ILrUswPoHBSweW5R:UW5fySh5ZQ0pUvlwOFBbbz43UElaQeyw roles=administrator

@@ -1,0 +1,69 @@
+{
+  "file": {
+    "path": "./vault",
+    "arch": "x86-64",
+    "bits": 64,
+    "endian": "little",
+    "stripped": true,
+    "static": false,
+    "interpreter": "/lib64/ld-linux-x86-64.so.2"
+  },
+  "protections": {
+    "nx": false,
+    "canary": false,
+    "pie": false,
+    "relro": "no",
+    "fortify": false,
+    "rpath": false,
+    "runpath": false
+  },
+  "libc": {
+    "version": "2.2",
+    "path": "./libc.so.6",
+    "symbols": {
+      "__libc_start_main@@GLIBC_2.34": 171936,
+      "__libc_start_main@GLIBC_2.2.5": 171936,
+      "__libc_system@@GLIBC_PRIVATE": 346000,
+      "svcerr_systemerr@GLIBC_2.2.5": 1414608,
+      "system@@GLIBC_2.2.5": 346000
+    },
+    "one_gadgets": null
+  },
+  "vulnerabilities": [],
+  "interesting_strings": [],
+  "symbols": {
+    "*ABS*+0x0000000000001180@got": 15736,
+    "*ABS*+0x00000000000011c0@got": 15728,
+    "*ABS*+0x0000000000004008@got": 16392,
+    "_ITM_deregisterTMCloneTable@Base@got": 16352,
+    "_ITM_registerTMCloneTable@Base@got": 16368,
+    "__cxa_finalize@GLIBC_2.2.5@got": 16376,
+    "__cxa_finalize@plt": 4304,
+    "__gmon_start__@Base@got": 16360,
+    "__libc_start_main@GLIBC_2.34@got": 16344,
+    "__stack_chk_fail@GLIBC_2.4@got": 16272,
+    "__stack_chk_fail@plt": 4160,
+    "close@GLIBC_2.2.5@got": 16296,
+    "close@plt": 4208,
+    "malloc@GLIBC_2.2.5@got": 16320,
+    "malloc@plt": 4256,
+    "memset@GLIBC_2.2.5@got": 16288,
+    "memset@plt": 4192,
+    "open@GLIBC_2.2.5@got": 16336,
+    "open@plt": 4288,
+    "prctl@GLIBC_2.2.5@got": 16312,
+    "prctl@plt": 4240,
+    "printf@GLIBC_2.2.5@got": 16280,
+    "printf@plt": 4176,
+    "puts@GLIBC_2.2.5@got": 16264,
+    "puts@plt": 4144,
+    "read@GLIBC_2.2.5@got": 16304,
+    "read@plt": 4224,
+    "setvbuf@GLIBC_2.2.5@got": 16328,
+    "setvbuf@plt": 4272,
+    "stderr@GLIBC_2.2.5@got": 16448,
+    "stdin@GLIBC_2.2.5@got": 16432,
+    "stdout@GLIBC_2.2.5@got": 16416
+  },
+  "strategy": "ret2shellcode (NX disabled) \u2192 ret2system/ROP (no PIE/canary)"
+}

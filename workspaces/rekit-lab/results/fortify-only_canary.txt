@@ -1,0 +1,21 @@
+
+    ██████╗ ███████╗██╗  ██╗██╗████████╗
+    ██╔══██╗██╔════╝██║ ██╔╝██║╚══██╔══╝
+    ██████╔╝█████╗  █████╔╝ ██║   ██║   
+    ██╔══██╗██╔══╝  ██╔═██╗ ██║   ██║   
+    ██║  ██║███████╗██║  ██╗██║   ██║   
+    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   
+       Reverse Engineering Toolkit v2.1
+
+Modules actifs : Capstone
+
+
+═══ [4] PROTECTIONS (checksec-like) ═══
+PIE    : Oui
+NX     : Oui
+RELRO  : Partial/None
+Canary : Non
+Fortify: Oui
+
+[✓] Analyse terminée.
+

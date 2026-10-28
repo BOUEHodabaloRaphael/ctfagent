@@ -1,0 +1,16 @@
+{
+  "id": "prison-escape",
+  "title": "Prison Escape",
+  "category": "misc",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "154.57.164.71:42477",
+  "attachments": [
+    "attachments/a12c73aa-a2bd-4a12-95ba-246a5f41af9c.zip"
+  ],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "Prefer evidence-first analysis; inspect attachment contents before any network probing."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "vuln002",
+  "title": "VULN#002",
+  "category": "vuln-research",
+  "platform": "ctfd",
+  "platform_id": "32",
+  "url": "169.58.126.107:7026",
+  "attachments": [
+    "dnsmasq-src.tar.gz"
+  ],
+  "tags": [
+    "dhcpv6",
+    "dnsmasq"
+  ],
+  "status": "in-progress",
+  "constraints": [
+    "id=32, bugpwn.com, 136pts decaying",
+    "max_attempts=3, do not submit without near-certainty"
+  ]
+}

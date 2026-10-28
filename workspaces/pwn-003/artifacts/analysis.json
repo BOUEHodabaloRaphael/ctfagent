@@ -1,0 +1,84 @@
+{
+  "file": {
+    "path": "workspaces/pwn-003/attachments/notes",
+    "arch": "x86-64",
+    "bits": 64,
+    "endian": "little",
+    "stripped": true,
+    "static": false,
+    "interpreter": "/lib64/ld-linux-x86-64.so.2"
+  },
+  "protections": {
+    "nx": false,
+    "canary": false,
+    "pie": false,
+    "relro": "no",
+    "fortify": false,
+    "rpath": false,
+    "runpath": false
+  },
+  "libc": null,
+  "vulnerabilities": [
+    {
+      "type": "overflow",
+      "function": "read",
+      "location": null,
+      "description": "Check buffer size vs read size"
+    },
+    {
+      "type": "format_string",
+      "function": "printf",
+      "location": null,
+      "description": "Format string if user controls format"
+    },
+    {
+      "type": "heap",
+      "function": "free",
+      "location": null,
+      "description": "Check for UAF/double-free"
+    },
+    {
+      "type": "heap",
+      "function": "malloc",
+      "location": null,
+      "description": "Check for heap vulnerabilities"
+    }
+  ],
+  "interesting_strings": [],
+  "symbols": {
+    "*ABS*+0x0000000000001180@got": 15736,
+    "*ABS*+0x00000000000011c0@got": 15728,
+    "*ABS*+0x0000000000004008@got": 16392,
+    "_ITM_deregisterTMCloneTable@Base@got": 16352,
+    "_ITM_registerTMCloneTable@Base@got": 16368,
+    "__cxa_finalize@GLIBC_2.2.5@got": 16376,
+    "__cxa_finalize@plt": 4304,
+    "__gmon_start__@Base@got": 16360,
+    "__libc_start_main@GLIBC_2.34@got": 16344,
+    "__stack_chk_fail@GLIBC_2.4@got": 16288,
+    "__stack_chk_fail@plt": 4192,
+    "exit@GLIBC_2.2.5@got": 16336,
+    "exit@plt": 4288,
+    "free@GLIBC_2.2.5@got": 16264,
+    "free@plt": 4144,
+    "main": 6904,
+    "malloc@GLIBC_2.2.5@got": 16320,
+    "malloc@plt": 4256,
+    "printf@GLIBC_2.2.5@got": 16296,
+    "printf@plt": 4208,
+    "puts@GLIBC_2.2.5@got": 16272,
+    "puts@plt": 4160,
+    "read@GLIBC_2.2.5@got": 16304,
+    "read@plt": 4224,
+    "setvbuf@GLIBC_2.2.5@got": 16328,
+    "setvbuf@plt": 4272,
+    "stderr@GLIBC_2.2.5@got": 16448,
+    "stdin@GLIBC_2.2.5@got": 16432,
+    "stdout@GLIBC_2.2.5@got": 16416,
+    "strtol@GLIBC_2.2.5@got": 16312,
+    "strtol@plt": 4240,
+    "write@GLIBC_2.2.5@got": 16280,
+    "write@plt": 4176
+  },
+  "strategy": "ret2shellcode (NX disabled) \u2192 ret2system/ROP (no PIE/canary)"
+}

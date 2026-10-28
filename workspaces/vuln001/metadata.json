@@ -1,0 +1,16 @@
+{
+  "challenge_id": 24,
+  "slug": "vuln001",
+  "title": "metadata service",
+  "category": "Vuln Research",
+  "points": 150,
+  "max_attempts": 2,
+  "platform": "ctf.bugpwn.com",
+  "connection": {
+    "host": "169.58.126.107",
+    "port": 7027,
+    "protocol": "tcp (likely raw / nc-friendly)"
+  },
+  "attachment": "attachments/libexif-src.tar.gz",
+  "status": "blocked_pre_flag"
+}

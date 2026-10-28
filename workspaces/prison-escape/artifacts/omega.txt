@@ -1,0 +1,75 @@
+Omega v1.0
+(Conﬁdential Document)
+
+
+Use Case
+Omega is a proprietary protocol that is used to strengthen prison security and maintain them as
+a Smart Penitentiary Facility .
+
+To avoid problems such as possible prison breaks and rival gang member ﬁghts, we have ﬁxed
+diﬀerent sensors including positioning devices, video cameras and perimeter monitors. If
+something is detected by the sensor then the video cameras will turn to a given direction, and the
+main gate will be closed.
+
+All these devices work with Omega protocol, which is eﬃcient and can be used ﬂexibly across
+devices. Each prisoner is closely monitored with video cameras, apart from a 10 minute
+maintenance period during the day time. As this is critical period, we request the guards to move
+out of the base and activate the laser systems (E1,E2 & E3). Any failure in laser systems will
+trigger the alarms (A1, A2, A3 & A4) thereby alerting the guards, who will move to protect all
+prison entrances.
+
+
+
+
+Architecture
+
+
+
+
+Omega is a RF protocol. This protocol can be used in devices that operate at 1.8-5.5V, with a
+frequency band in the range of 433.92 MHz. We have used an in-house Omega prototype to
+convert RF signals to message format and vice versa.
+
+
+
+
+Alarm Packet Structure
+  Packet Type                                Packet Identiﬁer
+
+  Suppress                                   0xF1
+
+  Alert                                      0xA0
+
+  Broadcast                                  0x03
+
+
+Broadcast: In order to consume low power, all the alarms are in idle mode at regular intervals.
+All sensors broadcast messages to nearby devices with an allowed 0.05 seconds delay.
+
+Alert: If broadcast mode is disrupted, then the nearby receiver (which acts as master) sends a
+signal to all alarms to put them into alert mode.
+
+Suppress: This mode helps in silencing the alarms. This works by sending a suppress packet to
+the respective alarm.
+
+
+Laser Packet Structure
+
+
+
+
+  Packet Type                                Packet Identiﬁer
+
+  Move left                                  0x91
+
+  Move right                                 0x53
+
+  Turn oﬀ                                    0xFF
+
+  Turn on                                    0xEE
+
+
+To avoid packet replay and injection attacks we've implemented cyclic redundancy check
+validation, referring to microchip solutions port for STM32 with initCRC( 0x1d0f). Invalid packets
+get discarded at the transceiver end.
+

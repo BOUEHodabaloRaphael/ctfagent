@@ -1,0 +1,18 @@
+{
+  "id": "touch",
+  "title": "Touch",
+  "category": "misc",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "10.129.9.158",
+  "attachments": [],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "Mode autonome demande par l'utilisateur: executer les commandes necessaires sans demander confirmation a chaque etape",
+    "sauf si reellement bloque (credentiel manquant",
+    "decision ambigue).",
+    "Approche evidence-first: privilegier verification/source/metadata avant brute force.",
+    "Ordre de pistes suggere par l'utilisateur: 1) RDP jenny/Fl1ghtDeck2026! 2) explorer kiosque Electron (localStorage/%APPDATA%/cache Vite) pour passport number 3) bypass 403 sur /api via X-Forwarded-For 4) methodes HTTP alternatives sur /api/scan 5) impacket-rpcdump sur 135 6) fuzzing parametres /api/scanner/settings 7) recherche CVE Nexion DeviceHub DH-100."
+  ]
+}

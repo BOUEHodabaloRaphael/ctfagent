@@ -1,0 +1,22 @@
+POST /pressurize -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /pressurize</pre>\n</body>\n</html>\n"}
+POST /heat -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /heat</pre>\n</body>\n</html>\n"}
+POST /stoke -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /stoke</pre>\n</body>\n</html>\n"}
+POST /boost -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /boost</pre>\n</body>\n</html>\n"}
+POST /overfeed -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /overfeed</pre>\n</body>\n</html>\n"}
+POST /feed -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /feed</pre>\n</body>\n</html>\n"}
+POST /load -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /load</pre>\n</body>\n</html>\n"}
+POST /burn -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /burn</pre>\n</body>\n</html>\n"}
+POST /flare -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /flare</pre>\n</body>\n</html>\n"}
+POST /surge -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /surge</pre>\n</body>\n</html>\n"}
+POST /spike -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /spike</pre>\n</body>\n</html>\n"}
+POST /close -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /close</pre>\n</body>\n</html>\n"}
+POST /seal -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /seal</pre>\n</body>\n</html>\n"}
+POST /block -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /block</pre>\n</body>\n</html>\n"}
+POST /disable -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /disable</pre>\n</body>\n</html>\n"}
+POST /kill_sensor -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /kill_sensor</pre>\n</body>\n</html>\n"}
+POST /spoof -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /spoof</pre>\n</body>\n</html>\n"}
+POST /overload -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /overload</pre>\n</body>\n</html>\n"}
+POST /charge -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /charge</pre>\n</body>\n</html>\n"}
+POST /ignite -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /ignite</pre>\n</body>\n</html>\n"}
+RATE LIMITED at unlock, waiting 600s
+POST /unlock -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /unlock</pre>\n</body>\n</html>\n"}

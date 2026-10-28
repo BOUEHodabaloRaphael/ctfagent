@@ -1,0 +1,76 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 584 >>
+stream
+BT /F1 12 Tf 50 770 Td 14 TL (THE LAST PROTOCOL) Tj T* (ENGINEERING NOTEBOOK - RECOVERED) Tj T* () Tj T* (The following pages were recovered from the calibration) Tj T* (engineer's private notebook.) Tj T* () Tj T* (1. BLOCK STRUCTURE) Tj T* (The final archive transformation operates on 64-bit blocks.) Tj T* (Each block is divided into two 32-bit halves.) Tj T* (The engineer repeatedly emphasized that the transformation) Tj T* (is reversible without constructing a separate inverse function.) Tj T* (Notation: L\(r+1\) = R\(r\); R\(r+1\) = L\(r\) XOR F\(R\(r\), K\(r\), r\)) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 449 >>
+stream
+BT /F1 12 Tf 50 770 Td 14 TL (2. ROUND MATERIAL) Tj T* (Eight rounds are performed. Every round receives a different) Tj T* (256-bit-derived key value. Only the first eight bytes of each) Tj T* (round material are consumed by the round function.) Tj T* (The key is not added directly. Break it into the two words first.) Tj T* (The round function works on a 32-bit word.) Tj T* (Circled constants: 0x9E3779B9 \(round\), 0x045D9F3B \(mixing\).) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 456 >>
+stream
+BT /F1 12 Tf 50 770 Td 14 TL (3. OPERATION ORDER) Tj T* (1. XOR the right word with both 32-bit key words) Tj T* (2. Add the round constant multiplied by the round number) Tj T* (3. Rotate left by a round-dependent amount) Tj T* (4. XOR with a shifted copy of itself) Tj T* (5. Multiply by 0x045D9F3B modulo 2^32) Tj T* (6. XOR with itself shifted right by 16) Tj T* (Margin note: The rotation grows by three each round.) Tj T* (Do not rotate right.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 575 >>
+stream
+BT /F1 12 Tf 50 770 Td 14 TL (4. BYTE ORDER) Tj T* (All multi-byte values in the archive are written in network) Tj T* (byte order. Read the first four bytes as the most significant) Tj T* (word. Read the next four as the least significant word.) Tj T* () Tj T* (5. KNOWN TEST VECTOR) Tj T* (A test block was recorded before the final archive was produced.) Tj T* (Plaintext block:  52 45 42 55 49 4C 44 3A) Tj T* (Ciphertext block: 8A DF 73 64 0B D9 77 3C) Tj T* (If your implementation cannot reproduce this block, your byte) Tj T* (order or round function is wrong.) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 265 >>
+stream
+BT /F1 12 Tf 50 770 Td 14 TL (6. FINAL NOTE) Tj T* (The archive is not the final message.) Tj T* (The first successful decryption only tells you that the) Tj T* (machine has been rebuilt. What it says next is another problem.) Tj T* () Tj T* (END OF NOTEBOOK) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 12 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000141 00000 n 
+0000000211 00000 n 
+0000000846 00000 n 
+0000000972 00000 n 
+0000001472 00000 n 
+0000001598 00000 n 
+0000002105 00000 n 
+0000002231 00000 n 
+0000002858 00000 n 
+0000002986 00000 n 
+0000003303 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+3431
+%%EOF

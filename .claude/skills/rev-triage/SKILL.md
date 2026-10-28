@@ -28,6 +28,15 @@ Save JSON output for later reference:
 python3 src/tools/rev/rev_check.py ./challenge_binary --output recon.json
 ```
 
+Spot crypto algorithms by magic constants (hash IVs, AES S-box, CRC, TEA, ChaCha...):
+
+```bash
+python3 src/tools/rev/crypto_consts.py ./challenge_binary
+```
+
+Add `--xor` to brute-force single-byte XOR keys for flag-shaped text (`--prefixes 'CTF|flag'`).
+Limits: RC4 and custom ciphers are not detected; XOR only works when the encoded bytes are contiguous in the file (the compiler may inline them as immediates); packed binaries (UPX) must be unpacked first.
+
 ## When to Use
 
 - Challenge provides a binary and asks for a flag, key, password, or hidden logic.

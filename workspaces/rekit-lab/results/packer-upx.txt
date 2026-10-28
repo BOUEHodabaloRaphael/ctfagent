@@ -1,0 +1,19 @@
+
+    ██████╗ ███████╗██╗  ██╗██╗████████╗
+    ██╔══██╗██╔════╝██║ ██╔╝██║╚══██╔══╝
+    ██████╔╝█████╗  █████╔╝ ██║   ██║   
+    ██╔══██╗██╔══╝  ██╔═██╗ ██║   ██║   
+    ██║  ██║███████╗██║  ██╗██║   ██║   
+    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   
+       Reverse Engineering Toolkit v2.1
+
+Modules actifs : Capstone
+
+
+═══ [15] DÉTECTION PACKER ═══
+  ✓ Signature : UPX
+
+▶ Entropie par section :
+
+[✓] Analyse terminée.
+

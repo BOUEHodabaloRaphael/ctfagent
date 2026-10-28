@@ -64,6 +64,23 @@
 - 解题结论
 - `knowledge/` 下的 writeup 或 pattern
 
+## 加速工具（可选，新增）
+
+这两个脚本是对标准链路的补充，不改变上面的流程，只是把两个之前靠人工完成的步骤变成可脚本化的动作：
+
+1. **验证循环** — `src/tools/workspace/verify_loop.py`
+   - 自动发现 workspace 里的 `solve.py` / `exploit.py` / `exp_*.py` / `exploit_*.py`（或用 `--cmd` 指定），逐个运行，扫描输出里的 flag 模式。
+   - 每次运行都追加写入 `<workspace>/verify_log.jsonl`（不覆盖、不删除已有文件）。
+   - 命中 flag 时写入 `flags/pending/`；加 `--submit` 可直接调用 `ctf_platform_client.py submit`。
+   - 用法：`python3 src/tools/workspace/verify_loop.py --workspace workspaces/<id>`
+
+2. **并行调度建议** — `src/tools/workspace/parallel_dispatch.py`
+   - 扫描 `workspaces/`，跳过笔记里已标记 solved 的题目，按最近修改时间排序，给出最活跃的 N 个。
+   - 默认只打印建议（`git worktree add` 命令形态），加 `--apply` 才会真正创建新 worktree；从不删除已有 worktree 或文件。
+   - 用法：`python3 src/tools/workspace/parallel_dispatch.py --top 3 --apply`，然后在每个 `worktree_path` 分别开一个 Claude Code 会话。
+
+两者都有对应的 `tests/test_verify_loop.py` / `tests/test_parallel_dispatch.py`。
+
 ## 边界
 
 当前流程默认解决的是：
@@ -75,6 +92,6 @@
 
 当前流程不默认解决的是：
 
-- 批量题目调度
-- 自动 flag 提交
+- 批量题目调度（`parallel_dispatch.py` 只给建议，不做编排）
+- 自动 flag 提交（`verify_loop.py --submit` 覆盖单个 flag 的场景，不是全自动批量提交）
 - 多 agent 编排平台

@@ -1,0 +1,25 @@
+POST /vents -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /vents</pre>\n</body>\n</html>\n"}
+POST /vent/close -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /vent/close</pre>\n</body>\n</html>\n"}
+POST /valve/vent -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /valve/vent</pre>\n</body>\n</html>\n"}
+POST /drain_slag -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /drain_slag</pre>\n</body>\n</html>\n"}
+POST /tap_metal -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /tap_metal</pre>\n</body>\n</html>\n"}
+POST /charge_coke -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /charge_coke</pre>\n</body>\n</html>\n"}
+POST /adjust_blast -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /adjust_blast</pre>\n</body>\n</html>\n"}
+POST /windbox_open -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /windbox_open</pre>\n</body>\n</html>\n"}
+POST /tuyere_close -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /tuyere_close</pre>\n</body>\n</html>\n"}
+POST /hearth_drain -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /hearth_drain</pre>\n</body>\n</html>\n"}
+POST /stove_switch -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /stove_switch</pre>\n</body>\n</html>\n"}
+POST /close_vent -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /close_vent</pre>\n</body>\n</html>\n"}
+POST /open_vent -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /open_vent</pre>\n</body>\n</html>\n"}
+POST /re-vent -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /re-vent</pre>\n</body>\n</html>\n"}
+POST /revent -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /revent</pre>\n</body>\n</html>\n"}
+POST /cooldown -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /cooldown</pre>\n</body>\n</html>\n"}
+POST /stabilize -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /stabilize</pre>\n</body>\n</html>\n"}
+POST /safe_mode -> <html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>openresty/1.31.1.1</center>
+</body>
+</html>
+POST /normal_mode -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /normal_mode</pre>\n</body>\n</html>\n"}

@@ -1,0 +1,11 @@
+[Unit]
+Description=C-Laude Edge Health Check Timer
+Documentation=https://internal.c-laude.ai/ops/monitoring/checkpoint-health
+
+[Timer]
+OnBootSec=30
+OnUnitActiveSec=45
+Persistent=true
+
+[Install]
+WantedBy=timers.target

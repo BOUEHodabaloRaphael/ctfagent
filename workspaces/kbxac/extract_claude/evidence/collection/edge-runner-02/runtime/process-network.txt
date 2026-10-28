@@ -1,0 +1,24 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0   6908  3200 ?        Ss   11:57   0:00 su -s /bin/sh svc_preview -c python /srv/app.py
+root        16  0.0  0.0  11760  5084 ?        Ss   11:57   0:00 sshd: /usr/sbin/sshd -E /evidence/logs/auth.log [listener] 0 of 10-100 startups
+tcpdump     21  0.0  0.0      0     0 ?        Z    11:57   0:00 [tcpdump] <defunct>
+root        22  0.0  0.1  14452 11040 ?        S    11:57   0:00 python /srv/scheduler.py
+root        23  0.0  0.0   6908  3520 ?        S    11:57   0:00 su -s /bin/sh svc_preview -c python /srv/normal_activity.py
+svc_pre+    26  0.0  0.0   2672  1600 ?        Ss   11:57   0:00 sh -c python /srv/normal_activity.py
+svc_pre+    27  0.0  0.0   2672  1600 ?        Ss   11:57   0:00 sh -c python /srv/app.py
+svc_pre+    28  0.0  0.6  60032 51688 ?        S    11:57   0:00 python /srv/normal_activity.py
+svc_pre+    29  0.0  0.2 103932 22720 ?        S    11:57   0:00 python /srv/app.py
+root       178 33.3  0.0   2672  1760 ?        Ss   12:14   0:00 sh -c ps aux; echo "---"; ip -o addr; echo "---"; ss -plant
+root       184  0.0  0.0   6788  3680 ?        R    12:14   0:00 ps aux
+---
+1: lo    inet 127.0.0.1/8 scope host lo\       valid_lft forever preferred_lft forever
+1: lo    inet6 ::1/128 scope host proto kernel_lo \       valid_lft forever preferred_lft forever
+2: eth0    inet 10.60.20.42/24 brd 10.60.20.255 scope global eth0\       valid_lft forever preferred_lft forever
+3: eth1    inet 203.0.113.42/24 brd 203.0.113.255 scope global eth1\       valid_lft forever preferred_lft forever
+---
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                      
+LISTEN 0      4096      127.0.0.11:34345      0.0.0.0:*                                
+LISTEN 0      128          0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=16,fd=7))
+LISTEN 0      5            0.0.0.0:8443       0.0.0.0:*                                
+ESTAB  0      0        10.60.20.42:46066  10.60.20.18:9000                             
+LISTEN 0      128             [::]:22            [::]:*    users:(("sshd",pid=16,fd=8))

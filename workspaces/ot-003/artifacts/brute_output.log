@@ -1,0 +1,3 @@
+HIT status: {"status":200,"body":"{\"temperature\":1550,\"pressure\":92,\"vented\":false,\"ruptured\":false}"}
+RATE LIMITED at word=reading (count=21), backing off 150s
+RATE LIMITED at word=sensor (count=22), backing off 150s

@@ -1,0 +1,1085 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<tagfile doxygen_version="1.9.6">
+  <compound kind="struct">
+    <name>Webs</name>
+    <filename>struct_webs.html</filename>
+    <member kind="variable">
+      <type>char *</type>
+      <name>authDetails</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a22c8eb59efa1e432685b3f94cc7e271b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>authResponse</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a5be37bc666bcf2b8d5e563d1bc4e2d9a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>authType</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a259475e6ccebc81969d8c7d9ded86ce8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>boundary</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a5ddf1855ac370f260275b4bc32f02acb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>boundaryLen</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a2a858c57baa126b0e3016af1e99481e5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>cgifd</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a85a8b893a147d8a2d1657941baaa507a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>cgiStdin</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ae78d20de04a1ce1268d1e5e2723ec162</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsBuf</type>
+      <name>chunkbuf</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ae1a4b5f0781662f3b7c6e48c213ff5c5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>clientFilename</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ab1fc11d79086325d891155fcbc9b68c9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>code</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a07280837556d5e09f58ce2d5bd76fa03</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>uint</type>
+      <name>connError</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a57e249c5d479eaafe904918afdc1176a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>contentType</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>af3a2a8523437ec1bb79ebeed2999dec7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>cookie</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a7dbac67c8612141b49622cf70368ae02</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsUpload *</type>
+      <name>currentFile</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>af203e79f7735b34a45613f48a494abaf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>decodedQuery</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ae0a9dfed5cfaa61aa70d8cc5235613b6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>digest</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a5addcf0afa2fb09553a7333089dcf6e7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>docfd</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a290fab9610350b200ee9c15bc89ca77c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>encoded</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a568d9a796e4f0cbc96aa5c924d48f1a8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>bool</type>
+      <name>eof</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aac68366c7f1f2f7375e327812a03c862</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>uint</type>
+      <name>error</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a74e0108bce02fa2896ad4a2d9e77f07a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>ext</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ae14a0dc2b70bce0063128242c01ada44</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>filename</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aa200ee801dbd009ae39256ba638b7bbb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>files</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a41507f63365fd355d3b417379a247615</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>uint</type>
+      <name>finalized</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a6b024d0cbb6da8491ffd85e6a1b580cf</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>flags</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aef7051fbea1d0a0477a3f1f5c0a40f0d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>host</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a5434d9823cdbbd5f5a3c001f84184bf1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char</type>
+      <name>ifaddr</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>af4eddf70464df95a1258bb788820e726</anchor>
+      <arglist>[ME_MAX_IP]</arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsBuf</type>
+      <name>input</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a800404274bde5d7c2c4b1c539ba6da64</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char</type>
+      <name>ipaddr</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ac21f6941c9734ea4f38dabb92c097d3f</anchor>
+      <arglist>[ME_MAX_IP]</arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>lastRead</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a20c9fadc13c2032d653158629ff4a074</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>listenSid</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a4e1a745354ce9892d7acda9574ddb8cd</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>method</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a7a11618feb24f9927499c841c5c29dd3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsBuf</type>
+      <name>output</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a1317cecfc3b0fbcc331f934081015d1c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>password</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a08b308c9cd80aba4d729751f639fd712</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>path</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ac4442c23ab5c4136fa6e9826dc025bd9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>port</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a65ea36d000fb176ac59b6ad9eb5f9faa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>protocol</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aca189f1f7581f0cfd98c5d860bb169bd</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>protoVersion</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aeff2353e3d58f97d38a83791cc61091f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>putLen</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aff450bb9acccf9b50042c856dd1ec9b1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>putname</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a07ff1d04a0ae1f6d838d409e5a921f94</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>query</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a708c3dbe1ffb8c2e4bc9c262cbf0020e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>realm</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a298698945e34627953a8d30e18f660cc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>referrer</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>af2232eb6ed59de08e9af90da0ea8659b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>responseCookies</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>afd73f2a3554b6ac32582f9fbe82304ce</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>struct WebsRoute *</type>
+      <name>route</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a889567641f48625216dfcb1aa849609c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>routeCount</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a83be0bfccd487a56e44bfb7079cc8962</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsBuf</type>
+      <name>rxbuf</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a1a738fde4f7c4c64fe314c31450785aa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>rxChunkSize</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a450615ebbcfedb2372adf5418d71b6c9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>rxChunkState</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a876f5171ec53af85877ba190299c03b3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>rxEndp</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a5bec0e0c808b319e4363532a966e99e8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>rxLen</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>abef5826066a9fce6f6849bf8116b8147</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>rxRemaining</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a2190eee075132f8f4edc8af9129603b5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>struct WebsSession *</type>
+      <name>session</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a295a4e70dcea835252e22e13e25ab9f9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>sid</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>af927115586c22ea064f654f5252bde7d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsTime</type>
+      <name>since</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ab14accaad5d21572d066229adf29e5ef</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>void *</type>
+      <name>ssl</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aecf8e2ec7bb0ed6ed23c530863e9a972</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>state</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ae0e6e306f995073af892b36178fdf80e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>timeout</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a0bda3e8f3fa23bd00e987cd9bd49dd9a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsTime</type>
+      <name>timestamp</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aee18408d0b22b9587f814d91cbdc739a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>txChunkLen</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ab1a7e4459270ce8f52e31fb094cb875d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char</type>
+      <name>txChunkPrefix</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>af304cf646fe3be3592e7562b31fdbac1</anchor>
+      <arglist>[16]</arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>txChunkPrefixLen</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>adc76b46289adde26318e8ec5f5263bba</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>txChunkPrefixNext</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a6c87f9e1e89a9c9e787cb684a2e25750</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>txChunkState</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a125139d742e2c40a5d0fe11e3467bccc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>txLen</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a1a7f1f5f078448015482cbaba8b17836</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>txRemaining</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ad4e07bb1cefb9553587d601ba86f17cc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>upfd</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>aa20891b8f5a0e1ddd490e3a3bb0531c2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>uploadState</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>af9fdfeecdc16075df72b35a4f484c2ee</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>uploadTmp</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>abcb7fd712add91217228c181e0b6fad9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>uploadVar</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>af052577806d36f6cfe89cc33aa97ec88</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>url</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ae4925919d049650b61098dd7d6c5ae15</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>struct WebsUser *</type>
+      <name>user</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a0a5ae8221021c6e5c61a25fa9c5e0da8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>userAgent</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>afecab1181c3866a2c48ad5a1cb48544a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>username</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a43f6cec2a7321ce80c157131af16bb72</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>vars</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a975a09f4ba5b82c851c29937659374ad</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>wid</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ae597664c20d60ac83c8bd608ce452609</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsWriteProc</type>
+      <name>writeData</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>a684c0828f93b9989243f292f1f7c543c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>written</name>
+      <anchorfile>struct_webs.html</anchorfile>
+      <anchor>ac8277d328a7af48384af3662f739a830</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsBuf</name>
+    <filename>struct_webs_buf.html</filename>
+    <member kind="variable">
+      <type>char *</type>
+      <name>buf</name>
+      <anchorfile>struct_webs_buf.html</anchorfile>
+      <anchor>a46b8fcdd026d28a3d4eeaa193a3c9f3b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>buflen</name>
+      <anchorfile>struct_webs_buf.html</anchorfile>
+      <anchor>a09ec3371ec524f2de13e6d728d105d70</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>endbuf</name>
+      <anchorfile>struct_webs_buf.html</anchorfile>
+      <anchor>aa2aa481e2477b06c1c8fedefd6d545a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>endp</name>
+      <anchorfile>struct_webs_buf.html</anchorfile>
+      <anchor>afb9036a3495b2f0f8a1f411648be4bf9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>increment</name>
+      <anchorfile>struct_webs_buf.html</anchorfile>
+      <anchor>a8c7906ee76c3918fc6d279998271e45d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>maxsize</name>
+      <anchorfile>struct_webs_buf.html</anchorfile>
+      <anchor>a8b54b3434d9366fb3cb8655ad1b4bacb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>servp</name>
+      <anchorfile>struct_webs_buf.html</anchorfile>
+      <anchor>a3e5d4c4d94cb3f3a30c2c7621e4bc54d</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsError</name>
+    <filename>struct_webs_error.html</filename>
+    <member kind="variable">
+      <type>int</type>
+      <name>code</name>
+      <anchorfile>struct_webs_error.html</anchorfile>
+      <anchor>ac722c299759f1daa6c1de1d6d39a4a53</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>msg</name>
+      <anchorfile>struct_webs_error.html</anchorfile>
+      <anchor>af7a55160cae4c1699aea36333f1409a2</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsFileInfo</name>
+    <filename>struct_webs_file_info.html</filename>
+    <member kind="variable">
+      <type>int</type>
+      <name>isDir</name>
+      <anchorfile>struct_webs_file_info.html</anchorfile>
+      <anchor>a53faee5bfd27143bbe3b3866e7c5f36c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsTime</type>
+      <name>mtime</name>
+      <anchorfile>struct_webs_file_info.html</anchorfile>
+      <anchor>a6300b1037556cf397441e7186307ac27</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ulong</type>
+      <name>size</name>
+      <anchorfile>struct_webs_file_info.html</anchorfile>
+      <anchor>a98aaf5ef7942a3658aacea5d8f55c521</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsHandler</name>
+    <filename>struct_webs_handler.html</filename>
+    <member kind="variable">
+      <type>WebsHandlerClose</type>
+      <name>close</name>
+      <anchorfile>struct_webs_handler.html</anchorfile>
+      <anchor>aa65dfb2b26822c8fa11e9cb2be1e86bd</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>flags</name>
+      <anchorfile>struct_webs_handler.html</anchorfile>
+      <anchor>a3f48020f7e631f6f9907ede5ec069f96</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHandlerProc</type>
+      <name>match</name>
+      <anchorfile>struct_webs_handler.html</anchorfile>
+      <anchor>a2db0b4a1fa8858c65a2fff4e81941cf8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>name</name>
+      <anchorfile>struct_webs_handler.html</anchorfile>
+      <anchor>a28bd2d097937b7b50ce6774787691ac4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHandlerProc</type>
+      <name>service</name>
+      <anchorfile>struct_webs_handler.html</anchorfile>
+      <anchor>a08c39b45fe1ed5cfc56cdafa1c644571</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsKey</name>
+    <filename>struct_webs_key.html</filename>
+  </compound>
+  <compound kind="struct">
+    <name>WebsMime</name>
+    <filename>struct_webs_mime.html</filename>
+    <member kind="variable">
+      <type>char *</type>
+      <name>ext</name>
+      <anchorfile>struct_webs_mime.html</anchorfile>
+      <anchor>ac7e886a766309129135420bcc89af68e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>type</name>
+      <anchorfile>struct_webs_mime.html</anchorfile>
+      <anchor>a2a953d9dba83d4dcc930ef4e4b070707</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsRole</name>
+    <filename>struct_webs_role.html</filename>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>abilities</name>
+      <anchorfile>struct_webs_role.html</anchorfile>
+      <anchor>a5c46c66dc786251706fc661098cb554a</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsRomIndex</name>
+    <filename>struct_webs_rom_index.html</filename>
+    <member kind="variable">
+      <type>uchar *</type>
+      <name>page</name>
+      <anchorfile>struct_webs_rom_index.html</anchorfile>
+      <anchor>a30324ceac1533b5e9b3ea7e8dd293965</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>path</name>
+      <anchorfile>struct_webs_rom_index.html</anchorfile>
+      <anchor>a2488bb3bf70a2805ed1509d563a7954f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Offset</type>
+      <name>pos</name>
+      <anchorfile>struct_webs_rom_index.html</anchorfile>
+      <anchor>aeb5b9cf7ef8a7beeefe7a166339509fa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>size</name>
+      <anchorfile>struct_webs_rom_index.html</anchorfile>
+      <anchor>a83e3cf06595cbaf299781aec9d16af64</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsRoute</name>
+    <filename>struct_webs_route.html</filename>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>abilities</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>a6b36075d6382e32697e05aeda10d794a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsAskLogin</type>
+      <name>askLogin</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>ab7891065b681ae4e97b59549fcec2ac0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>authType</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>a3a765ffa4b04a2894b6339b74e3ea052</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>dir</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>aeda98dd9c256c100b2cffcbfc103957a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>extensions</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>a3b6d9f5c99ef9c6173f3f03cd35ce94e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>flags</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>a7cc717c6a3af5994df5ae0431484ea18</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHandler *</type>
+      <name>handler</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>ab985fb228b809c062eccc682ba1088e6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>methods</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>a73466455629e64a98a63a2ad4608203c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsParseAuth</type>
+      <name>parseAuth</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>acf21d47b2a9737673f45889a2ce470c8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>prefix</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>a9db850d11aa22f03751c09ddd5c30eb8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>prefixLen</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>a4e112fed9db575b6df3337a270f7c9a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>protocol</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>ad7f94b7cfc5afe624005d604e41e475e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>redirects</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>a92fc240d24467bba90a5956828e6a3da</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsVerify</type>
+      <name>verify</name>
+      <anchorfile>struct_webs_route.html</anchorfile>
+      <anchor>ae453dc5566524c2ed75fa6f9f43f03da</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsSession</name>
+    <filename>struct_webs_session.html</filename>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>cache</name>
+      <anchorfile>struct_webs_session.html</anchorfile>
+      <anchor>a427c2355a42f25793c3338b4e9f4749a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsTime</type>
+      <name>expires</name>
+      <anchorfile>struct_webs_session.html</anchorfile>
+      <anchor>a5ac6b51268f0c8d43701be6bb375a0c1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>id</name>
+      <anchorfile>struct_webs_session.html</anchorfile>
+      <anchor>ac4232e3ca348135d581b3de7edae7ae3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>lifespan</name>
+      <anchorfile>struct_webs_session.html</anchorfile>
+      <anchor>aaf9823c1b658c32dfe1a13d12bcbe3bb</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsSocket</name>
+    <filename>struct_webs_socket.html</filename>
+    <member kind="variable">
+      <type>SocketAccept</type>
+      <name>accept</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a1e1f24634288bf3a5d5da55d65d0ad14</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>currentEvents</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>abcd15a4df8da39430f5c72a3ec757a40</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>error</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a0e48b40e58b6703eccf776b91c4fe3df</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>fileHandle</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>adaac028690918de9fb08b0fb96a6c7bb</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>flags</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a8f395a9d2909367e76ff7f9adb3569dd</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>SocketHandler</type>
+      <name>handler</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a062c28d3ccd1c90ec5489dddfa8b3370</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>void *</type>
+      <name>handler_data</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>ab6e5adf8e9507322ffad44d8bf9656b2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>handlerMask</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>adb56a70a245aed05d9510d16ebf4fb7d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>handshakes</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a67666377f0d478edc06836b4553e8c53</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>interestEvents</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a637ec50a2dc66526ec8ec3a65154e2e7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>ip</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>ac3709373e393db41572ba139214fb5bd</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>WebsBuf</type>
+      <name>lineBuf</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a117eeaaf35ed8316551c6ad033e34ca9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>port</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a3efaf6dc2e3f93eec350745855f7f148</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>saveMask</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a1f42a3e8c7ad2e02f388e0be426b62d4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>secure</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>ab8cd9e93cf1d0917b08dfb036811242b</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>selectEvents</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>ac4a91a6fa08d8dfe835b0172bf14ec02</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>sid</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>a8a9e4f4501cbbad87b40ced41700b873</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>Socket</type>
+      <name>sock</name>
+      <anchorfile>struct_webs_socket.html</anchorfile>
+      <anchor>ae4e843a91fbbf809cfefdbea7b4029a7</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsUpload</name>
+    <filename>struct_webs_upload.html</filename>
+    <member kind="variable">
+      <type>char *</type>
+      <name>clientFilename</name>
+      <anchorfile>struct_webs_upload.html</anchorfile>
+      <anchor>ab37ccea6598c223a697d200ebed4fcc8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>contentType</name>
+      <anchorfile>struct_webs_upload.html</anchorfile>
+      <anchor>a522d5e8fa2dfc9442f395c75f637a10a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>filename</name>
+      <anchorfile>struct_webs_upload.html</anchorfile>
+      <anchor>a18ed7ffb56b6b33cc4756e395e717362</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>ssize</type>
+      <name>size</name>
+      <anchorfile>struct_webs_upload.html</anchorfile>
+      <anchor>a3752b03efb019c546b082607083fdb3b</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsUser</name>
+    <filename>struct_webs_user.html</filename>
+    <member kind="variable">
+      <type>WebsHash</type>
+      <name>abilities</name>
+      <anchorfile>struct_webs_user.html</anchorfile>
+      <anchor>a2dd70acb96fa18a207458670ba5874fa</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>name</name>
+      <anchorfile>struct_webs_user.html</anchorfile>
+      <anchor>a911b03c5aee1a30f16f6d9a3dd279bf2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>password</name>
+      <anchorfile>struct_webs_user.html</anchorfile>
+      <anchor>a4a3157e5dc6324fbfdf79ba60d4b9cce</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>char *</type>
+      <name>roles</name>
+      <anchorfile>struct_webs_user.html</anchorfile>
+      <anchor>a6a24b0a473fe14ad9a7af8677040fd60</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>WebsValue</name>
+    <filename>struct_webs_value.html</filename>
+  </compound>
+</tagfile>

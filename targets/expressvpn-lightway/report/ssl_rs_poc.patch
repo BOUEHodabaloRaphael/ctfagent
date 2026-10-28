@@ -1,0 +1,219 @@
+diff --git a/wolfssl/src/ssl.rs b/wolfssl/src/ssl.rs
+index 432f7c3..a02b1b9 100644
+--- a/wolfssl/src/ssl.rs
++++ b/wolfssl/src/ssl.rs
+@@ -2097,6 +2097,7 @@ mod tests {
+     #[test_case(SslVerifyMode::SslVerifyFailExceptPsk, SslVerifyMode::SslVerifyNone)]
+     #[test_case(SslVerifyMode::SslVerifyFailExceptPsk, SslVerifyMode::SslVerifyPeer => panics "CaCertNotAvailable")]
+     fn test_client_set_verify(server_mode: SslVerifyMode, client_mode: SslVerifyMode) {
++        INIT_ENV_LOGGER.get_or_init(env_logger::init);
+         let client_method = Method::TlsClientV1_3;
+         // Create context without server CA certificate
+         let client_ctx = ContextBuilder::new(client_method)
+@@ -2133,4 +2134,206 @@ mod tests {
+         assert!(client_ssl.is_init_finished());
+         assert!(server_ssl.is_init_finished());
+     }
++
++    /// POC / audit probe: mirrors lightway-client's real usage exactly -
++    /// `with_root_certificate` is called (a real CA is loaded) but
++    /// `with_ssl_verify_mode` / `set_verify` is NEVER called on the client
++    /// session, matching grep results across lightway-core and
++    /// lightway-client (zero calls to either). The server presents a
++    /// certificate signed by a completely unrelated, attacker-controlled CA
++    /// (self-signed, CN=evil.attacker.example - not CA_CERT's chain at all).
++    ///
++    /// If the client's handshake completes anyway, the loaded root
++    /// certificate is decorative: wolfSSL's default verify mode with no
++    /// explicit `wolfSSL_set_verify` call does NOT enforce chain validation,
++    /// and any attacker-controlled certificate is silently accepted -
++    /// a full server-authentication bypass (CWE-295), not just the narrower
++    /// "hostname check is opt-in" issue.
++    #[test]
++    fn default_verify_mode_with_rogue_unrelated_cert() {
++        INIT_ENV_LOGGER.get_or_init(env_logger::init);
++
++        const ROGUE_CERT: &[u8] = &include!(concat!(
++            env!("CARGO_MANIFEST_DIR"),
++            "/tests/data/rogue_cert_der"
++        ));
++        const ROGUE_KEY: &[u8] = &include!(concat!(
++            env!("CARGO_MANIFEST_DIR"),
++            "/tests/data/rogue_key_der"
++        ));
++
++        let client_method = Method::TlsClientV1_3;
++        let client_ctx = ContextBuilder::new(client_method)
++            .unwrap_or_else(|e| panic!("new({client_method:?}): {e}"))
++            // Exactly what lightway-client does: load a real, legitimate CA.
++            .with_root_certificate(RootCertificate::Asn1Buffer(CA_CERT))
++            .unwrap()
++            .build();
++
++        let server_method = Method::TlsServerV1_3;
++        let server_ctx = ContextBuilder::new(server_method)
++            .unwrap_or_else(|e| panic!("new({server_method:?}): {e}"))
++            // Rogue cert/key: self-signed, unrelated to CA_CERT entirely.
++            .with_certificate(Secret::Asn1Buffer(ROGUE_CERT))
++            .unwrap()
++            .with_private_key(Secret::Asn1Buffer(ROGUE_KEY))
++            .unwrap()
++            .build();
++
++        let (client_io, server_io) = TcpIOCallbacks::pair();
++
++        // NOTE: no `.with_ssl_verify_mode(...)` call here on either side -
++        // this is the load-bearing line of the probe.
++        let mut client_ssl = client_ctx
++            .new_session(SessionConfig::new(client_io))
++            .unwrap();
++        let mut server_ssl = server_ctx
++            .new_session(SessionConfig::new(server_io))
++            .unwrap();
++
++        let mut client_err = None;
++        let mut server_err = None;
++        for _ in 0..10 {
++            if client_err.is_none() {
++                if let Err(e) = client_ssl.try_negotiate() {
++                    client_err = Some(format!("{e}"));
++                }
++            }
++            if server_err.is_none() {
++                if let Err(e) = server_ssl.try_negotiate() {
++                    server_err = Some(format!("{e}"));
++                }
++            }
++        }
++
++        eprintln!("client_err = {client_err:?}");
++        eprintln!("server_err = {server_err:?}");
++        eprintln!("client finished = {}", client_ssl.is_init_finished());
++        eprintln!("server finished = {}", server_ssl.is_init_finished());
++
++        assert!(
++            client_err.is_some() || !client_ssl.is_init_finished(),
++            "VULNERABLE: client completed TLS handshake against a certificate \
++             signed by a completely unrelated CA, with no verify mode ever set - \
++             default verify mode does not enforce chain validation"
++        );
++    }
++
++    /// Second probe, narrower claim: chain validation IS enforced by
++    /// default (see `default_verify_mode_with_rogue_unrelated_cert`), but is
++    /// *hostname/identity* checking also enforced by default, or only when
++    /// `with_checked_domain_name` (= lightway-client's
++    /// `--server-dn` / `server_dn` config field) is explicitly set?
++    ///
++    /// SERVER_CERT is validly signed by CA_CERT (so chain validation
++    /// passes), with CN=www.wolfssl.com, SAN=DNS:example.com,
++    /// IP:127.0.0.1. The simulated "real" server identity the client
++    /// intends to reach is `attacker-controlled-host.test` - matching
++    /// neither CN nor any SAN entry. `with_checked_domain_name` is NEVER
++    /// called, exactly like lightway-client when its `server_dn` config
++    /// field is left empty (its documented default).
++    #[test]
++    fn default_verify_mode_skips_hostname_check_when_not_requested() {
++        INIT_ENV_LOGGER.get_or_init(env_logger::init);
++
++        let client_method = Method::TlsClientV1_3;
++        let client_ctx = ContextBuilder::new(client_method)
++            .unwrap_or_else(|e| panic!("new({client_method:?}): {e}"))
++            .with_root_certificate(RootCertificate::Asn1Buffer(CA_CERT))
++            .unwrap()
++            .build();
++
++        let server_method = Method::TlsServerV1_3;
++        let server_ctx = ContextBuilder::new(server_method)
++            .unwrap_or_else(|e| panic!("new({server_method:?}): {e}"))
++            .with_certificate(Secret::Asn1Buffer(SERVER_CERT))
++            .unwrap()
++            .with_private_key(Secret::Asn1Buffer(SERVER_KEY))
++            .unwrap()
++            .build();
++
++        let (client_io, server_io) = TcpIOCallbacks::pair();
++
++        // NOTE: `with_checked_domain_name` is deliberately never called,
++        // mirroring lightway-client with an empty `server_dn` config - the
++        // documented default.
++        let mut client_ssl = client_ctx
++            .new_session(SessionConfig::new(client_io))
++            .unwrap();
++        let mut server_ssl = server_ctx
++            .new_session(SessionConfig::new(server_io))
++            .unwrap();
++
++        for _ in 0..10 {
++            let _ = client_ssl.try_negotiate();
++            let _ = server_ssl.try_negotiate();
++        }
++
++        eprintln!(
++            "client finished (identity mismatch, no domain check requested) = {}",
++            client_ssl.is_init_finished()
++        );
++
++        assert!(
++            client_ssl.is_init_finished(),
++            "expected the handshake to complete: hostname checking is opt-in \
++             via with_checked_domain_name and was not requested here"
++        );
++    }
++
++    /// Control: the same identity mismatch as above, but with
++    /// `with_checked_domain_name` explicitly requested for a name that
++    /// matches neither SERVER_CERT's CN nor its SAN entries. This must
++    /// fail - confirming the feature itself works, so the previous test's
++    /// success is specifically because the check was never requested, not
++    /// because the check is broken.
++    #[test]
++    fn checked_domain_name_rejects_identity_mismatch_when_enabled() {
++        INIT_ENV_LOGGER.get_or_init(env_logger::init);
++
++        let client_method = Method::TlsClientV1_3;
++        let client_ctx = ContextBuilder::new(client_method)
++            .unwrap_or_else(|e| panic!("new({client_method:?}): {e}"))
++            .with_root_certificate(RootCertificate::Asn1Buffer(CA_CERT))
++            .unwrap()
++            .build();
++
++        let server_method = Method::TlsServerV1_3;
++        let server_ctx = ContextBuilder::new(server_method)
++            .unwrap_or_else(|e| panic!("new({server_method:?}): {e}"))
++            .with_certificate(Secret::Asn1Buffer(SERVER_CERT))
++            .unwrap()
++            .with_private_key(Secret::Asn1Buffer(SERVER_KEY))
++            .unwrap()
++            .build();
++
++        let (client_io, server_io) = TcpIOCallbacks::pair();
++
++        let mut client_ssl = client_ctx
++            .new_session(
++                SessionConfig::new(client_io)
++                    .with_checked_domain_name("attacker-controlled-host.test"),
++            )
++            .unwrap();
++        let mut server_ssl = server_ctx
++            .new_session(SessionConfig::new(server_io))
++            .unwrap();
++
++        let mut client_err = None;
++        for _ in 0..10 {
++            if client_err.is_none() {
++                if let Err(e) = client_ssl.try_negotiate() {
++                    client_err = Some(format!("{e}"));
++                }
++            }
++            let _ = server_ssl.try_negotiate();
++        }
++
++        eprintln!("client_err (domain check enabled, mismatched name) = {client_err:?}");
++
++        assert!(
++            client_err.is_some() && !client_ssl.is_init_finished(),
++            "the domain-name check should have rejected the identity mismatch"
++        );
++    }
+ }

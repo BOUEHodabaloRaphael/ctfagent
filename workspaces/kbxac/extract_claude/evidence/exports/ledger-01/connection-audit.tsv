@@ -1,0 +1,30 @@
+2026-10-03 11:57:55.953633	[root] @ localhost []	8	Connect
+2026-10-03 11:57:57.370289	root[root] @ localhost []	8	Quit
+2026-10-03 11:57:57.375626	[root] @ localhost []	9	Connect
+2026-10-03 11:57:57.384128	root[root] @ localhost []	9	Quit
+2026-10-03 11:57:57.391755	[root] @ localhost []	10	Connect
+2026-10-03 11:57:57.684631	root[root] @ localhost []	10	Quit
+2026-10-03 11:57:57.694483	[root] @ localhost []	11	Connect
+2026-10-03 11:57:59.379554	[deploy_agent] @  [10.60.20.55]	8	Connect
+2026-10-03 11:57:59.380473	deploy_agent[deploy_agent] @  [10.60.20.55]	8	Quit
+2026-10-03 11:58:50.512721	[deploy_agent] @  [10.60.20.55]	9	Connect
+2026-10-03 11:58:50.526311	deploy_agent[deploy_agent] @  [10.60.20.55]	9	Quit
+2026-10-03 12:00:21.234273	[deploy_agent] @  [10.60.20.55]	10	Connect
+2026-10-03 12:00:21.242657	deploy_agent[deploy_agent] @  [10.60.20.55]	10	Quit
+2026-10-03 12:03:51.614544	[deploy_agent] @  [10.60.20.55]	11	Connect
+2026-10-03 12:03:51.621965	deploy_agent[deploy_agent] @  [10.60.20.55]	11	Quit
+2026-10-03 12:04:36.788278	[root] @ localhost []	12	Connect
+2026-10-03 12:04:36.814264	root[root] @ localhost []	12	Quit
+2026-10-03 12:08:27.752844	[svc_cfg_apply] @  [10.60.20.42]	13	Connect
+2026-10-03 12:08:27.778627	svc_cfg_apply[svc_cfg_apply] @  [10.60.20.42]	13	Quit
+2026-10-03 12:08:27.786109	[deploy_agent] @  [10.60.20.42]	14	Connect
+2026-10-03 12:08:27.788620	deploy_agent[deploy_agent] @  [10.60.20.42]	14	Quit
+2026-10-03 12:09:28.016107	[deploy_agent] @  [10.60.20.55]	15	Connect
+2026-10-03 12:09:28.024347	deploy_agent[deploy_agent] @  [10.60.20.55]	15	Quit
+2026-10-03 12:09:49.374567	[root] @ localhost []	16	Connect
+2026-10-03 12:09:49.376049	root[root] @ localhost []	16	Quit
+2026-10-03 12:11:58.403966	[deploy_agent] @  [10.60.20.55]	17	Connect
+2026-10-03 12:11:58.411061	deploy_agent[deploy_agent] @  [10.60.20.55]	17	Quit
+2026-10-03 12:13:28.620264	[deploy_agent] @  [10.60.20.55]	18	Connect
+2026-10-03 12:13:28.623496	deploy_agent[deploy_agent] @  [10.60.20.55]	18	Quit
+2026-10-03 12:14:58.830594	[root] @ localhost []	19	Connect

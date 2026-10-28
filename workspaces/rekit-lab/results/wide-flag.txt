@@ -1,0 +1,25 @@
+
+    ██████╗ ███████╗██╗  ██╗██╗████████╗
+    ██╔══██╗██╔════╝██║ ██╔╝██║╚══██╔══╝
+    ██████╔╝█████╗  █████╔╝ ██║   ██║   
+    ██╔══██╗██╔══╝  ██╔═██╗ ██║   ██║   
+    ██║  ██║███████╗██║  ██╗██║   ██║   
+    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   
+       Reverse Engineering Toolkit v2.1
+
+Modules actifs : Capstone
+
+
+═══ [2] CHAÎNES INTÉRESSANTES ═══
+Total ASCII : 73  |  Total Wide : 1
+
+▶ Chaînes suspectes :
+  → CTF{wide_flag}
+
+▶ Patterns type flag :
+  CTF{wide_flag}
+
+▶ URLs / IPs :
+
+[✓] Analyse terminée.
+

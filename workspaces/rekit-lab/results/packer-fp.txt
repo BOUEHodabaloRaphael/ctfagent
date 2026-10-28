@@ -1,0 +1,37 @@
+
+    ██████╗ ███████╗██╗  ██╗██╗████████╗
+    ██╔══██╗██╔════╝██║ ██╔╝██║╚══██╔══╝
+    ██████╔╝█████╗  █████╔╝ ██║   ██║   
+    ██╔══██╗██╔══╝  ██╔═██╗ ██║   ██║   
+    ██║  ██║███████╗██║  ██╗██║   ██║   
+    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   
+       Reverse Engineering Toolkit v2.1
+
+Modules actifs : Capstone
+
+
+═══ [15] DÉTECTION PACKER ═══
+  ✓ Signature : UPX
+
+▶ Entropie par section :
+  .note.gnu.build-id   taille=848      entropie=2.722
+  .interp              taille=884      entropie=2.364
+  .gnu.hash            taille=912      entropie=2.070
+  .dynsym              taille=952      entropie=1.913
+  .dynstr              taille=1120     entropie=1.570
+  .gnu.version         taille=1262     entropie=0.475
+  .gnu.version_r       taille=1280     entropie=0.450
+  .rela.dyn            taille=1328     entropie=0.302
+  .rela.plt            taille=1520     entropie=0.024
+  .init                taille=4096     entropie=0.696
+  .plt                 taille=4128     entropie=0.800
+  .plt.got             taille=4160     entropie=0.842
+  .text                taille=4176     entropie=0.845
+  .fini                taille=4436     entropie=0.517
+  .comment             taille=12312    entropie=0.924
+  .symtab              taille=12344    entropie=0.948
+  .strtab              taille=13208    entropie=1.029
+  .shstrtab            taille=13685    entropie=1.307
+
+[✓] Analyse terminée.
+

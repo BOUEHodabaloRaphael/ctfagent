@@ -1,0 +1,9 @@
+name: mathclipse
+
+services:
+  mathclipse:
+    build: .
+    ports:
+      - "16767:16767"
+    restart: unless-stopped
+    read_only: true

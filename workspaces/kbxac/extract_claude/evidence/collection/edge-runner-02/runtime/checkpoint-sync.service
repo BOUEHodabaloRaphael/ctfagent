@@ -1,0 +1,7 @@
+[Unit]
+Description=C-Laude Edge Health Verification
+Documentation=https://internal.c-laude.ai/ops/monitoring/checkpoint-health
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/python /opt/c-laude/bin/checkpoint-health.py

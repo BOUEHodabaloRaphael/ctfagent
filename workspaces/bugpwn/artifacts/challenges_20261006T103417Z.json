@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "challenges": [],
+  "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://ctf.bugpwn.com/\", waiting until \"networkidle\"\n"
+}

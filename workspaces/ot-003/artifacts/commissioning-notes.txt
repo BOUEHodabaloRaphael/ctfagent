@@ -1,0 +1,7 @@
+Furnace 2 remote portal - commissioning notes
+-----------------------------------------------
+Default operator account created for initial testing:
+  username: operator
+  password: St33lW0rks!2024
+TODO: rotate this before go-live and use SSO instead.
+(ticket ORD-4471, still open)

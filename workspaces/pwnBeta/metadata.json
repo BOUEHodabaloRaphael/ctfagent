@@ -1,0 +1,13 @@
+{
+  "challenge_id": "pwnBeta",
+  "name": "PWN#Beta",
+  "platform": "ctf.bugpwn.com",
+  "competition": "battleCTF Qualifier",
+  "category": "pwn",
+  "points": 118,
+  "max_attempts": 1,
+  "connection": "169.58.126.107 5005",
+  "status": "in_progress",
+  "blocker": "REVISE session 7 (2026-10-25): le mecanisme n'est pas un CFI 'destination jamais executee' generique mais une granularite de PAGE (4KiB) - jr/jalr vers une page jamais touchee par le flot legitime echoue, vers une page deja 'chaude' (0x400000, 0x409000, 0x40f000, 0x427000) reussit, CONFIRME en direct avec un nouveau gadget (0x400698, restaure $s0, famille 'late-addiu' jamais testee) qui marche car il est dans la page chaude 0x400000. write() reel (0x427890) trouve dans la MEME page que read() reel (0x427770, page 0x427000) - chemin plausible: hijack du slot GOT READ (0x4a1ce4) vers write() pour obtenir une primitive de lecture memoire arbitraire (combinee a la primitive #1 session5 GADGET_PIVOT2->LOOP_REENTRY(sp=TARGET)). Point bloquant restant: atteindre 0x4a1ce4 en ecriture via le pivot necessite de clarifier/verifier EN LOCAL (qemu-mipsel -g + gdb-multiarch, deja installes) pourquoi le pivot ne crashe pas a longue distance avant de retenter en reseau. Voir HANDOFF.md section SESSION 7 pour le detail complet et le plan d'action.",
+  "last_updated": "2026-10-25 (session 7)"
+}

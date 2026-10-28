@@ -1,0 +1,413 @@
+<!DOCTYPE html><html data-bs-theme="light"><head><style>.ll-nam{color:#2196f3}.ll-num{color:#ec407a}.ll-str{color:#43a047}.ll-rex{color:#ef6c00}.ll-pct{color:#666}.ll-key{color:#555;font-weight:bold}.ll-com{color:#aaa;font-style:italic}</style>
+  <title>battleCTF</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/files/013eb04a57990076505686480f85c718/a65db02892eaf84faa13a519623037ae.png" type="image/x-icon">
+
+  
+
+  
+    <link rel="stylesheet" href="/themes/core/static/assets/main.e9ec7884.css">
+  
+
+  
+
+  <script src="/themes/core/static/assets/color_mode_switcher.52334129.js"></script>
+
+  <script type="text/javascript">
+      window.init = {
+          'urlRoot': "",
+          'csrfNonce': "cd4d3623d551478313a84aa7395108ae769ffe0d16b8923acbc031df4a1ea4de",
+          'userMode': "users",
+          'userId': 0,
+          'userName': null,
+          'userEmail': null,
+          'userVerified': null,
+          'teamId': null,
+          'teamName': null,
+          'start': 1791154800,
+          'end': 1793833200,
+          'themeSettings': null,
+          'eventSounds': [
+            "/themes/core/static/sounds/notification.webm",
+            "/themes/core/static/sounds/notification.mp3",
+          ],
+      }
+  </script>
+
+  
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a href="/" class="navbar-brand">
+      
+        <img class="img-responsive ctf_logo" src="/files/f539fc4fbba36cff0f52e1997cdc427b/a65db02892eaf84faa13a519623037ae.png" alt="battleCTF" height="25">
+      
+    </a>
+
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#base-navbars" aria-controls="base-navbars" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="base-navbars">
+      <ul class="navbar-nav me-auto">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="/rules">
+              Rules
+            </a>
+          </li>
+        
+
+        
+          <li class="nav-item">
+            <a class="nav-link" href="/users">
+              Users
+            </a>
+          </li>
+
+          
+        
+
+        
+          <li class="nav-item">
+            <a class="nav-link" href="/scoreboard">
+              Scoreboard
+            </a>
+          </li>
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/challenges">
+            Challenges
+          </a>
+        </li>
+      </ul>
+
+      <hr class="d-sm-flex d-md-flex d-lg-none">
+
+      <ul class="navbar-nav ms-md-auto d-block d-sm-flex d-md-flex">
+        
+
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/register">
+                <span data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Register" data-bs-original-title="Register">
+                  <i class="fas fa-user-plus d-none d-md-inline d-lg-none"></i>
+                </span>
+                <span class="d-sm-inline d-md-none d-lg-inline">
+                  <i class="fas fa-user-plus pe-1"></i>
+                  Register
+                </span>
+              </a>
+            </li>
+          
+
+          <li class="nav-item">
+            <a class="nav-link" href="/login">
+              <span data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Login" data-bs-original-title="Login">
+                <i class="fas fa-sign-in-alt d-none d-md-inline d-lg-none"></i>
+              </span>
+              <span class="d-sm-inline d-md-none d-lg-inline">
+                <i class="fas fa-sign-in-alt pe-1"></i>
+                Login
+              </span>
+            </a>
+          </li>
+        
+
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language d-none d-md-inline"></i>
+            <span class="d-sm-inline d-md-none">
+              <i class="fas fa-language pe-1"></i>
+              Change language
+            </span>
+          </button>
+          <form x-data="LanguageForm">
+            <ul class="dropdown-menu dropdown-menu-end">
+              
+              <li>
+                  <span class="dropdown-item " @click="set" value="en">
+                    English
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="de">
+                    Deutsch
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="pl">
+                    Polski
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="es">
+                    Español
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ar">
+                    اَلْعَرَبِيَّةُ
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="zh_CN">
+                    简体中文
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="zh_TW">
+                    繁體中文
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="fr">
+                    Français
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ko">
+                    한국어
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ru">
+                    русский язык
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="pt_BR">
+                    Português do Brasil
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sk">
+                    Slovenský jazyk
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ja">
+                    日本語
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="it">
+                    Italiano
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="vi">
+                    tiếng Việt
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ca">
+                    Català
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="el">
+                    Ελληνικά
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="fi">
+                    Suomi
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ro">
+                    Română
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sl">
+                    Slovenščina
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sv">
+                    Svenska
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="he">
+                    עברית
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="uz">
+                    oʻzbekcha
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sr">
+                    Српски језик
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="no">
+                    Norsk
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="hr">
+                    Hrvatski
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="cs">
+                    Čeština
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="id">
+                    Bahasa Indonesia
+                  </span>
+              </li>
+            </ul>
+          </form>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link theme-switch" type="button">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Toggle theme" data-bs-original-title="Toggle theme">
+              <i class="fas fa-sun d-none d-md-inline"></i>
+            </span>
+            <span class="d-sm-inline d-md-none">
+              <i class="fas fa-sun pe-1"></i>
+              Toggle theme
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main role="main">
+  
+  <div class="jumbotron">
+    <div class="container">
+      <h1>
+        Login
+      </h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col offset-md-2 col-lg-6 offset-lg-3">
+        <div>
+  
+
+  
+</div>
+
+        
+
+        
+          <form method="post" accept-charset="utf-8">
+            <div class="mb-3">
+              <b>
+                <label class="form-label" for="name">User Name or Email</label>
+                <span class="text-danger">*</span>
+              </b>
+              <input autocomplete="username email" autofocus="" class="form-control" id="name" name="name" required="" type="text" value="">
+            </div>
+
+            <div class="mb-3">
+              <b>
+                <label class="form-label" for="password">Password</label>
+                <span class="text-danger">*</span>
+              </b>
+              <input autocomplete="current-password" class="form-control" id="password" name="password" required="" type="password" value="">
+            </div>
+
+            <div class="row pt-3">
+              <div class="col-6 col-md-8">
+                <a class="align-middle" href="/reset_password">
+                  Forgot your password?
+                </a>
+              </div>
+
+              <div class="col-6 col-md-4">
+                <input class="btn btn-block btn-primary w-100" id="_submit" name="_submit" type="submit" value="Submit">
+              </div>
+            </div>
+
+            <input id="nonce" name="nonce" type="hidden" value="cd4d3623d551478313a84aa7395108ae769ffe0d16b8923acbc031df4a1ea4de">
+          </form>
+        
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<div id="ctfdio-snackbar-email-nudge" x-data="" x-show="window.init.userId &amp;&amp; !window.init.userVerified &amp;&amp; localStorage.getItem('remind_email_verify') != window.init.userId &amp;&amp; (!['/team', '/teams/join', '/teams/new'].includes(window.location.pathname) || window.init.teamId != null)" class="alert alert-info alert-dismissible col-md-4 col-10 position-fixed text-center m-0 ctfdio-email-nudge" style="bottom: 45px; left: 50%; transform: translateX(-50%); z-index: 1040; display: none;" role="alert">
+  <small>
+    <strong>Email Unconfirmed</strong><br>
+    <span>To confirm your email address please <a href="/confirm?flow=init">click here</a>.</span>
+  </small>
+  <button type="button" class="btn-close" @click="localStorage.setItem('remind_email_verify', window.init.userId); $el.parentElement.style.display = 'none';" aria-label="Close"></button>
+</div>
+
+
+<footer class="footer">
+  <div class="container text-center">
+    <a href="https://ctfd.io" class="text-secondary">
+      <small class="text-muted">
+        Powered by CTFd
+      </small>
+    </a>
+  </div>
+</footer>
+
+<div x-data="">
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div x-ref="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+      <div class="toast-header">
+        <strong class="me-auto" x-text="$store.toast.title"></strong>
+        <small>just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" x-html="$store.toast.html"></div>
+    </div>
+  </div>
+</div>
+
+
+<div x-data="">
+  <div class="modal fade" x-ref="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" x-text="$store.modal.title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p x-html="$store.modal.html"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script type="module" src="/themes/core/static/assets/index.94b01c79.js"></script><script type="module" src="/themes/core/static/assets/page.9d188b19.js"></script>
+
+
+
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;a9c92d8d1ad348e2890e3737a1cd3a6b&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+</body></html>

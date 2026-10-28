@@ -1,0 +1,14 @@
+{
+  "id": "ot-004",
+  "title": "OT#004",
+  "category": "ot",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "169.58.126.107:6003",
+  "attachments": [],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "Platform: bugpwn.com (ctf.bugpwn.com), challenge id=33, 150->decaying pts, max_attempts=3, solves so far=2. OPC-UA-inspired custom protocol. Reference writeup page: https://otctf.pages.dev/ot-004-chemical-reactor/ (part of a series: OT#001/002/003 already in workspaces/ot-002, ot-003)."
+  ]
+}

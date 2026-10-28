@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    <title>site-preview Instancer</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <style>
+        body {
+            font-family: Menlo, Consolas, Monaco, 'Liberation Mono', 'Lucida Console', monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>site-preview Instancer</h1>
+        <article>
+            
+            <form action="/create" method="POST" style="display: flex; flex-direction: row; gap: 1rem">
+                <input type="text" name="token" placeholder="Team Token" style="flex: 1" required>
+                <input type="submit" value="Create New Instance">
+            </form>
+            <p>
+                Instances will be stopped in 600 seconds after its creation, and the instance <b>can only be accessed by the IP that created it</b>.
+                Currently only we only allow one instance per team, so please tell your team members if you created a new instance.
+            </p>
+            <p>Your IP: 41.78.136.120</p>
+            
+
+        </article>
+    </main>
+</body>

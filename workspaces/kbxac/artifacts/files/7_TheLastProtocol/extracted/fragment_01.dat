@@ -1,0 +1,26 @@
+CALIBRATION ARCHIVE #01
+-----------------------------------
+channels: R7 M2 Q4 T9 K3 V8
+
+V8 | sample=04 | fmt=DEC | value=803
+K3 | sample=01 | fmt=DEC | value=17074
+K3 | sample=07 | fmt=DEC | value=39174
+T9 | sample=02 | fmt=BIN | value=0111110100110100
+V8 | sample=02 | fmt=BIN | value=1000101110001000
+Q4 | sample=01 | fmt=DEC | value=54941
+R7 | sample=09 | fmt=HEX | value=0AEB
+R7 | sample=03 | fmt=HEX | value=D675
+M2 | sample=06 | fmt=HEX | value=5CD5
+R7 | sample=05 | fmt=BIN | value=1010011110101111
+R7 | sample=08 | fmt=BIN | value=1000110001111100
+M2 | sample=00 | fmt=HEX | value=0AA7
+T9 | sample=00 | fmt=HEX | value=8063
+Q4 | sample=07 | fmt=DEC | value=48453
+M2 | sample=04 | fmt=DEC | value=4932
+T9 | sample=06 | fmt=HEX | value=F062
+K3 | sample=03 | fmt=HEX | value=5071
+Q4 | sample=05 | fmt=BIN | value=0001110101000110
+
+record note: channel identities were preserved during transfer.
+record note: sample numbers are local to each archive.
+record note: some measurements were repeated during calibration.

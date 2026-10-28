@@ -2,3 +2,18 @@
 __pycache__/
 *.pyc
 .claude/settings.json
+
+# Per-CTF secrets (session cookies, credentials) -- never commit these.
+.env
+workspaces/*/.env
+workspaces/*/session/
+
+# Local run artifacts, not source.
+logs/
+*.pid
+*.out
+flags/pending/
+
+# Full upstream clones kept locally for analysis only; too large / not ours to version.
+targets/expressvpn-lightway/lightway/
+targets/expressvpn-lightway/wolfssl-rs/

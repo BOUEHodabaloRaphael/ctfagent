@@ -1,0 +1,7 @@
+{
+  "ok": false,
+  "challenges": [],
+  "source": "dom",
+  "raw_dump": "workspaces/bugpwn/artifacts/challenges_page_20261022T220447Z.html",
+  "note": "No challenge elements matched known selectors; inspect raw_dump."
+}

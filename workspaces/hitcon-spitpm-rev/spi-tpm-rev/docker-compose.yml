@@ -1,0 +1,58 @@
+name: spi-tpm-rev
+
+services:
+  challenge:
+    image: spi-tpm-rev:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 4096
+    mem_limit: 4g
+    cpus: 2
+    environment:
+      CONNECTION_TIMEOUT: "${CONNECTION_TIMEOUT:-180}"
+      POW_TIMEOUT: "${POW_TIMEOUT:-300}"
+      POW_BITS: "${POW_BITS:-8}"
+      POW_SCRYPT_N: "${POW_SCRYPT_N:-32768}"
+      POW_BYPASS: "${POW_BYPASS:-0}"
+      VM_TIMEOUT: "${VM_TIMEOUT:-180}"
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,mode=1777,size=128m
+    volumes:
+      - type: bind
+        source: ./src/qemu-system-aarch64
+        target: /opt/spi-tpm/qemu-system-aarch64
+        read_only: true
+      - type: bind
+        source: ./src/Image
+        target: /opt/spi-tpm/Image
+        read_only: true
+      - type: bind
+        source: ./src/initramfs.cpio.gz
+        target: /opt/spi-tpm/initramfs.cpio.gz
+        read_only: true
+      - type: bind
+        source: ./src/libspi_tpm_firmware.so
+        target: /opt/spi-tpm/libspi_tpm_firmware.so
+        read_only: true
+      - type: bind
+        source: ./run.sh
+        target: /opt/spi-tpm/run.sh
+        read_only: true
+      - type: bind
+        source: ./connection.sh
+        target: /opt/spi-tpm/connection.sh
+        read_only: true
+      - type: bind
+        source: ./flag
+        target: /opt/spi-tpm/flag
+        read_only: true
+    ports:
+      - "${PORT:-1337}:1337"
+    stop_grace_period: 1s

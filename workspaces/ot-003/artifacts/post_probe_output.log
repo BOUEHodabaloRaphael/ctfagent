@@ -1,0 +1,4 @@
+POST /vent -> {"status":200,"body":"{\"ok\":true,\"pressure\":35,\"vented\":true}"}
+POST /control -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /control</pre>\n</body>\n</html>\n"}
+POST /override -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /override</pre>\n</body>\n</html>\n"}
+POST /reset -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /reset</pre>\n</body>\n</html>\n"}

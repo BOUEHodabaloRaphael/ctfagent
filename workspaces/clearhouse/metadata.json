@@ -1,0 +1,14 @@
+{
+  "id": "clearhouse",
+  "title": "ClearHouse",
+  "category": "web",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "http://144.217.91.111:3004",
+  "attachments": [],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "Prefer short validating probes first."
+  ]
+}

@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Server: openresty/1.31.1.1
+Date: Thu, 22 Oct 2026 06:20:35 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 456
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"1c8-R1Y6CEH34/Sf3WAuUSpjI4EjG28"
+
+
+    <h1>Furnace 2 &mdash; Status</h1>
+    <ul>
+      <li>Temperature: 620&deg;C (nominal)</li>
+      <li>Pressure: normal</li>
+      <li>State: running</li>
+    </ul>
+    <p>Last refreshed from historian cache.</p>
+    <h2>Sensor integration test tool</h2>
+    <form method="POST" action="/ops/test-sensor">
+      <input name="url" placeholder="https://sensor-vendor.example/reading" size="50"><br>
+      <button type="submit">Test</button>
+    </form>
+  

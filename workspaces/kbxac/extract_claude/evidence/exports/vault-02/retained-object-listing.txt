@@ -1,0 +1,20 @@
+/data/release-assets:
+total 4
+drwxr-xr-x 3 root root 4096 Oct  3 11:57 releases
+
+/data/release-assets/releases:
+total 4
+drwxr-xr-x 4 root root 4096 Oct  3 11:57 2026.10
+
+/data/release-assets/releases/2026.10:
+total 8
+drwxr-xr-x 2 root root 4096 Oct  3 11:57 component-map.yaml
+drwxr-xr-x 2 root root 4096 Oct  3 11:57 profile-r17.yaml
+
+/data/release-assets/releases/2026.10/component-map.yaml:
+total 4
+-rw-r--r-- 1 root root 487 Oct  3 11:57 xl.meta
+
+/data/release-assets/releases/2026.10/profile-r17.yaml:
+total 4
+-rw-r--r-- 1 root root 589 Oct  3 11:57 xl.meta

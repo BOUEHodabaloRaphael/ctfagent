@@ -1,0 +1,21 @@
+{
+  "id": "pwn006",
+  "title": "PWN#006",
+  "category": "pwn",
+  "platform": "ctfd",
+  "platform_id": "31",
+  "url": "169.58.126.107:5009",
+  "attachments": [
+    "attachments/qjs",
+    "attachments/libc.so.6",
+    "attachments/libm.so.6",
+    "attachments/ld-linux-x86-64.so.2"
+  ],
+  "tags": ["quickjs", "js-engine"],
+  "status": "new",
+  "max_attempts": 3,
+  "constraints": [
+    "Validate exploit locally before any remote flag submission.",
+    "Prefer short validating probes first."
+  ]
+}

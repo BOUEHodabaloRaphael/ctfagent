@@ -1,0 +1,6 @@
+RATE LIMITED at word=coolant (count=21), backing off 600s
+RATE LIMITED at word=all (count=41), backing off 600s
+RATE LIMITED at word=node (count=61), backing off 600s
+HIT plant: Found. Redirecting to /login
+HIT mill: Found. Redirecting to /login
+HIT facility: Found. Redirecting to /login

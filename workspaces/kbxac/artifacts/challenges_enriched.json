@@ -1,0 +1,197 @@
+[
+  {
+    "id": 10,
+    "name": "Discord",
+    "category": "out context",
+    "value": 4,
+    "solves": 146,
+    "solved_by_me": true,
+    "description": "",
+    "files": [],
+    "hints": []
+  },
+  {
+    "id": 1,
+    "name": "Operation BLACKHOLE 1",
+    "category": "out context",
+    "value": 5,
+    "solves": 203,
+    "solved_by_me": true,
+    "description": null,
+    "files": [],
+    "hints": null
+  },
+  {
+    "id": 2,
+    "name": "Operation BLACKHOLE 2",
+    "category": "out context",
+    "value": 5,
+    "solves": 187,
+    "solved_by_me": true,
+    "description": "Our subsidiary, Acme Corp, was hit by a DDoS attack last night.\r\nThe SOC team captured the network traffic during the incident.\r\n\r\nObjective: Analyze CTF1.pcapng and answer the 8 questions.\r\n\r\nWhat is the target's IP address?",
+    "files": [
+      "/files/56bb0a9785cb4c8a836610a8d8e3d153/CTF1.pcapng?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjo2fQ.ask0Gg.cWKZHatclPotFwHysX4uA1AOMpM"
+    ],
+    "hints": []
+  },
+  {
+    "id": 17,
+    "name": "Know Your Enemy",
+    "category": "out context",
+    "value": 9,
+    "solves": 32,
+    "solved_by_me": true,
+    "description": null,
+    "files": [],
+    "hints": null
+  },
+  {
+    "id": 3,
+    "name": "Operation BLACKHOLE 3",
+    "category": "out context",
+    "value": 10,
+    "solves": 172,
+    "solved_by_me": true,
+    "description": null,
+    "files": [],
+    "hints": null
+  },
+  {
+    "id": 4,
+    "name": "Operation BLACKHOLE 4",
+    "category": "out context",
+    "value": 10,
+    "solves": 155,
+    "solved_by_me": true,
+    "description": null,
+    "files": [],
+    "hints": null
+  },
+  {
+    "id": 5,
+    "name": "Operation BLACKHOLE 5",
+    "category": "out context",
+    "value": 10,
+    "solves": 125,
+    "solved_by_me": true,
+    "description": "Our subsidiary, Acme Corp, was hit by a DDoS attack last night.\r\nThe SOC team captured the network traffic during the incident.\r\n\r\nObjective: Analyze CTF1.pcapng and answer the 8 questions.\r\n\r\nWhich User-Agent is associated with the malicious requests?",
+    "files": [
+      "/files/e6f68fb4cfc9078d07233a21ae11a1ca/CTF1.pcapng?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjo5fQ.ask0vA.k12FIVA74tlxbU-1p1MIymRen0I"
+    ],
+    "hints": []
+  },
+  {
+    "id": 6,
+    "name": "Operation BLACKHOLE 6",
+    "category": "out context",
+    "value": 15,
+    "solves": 47,
+    "solved_by_me": true,
+    "description": "Our subsidiary, Acme Corp, was hit by a DDoS attack last night.\r\nThe SOC team captured the network traffic during the incident.\r\n\r\nObjective: Analyze CTF1.pcapng and answer the 8 questions.\r\n\r\nWhat is the duration of the attack, in seconds?",
+    "files": [
+      "/files/693a66e656d9691f7f483c2fee1a1d7e/CTF1.pcapng?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoxMH0.ask1CQ.bTZOMqeFyhVUJpKSapFTU6XeR6w"
+    ],
+    "hints": []
+  },
+  {
+    "id": 7,
+    "name": "Operation BLACKHOLE 7",
+    "category": "out context",
+    "value": 15,
+    "solves": 39,
+    "solved_by_me": true,
+    "description": "Our subsidiary, Acme Corp, was hit by a DDoS attack last night.\r\nThe SOC team captured the network traffic during the incident.\r\n\r\nObjective: Analyze CTF1.pcapng and answer the 8 questions.\r\n\r\nHow many HTTP requests does the capture contain?",
+    "files": [
+      "/files/2b7e541b318e94a33db9ba51734a11af/CTF1.pcapng?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoxMX0.ask1RA.7r35fR-NzBUpGjRbSeP62SzZiNI"
+    ],
+    "hints": []
+  },
+  {
+    "id": 8,
+    "name": "Operation BLACKHOLE 8",
+    "category": "out context",
+    "value": 30,
+    "solves": 38,
+    "solved_by_me": true,
+    "description": "Our subsidiary, Acme Corp, was hit by a DDoS attack last night.\r\nThe SOC team captured the network traffic during the incident.\r\n\r\nObjective: Analyze CTF1.pcapng and answer the 8 questions.\r\n\r\nWhat is the flag hidden in an HTTP header?",
+    "files": [
+      "/files/8757972859ec28ec6f4d4a2cdaabee4d/CTF1.pcapng?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoxMn0.ask1kQ.TV7p7i2UcHgSfdB4cNLyZlu9JJE"
+    ],
+    "hints": []
+  },
+  {
+    "id": 11,
+    "name": "TicketVault",
+    "category": "web",
+    "value": 30,
+    "solves": 128,
+    "solved_by_me": true,
+    "description": "TicketVault is a small internal support portal: every user creates and\r\nviews their own tickets. The admin's inbox holds the post-mortem for a\r\nrecent incident, but obviously, you're not supposed to be able to read\r\nit.",
+    "files": [
+      "/files/134b917bfda8de3cf8e3e7c98f5558c1/package.json?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoxM30.ask14w.9kyVvHMjVVTB7R24_pQafW5AOeg",
+      "/files/6d4906bbb5144468800459b12593fda8/server.js?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoxNH0.ask14w.1PpJDxXj19FTvQvisX2IOdMukaI"
+    ],
+    "hints": []
+  },
+  {
+    "id": 13,
+    "name": "PWN#001",
+    "category": "pwn",
+    "value": 45,
+    "solves": 36,
+    "solved_by_me": true,
+    "description": null,
+    "files": [],
+    "hints": null
+  },
+  {
+    "id": 15,
+    "name": "PWN#002",
+    "category": "pwn",
+    "value": 45,
+    "solves": 44,
+    "solved_by_me": true,
+    "description": "Get a shell on the remote host and read the flag.",
+    "files": [
+      "/files/c1e6e7f1738708ea43be8f2b85aeb69f/ld-linux-x86-64.so.2?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoyNX0.ask2Sw.azs3PDUzxLubjO0H2qs8zN5YPGA",
+      "/files/f4432a3b31c25847a3236e73e2a4d64f/libc.so.6?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoyNn0.ask2Sw.m1NWF_U3F9g_L0IlTgRsBfol7eY",
+      "/files/291f1cb145d0ca0c1c6cdb491a407f49/vault?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoyN30.ask2Sw.6LkGBgEmoT3PlLoM-Le0WarWB1I"
+    ],
+    "hints": []
+  },
+  {
+    "id": 9,
+    "name": "0byte",
+    "category": "out context",
+    "value": 50,
+    "solves": 86,
+    "solved_by_me": true,
+    "description": "Format : battleCTF{....}",
+    "files": [],
+    "hints": []
+  },
+  {
+    "id": 16,
+    "name": "WireVault",
+    "category": "web",
+    "value": 155,
+    "solves": 16,
+    "solved_by_me": true,
+    "description": "WireVault is an internal payment/settlement service. There's  a wallet that\r\napparently nobody but ops can fund.",
+    "files": [],
+    "hints": []
+  },
+  {
+    "id": 14,
+    "name": "PayGate",
+    "category": "web",
+    "value": 700,
+    "solves": 0,
+    "solved_by_me": false,
+    "description": "PayGate is a small payment platform for online merchants. Each merchant\r\nhas an account to view their transactions.",
+    "files": [
+      "/files/1f9591605ab75d04387e5a22e6d190f2/server.js?token=eyJ1c2VyX2lkIjo5LCJ0ZWFtX2lkIjpudWxsLCJmaWxlX2lkIjoyMX0.ask2tw.-CrltZmLosQJV7smW4fo1laJE3Q"
+    ],
+    "hints": []
+  }
+]

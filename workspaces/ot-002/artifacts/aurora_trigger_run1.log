@@ -1,0 +1,39 @@
+t=  0.12s diff=  +1.23 (waiting)
+t=  1.51s diff=  -7.40 (waiting)
+t=  2.84s diff= -15.97 (waiting)
+t=  4.21s diff= -22.81 (waiting)
+t=  5.63s diff= -29.69 (waiting)
+t= 10.64s diff= -37.63 (waiting)
+t= 12.34s diff= -47.02 (waiting)
+t= 13.86s diff= -56.79 (waiting)
+t= 15.25s diff= -63.57 (waiting)
+t= 16.65s diff= -71.14 (waiting)
+t= 18.06s diff= -78.08 (waiting)
+t= 19.47s diff= -88.16 (waiting)
+t= 20.84s diff= -93.93 (waiting)
+t= 22.31s diff=-102.53 (waiting)
+t= 23.74s diff=-111.59 (waiting)
+t= 25.11s diff=-118.83 (waiting)
+t= 26.70s diff=-127.81 (waiting)
+t= 28.25s diff=-137.42 (waiting)
+t= 29.62s diff=-144.01 (waiting)
+t= 30.98s diff=-151.78 (waiting)
+t= 32.40s diff=-158.06 (waiting)
+t= 33.78s diff=-165.37 (waiting)
+>>> TRIGGER t=35.19s diff=-175.84 - sending CLOSE
+CLOSE resp: 02
+POST#1 t= 35.58s status=00 f1=318.096 f2=135.353 trailer=0001 raw=004f0c9f434d5a07430001
+POST#2 t= 35.85s status=00 f1=335.767 f2=154.705 trailer=0001 raw=001fe2a74370b41a430001
+POST#3 t= 36.13s status=00 f1=353.291 f2=172.919 trailer=0001 raw=0039a5b04357eb2c430001
+POST#4 t= 36.41s status=00 f1=12.528 f2=192.707 trailer=0001 raw=008a724841e2b440430001
+POST#5 t= 36.68s status=00 f1=30.480 f2=212.888 trailer=0001 raw=0059d6f34141e354430001
+POST#6 t= 36.96s status=00 f1=48.630 f2=231.470 trailer=0001 raw=00d6844242667867430001
+POST#7 t= 37.23s status=00 f1=65.395 f2=251.539 trailer=0001 raw=002aca8242e6897b430001
+POST#8 t= 37.49s status=00 f1=84.634 f2=271.079 trailer=0001 raw=00ad44a942128a87430001
+POST#9 t= 37.76s status=00 f1=101.539 f2=290.393 trailer=0001 raw=00fd13cb425a3291430001
+POST#10 t= 38.04s status=00 f1=119.526 f2=309.053 trailer=0001 raw=00190def42bf869a430001
+POST#11 t= 38.30s status=00 f1=138.274 f2=330.102 trailer=0001 raw=0036460a430b0da5430001
+POST#12 t= 38.57s status=00 f1=155.777 f2=348.512 trailer=0001 raw=00d3c61b437b41ae430001
+POST#13 t= 38.86s status=00 f1=173.203 f2=8.190 trailer=0001 raw=00f3332d43b60903410001
+POST#14 t= 39.13s status=00 f1=192.418 f2=28.110 trailer=0001 raw=00f56a4043a6e0e0410001
+POST#15 t= 39.40s status=00 f1=209.022 f2=48.472 trailer=0001 raw=00920551432fe341420001

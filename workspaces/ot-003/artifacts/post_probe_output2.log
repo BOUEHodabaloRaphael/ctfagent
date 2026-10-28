@@ -1,0 +1,15 @@
+POST /rupture -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /rupture</pre>\n</body>\n</html>\n"}
+POST /action -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /action</pre>\n</body>\n</html>\n"}
+POST /set -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /set</pre>\n</body>\n</html>\n"}
+POST /write -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /write</pre>\n</body>\n</html>\n"}
+POST /ingest -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /ingest</pre>\n</body>\n</html>\n"}
+POST /scram -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /scram</pre>\n</body>\n</html>\n"}
+POST /emergency -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /emergency</pre>\n</body>\n</html>\n"}
+POST /shutdown -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /shutdown</pre>\n</body>\n</html>\n"}
+POST /inject -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /inject</pre>\n</body>\n</html>\n"}
+POST /simulate -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /simulate</pre>\n</body>\n</html>\n"}
+POST /trigger -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /trigger</pre>\n</body>\n</html>\n"}
+POST /actuate -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /actuate</pre>\n</body>\n</html>\n"}
+POST /valve -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /valve</pre>\n</body>\n</html>\n"}
+POST /relief -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /relief</pre>\n</body>\n</html>\n"}
+POST /status -> {"status":404,"body":"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /status</pre>\n</body>\n</html>\n"}
