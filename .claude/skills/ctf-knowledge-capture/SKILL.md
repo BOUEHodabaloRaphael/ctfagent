@@ -117,7 +117,7 @@ After programmatic creation, fill in:
 - **Challenge Summary** - Source, target, goal
 - **Initial Signals** - Entry point, hints, first probe
 - **Exploit Chain** - Numbered steps
-- **Key Evidence** - What confirmed the path
+- **Key Evidence** - What confirmed the path. Cite the literal command output, log line, or response snippet — not a paraphrase of what you believe happened.
 - **Dead Ends** - What didn't work
 - **Payloads And Commands** - Working code
 - **Flag / Outcome** - Result

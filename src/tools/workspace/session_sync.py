@@ -48,8 +48,30 @@ def active_workspaces(top: int = 5) -> list[str]:
     return [s["workspace"] for s in data.get("suggestions", [])]
 
 
+AUTO_PIPELINE_DIRECTIVE = (
+    "**Pipeline auto-activation (toujours actif):** Des que l'utilisateur donne un enonce de "
+    "challenge, une cible/URL, une piece jointe, ou une consigne de pentest -- meme sans nommer "
+    "une skill ou lancer /setup explicitement -- enchainer automatiquement, sans redemander "
+    "confirmation pour ce seul enchainement: `challenge-workspace-bootstrap` (creer/localiser le "
+    "workspace) -> `ctf-solver-profile` (probes evidence-first) -> la skill de categorie "
+    "correspondante (`web-triage`/`pwn-triage`/`rev-triage`) -> `ctf-knowledge-capture` une fois "
+    "resolu. Ne pas attendre une commande explicite pour demarrer ce pipeline; /setup reste "
+    "disponible mais n'est plus une etape obligatoire. Avant de retaper une sonde ou un script a "
+    "la main, verifier ce qui existe deja: `python3 src/memory/query.py --root . --kind pattern "
+    "--category <cat>` (et `--kind writeup`) pour les patterns/writeups deja captures dans "
+    "`knowledge/`, et parcourir `src/tools/<category>/` pour les helpers existants (ex. "
+    "`src/tools/rev/crypto_consts.py`). Les 6 entrees MEMORY.md ci-dessous (statuts de challenges "
+    "bloques, lecons de scan, helpers) font partie des faits a reutiliser, pas juste a lire. "
+    "Rappel issu de la revue PentestGPT: toute "
+    "affirmation de progres doit citer une sortie de commande/log exacte (voir ctf-solver-profile "
+    "Evidence Levels), jamais un resume du modele; apres ~2-3 rounds de sondes sans fait nouveau, "
+    "marquer le workspace `blackbox-exhausted` dans notes.md plutot que de relancer la meme ligne "
+    "d'attaque."
+)
+
+
 def build_summary() -> str:
-    parts = ["## ctfagent session sync"]
+    parts = ["## ctfagent session sync", AUTO_PIPELINE_DIRECTIVE]
 
     memory_lines = read_memory_index()
     if memory_lines:

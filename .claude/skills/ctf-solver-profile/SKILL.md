@@ -62,6 +62,8 @@ Use these levels mentally when reasoning:
 
 Do not treat a hypothesis as settled just because it feels likely.
 
+A `fact` must be traceable to an exact command output, log line, or file excerpt you can point back to. A model's own summary of "it looks like it worked" is not a fact — if you cannot cite the literal output that proves it, write it as a `hypothesis` instead. This prevents recording a solve as farther along than the evidence actually shows.
+
 ## Category Switching
 
 Read `references/category-switches.md` when classification is unstable.
@@ -95,6 +97,8 @@ When stuck:
 2. list live hypotheses
 3. list one probe per hypothesis
 4. drop branches with no distinguishing evidence
+
+If several rounds of fresh probes (roughly 2-3 full rounds) produce no new fact, stop retrying variations of the same probe shape. Record the workspace as `blackbox-exhausted` in `notes.md` with the exact probes already tried and why each failed. Do not resume that line of attack later in the same way — only pick it back up when there is a genuinely new signal (new attachment, new hint, new tool, changed target behavior), not just "try again." This mirrors the lesson from several real workspaces (see memory: OT#004, OT#005, PWN#005, PWN#Beta) where repeated resumes on the same exhausted context burned sessions without new evidence.
 
 ## Output Discipline
 

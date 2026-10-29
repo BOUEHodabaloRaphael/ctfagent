@@ -6,12 +6,19 @@ Repository guidance for `Claude Code`.
 
 `CTFAgent` is a `Claude Code`-first CTF workspace.
 
-Default user path:
+## Auto-Activation (default behavior, no command required)
 
-1. configure `Claude Code`
-2. run `/setup`
-3. provide challenge info
-4. let the repo create or inspect a workspace
+As soon as the user gives any challenge statement, target URL/host, attachment, or pentest
+instruction — without naming a skill or running `/setup` — the agent chains automatically:
+
+1. `challenge-workspace-bootstrap` (create or locate `workspaces/<challenge-id>/`)
+2. `ctf-solver-profile` (evidence-first probing)
+3. the matching category skill (`web-triage` / `pwn-triage` / `rev-triage`)
+4. `ctf-knowledge-capture` once solved
+
+This is injected every session via the `SessionStart` hook (`src/tools/workspace/session_sync.py`),
+not left to memory alone. `/setup` still exists for a guided walkthrough, but it is optional, not
+the required entry point.
 
 Do not force users to learn internal scripts before they can start.
 
