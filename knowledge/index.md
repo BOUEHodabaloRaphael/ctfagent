@@ -10,7 +10,12 @@
 - [Twin_Prime](knowledge/writeups/crypto/twin-prime-fermat-rsa.md)
 
 ### forensics
+- [Holmes CTF 2026 Sherlock 08 - Borrowed Name / DIOGENES (forensics reseau: beacon C2 + evenements NTLM)](knowledge/writeups/forensics/borrowedname-sherlock08-pcap-ntlm-c2-beacon.md)
+- [Holmes CTF 2026 Sherlock 08 - Borrowed Name / DIOGENES (acces initial via USB/LNK + sideload DLL)](knowledge/writeups/forensics/borrowedname-sherlock08-usb-lnk-dropper.md)
+- [Holmes CTF 2026 Sherlock 02 - Bottle Out (VM Windows RDP, triage initial)](knowledge/writeups/forensics/bottleout-sherlock02-windows-triage-questionnaire.md)
 - [BTF — Blue Team Fundamentals (CyberWarFare Labs)](knowledge/writeups/forensics/btf-cwl-dfir-soc-exercises.md)
+- [Holmes CTF 2026 Sherlock 07 - Iron Feather / Mission Vault (drone PX4, dechiffrement ULog)](knowledge/writeups/forensics/ironfeather-sherlock07-px4-ulog-decryption.md)
+- [Holmes CTF 2026 Sherlock 06 - Silent Passenger (firmware IVI/Carplay vehicule)](knowledge/writeups/forensics/silentpassenger-sherlock06-ivi-firmware-extraction.md)
 - [ThunderCipher StegoVault - FTP anonyme, steghide passphrase vide puis GTFOBins docker](knowledge/writeups/forensics/stegovault-ftp-steghide-empty-pass-docker.md)
 
 ### misc
@@ -56,6 +61,7 @@
 
 ### pwn
 - [DANTE DC01 - EternalBlue (ms17_010_psexec) et pivot Metasploit](knowledge/writeups/pwn/dc01-eternalblue-psexec-pivot.md)
+- [Forge CI/CD (GhostNet CTF) - RCE via endpoint Run Pipeline (YAML script non sandboxe)](knowledge/writeups/pwn/forge-cicd-pipeline-yaml-rce.md)
 - [FullHouse - Ce qui a ete perdu (FullPowers + EfsPotato pour restaurer SeImpersonate)](knowledge/writeups/pwn/fullhouse-fullpowers-efspotato-privesc.md)
 - [DANTE NIX05 - buffer overflow binaire SUID readfile](knowledge/writeups/pwn/nix05-suid-readfile-stack-bof.md)
 - [PDF Strikes Again - PyMuPDF 1.28.2 Callout Stack Overflow to ROP](knowledge/writeups/pwn/pdf-strikes-again-pymupdf-callout-rop.md)
@@ -82,6 +88,7 @@
 - [Methodologie: clusteriser les bugs d'un meme programme par cause racine partagee](knowledge/writeups/web/forge-bug-chain-root-cause-clustering.md)
 - [Custom domain hijack via residual DNS (no per-project ownership proof)](knowledge/writeups/web/forge-domain-takeover-dangling-cname.md)
 - [Ecriture libre dans .git/ -> execution de commande root via filtre git](knowledge/writeups/web/forge-git-filter-rce.md)
+- [Forge CI/CD (GhostNet CTF) - bypass dev->admin via confusion d'algorithme JWT](knowledge/writeups/web/forge-jwt-rs256-hs256-alg-confusion.md)
 - [OAuth login CSRF / session fixation - binding PKCE state optionnel](knowledge/writeups/web/forge-oauth-login-csrf-state-binding-optional.md)
 - [Open redirect - sanitizeReturnTo contourne via backslash](knowledge/writeups/web/forge-open-redirect-backslash-bypass.md)
 - [Deni de service plateforme via regex quadratique dans la detection d'embeds](knowledge/writeups/web/forge-redos-embed-detection-dos.md)
@@ -143,7 +150,12 @@
 - [RSA close-prime factorisable par methode de Fermat](knowledge/patterns/crypto/twin-prime-fermat-rsa.md)
 
 ### forensics
+- [Holmes CTF 2026 Sherlock 08 - Borrowed Name / DIOGENES (forensics reseau: beacon C2 + evenements NTLM)](knowledge/patterns/forensics/borrowedname-sherlock08-pcap-ntlm-c2-beacon.md)
+- [Holmes CTF 2026 Sherlock 08 - Borrowed Name / DIOGENES (acces initial via USB/LNK + sideload DLL)](knowledge/patterns/forensics/borrowedname-sherlock08-usb-lnk-dropper.md)
+- [Holmes CTF 2026 Sherlock 02 - Bottle Out (VM Windows RDP, triage initial)](knowledge/patterns/forensics/bottleout-sherlock02-windows-triage-questionnaire.md)
 - [Methodologie pivot SIEM (Wazuh/Kibana) pour investigation DFIR web](knowledge/patterns/forensics/btf-cwl-dfir-soc-exercises.md)
+- [Holmes CTF 2026 Sherlock 07 - Iron Feather / Mission Vault (drone PX4, dechiffrement ULog)](knowledge/patterns/forensics/ironfeather-sherlock07-px4-ulog-decryption.md)
+- [Holmes CTF 2026 Sherlock 06 - Silent Passenger (firmware IVI/Carplay vehicule)](knowledge/patterns/forensics/silentpassenger-sherlock06-ivi-firmware-extraction.md)
 - [ThunderCipher StegoVault - FTP anonyme, steghide passphrase vide puis GTFOBins docker](knowledge/patterns/forensics/stegovault-ftp-steghide-empty-pass-docker.md)
 
 ### misc
@@ -192,6 +204,7 @@
 ### pwn
 - [Custom allocator UAF: double-free without null + safe-linking bypass via known key](knowledge/patterns/pwn/custom-allocator-selflink-fakechunk.md)
 - [DANTE DC01 - EternalBlue (ms17_010_psexec) et pivot Metasploit](knowledge/patterns/pwn/dc01-eternalblue-psexec-pivot.md)
+- [Forge CI/CD (GhostNet CTF) - RCE via endpoint Run Pipeline (YAML script non sandboxe)](knowledge/patterns/pwn/forge-cicd-pipeline-yaml-rce.md)
 - [FullPowers pour restaurer SeImpersonate avant un Potato, fichier intermediaire contre les guillemets imbriques](knowledge/patterns/pwn/fullhouse-fullpowers-efspotato-privesc.md)
 - [DANTE NIX05 - buffer overflow binaire SUID readfile](knowledge/patterns/pwn/nix05-suid-readfile-stack-bof.md)
 - [PyMuPDF Callout Overflow: byte-wise BSS write + PyRun_SimpleString ROP](knowledge/patterns/pwn/pymupdf-callout-overflow-pyrun-rop.md)
@@ -212,6 +225,7 @@
 - [Race condition TOCTOU sur logique de paiement/solde](knowledge/patterns/web/edoulooo-race-condition.md)
 - [Domain takeover via CNAME dangling sans preuve d'appartenance par projet](knowledge/patterns/web/forge-domain-takeover-dangling-cname.md)
 - [RCE via filtre/attribut git quand .git/ est accessible en ecriture par une API de fichiers](knowledge/patterns/web/forge-git-filter-rce.md)
+- [Forge CI/CD (GhostNet CTF) - bypass dev->admin via confusion d'algorithme JWT](knowledge/patterns/web/forge-jwt-rs256-hs256-alg-confusion.md)
 - [OAuth state binding opt-in = login CSRF par omission du binding](knowledge/patterns/web/forge-oauth-login-csrf-state-binding-optional.md)
 - [Bypass de sanitizer de redirection par normalisation navigateur (backslash/encodage)](knowledge/patterns/web/forge-open-redirect-backslash-bypass.md)
 - [ReDoS synchrone sur event-loop unique = DoS plateforme entiere](knowledge/patterns/web/forge-redos-embed-detection-dos.md)
