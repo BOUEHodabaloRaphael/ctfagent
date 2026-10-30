@@ -1,0 +1,115 @@
+# Nmap 7.99 scan initiated Fri Oct 30 09:27:44 2026 as: /usr/lib/nmap/nmap --privileged -Pn -p22,80,139,445,3306,5000,6555,8080,9999 -sV -sC -oN ./koth_10.10.133.54_1793352436/services.txt 10.10.133.54
+Nmap scan report for 10.10.133.54
+Host is up (0.11s latency).
+
+PORT     STATE SERVICE     VERSION
+22/tcp   open  ssh         OpenSSH 7.4 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 46:6c:5a:31:5f:c1:1f:f3:65:e7:64:f2:c5:f5:59:d8 (RSA)
+|   256 5d:a5:8a:af:1e:21:48:7a:04:22:3e:4a:f5:e4:5b:02 (ECDSA)
+|_  256 6a:44:1c:e1:15:c9:5e:94:da:06:8d:db:d2:bc:66:54 (ED25519)
+80/tcp   open  http        Apache httpd 2.4.6 ((CentOS) PHP/7.3.16)
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+|_http-server-header: Apache/2.4.6 (CentOS) PHP/7.3.16
+| http-methods: 
+|_  Potentially risky methods: TRACE
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: SAMBA)
+445/tcp  open  netbios-ssn Samba smbd 4.9.1 (workgroup: SAMBA)
+3306/tcp open  mysql       MariaDB 10.3.23 or earlier (unauthorized)
+5000/tcp open  http        Werkzeug httpd 1.0.0 (Python 3.6.8)
+|_http-title: Tyler's file upload
+|_http-server-header: Werkzeug/1.0.0 Python/3.6.8
+6555/tcp open  unknown
+8080/tcp open  http        nginx 1.16.1
+|_http-server-header: nginx/1.16.1
+|_http-trane-info: Problem with XML parsing of /evox/about
+| http-title: LibreNMS
+|_Requested resource was http://10.10.133.54:8080/login
+| http-robots.txt: 1 disallowed entry 
+|_/
+9999/tcp open  http        Golang net/http server
+|_http-title: Site doesn't have a title (text/plain; charset=utf-8).
+| fingerprint-strings: 
+|   FourOhFourRequest, HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     Accept-Ranges: bytes
+|     Content-Length: 1
+|     Content-Type: text/plain; charset=utf-8
+|     Last-Modified: Thu, 26 Mar 2020 11:36:37 GMT
+|     Date: Fri, 30 Oct 2026 09:27:55 GMT
+|   GenericLines, Help, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, Socks5: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|     Request
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Accept-Ranges: bytes
+|     Content-Length: 1
+|     Content-Type: text/plain; charset=utf-8
+|     Last-Modified: Thu, 26 Mar 2020 11:36:37 GMT
+|     Date: Fri, 30 Oct 2026 09:27:54 GMT
+|   OfficeScan: 
+|     HTTP/1.1 400 Bad Request: missing required Host header
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|_    Request: missing required Host header
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port9999-TCP:V=7.99%I=7%D=10/30%Time=6AE46319%P=x86_64-pc-linux-gnu%r(G
+SF:etRequest,B9,"HTTP/1\.0\x20200\x20OK\r\nAccept-Ranges:\x20bytes\r\nCont
+SF:ent-Length:\x201\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nLa
+SF:st-Modified:\x20Thu,\x2026\x20Mar\x202020\x2011:36:37\x20GMT\r\nDate:\x
+SF:20Fri,\x2030\x20Oct\x202026\x2009:27:54\x20GMT\r\n\r\n\n")%r(HTTPOption
+SF:s,B9,"HTTP/1\.0\x20200\x20OK\r\nAccept-Ranges:\x20bytes\r\nContent-Leng
+SF:th:\x201\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nLast-Modif
+SF:ied:\x20Thu,\x2026\x20Mar\x202020\x2011:36:37\x20GMT\r\nDate:\x20Fri,\x
+SF:2030\x20Oct\x202026\x2009:27:55\x20GMT\r\n\r\n\n")%r(FourOhFourRequest,
+SF:B9,"HTTP/1\.0\x20200\x20OK\r\nAccept-Ranges:\x20bytes\r\nContent-Length
+SF::\x201\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nLast-Modifie
+SF:d:\x20Thu,\x2026\x20Mar\x202020\x2011:36:37\x20GMT\r\nDate:\x20Fri,\x20
+SF:30\x20Oct\x202026\x2009:27:55\x20GMT\r\n\r\n\n")%r(GenericLines,67,"HTT
+SF:P/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20char
+SF:set=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%r(RTSP
+SF:Request,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text
+SF:/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20R
+SF:equest")%r(Help,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:
+SF:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20
+SF:Bad\x20Request")%r(SSLSessionReq,67,"HTTP/1\.1\x20400\x20Bad\x20Request
+SF:\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20clo
+SF:se\r\n\r\n400\x20Bad\x20Request")%r(LPDString,67,"HTTP/1\.1\x20400\x20B
+SF:ad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConne
+SF:ction:\x20close\r\n\r\n400\x20Bad\x20Request")%r(SIPOptions,67,"HTTP/1\
+SF:.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=
+SF:utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%r(Socks5,6
+SF:7,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x
+SF:20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%
+SF:r(OfficeScan,A3,"HTTP/1\.1\x20400\x20Bad\x20Request:\x20missing\x20requ
+SF:ired\x20Host\x20header\r\nContent-Type:\x20text/plain;\x20charset=utf-8
+SF:\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request:\x20missing\x20re
+SF:quired\x20Host\x20header");
+Service Info: Host: TYLER
+
+Host script results:
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_nbstat: NetBIOS name: TYLER, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+| smb2-time: 
+|   date: 2026-10-30T09:28:26
+|_  start_date: N/A
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.9.1)
+|   Computer name: tyler
+|   NetBIOS computer name: TYLER\x00
+|   Domain name: \x00
+|   FQDN: tyler
+|_  System time: 2026-10-30T05:28:27-04:00
+|_clock-skew: mean: 1h20m01s, deviation: 2h18m34s, median: 0s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Oct 30 09:28:34 2026 -- 1 IP address (1 host up) scanned in 50.32 seconds

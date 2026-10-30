@@ -1,0 +1,503 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>LibreNMS</title>
+  <base href="http://tyler.thm:8080/" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="images/manifest.json">
+  <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <meta name="msapplication-config" content="images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery.bootgrid.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/tagmanager.css" rel="stylesheet" type="text/css" />
+  <link href="css/mktree.css" rel="stylesheet" type="text/css" />
+  <link href="css/vis.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery.gridster.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/leaflet.css" rel="stylesheet" type="text/css" />
+  <link href="css/MarkerCluster.css" rel="stylesheet" type="text/css" />
+  <link href="css/MarkerCluster.Default.css" rel="stylesheet" type="text/css" />
+  <link href="css/L.Control.Locate.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/leaflet.awesome-markers.css" rel="stylesheet" type="text/css" />
+  <link href="css/select2.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/query-builder.default.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/styles.css?ver=20181128" rel="stylesheet" type="text/css" />
+  <link href="css/light.css?ver=632417642" rel="stylesheet" type="text/css" />
+  <script src="js/polyfill.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-hover-dropdown.min.js"></script>
+  <script src="js/bootstrap-switch.min.js"></script>
+  <script src="js/hogan-2.0.0.js"></script>
+  <script src="js/jquery.cycle2.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/typeahead.bundle.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/tagmanager.js"></script>
+  <script src="js/mktree.js"></script>
+  <script src="js/jquery.bootgrid.min.js"></script>
+  <script src="js/handlebars.min.js"></script>
+  <script src="js/pace.min.js"></script>
+  <script src="js/qrcode.min.js"></script>
+      <script src="js/jquery.lazyload.min.js"></script>
+  <script src="js/lazyload.js"></script>
+      <script src="js/select2.min.js"></script>
+  <script src="js/librenms.js?ver=20181130"></script>
+  <script type="text/javascript">
+
+    <!-- Begin
+    function popUp(URL)
+    {
+      day = new Date();
+      id = day.getTime();
+      eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=550,height=600');");
+    }
+    // End -->
+  </script>
+  <script type="text/javascript" src="js/overlib_mini.js"></script>
+  <script type="text/javascript" src="js/toastr.min.js"></script>
+</head>
+<body>
+
+<script>updateResolution();</script>
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navHeaderCollapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="hidden-md hidden-sm navbar-brand" href=""><img src="images/librenms_logo_light.svg" /></a>    </div>
+
+    <div class="collapse navbar-collapse" id="navHeaderCollapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="overview/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-home fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Overview</span></a>
+          <ul class="dropdown-menu multi-level" role="menu">
+              <li><a href="overview/"><i class="fa fa-tv fa-fw fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+           <li class="dropdown-submenu">
+            <a href="overview/"><i class="fa fa-map fa-fw fa-lg" aria-hidden="true"></i> Maps</a>
+            <ul class="dropdown-menu">
+              <li><a href="availability-map/"><i class="fa fa-arrow-circle-up fa-fw fa-lg" aria-hidden="true"></i> Availability</a></li>
+              <li><a href="map/"><i class="fa fa-sitemap fa-fw fa-lg" aria-hidden="true"></i> Network</a></li>
+                              <li><a href="fullscreenmap/"><i class="fa fa-expand fa-fw fa-lg" aria-hidden="true"></i> Geographical</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a><i class="fa fa-plug fa-fw fa-lg" aria-hidden="true"></i> Plugins</a>
+            <ul class="dropdown-menu">
+                <li><a href="plugin/view=admin"> <i class="fa fa-lock fa-fw fa-lg" aria-hidden="true"></i>Plugin Admin</a></li>            </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a href="overview/"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> Tools</a>
+           <ul class="dropdown-menu scrollable-menu">
+           <li><a href="ripenccapi/"><i class="fa fa-star fa-fw fa-lg" aria-hidden="true"></i> RIPE NCC API</a></li>
+           </ul>
+          </li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="eventlog/"><i class="fa fa-bookmark fa-fw fa-lg" aria-hidden="true"></i> Eventlog</a></li>
+            <li><a href="inventory/"><i class="fa fa-cube fa-fw fa-lg" aria-hidden="true"></i> Inventory</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="search/search=ipv4/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> IPv4 Address</a></li>
+            <li><a href="search/search=ipv6/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> IPv6 Address</a></li>
+            <li><a href="search/search=mac/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> MAC Address</a></li>
+            <li><a href="search/search=arp/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> ARP Tables</a></li>
+            <li><a href="search/search=fdb/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> FDB Tables</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="devices/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-server fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Devices</span></a>
+          <ul class="dropdown-menu">
+<li class="dropdown-submenu"><a href="#">No devices</a></li>
+            <li role="presentation" class="divider"></li><li><a href="device-groups/"><i class="fa fa-th fa-fw fa-lg" aria-hidden="true"></i> Manage Groups</a></li><li><a href="device-dependencies/"><i class="fa fa-group fa-fw fa-lg"></i> Device Dependencies</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="addhost/"><i class="fa fa-plus fa-fw fa-lg" aria-hidden="true"></i> Add Device</a></li>
+            <li><a href="delhost/"><i class="fa fa-trash fa-fw fa-lg" aria-hidden="true"></i> Delete Device</a></li>          </ul>
+        </li>
+
+
+    <!-- PORTS -->
+        <li class="dropdown">
+          <a href="ports/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-link fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Ports</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="ports/"><i class="fa fa-link fa-fw fa-lg" aria-hidden="true"></i> All Ports</a></li>
+
+            <li><a href="pseudowires/"><i class="fa fa-arrows-alt fa-fw fa-lg" aria-hidden="true"></i> Pseudowires</a></li>            <li role="presentation" class="divider"></li>            <li><a href="customers/"><i class="fa fa-users fa-fw fa-lg" aria-hidden="true"></i> Customers</a></li>            <li><a href="iftype/type=transit/"><i class="fa fa-truck fa-fw fa-lg" aria-hidden="true"></i> Transit</a></li>            <li><a href="iftype/type=peering/"><i class="fa fa-handshake-o fa-fw fa-lg" aria-hidden="true"></i> Peering</a></li>            <li><a href="iftype/type=peering,transit/"><i class="fa fa-rocket fa-fw fa-lg" aria-hidden="true"></i> Peering + Transit</a></li>            <li><a href="iftype/type=core/"><i class="fa fa-code-fork fa-fw fa-lg" aria-hidden="true"></i> Core</a></li>            <li role="presentation" class="divider"></li>
+            <li><a href="ports/state=down/"><i class="fa fa-arrow-circle-down fa-fw fa-lg" aria-hidden="true"></i> Down</a></li>
+            <li><a href="ports/state=admindown/"><i class="fa fa-arrow-circle-o-down fa-fw fa-lg" aria-hidden="true"></i> Disabled</a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="health/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-heartbeat fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Health</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="health/metric=mempool/"><i class="fa fa-braille fa-fw fa-lg" aria-hidden="true"></i> Memory</a></li>
+            <li><a href="health/metric=processor/"><i class="fa fa-microchip fa-fw fa-lg" aria-hidden="true"></i> Processor</a></li>
+            <li><a href="health/metric=storage/"><i class="fa fa-database fa-fw fa-lg" aria-hidden="true"></i> Storage</a></li>
+<li role="presentation" class="divider"></li><li><a href="health/metric=toner/"><i class="fa fa-print fa-fw fa-lg"></i> Toner</a></li>
+
+          </ul>
+        </li>
+
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-exclamation-circle fa-col-success fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Alerts</span></a>
+          <ul class="dropdown-menu">
+              <li><a href="alerts/"><i class="fa fa-bell fa-fw fa-lg" aria-hidden="true"></i> Notifications</a></li>
+              <li><a href="alert-log/"><i class="fa fa-file-text fa-fw fa-lg" aria-hidden="true"></i> Alert History</a></li>
+              <li><a href="alert-stats/"><i class="fa fa-bar-chart fa-fw fa-lg" aria-hidden="true"></i> Statistics</a></li>
+                                    <li role="presentation" class="divider"></li>
+                    <li><a href="alert-rules/"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> Alert Rules</a></li>
+                    <li><a href="alert-schedule/"><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i> Scheduled Maintenance</a></li>
+                    <li><a href="templates/"><i class="fa fa-file fa-fw fa-lg" aria-hidden="true"></i> Alert Templates</a></li>
+                    <li><a href="alert-transports/"><i class="fa fa-bus fa-fw fa-lg" aria-hidden="true"></i> Alert Transports</a></li>
+                          </ul>
+      </li>
+
+
+    </ul>
+     <form role="search" class="navbar-form navbar-right global-search">
+         <div class="form-group">
+             <input class="form-control typeahead" type="search" id="gsearch" name="gsearch" placeholder="Global Search">
+         </div>
+     </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+<a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-user fa-fw fa-lg fa-nav-icons" aria-hidden="true"></i> <span class="visible-xs-inline-block">User</span><span class="badge badge-navbar-user count-notif badge-default">0</span></a>        <ul class="dropdown-menu">
+          <li><a href="preferences/"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i> My Settings</a></li>
+<li><a href="notifications/"><span class="badge count-notif">0</span> Notifications</a></li>          <li role="presentation" class="divider"></li>
+<li><a href="http://10.10.133.54:8080/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out fa-fw fa-lg" aria-hidden="true"></i> Logout</a><form id="logout-form" action="http://10.10.133.54:8080/logout" method="POST" style="display: none;"><input type="hidden" name="_token" value="lAwTjJUZw4yCSDyIub4YdhXzi9mVXHjb9fVkjXYf"></form></li>         </ul>
+       </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" style="margin-left:5px"><i class="fa fa-cog fa-fw fa-lg fa-nav-icons" aria-hidden="true"></i> <span class="visible-xs-inline-block">Settings</span></a>
+        <ul class="dropdown-menu">
+<li><a href="settings/"><i class="fa fa-cogs fa-fw fa-lg" aria-hidden="true"></i> Global Settings</a></li><li><a href="validate/"><i class="fa fa-check-circle fa-fw fa-lg" aria-hidden="true"></i> Validate Config</a></li>          <li role="presentation" class="divider"></li>
+
+
+           <li><a href="adduser/"><i class="fa fa-user-plus fa-fw fa-lg" aria-hidden="true"></i> Add User</a></li>
+           <li><a href="deluser/"><i class="fa fa-user-times fa-fw fa-lg" aria-hidden="true"></i> Remove User</a></li>
+           
+           <li><a href="edituser/"><i class="fa fa-user-circle-o fa-fw fa-lg" aria-hidden="true"></i> Edit User</a></li>
+           <li><a href="authlog/"><i class="fa fa-shield fa-fw fa-lg" aria-hidden="true"></i> Auth History</a></li>
+           <li role="presentation" class="divider"></li> 
+           <li class="dropdown-submenu">
+               <a href="pollers"><i class="fa fa-th-large fa-fw fa-lg" aria-hidden="true"></i> Pollers</a>
+               <ul class="dropdown-menu scrollable-menu">
+               <li><a href="pollers/tab=pollers/"><i class="fa fa-th-large fa-fw fa-lg" aria-hidden="true"></i> Pollers</a></li>    <li><a href="pollers/tab=performance/"><i class="fa fa-line-chart fa-fw fa-lg" aria-hidden="true"></i> Performance</a></li>    <li><a href="pollers/tab=log/"><i class="fa fa-file-text fa-fw fa-lg" aria-hidden="true"></i> History</a></li>
+               </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li class="dropdown-submenu">
+           <a href="#"><i class="fa fa-code fa-fw fa-lg" aria-hidden="true"></i> API</a>
+           <ul class="dropdown-menu scrollable-menu">
+             <li><a href="api-access/"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i> API Settings</a></li>
+             <li><a href="https://docs.librenms.org/API/" target="_blank" rel="noopener"><i class="fa fa-book fa-fw fa-lg" aria-hidden="true"></i> API Docs</a></li>
+           </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li class="dropdown-submenu">
+               <a href="#"><span class="countdown_timer" id="countdown_timer"></span></a>
+               <ul class="dropdown-menu scrollable-menu">
+                   <li><a href="#"><span class="countdown_timer_status" id="countdown_timer_status"></span></a></li>
+               </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li><a href="about/"><i class="fa fa-info-circle fa-fw fa-lg" aria-hidden="true"></i> About&nbsp;LibreNMS</a></li>
+         </ul>
+       </li>
+     </ul>
+   </div>
+ </div>
+</nav>
+<script>
+var devices = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=device",
+        filter: function (devices) {
+            return $.map(devices, function (device) {
+                return {
+                    device_id: device.device_id,
+                    device_image: device.device_image,
+                    url: device.url,
+                    name: device.name,
+                    device_os: device.device_os,
+                    version: device.version,
+                    device_hardware: device.device_hardware,
+                    device_ports: device.device_ports,
+                    location: device.location
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+var ports = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=ports",
+        filter: function (ports) {
+            return $.map(ports, function (port) {
+                return {
+                    count: port.count,
+                    url: port.url,
+                    name: port.name,
+                    description: port.description,
+                    colours: port.colours,
+                    hostname: port.hostname
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+var bgp = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=bgp",
+        filter: function (bgp_sessions) {
+            return $.map(bgp_sessions, function (bgp) {
+                return {
+                    count: bgp.count,
+                    url: bgp.url,
+                    name: bgp.name,
+                    description: bgp.description,
+                    localas: bgp.localas,
+                    bgp_image: bgp.bgp_image,
+                    remoteas: bgp.remoteas,
+                    colours: bgp.colours,
+                    hostname: bgp.hostname
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+
+if ($(window).width() < 768) {
+    var cssMenu = 'typeahead-left';
+} else {
+    var cssMenu = '';
+}
+
+devices.initialize();
+ports.initialize();
+bgp.initialize();
+$('#gsearch').bind('typeahead:select', function(ev, suggestion) {
+    window.location.href = suggestion.url;
+});
+$('#gsearch').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1,
+    classNames: {
+        menu: cssMenu
+    }
+},
+{
+  source: devices.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;Devices</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><img src="{{device_image}}" border="0"> <small><strong>{{name}}</strong> | {{device_os}} | {{version}} | {{device_hardware}} with {{device_ports}} port(s) | {{location}}</small></a></p>')
+    }
+},
+{
+  source: ports.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;Ports</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><small><i class="fa fa-link fa-sm icon-theme" aria-hidden="true"></i> <strong>{{name}}</strong> – {{hostname}}<br /><i>{{description}}</i></small></a></p>')
+    }
+},
+{
+  source: bgp.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;BGP Sessions</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><small>{{{bgp_image}}} {{name}} - {{hostname}}<br />AS{{localas}} -> AS{{remoteas}}</small></a></p>')
+    }
+});
+$('#gsearch').bind('typeahead:open', function(ev, suggestion) {
+    $('#gsearch').addClass('search-box');
+});
+</script>
+
+<br />
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+
+    <div class="panel panel-default panel-condensed">
+    <div class="panel-heading">
+        <div class="row" style="padding: 0px 10px 0px 10px;">
+            <div class="pull-left">
+            <span class="devices-font-bold">Lists: </span><a href="devices/format=list_basic/">Basic</a> | <span class="pagemenu-selected"><a href="devices/format=list_detail/">Detail</a></span>&nbsp;&nbsp;&nbsp;<span class="devices-font-bold">Graphs: </span><a href="devices/format=graph_bits/from=-24h/to=now/">Bits</a> | <a href="devices/format=graph_processor/from=-24h/to=now/">CPU</a> | <a href="devices/format=graph_ucd_load/from=-24h/to=now/">Load</a> | <a href="devices/format=graph_mempool/from=-24h/to=now/">Memory</a> | <a href="devices/format=graph_uptime/from=-24h/to=now/">Uptime</a> | <a href="devices/format=graph_storage/from=-24h/to=now/">Storage</a> | <a href="devices/format=graph_diskio/from=-24h/to=now/">Disk I/O</a> | <a href="devices/format=graph_poller_perf/from=-24h/to=now/">Poller</a> | <a href="devices/format=graph_ping_perf/from=-24h/to=now/">Ping</a> | <a href="devices/format=graph_temperature/from=-24h/to=now/">Temperature</a>
+            </div>
+            <div class="pull-right">
+            <select name="type" id="type" onchange="window.open(this.options[this.selectedIndex].value,'_top')" class="devices-graphs-select"><option value="devices/format=graph_agent/from=1793266500/to=1793352900/" >Agent</option><option value="devices/format=graph_arbos_flows/from=1793266500/to=1793352900/" >Arbos_flows</option><option value="devices/format=graph_arubacontroller_numaps/from=1793266500/to=1793352900/" >Arubacontroller_numaps</option><option value="devices/format=graph_arubacontroller_numclients/from=1793266500/to=1793352900/" >Arubacontroller_numclients</option><option value="devices/format=graph_asa_conns/from=1793266500/to=1793352900/" >Asa_conns</option><option value="devices/format=graph_asyncos_conns/from=1793266500/to=1793352900/" >Asyncos_conns</option><option value="devices/format=graph_ber/from=1793266500/to=1793352900/" >Ber</option><option value="devices/format=graph_bigip_apm_sessions/from=1793266500/to=1793352900/" >Bigip_apm_sessions</option><option value="devices/format=graph_bigip_gtm_allpool_dropped/from=1793266500/to=1793352900/" >Bigip_gtm_allpool_dropped</option><option value="devices/format=graph_bigip_gtm_allpool_requests/from=1793266500/to=1793352900/" >Bigip_gtm_allpool_requests</option><option value="devices/format=graph_bigip_gtm_allwide_dropped/from=1793266500/to=1793352900/" >Bigip_gtm_allwide_dropped</option><option value="devices/format=graph_bigip_gtm_allwide_requests/from=1793266500/to=1793352900/" >Bigip_gtm_allwide_requests</option><option value="devices/format=graph_bigip_gtm_allwide_resolved/from=1793266500/to=1793352900/" >Bigip_gtm_allwide_resolved</option><option value="devices/format=graph_bigip_gtm_pool_dropped/from=1793266500/to=1793352900/" >Bigip_gtm_pool_dropped</option><option value="devices/format=graph_bigip_gtm_pool_requests/from=1793266500/to=1793352900/" >Bigip_gtm_pool_requests</option><option value="devices/format=graph_bigip_gtm_wide_dropped/from=1793266500/to=1793352900/" >Bigip_gtm_wide_dropped</option><option value="devices/format=graph_bigip_gtm_wide_requests/from=1793266500/to=1793352900/" >Bigip_gtm_wide_requests</option><option value="devices/format=graph_bigip_gtm_wide_resolved/from=1793266500/to=1793352900/" >Bigip_gtm_wide_resolved</option><option value="devices/format=graph_bigip_ltm_allpm_bytesin/from=1793266500/to=1793352900/" >Bigip_ltm_allpm_bytesin</option><option value="devices/format=graph_bigip_ltm_allpm_bytesout/from=1793266500/to=1793352900/" >Bigip_ltm_allpm_bytesout</option><option value="devices/format=graph_bigip_ltm_allpm_conns/from=1793266500/to=1793352900/" >Bigip_ltm_allpm_conns</option><option value="devices/format=graph_bigip_ltm_allpm_pktsin/from=1793266500/to=1793352900/" >Bigip_ltm_allpm_pktsin</option><option value="devices/format=graph_bigip_ltm_allpm_pktsout/from=1793266500/to=1793352900/" >Bigip_ltm_allpm_pktsout</option><option value="devices/format=graph_bigip_ltm_allvs_bytesin/from=1793266500/to=1793352900/" >Bigip_ltm_allvs_bytesin</option><option value="devices/format=graph_bigip_ltm_allvs_bytesout/from=1793266500/to=1793352900/" >Bigip_ltm_allvs_bytesout</option><option value="devices/format=graph_bigip_ltm_allvs_conns/from=1793266500/to=1793352900/" >Bigip_ltm_allvs_conns</option><option value="devices/format=graph_bigip_ltm_allvs_pktsin/from=1793266500/to=1793352900/" >Bigip_ltm_allvs_pktsin</option><option value="devices/format=graph_bigip_ltm_allvs_pktsout/from=1793266500/to=1793352900/" >Bigip_ltm_allvs_pktsout</option><option value="devices/format=graph_bigip_ltm_vs_bytes/from=1793266500/to=1793352900/" >Bigip_ltm_vs_bytes</option><option value="devices/format=graph_bigip_ltm_vs_conns/from=1793266500/to=1793352900/" >Bigip_ltm_vs_conns</option><option value="devices/format=graph_bigip_ltm_vs_pkts/from=1793266500/to=1793352900/" >Bigip_ltm_vs_pkts</option><option value="devices/format=graph_bits/from=1793266500/to=1793352900/" >Bits</option><option value="devices/format=graph_cambium-epmp-frameUtilization/from=1793266500/to=1793352900/" >Cambium-epmp-frameUtilization</option><option value="devices/format=graph_cambium_250_dataRate/from=1793266500/to=1793352900/" >Cambium_250_dataRate</option><option value="devices/format=graph_cambium_250_modulationMode/from=1793266500/to=1793352900/" >Cambium_250_modulationMode</option><option value="devices/format=graph_cambium_250_receivePower/from=1793266500/to=1793352900/" >Cambium_250_receivePower</option><option value="devices/format=graph_cambium_250_ssr/from=1793266500/to=1793352900/" >Cambium_250_ssr</option><option value="devices/format=graph_cambium_250_transmitPower/from=1793266500/to=1793352900/" >Cambium_250_transmitPower</option><option value="devices/format=graph_cambium_650_dataRate/from=1793266500/to=1793352900/" >Cambium_650_dataRate</option><option value="devices/format=graph_cambium_650_gps/from=1793266500/to=1793352900/" >Cambium_650_gps</option><option value="devices/format=graph_cambium_650_modulationMode/from=1793266500/to=1793352900/" >Cambium_650_modulationMode</option><option value="devices/format=graph_cambium_650_rawReceivePower/from=1793266500/to=1793352900/" >Cambium_650_rawReceivePower</option><option value="devices/format=graph_cambium_650_ssr/from=1793266500/to=1793352900/" >Cambium_650_ssr</option><option value="devices/format=graph_cambium_650_transmitPower/from=1793266500/to=1793352900/" >Cambium_650_transmitPower</option><option value="devices/format=graph_cambium_epmp_RFStatus/from=1793266500/to=1793352900/" >Cambium_epmp_RFStatus</option><option value="devices/format=graph_cambium_epmp_access/from=1793266500/to=1793352900/" >Cambium_epmp_access</option><option value="devices/format=graph_cambium_epmp_freq/from=1793266500/to=1793352900/" >Cambium_epmp_freq</option><option value="devices/format=graph_cambium_epmp_gps/from=1793266500/to=1793352900/" >Cambium_epmp_gps</option><option value="devices/format=graph_cambium_epmp_gpsSync/from=1793266500/to=1793352900/" >Cambium_epmp_gpsSync</option><option value="devices/format=graph_cambium_epmp_modulation/from=1793266500/to=1793352900/" >Cambium_epmp_modulation</option><option value="devices/format=graph_cambium_epmp_registeredSM/from=1793266500/to=1793352900/" >Cambium_epmp_registeredSM</option><option value="devices/format=graph_canopy-generic-frameUtilization/from=1793266500/to=1793352900/" >Canopy-generic-frameUtilization</option><option value="devices/format=graph_canopy_generic_450_linkRadioDbm/from=1793266500/to=1793352900/" >Canopy_generic_450_linkRadioDbm</option><option value="devices/format=graph_canopy_generic_450_masterSSR/from=1793266500/to=1793352900/" >Canopy_generic_450_masterSSR</option><option value="devices/format=graph_canopy_generic_450_powerlevel/from=1793266500/to=1793352900/" >Canopy_generic_450_powerlevel</option><option value="devices/format=graph_canopy_generic_450_ptpSNR/from=1793266500/to=1793352900/" >Canopy_generic_450_ptpSNR</option><option value="devices/format=graph_canopy_generic_450_slaveHV/from=1793266500/to=1793352900/" >Canopy_generic_450_slaveHV</option><option value="devices/format=graph_canopy_generic_450_slaveSNR/from=1793266500/to=1793352900/" >Canopy_generic_450_slaveSNR</option><option value="devices/format=graph_canopy_generic_450_slaveSSR/from=1793266500/to=1793352900/" >Canopy_generic_450_slaveSSR</option><option value="devices/format=graph_canopy_generic_crcErrors/from=1793266500/to=1793352900/" >Canopy_generic_crcErrors</option><option value="devices/format=graph_canopy_generic_errorCount/from=1793266500/to=1793352900/" >Canopy_generic_errorCount</option><option value="devices/format=graph_canopy_generic_freq/from=1793266500/to=1793352900/" >Canopy_generic_freq</option><option value="devices/format=graph_canopy_generic_gpsStats/from=1793266500/to=1793352900/" >Canopy_generic_gpsStats</option><option value="devices/format=graph_canopy_generic_jitter/from=1793266500/to=1793352900/" >Canopy_generic_jitter</option><option value="devices/format=graph_canopy_generic_radioDbm/from=1793266500/to=1793352900/" >Canopy_generic_radioDbm</option><option value="devices/format=graph_canopy_generic_regCount/from=1793266500/to=1793352900/" >Canopy_generic_regCount</option><option value="devices/format=graph_canopy_generic_rssi/from=1793266500/to=1793352900/" >Canopy_generic_rssi</option><option value="devices/format=graph_canopy_generic_signalHV/from=1793266500/to=1793352900/" >Canopy_generic_signalHV</option><option value="devices/format=graph_canopy_generic_snrHV/from=1793266500/to=1793352900/" >Canopy_generic_snrHV</option><option value="devices/format=graph_canopy_generic_whispGPSStats/from=1793266500/to=1793352900/" >Canopy_generic_whispGPSStats</option><option value="devices/format=graph_charge/from=1793266500/to=1793352900/" >Charge</option><option value="devices/format=graph_chromatic_dispersion/from=1793266500/to=1793352900/" >Chromatic_dispersion</option><option value="devices/format=graph_cipsec_flow_bits/from=1793266500/to=1793352900/" >Cipsec_flow_bits</option><option value="devices/format=graph_cipsec_flow_pkts/from=1793266500/to=1793352900/" >Cipsec_flow_pkts</option><option value="devices/format=graph_cipsec_flow_stats/from=1793266500/to=1793352900/" >Cipsec_flow_stats</option><option value="devices/format=graph_cipsec_flow_tunnels/from=1793266500/to=1793352900/" >Cipsec_flow_tunnels</option><option value="devices/format=graph_cisco-iosdsp/from=1793266500/to=1793352900/" >Cisco-iosdsp</option><option value="devices/format=graph_cisco-iosmtp/from=1793266500/to=1793352900/" >Cisco-iosmtp</option><option value="devices/format=graph_cisco-iospri/from=1793266500/to=1793352900/" >Cisco-iospri</option><option value="devices/format=graph_cisco-iosxcode/from=1793266500/to=1793352900/" >Cisco-iosxcode</option><option value="devices/format=graph_cisco-otv-mac/from=1793266500/to=1793352900/" >Cisco-otv-mac</option><option value="devices/format=graph_cisco-otv-vlan/from=1793266500/to=1793352900/" >Cisco-otv-vlan</option><option value="devices/format=graph_cisco_wwan_mnc/from=1793266500/to=1793352900/" >Cisco_wwan_mnc</option><option value="devices/format=graph_cisco_wwan_rssi/from=1793266500/to=1793352900/" >Cisco_wwan_rssi</option><option value="devices/format=graph_ciscowlc_numaps/from=1793266500/to=1793352900/" >Ciscowlc_numaps</option><option value="devices/format=graph_ciscowlc_numclients/from=1793266500/to=1793352900/" >Ciscowlc_numclients</option><option value="devices/format=graph_collectd/from=1793266500/to=1793352900/" >Collectd</option><option value="devices/format=graph_cooling/from=1793266500/to=1793352900/" >Cooling</option><option value="devices/format=graph_cras_sessions/from=1793266500/to=1793352900/" >Cras_sessions</option><option value="devices/format=graph_current/from=1793266500/to=1793352900/" >Current</option><option value="devices/format=graph_dbm/from=1793266500/to=1793352900/" >dBm</option><option value="devices/format=graph_delay/from=1793266500/to=1793352900/" >Delay</option><option value="devices/format=graph_diskio/from=1793266500/to=1793352900/" >Diskio</option><option value="devices/format=graph_diskio_bits/from=1793266500/to=1793352900/" >Diskio_bits</option><option value="devices/format=graph_diskio_common/from=1793266500/to=1793352900/" >Diskio_common</option><option value="devices/format=graph_diskio_ops/from=1793266500/to=1793352900/" >Diskio_ops</option><option value="devices/format=graph_eer/from=1793266500/to=1793352900/" >Eer</option><option value="devices/format=graph_fanspeed/from=1793266500/to=1793352900/" >Fanspeed</option><option value="devices/format=graph_fdb_count/from=1793266500/to=1793352900/" >Fdb_count</option><option value="devices/format=graph_fortigate_cpu/from=1793266500/to=1793352900/" >Fortigate_cpu</option><option value="devices/format=graph_fortigate_sessions/from=1793266500/to=1793352900/" >Fortigate_sessions</option><option value="devices/format=graph_fortios_lograte/from=1793266500/to=1793352900/" >Fortios_lograte</option><option value="devices/format=graph_frequency/from=1793266500/to=1793352900/" >Frequency</option><option value="devices/format=graph_hr_processes/from=1793266500/to=1793352900/" >Hr_processes</option><option value="devices/format=graph_hr_users/from=1793266500/to=1793352900/" >Hr_users</option><option value="devices/format=graph_humidity/from=1793266500/to=1793352900/" >Humidity</option><option value="devices/format=graph_ib_dhcp_messages/from=1793266500/to=1793352900/" >Ib_dhcp_messages</option><option value="devices/format=graph_ib_dns_dyn_updates/from=1793266500/to=1793352900/" >Ib_dns_dyn_updates</option><option value="devices/format=graph_ib_dns_performance/from=1793266500/to=1793352900/" >Ib_dns_performance</option><option value="devices/format=graph_ib_dns_request_return_codes/from=1793266500/to=1793352900/" >Ib_dns_request_return_codes</option><option value="devices/format=graph_ipSystemStats/from=1793266500/to=1793352900/" >IpSystemStats</option><option value="devices/format=graph_ipsystemstats_ipv4/from=1793266500/to=1793352900/" >Ipsystemstats_ipv4</option><option value="devices/format=graph_ipsystemstats_ipv4_frag/from=1793266500/to=1793352900/" >Ipsystemstats_ipv4_frag</option><option value="devices/format=graph_ipsystemstats_ipv6/from=1793266500/to=1793352900/" >Ipsystemstats_ipv6</option><option value="devices/format=graph_ipsystemstats_ipv6_frag/from=1793266500/to=1793352900/" >Ipsystemstats_ipv6_frag</option><option value="devices/format=graph_junos_jsrx_spu_sessions/from=1793266500/to=1793352900/" >Junos_jsrx_spu_sessions</option><option value="devices/format=graph_load/from=1793266500/to=1793352900/" >Load</option><option value="devices/format=graph_mempool/from=1793266500/to=1793352900/" >Mempool</option><option value="devices/format=graph_mib/from=1793266500/to=1793352900/" >Mib</option><option value="devices/format=graph_netscaler_tcp_bits/from=1793266500/to=1793352900/" >Netscaler_tcp_bits</option><option value="devices/format=graph_netscaler_tcp_conn/from=1793266500/to=1793352900/" >Netscaler_tcp_conn</option><option value="devices/format=graph_netscaler_tcp_pkts/from=1793266500/to=1793352900/" >Netscaler_tcp_pkts</option><option value="devices/format=graph_netstat_icmp/from=1793266500/to=1793352900/" >Netstat_icmp</option><option value="devices/format=graph_netstat_icmp_info/from=1793266500/to=1793352900/" >Netstat_icmp_info</option><option value="devices/format=graph_netstat_ip/from=1793266500/to=1793352900/" >Netstat_ip</option><option value="devices/format=graph_netstat_ip_forward/from=1793266500/to=1793352900/" >Netstat_ip_forward</option><option value="devices/format=graph_netstat_ip_frag/from=1793266500/to=1793352900/" >Netstat_ip_frag</option><option value="devices/format=graph_netstat_snmp/from=1793266500/to=1793352900/" >Netstat_snmp</option><option value="devices/format=graph_netstat_snmp_pkt/from=1793266500/to=1793352900/" >Netstat_snmp_pkt</option><option value="devices/format=graph_netstat_tcp/from=1793266500/to=1793352900/" >Netstat_tcp</option><option value="devices/format=graph_netstat_udp/from=1793266500/to=1793352900/" >Netstat_udp</option><option value="devices/format=graph_nfsen_channel_common/from=1793266500/to=1793352900/" >Nfsen_channel_common</option><option value="devices/format=graph_nfsen_channel_flows/from=1793266500/to=1793352900/" >Nfsen_channel_flows</option><option value="devices/format=graph_nfsen_channel_packets/from=1793266500/to=1793352900/" >Nfsen_channel_packets</option><option value="devices/format=graph_nfsen_channel_traffic/from=1793266500/to=1793352900/" >Nfsen_channel_traffic</option><option value="devices/format=graph_nfsen_common/from=1793266500/to=1793352900/" >Nfsen_common</option><option value="devices/format=graph_nfsen_flows/from=1793266500/to=1793352900/" >Nfsen_flows</option><option value="devices/format=graph_nfsen_packets/from=1793266500/to=1793352900/" >Nfsen_packets</option><option value="devices/format=graph_nfsen_traffic/from=1793266500/to=1793352900/" >Nfsen_traffic</option><option value="devices/format=graph_ntp_delay/from=1793266500/to=1793352900/" >Ntp_delay</option><option value="devices/format=graph_ntp_dispersion/from=1793266500/to=1793352900/" >Ntp_dispersion</option><option value="devices/format=graph_ntp_offset/from=1793266500/to=1793352900/" >Ntp_offset</option><option value="devices/format=graph_ntp_stratum/from=1793266500/to=1793352900/" >Ntp_stratum</option><option value="devices/format=graph_panos_activetunnels/from=1793266500/to=1793352900/" >Panos_activetunnels</option><option value="devices/format=graph_panos_sessions/from=1793266500/to=1793352900/" >Panos_sessions</option><option value="devices/format=graph_panos_sessions_icmp/from=1793266500/to=1793352900/" >Panos_sessions_icmp</option><option value="devices/format=graph_panos_sessions_ssl/from=1793266500/to=1793352900/" >Panos_sessions_ssl</option><option value="devices/format=graph_panos_sessions_sslutil/from=1793266500/to=1793352900/" >Panos_sessions_sslutil</option><option value="devices/format=graph_panos_sessions_tcp/from=1793266500/to=1793352900/" >Panos_sessions_tcp</option><option value="devices/format=graph_panos_sessions_udp/from=1793266500/to=1793352900/" >Panos_sessions_udp</option><option value="devices/format=graph_pf_badoffset/from=1793266500/to=1793352900/" >Pf_badoffset</option><option value="devices/format=graph_pf_fragmented/from=1793266500/to=1793352900/" >Pf_fragmented</option><option value="devices/format=graph_pf_inserts/from=1793266500/to=1793352900/" >Pf_inserts</option><option value="devices/format=graph_pf_memdropped/from=1793266500/to=1793352900/" >Pf_memdropped</option><option value="devices/format=graph_pf_normalized/from=1793266500/to=1793352900/" >Pf_normalized</option><option value="devices/format=graph_pf_removals/from=1793266500/to=1793352900/" >Pf_removals</option><option value="devices/format=graph_pf_searches/from=1793266500/to=1793352900/" >Pf_searches</option><option value="devices/format=graph_pf_short/from=1793266500/to=1793352900/" >Pf_short</option><option value="devices/format=graph_pf_states/from=1793266500/to=1793352900/" >Pf_states</option><option value="devices/format=graph_ping_perf/from=1793266500/to=1793352900/" >Ping_perf</option><option value="devices/format=graph_poller_modules_perf/from=1793266500/to=1793352900/" >Poller_modules_perf</option><option value="devices/format=graph_poller_perf/from=1793266500/to=1793352900/" >Poller_perf</option><option value="devices/format=graph_power/from=1793266500/to=1793352900/" >Power</option><option value="devices/format=graph_pressure/from=1793266500/to=1793352900/" >Pressure</option><option value="devices/format=graph_processor/from=1793266500/to=1793352900/" >Processor</option><option value="devices/format=graph_processor_separate/from=1793266500/to=1793352900/" >Processor_separate</option><option value="devices/format=graph_processor_stack/from=1793266500/to=1793352900/" >Processor_stack</option><option value="devices/format=graph_pulse_sessions/from=1793266500/to=1793352900/" >Pulse_sessions</option><option value="devices/format=graph_pulse_users/from=1793266500/to=1793352900/" >Pulse_users</option><option value="devices/format=graph_quality_factor/from=1793266500/to=1793352900/" >Quality_factor</option><option value="devices/format=graph_riverbed_connections/from=1793266500/to=1793352900/" >Riverbed_connections</option><option value="devices/format=graph_riverbed_datastore/from=1793266500/to=1793352900/" >Riverbed_datastore</option><option value="devices/format=graph_riverbed_optimization/from=1793266500/to=1793352900/" >Riverbed_optimization</option><option value="devices/format=graph_riverbed_passthrough/from=1793266500/to=1793352900/" >Riverbed_passthrough</option><option value="devices/format=graph_routeros_leases/from=1793266500/to=1793352900/" >Routeros_leases</option><option value="devices/format=graph_runtime/from=1793266500/to=1793352900/" >Runtime</option><option value="devices/format=graph_screenos_sessions/from=1793266500/to=1793352900/" >Screenos_sessions</option><option value="devices/format=graph_secureplatform_sessions/from=1793266500/to=1793352900/" >Secureplatform_sessions</option><option value="devices/format=graph_sensor/from=1793266500/to=1793352900/" >Sensor</option><option value="devices/format=graph_service/from=1793266500/to=1793352900/" >Service</option><option value="devices/format=graph_sgos_average_requests/from=1793266500/to=1793352900/" >Sgos_average_requests</option><option value="devices/format=graph_sgos_client_connections/from=1793266500/to=1793352900/" >Sgos_client_connections</option><option value="devices/format=graph_sgos_client_connections_active/from=1793266500/to=1793352900/" >Sgos_client_connections_active</option><option value="devices/format=graph_sgos_client_connections_idle/from=1793266500/to=1793352900/" >Sgos_client_connections_idle</option><option value="devices/format=graph_sgos_server_connections/from=1793266500/to=1793352900/" >Sgos_server_connections</option><option value="devices/format=graph_sgos_server_connections_active/from=1793266500/to=1793352900/" >Sgos_server_connections_active</option><option value="devices/format=graph_sgos_server_connections_idle/from=1793266500/to=1793352900/" >Sgos_server_connections_idle</option><option value="devices/format=graph_signal/from=1793266500/to=1793352900/" >Signal</option><option value="devices/format=graph_siklu_rfinterfaceOctets/from=1793266500/to=1793352900/" >Siklu_rfinterfaceOctets</option><option value="devices/format=graph_siklu_rfinterfaceOtherOctets/from=1793266500/to=1793352900/" >Siklu_rfinterfaceOtherOctets</option><option value="devices/format=graph_siklu_rfinterfaceOtherPkts/from=1793266500/to=1793352900/" >Siklu_rfinterfaceOtherPkts</option><option value="devices/format=graph_siklu_rfinterfacePkts/from=1793266500/to=1793352900/" >Siklu_rfinterfacePkts</option><option value="devices/format=graph_sla/from=1793266500/to=1793352900/" >Sla</option><option value="devices/format=graph_sla_icmpjitter_iajitter/from=1793266500/to=1793352900/" >Sla_icmpjitter_iajitter</option><option value="devices/format=graph_sla_icmpjitter_jitter/from=1793266500/to=1793352900/" >Sla_icmpjitter_jitter</option><option value="devices/format=graph_sla_icmpjitter_latency/from=1793266500/to=1793352900/" >Sla_icmpjitter_latency</option><option value="devices/format=graph_sla_icmpjitter_lost/from=1793266500/to=1793352900/" >Sla_icmpjitter_lost</option><option value="devices/format=graph_sla_icmpjitter_oos/from=1793266500/to=1793352900/" >Sla_icmpjitter_oos</option><option value="devices/format=graph_sla_jitter/from=1793266500/to=1793352900/" >Sla_jitter</option><option value="devices/format=graph_sla_jitter-icpif/from=1793266500/to=1793352900/" >Sla_jitter-icpif</option><option value="devices/format=graph_sla_jitter-latency/from=1793266500/to=1793352900/" >Sla_jitter-latency</option><option value="devices/format=graph_sla_jitter-loss/from=1793266500/to=1793352900/" >Sla_jitter-loss</option><option value="devices/format=graph_sla_jitter-lost/from=1793266500/to=1793352900/" >Sla_jitter-lost</option><option value="devices/format=graph_sla_jitter-mos/from=1793266500/to=1793352900/" >Sla_jitter-mos</option><option value="devices/format=graph_smokeping_all_common/from=1793266500/to=1793352900/" >Smokeping_all_common</option><option value="devices/format=graph_smokeping_all_common_avg/from=1793266500/to=1793352900/" >Smokeping_all_common_avg</option><option value="devices/format=graph_smokeping_common/from=1793266500/to=1793352900/" >Smokeping_common</option><option value="devices/format=graph_smokeping_in_all/from=1793266500/to=1793352900/" >Smokeping_in_all</option><option value="devices/format=graph_smokeping_in_all_avg/from=1793266500/to=1793352900/" >Smokeping_in_all_avg</option><option value="devices/format=graph_smokeping_out_all/from=1793266500/to=1793352900/" >Smokeping_out_all</option><option value="devices/format=graph_smokeping_out_all_avg/from=1793266500/to=1793352900/" >Smokeping_out_all_avg</option><option value="devices/format=graph_snr/from=1793266500/to=1793352900/" >Snr</option><option value="devices/format=graph_sonicwall_sessions/from=1793266500/to=1793352900/" >Sonicwall_sessions</option><option value="devices/format=graph_state/from=1793266500/to=1793352900/" >State</option><option value="devices/format=graph_storage/from=1793266500/to=1793352900/" >Storage</option><option value="devices/format=graph_sub10_sub10RadioLclAFER/from=1793266500/to=1793352900/" >Sub10_sub10RadioLclAFER</option><option value="devices/format=graph_sub10_sub10RadioLclDataRate/from=1793266500/to=1793352900/" >Sub10_sub10RadioLclDataRate</option><option value="devices/format=graph_sub10_sub10RadioLclLnkLoss/from=1793266500/to=1793352900/" >Sub10_sub10RadioLclLnkLoss</option><option value="devices/format=graph_sub10_sub10RadioLclRxPower/from=1793266500/to=1793352900/" >Sub10_sub10RadioLclRxPower</option><option value="devices/format=graph_sub10_sub10RadioLclTxPower/from=1793266500/to=1793352900/" >Sub10_sub10RadioLclTxPower</option><option value="devices/format=graph_sub10_sub10RadioLclVectErr/from=1793266500/to=1793352900/" >Sub10_sub10RadioLclVectErr</option><option value="devices/format=graph_temperature/from=1793266500/to=1793352900/" >Temperature</option><option value="devices/format=graph_toner/from=1793266500/to=1793352900/" >Toner</option><option value="devices/format=graph_ubnt_airfiber_Capacity/from=1793266500/to=1793352900/" >Ubnt_airfiber_Capacity</option><option value="devices/format=graph_ubnt_airfiber_LinkDist/from=1793266500/to=1793352900/" >Ubnt_airfiber_LinkDist</option><option value="devices/format=graph_ubnt_airfiber_RFTotOctetsRx/from=1793266500/to=1793352900/" >Ubnt_airfiber_RFTotOctetsRx</option><option value="devices/format=graph_ubnt_airfiber_RFTotOctetsTx/from=1793266500/to=1793352900/" >Ubnt_airfiber_RFTotOctetsTx</option><option value="devices/format=graph_ubnt_airfiber_RFTotPktsRx/from=1793266500/to=1793352900/" >Ubnt_airfiber_RFTotPktsRx</option><option value="devices/format=graph_ubnt_airfiber_RFTotPktsTx/from=1793266500/to=1793352900/" >Ubnt_airfiber_RFTotPktsTx</option><option value="devices/format=graph_ubnt_airfiber_RadioFreqs/from=1793266500/to=1793352900/" >Ubnt_airfiber_RadioFreqs</option><option value="devices/format=graph_ubnt_airfiber_RadioTemp/from=1793266500/to=1793352900/" >Ubnt_airfiber_RadioTemp</option><option value="devices/format=graph_ubnt_airfiber_RxPower/from=1793266500/to=1793352900/" >Ubnt_airfiber_RxPower</option><option value="devices/format=graph_ubnt_airfiber_TxPower/from=1793266500/to=1793352900/" >Ubnt_airfiber_TxPower</option><option value="devices/format=graph_ucd_contexts/from=1793266500/to=1793352900/" >Ucd_contexts</option><option value="devices/format=graph_ucd_cpu/from=1793266500/to=1793352900/" >Ucd_cpu</option><option value="devices/format=graph_ucd_interrupts/from=1793266500/to=1793352900/" >Ucd_interrupts</option><option value="devices/format=graph_ucd_io/from=1793266500/to=1793352900/" >Ucd_io</option><option value="devices/format=graph_ucd_load/from=1793266500/to=1793352900/" >Ucd_load</option><option value="devices/format=graph_ucd_memory/from=1793266500/to=1793352900/" >Ucd_memory</option><option value="devices/format=graph_ucd_swap_io/from=1793266500/to=1793352900/" >Ucd_swap_io</option><option value="devices/format=graph_uptime/from=1793266500/to=1793352900/" >Uptime</option><option value="devices/format=graph_voltage/from=1793266500/to=1793352900/" >Voltage</option><option value="devices/format=graph_vpdn_sessions_l2tp/from=1793266500/to=1793352900/" >Vpdn_sessions_l2tp</option><option value="devices/format=graph_vpdn_tunnels_l2tp/from=1793266500/to=1793352900/" >Vpdn_tunnels_l2tp</option><option value="devices/format=graph_waas_cwotfostatsactiveoptconn/from=1793266500/to=1793352900/" >Waas_cwotfostatsactiveoptconn</option><option value="devices/format=graph_waterflow/from=1793266500/to=1793352900/" >Waterflow</option><option value="devices/format=graph_wireless-sensor/from=1793266500/to=1793352900/" >Wireless-sensor</option><option value="devices/format=graph_wireless_ap-count/from=1793266500/to=1793352900/" >Wireless_ap-count</option><option value="devices/format=graph_wireless_capacity/from=1793266500/to=1793352900/" >Wireless_capacity</option><option value="devices/format=graph_wireless_ccq/from=1793266500/to=1793352900/" >Wireless_ccq</option><option value="devices/format=graph_wireless_clients/from=1793266500/to=1793352900/" >Wireless_clients</option><option value="devices/format=graph_wireless_distance/from=1793266500/to=1793352900/" >Wireless_distance</option><option value="devices/format=graph_wireless_error-rate/from=1793266500/to=1793352900/" >Wireless_error-rate</option><option value="devices/format=graph_wireless_error-ratio/from=1793266500/to=1793352900/" >Wireless_error-ratio</option><option value="devices/format=graph_wireless_errors/from=1793266500/to=1793352900/" >Wireless_errors</option><option value="devices/format=graph_wireless_frequency/from=1793266500/to=1793352900/" >Wireless_frequency</option><option value="devices/format=graph_wireless_mse/from=1793266500/to=1793352900/" >Wireless_mse</option><option value="devices/format=graph_wireless_noise-floor/from=1793266500/to=1793352900/" >Wireless_noise-floor</option><option value="devices/format=graph_wireless_power/from=1793266500/to=1793352900/" >Wireless_power</option><option value="devices/format=graph_wireless_quality/from=1793266500/to=1793352900/" >Wireless_quality</option><option value="devices/format=graph_wireless_rate/from=1793266500/to=1793352900/" >Wireless_rate</option><option value="devices/format=graph_wireless_rssi/from=1793266500/to=1793352900/" >Wireless_rssi</option><option value="devices/format=graph_wireless_snr/from=1793266500/to=1793352900/" >Wireless_snr</option><option value="devices/format=graph_wireless_ssr/from=1793266500/to=1793352900/" >Wireless_ssr</option><option value="devices/format=graph_wireless_utilization/from=1793266500/to=1793352900/" >Wireless_utilization</option><option value="devices/format=graph_xirrus_stations/from=1793266500/to=1793352900/" >Xirrus_stations</option><option value="devices/format=graph_zywall_sessions/from=1793266500/to=1793352900/" >Zywall_sessions</option></select><a href="devices/format=list_detail/searchbar=hide/">Remove Search</a> | <a href="devices/format=list_detail/bare=yes/">Remove Header</a>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="devices" class="table table-hover table-condensed table-striped">  
+            <thead>
+                <tr>
+    <th data-column-id="status" data-formatter="status" data-width="7px" data-searchable="false">&nbsp;</th><th data-column-id="icon" data-width="70px" data-searchable="false" data-formatter="icon">Vendor</th><th data-column-id="hostname" data-order="asc">Device</th><th data-column-id="ports" data-width="100px" data-sortable="false" data-searchable="false">Metrics</th>
+                    <th data-column-id="hardware">Platform</th>
+                    <th data-column-id="os">Operating System</th>
+                    <th data-column-id="uptime">Uptime</th>
+    <th data-column-id="location">Location</th>
+                    <th data-column-id="actions" data-width="90px" data-sortable="false" data-searchable="false" data-header-css-class="device-table-header-actions">Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    </div>
+    
+    <script>
+        var grid = $("#devices").bootgrid({
+            ajax: true,
+            rowCount: [50, 100, 250, -1],
+            columnSelection: true,
+            formatters: {
+                "status": function (column, row) {
+                    return "<span class=\"alert-status " + row.extra + "\"></span>";
+                },
+                "icon": function (column, row) {
+                    return "<span class=\"device-table-icon\">" + row.icon + "</span>";
+                },
+                "device": function (column, row) {
+                    return "<span>" + row.hostname + "</span>";
+                },
+            },
+            templates: {
+                header: "<div class=\"devices-headers-table-menu\" style=\"padding:6px 6px 0px 0px;\"><p class=\"{{css.actions}}\"></p></div><div class=\"row\"></div>"
+
+            },
+            post: function () {
+                return {
+                    id: "devices",
+                    format: ' list_detail',
+                    searchquery: '',
+                    os: '',
+                    version: '',
+                    hardware: '',
+                    features: '',
+                    location: '',
+                    type: '',
+                    state: '',
+                    disabled: '',
+                    ignore: '',
+                    group: '',
+                };
+            },
+            url: "ajax_table.php"
+        });
+
+                $(".devices-headers-table-menu").append(
+            "<div class='pull-left'>" +
+            "<form method='post' action='' class='form-inline devices-search-header' role='form'>" +
+            "<div class='form-group'>" +
+            "<input type='text' name='searchquery' id='searchquery' value='''' class='form-control input-sm' placeholder='Search'>" +
+            "</div>" +
+            "<div class='form-group'><select name='os' id='os' class='form-control input-sm'><option value=''>All OSes</option><select></div>" +
+            "<div class='form-group'><select name='version' id='version' class='form-control input-sm'><option value=''>All Versions</option></select></div>" +
+            "<div class='form-group'><select name='hardware' id='hardware' class='form-control input-sm'><option value=''>All Platforms</option></select></div>" +
+            "<div class='form-group'><select name='features' id='features' class='form-control input-sm'><option value=''>All Featuresets</option></select></div>" +
+            "<div class='form-group'><select name='location' id='location' class='form-control input-sm'><option value=''>All Locations</option></select></div>" +
+            "<div class='form-group'><select name='type' id='type' class='form-control input-sm'><option value=''>All Device Types</option></select></div>" +
+            "<input type='submit' class='btn btn-default input-sm devices-input-small' value='Search'>" +
+            "<a href='devices/format=list_detail/' title='Update the browser URL to reflect the search criteria.' class='btn btn-default input-sm devices-input-small'>Update URL</a>" +
+            "<a href='devices/' title='Reset criteria to default.' class='btn btn-default input-sm devices-input-small'>Reset</a>" +
+            "</form>" +
+            "</div>"
+        );
+            </script>
+        </div>
+  </div>
+</div>
+<script type="text/javascript">
+document.title = 'Devices - LibreNMS';
+</script>
+<script>
+        toastr.options.timeout = 10;
+        toastr.options.extendedTimeOut = 20;
+        </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+           $("#countdown_timer_status").html("<i class=\"fa fa-pause fa-fw fa-lg\"></i> Pause");
+           var Countdown = {
+               sec: 300,
+
+               Start: function() {
+                   var cur = this;
+                   this.interval = setInterval(function() {
+                       $("#countdown_timer_status").html("<i class=\"fa fa-pause fa-fw fa-lg\"></i> Pause");
+                       cur.sec -= 1;
+                       display_time = cur.sec;
+                       if (display_time == 0) {
+                           location.reload();
+                       }
+                       if (display_time % 1 === 0 && display_time <= 300) {
+                           $("#countdown_timer").html("<i class=\"fa fa-clock-o fa-fw fa-lg\"></i> Refresh in " + display_time);
+                       }
+                   }, 1000);
+               },
+
+               Pause: function() {
+                   clearInterval(this.interval);
+                   $("#countdown_timer_status").html("<i class=\"fa fa-play fa-fw fa-lg\"></i> Resume");
+                   delete this.interval;
+               },
+
+               Resume: function() {
+                   if (!this.interval) this.Start();
+               }
+           };
+
+           Countdown.Start();
+
+           $("#countdown_timer_status").click("", function(event) {
+               event.preventDefault();
+               if (Countdown.interval) {
+                   Countdown.Pause();
+               } else {
+                   Countdown.Resume();
+               }
+           });
+
+           $("#countdown_timer").click("", function(event) {
+               event.preventDefault();
+           });
+
+        });
+    </script><script type="text/javascript"></script></body>
+</html>

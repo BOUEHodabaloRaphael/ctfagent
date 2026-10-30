@@ -1,0 +1,587 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>LibreNMS</title>
+  <base href="http://tyler.thm:8080/" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="images/manifest.json">
+  <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <meta name="msapplication-config" content="images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery.bootgrid.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/tagmanager.css" rel="stylesheet" type="text/css" />
+  <link href="css/mktree.css" rel="stylesheet" type="text/css" />
+  <link href="css/vis.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery.gridster.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/leaflet.css" rel="stylesheet" type="text/css" />
+  <link href="css/MarkerCluster.css" rel="stylesheet" type="text/css" />
+  <link href="css/MarkerCluster.Default.css" rel="stylesheet" type="text/css" />
+  <link href="css/L.Control.Locate.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/leaflet.awesome-markers.css" rel="stylesheet" type="text/css" />
+  <link href="css/select2.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/query-builder.default.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/styles.css?ver=20181128" rel="stylesheet" type="text/css" />
+  <link href="css/light.css?ver=632417642" rel="stylesheet" type="text/css" />
+  <script src="js/polyfill.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-hover-dropdown.min.js"></script>
+  <script src="js/bootstrap-switch.min.js"></script>
+  <script src="js/hogan-2.0.0.js"></script>
+  <script src="js/jquery.cycle2.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/typeahead.bundle.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/tagmanager.js"></script>
+  <script src="js/mktree.js"></script>
+  <script src="js/jquery.bootgrid.min.js"></script>
+  <script src="js/handlebars.min.js"></script>
+  <script src="js/pace.min.js"></script>
+  <script src="js/qrcode.min.js"></script>
+      <script src="js/jquery.lazyload.min.js"></script>
+  <script src="js/lazyload.js"></script>
+      <script src="js/select2.min.js"></script>
+  <script src="js/librenms.js?ver=20181130"></script>
+  <script type="text/javascript">
+
+    <!-- Begin
+    function popUp(URL)
+    {
+      day = new Date();
+      id = day.getTime();
+      eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=550,height=600');");
+    }
+    // End -->
+  </script>
+  <script type="text/javascript" src="js/overlib_mini.js"></script>
+  <script type="text/javascript" src="js/toastr.min.js"></script>
+</head>
+<body>
+
+<script>updateResolution();</script>
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navHeaderCollapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="hidden-md hidden-sm navbar-brand" href=""><img src="images/librenms_logo_light.svg" /></a>    </div>
+
+    <div class="collapse navbar-collapse" id="navHeaderCollapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="overview/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-home fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Overview</span></a>
+          <ul class="dropdown-menu multi-level" role="menu">
+              <li><a href="overview/"><i class="fa fa-tv fa-fw fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+           <li class="dropdown-submenu">
+            <a href="overview/"><i class="fa fa-map fa-fw fa-lg" aria-hidden="true"></i> Maps</a>
+            <ul class="dropdown-menu">
+              <li><a href="availability-map/"><i class="fa fa-arrow-circle-up fa-fw fa-lg" aria-hidden="true"></i> Availability</a></li>
+              <li><a href="map/"><i class="fa fa-sitemap fa-fw fa-lg" aria-hidden="true"></i> Network</a></li>
+                              <li><a href="fullscreenmap/"><i class="fa fa-expand fa-fw fa-lg" aria-hidden="true"></i> Geographical</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a><i class="fa fa-plug fa-fw fa-lg" aria-hidden="true"></i> Plugins</a>
+            <ul class="dropdown-menu">
+                <li><a href="plugin/view=admin"> <i class="fa fa-lock fa-fw fa-lg" aria-hidden="true"></i>Plugin Admin</a></li>            </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a href="overview/"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> Tools</a>
+           <ul class="dropdown-menu scrollable-menu">
+           <li><a href="ripenccapi/"><i class="fa fa-star fa-fw fa-lg" aria-hidden="true"></i> RIPE NCC API</a></li>
+           </ul>
+          </li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="eventlog/"><i class="fa fa-bookmark fa-fw fa-lg" aria-hidden="true"></i> Eventlog</a></li>
+            <li><a href="inventory/"><i class="fa fa-cube fa-fw fa-lg" aria-hidden="true"></i> Inventory</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="search/search=ipv4/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> IPv4 Address</a></li>
+            <li><a href="search/search=ipv6/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> IPv6 Address</a></li>
+            <li><a href="search/search=mac/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> MAC Address</a></li>
+            <li><a href="search/search=arp/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> ARP Tables</a></li>
+            <li><a href="search/search=fdb/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> FDB Tables</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="devices/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-server fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Devices</span></a>
+          <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                  <a href="devices/"><i class="fa fa-server fa-fw fa-lg" aria-hidden="true"></i> All Devices</a>
+                  <ul class="dropdown-menu scrollable-menu">
+            <li><a href="devices/type=generic/"><i class="fa fa-angle-double-right fa-fw fa-lg" aria-hidden="true"></i> Generic</a></li></ul></li>
+            <li role="presentation" class="divider"></li><li><a href="device-groups/"><i class="fa fa-th fa-fw fa-lg" aria-hidden="true"></i> Manage Groups</a></li><li><a href="device-dependencies/"><i class="fa fa-group fa-fw fa-lg"></i> Device Dependencies</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="addhost/"><i class="fa fa-plus fa-fw fa-lg" aria-hidden="true"></i> Add Device</a></li>
+            <li><a href="delhost/"><i class="fa fa-trash fa-fw fa-lg" aria-hidden="true"></i> Delete Device</a></li>          </ul>
+        </li>
+
+
+    <!-- PORTS -->
+        <li class="dropdown">
+          <a href="ports/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-link fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Ports</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="ports/"><i class="fa fa-link fa-fw fa-lg" aria-hidden="true"></i> All Ports</a></li>
+
+            <li><a href="pseudowires/"><i class="fa fa-arrows-alt fa-fw fa-lg" aria-hidden="true"></i> Pseudowires</a></li>            <li role="presentation" class="divider"></li>            <li><a href="customers/"><i class="fa fa-users fa-fw fa-lg" aria-hidden="true"></i> Customers</a></li>            <li><a href="iftype/type=transit/"><i class="fa fa-truck fa-fw fa-lg" aria-hidden="true"></i> Transit</a></li>            <li><a href="iftype/type=peering/"><i class="fa fa-handshake-o fa-fw fa-lg" aria-hidden="true"></i> Peering</a></li>            <li><a href="iftype/type=peering,transit/"><i class="fa fa-rocket fa-fw fa-lg" aria-hidden="true"></i> Peering + Transit</a></li>            <li><a href="iftype/type=core/"><i class="fa fa-code-fork fa-fw fa-lg" aria-hidden="true"></i> Core</a></li>            <li role="presentation" class="divider"></li>
+            <li><a href="ports/state=down/"><i class="fa fa-arrow-circle-down fa-fw fa-lg" aria-hidden="true"></i> Down</a></li>
+            <li><a href="ports/state=admindown/"><i class="fa fa-arrow-circle-o-down fa-fw fa-lg" aria-hidden="true"></i> Disabled</a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="health/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-heartbeat fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Health</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="health/metric=mempool/"><i class="fa fa-braille fa-fw fa-lg" aria-hidden="true"></i> Memory</a></li>
+            <li><a href="health/metric=processor/"><i class="fa fa-microchip fa-fw fa-lg" aria-hidden="true"></i> Processor</a></li>
+            <li><a href="health/metric=storage/"><i class="fa fa-database fa-fw fa-lg" aria-hidden="true"></i> Storage</a></li>
+<li role="presentation" class="divider"></li><li><a href="health/metric=toner/"><i class="fa fa-print fa-fw fa-lg"></i> Toner</a></li>
+
+          </ul>
+        </li>
+
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-exclamation-circle fa-col-success fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Alerts</span></a>
+          <ul class="dropdown-menu">
+              <li><a href="alerts/"><i class="fa fa-bell fa-fw fa-lg" aria-hidden="true"></i> Notifications</a></li>
+              <li><a href="alert-log/"><i class="fa fa-file-text fa-fw fa-lg" aria-hidden="true"></i> Alert History</a></li>
+              <li><a href="alert-stats/"><i class="fa fa-bar-chart fa-fw fa-lg" aria-hidden="true"></i> Statistics</a></li>
+                                    <li role="presentation" class="divider"></li>
+                    <li><a href="alert-rules/"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> Alert Rules</a></li>
+                    <li><a href="alert-schedule/"><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i> Scheduled Maintenance</a></li>
+                    <li><a href="templates/"><i class="fa fa-file fa-fw fa-lg" aria-hidden="true"></i> Alert Templates</a></li>
+                    <li><a href="alert-transports/"><i class="fa fa-bus fa-fw fa-lg" aria-hidden="true"></i> Alert Transports</a></li>
+                          </ul>
+      </li>
+
+
+    </ul>
+     <form role="search" class="navbar-form navbar-right global-search">
+         <div class="form-group">
+             <input class="form-control typeahead" type="search" id="gsearch" name="gsearch" placeholder="Global Search">
+         </div>
+     </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+<a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-user fa-fw fa-lg fa-nav-icons" aria-hidden="true"></i> <span class="visible-xs-inline-block">User</span><span class="badge badge-navbar-user count-notif badge-default">0</span></a>        <ul class="dropdown-menu">
+          <li><a href="preferences/"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i> My Settings</a></li>
+<li><a href="notifications/"><span class="badge count-notif">0</span> Notifications</a></li>          <li role="presentation" class="divider"></li>
+<li><a href="http://10.10.133.54:8080/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out fa-fw fa-lg" aria-hidden="true"></i> Logout</a><form id="logout-form" action="http://10.10.133.54:8080/logout" method="POST" style="display: none;"><input type="hidden" name="_token" value="lAwTjJUZw4yCSDyIub4YdhXzi9mVXHjb9fVkjXYf"></form></li>         </ul>
+       </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" style="margin-left:5px"><i class="fa fa-cog fa-fw fa-lg fa-nav-icons" aria-hidden="true"></i> <span class="visible-xs-inline-block">Settings</span></a>
+        <ul class="dropdown-menu">
+<li><a href="settings/"><i class="fa fa-cogs fa-fw fa-lg" aria-hidden="true"></i> Global Settings</a></li><li><a href="validate/"><i class="fa fa-check-circle fa-fw fa-lg" aria-hidden="true"></i> Validate Config</a></li>          <li role="presentation" class="divider"></li>
+
+
+           <li><a href="adduser/"><i class="fa fa-user-plus fa-fw fa-lg" aria-hidden="true"></i> Add User</a></li>
+           <li><a href="deluser/"><i class="fa fa-user-times fa-fw fa-lg" aria-hidden="true"></i> Remove User</a></li>
+           
+           <li><a href="edituser/"><i class="fa fa-user-circle-o fa-fw fa-lg" aria-hidden="true"></i> Edit User</a></li>
+           <li><a href="authlog/"><i class="fa fa-shield fa-fw fa-lg" aria-hidden="true"></i> Auth History</a></li>
+           <li role="presentation" class="divider"></li> 
+           <li class="dropdown-submenu">
+               <a href="pollers"><i class="fa fa-th-large fa-fw fa-lg" aria-hidden="true"></i> Pollers</a>
+               <ul class="dropdown-menu scrollable-menu">
+               <li><a href="pollers/tab=pollers/"><i class="fa fa-th-large fa-fw fa-lg" aria-hidden="true"></i> Pollers</a></li>    <li><a href="pollers/tab=performance/"><i class="fa fa-line-chart fa-fw fa-lg" aria-hidden="true"></i> Performance</a></li>    <li><a href="pollers/tab=log/"><i class="fa fa-file-text fa-fw fa-lg" aria-hidden="true"></i> History</a></li>
+               </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li class="dropdown-submenu">
+           <a href="#"><i class="fa fa-code fa-fw fa-lg" aria-hidden="true"></i> API</a>
+           <ul class="dropdown-menu scrollable-menu">
+             <li><a href="api-access/"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i> API Settings</a></li>
+             <li><a href="https://docs.librenms.org/API/" target="_blank" rel="noopener"><i class="fa fa-book fa-fw fa-lg" aria-hidden="true"></i> API Docs</a></li>
+           </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li class="dropdown-submenu">
+               <a href="#"><span class="countdown_timer" id="countdown_timer"></span></a>
+               <ul class="dropdown-menu scrollable-menu">
+                   <li><a href="#"><span class="countdown_timer_status" id="countdown_timer_status"></span></a></li>
+               </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li><a href="about/"><i class="fa fa-info-circle fa-fw fa-lg" aria-hidden="true"></i> About&nbsp;LibreNMS</a></li>
+         </ul>
+       </li>
+     </ul>
+   </div>
+ </div>
+</nav>
+<script>
+var devices = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=device",
+        filter: function (devices) {
+            return $.map(devices, function (device) {
+                return {
+                    device_id: device.device_id,
+                    device_image: device.device_image,
+                    url: device.url,
+                    name: device.name,
+                    device_os: device.device_os,
+                    version: device.version,
+                    device_hardware: device.device_hardware,
+                    device_ports: device.device_ports,
+                    location: device.location
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+var ports = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=ports",
+        filter: function (ports) {
+            return $.map(ports, function (port) {
+                return {
+                    count: port.count,
+                    url: port.url,
+                    name: port.name,
+                    description: port.description,
+                    colours: port.colours,
+                    hostname: port.hostname
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+var bgp = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=bgp",
+        filter: function (bgp_sessions) {
+            return $.map(bgp_sessions, function (bgp) {
+                return {
+                    count: bgp.count,
+                    url: bgp.url,
+                    name: bgp.name,
+                    description: bgp.description,
+                    localas: bgp.localas,
+                    bgp_image: bgp.bgp_image,
+                    remoteas: bgp.remoteas,
+                    colours: bgp.colours,
+                    hostname: bgp.hostname
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+
+if ($(window).width() < 768) {
+    var cssMenu = 'typeahead-left';
+} else {
+    var cssMenu = '';
+}
+
+devices.initialize();
+ports.initialize();
+bgp.initialize();
+$('#gsearch').bind('typeahead:select', function(ev, suggestion) {
+    window.location.href = suggestion.url;
+});
+$('#gsearch').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1,
+    classNames: {
+        menu: cssMenu
+    }
+},
+{
+  source: devices.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;Devices</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><img src="{{device_image}}" border="0"> <small><strong>{{name}}</strong> | {{device_os}} | {{version}} | {{device_hardware}} with {{device_ports}} port(s) | {{location}}</small></a></p>')
+    }
+},
+{
+  source: ports.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;Ports</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><small><i class="fa fa-link fa-sm icon-theme" aria-hidden="true"></i> <strong>{{name}}</strong> – {{hostname}}<br /><i>{{description}}</i></small></a></p>')
+    }
+},
+{
+  source: bgp.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;BGP Sessions</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><small>{{{bgp_image}}} {{name}} - {{hostname}}<br />AS{{localas}} -> AS{{remoteas}}</small></a></p>')
+    }
+});
+$('#gsearch').bind('typeahead:open', function(ev, suggestion) {
+    $('#gsearch').addClass('search-box');
+});
+</script>
+
+<br />
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+<div class="panel panel-default"><div class="panel-body "><img src="images/os/generic.svg" title="generic" class="device-icon-header pull-left"  />
+<div class="pull-left" style="margin-top: 5px;">
+<span style="font-size: 20px;"><a class="list-device" href="device/device=1/" onmouseover="return overlib('<div style=\'background-color: #FFFFFF;\'><div><span class=\'list-large\'>127.0.0.4</span> - Generic Device</div><div class=\'overlib-box\'><span class=\'overlib-title\'>Processor Usage</span><br /><img class=\'minigraph-image\' width=\'275\' height=\'100\' src=\'graph.php?device=1&amp;from=1793266800&amp;to=1793353200&amp;width=275&amp;height=100&amp;type=device_processor&amp;legend=no&amp;absolute=0\'><img class=\'minigraph-image\' width=\'275\' height=\'100\' src=\'graph.php?device=1&amp;from=1792748400&amp;to=1793353200&amp;width=275&amp;height=100&amp;type=device_processor&amp;legend=no&amp;absolute=0\'></div><div class=\'overlib-box\'><span class=\'overlib-title\'>Memory Usage</span><br /><img class=\'minigraph-image\' width=\'275\' height=\'100\' src=\'graph.php?device=1&amp;from=1793266800&amp;to=1793353200&amp;width=275&amp;height=100&amp;type=device_mempool&amp;legend=no&amp;absolute=0\'><img class=\'minigraph-image\' width=\'275\' height=\'100\' src=\'graph.php?device=1&amp;from=1792748400&amp;to=1793353200&amp;width=275&amp;height=100&amp;type=device_mempool&amp;legend=no&amp;absolute=0\'></div></div>',FGCOLOR,'#ffffff', BGCOLOR, '#e5e5e5', BORDER, 5, CELLPAD, 4, CAPCOLOR, '#555555', TEXTCOLOR, '#3e3e3e',WRAP,HAUTO,VAUTO); " onmouseout="return nd();">127.0.0.4</a></span><br />
+<a href="devices/"></a>
+</div><div class="pull-right"><div style='float: right; text-align: center; padding: 1px 5px; margin: 0 1px; ' class='rounded-5px'><a href="graphs/to=1793353200/device=1/type=device_processor/from=1793266800/legend=yes/" onmouseover="return overlib('<div style=\'background-color: #FFFFFF;\'><div class=list-large></div><div style=\'width: 850px\'><img src=\'graph.php?height=100&amp;width=340&amp;to=1793353200&amp;device=1&amp;type=device_processor&amp;from=1793266800&amp;legend=yes&amp;popup_title=&amp;bg=FFFFFF00\' style=\'border:0;\' /><img src=\'graph.php?height=100&amp;width=340&amp;to=1793353200&amp;device=1&amp;type=device_processor&amp;from=1792748400&amp;legend=yes&amp;popup_title=&amp;bg=FFFFFF00\' style=\'border:0;\' /><img src=\'graph.php?height=100&amp;width=340&amp;to=1793353200&amp;device=1&amp;type=device_processor&amp;from=1790674800&amp;legend=yes&amp;popup_title=&amp;bg=FFFFFF00\' style=\'border:0;\' /><img src=\'graph.php?height=100&amp;width=340&amp;to=1793353200&amp;device=1&amp;type=device_processor&amp;from=1761817200&amp;legend=yes&amp;popup_title=&amp;bg=FFFFFF00\' style=\'border:0;\' /></div></div>',FGCOLOR,'#ffffff', BGCOLOR, '#e5e5e5', BORDER, 5, CELLPAD, 4, CAPCOLOR, '#555555', TEXTCOLOR, '#3e3e3e',WRAP,HAUTO,VAUTO); " onmouseout="return nd();"><img src="graph.php?height=45&amp;width=150&amp;to=1793353200&amp;device=1&amp;type=device_processor&amp;from=1793266800&amp;legend=no&amp;popup_title=&amp;bg=FFFFFF00" style="border:0;" /></a><div style='font-weight: bold; font-size: 7pt; margin: -3px;'>Processor Usage</div></div><div style='float: right; text-align: center; padding: 1px 5px; margin: 0 1px; ' class='rounded-5px'><a href="graphs/to=1793353200/device=1/type=device_mempool/from=1793266800/legend=yes/" onmouseover="return overlib('<div style=\'background-color: #FFFFFF;\'><div class=list-large></div><div style=\'width: 850px\'><img src=\'graph.php?height=100&amp;width=340&amp;to=1793353200&amp;device=1&amp;type=device_mempool&amp;from=1793266800&amp;legend=yes&amp;popup_title=&amp;bg=FFFFFF00\' style=\'border:0;\' /><img src=\'graph.php?height=100&amp;width=340&amp;to=1793353200&amp;device=1&amp;type=device_mempool&amp;from=1792748400&amp;legend=yes&amp;popup_title=&amp;bg=FFFFFF00\' style=\'border:0;\' /><img src=\'graph.php?height=100&amp;width=340&amp;to=1793353200&amp;device=1&amp;type=device_mempool&amp;from=1790674800&amp;legend=yes&amp;popup_title=&amp;bg=FFFFFF00\' style=\'border:0;\' /><img src=\'graph.php?height=100&amp;width=340&amp;to=1793353200&amp;device=1&amp;type=device_mempool&amp;from=1761817200&amp;legend=yes&amp;popup_title=&amp;bg=FFFFFF00\' style=\'border:0;\' /></div></div>',FGCOLOR,'#ffffff', BGCOLOR, '#e5e5e5', BORDER, 5, CELLPAD, 4, CAPCOLOR, '#555555', TEXTCOLOR, '#3e3e3e',WRAP,HAUTO,VAUTO); " onmouseout="return nd();"><img src="graph.php?height=45&amp;width=150&amp;to=1793353200&amp;device=1&amp;type=device_mempool&amp;from=1793266800&amp;legend=no&amp;popup_title=&amp;bg=FFFFFF00" style="border:0;" /></a><div style='font-weight: bold; font-size: 7pt; margin: -3px;'>Memory Usage</div></div></div><br style="clear: both;" /></div></div><ul class="nav nav-tabs">
+                <li role="presentation" >
+                <a href="device/device=1/tab=overview/">
+		<i class="fa fa-lightbulb-o fa-lg icon-theme" aria-hidden="true"></i> Overview
+                </a>
+                </li><li role="presentation" >
+            <a href="device/device=1/tab=graphs/">
+            <i class="fa fa-area-chart fa-lg icon-theme" aria-hidden="true"></i> Graphs
+            </a>
+            </li><li role="presentation" >
+            <a href="device/device=1/tab=logs/">
+            <i class="fa fa-sticky-note fa-lg icon-theme"  aria-hidden="true"></i> Logs
+            </a>
+            </li><li role="presentation" >
+            <a href="device/device=1/tab=alerts/">
+            <i class="fa fa-exclamation-circle fa-lg icon-theme"  aria-hidden="true"></i> Alerts
+            </a>
+            </li><li role="presentation" >
+            <a href="device/device=1/tab=alert-stats/">
+            <i class="fa fa-bar-chart fa-lg icon-theme"  aria-hidden="true"></i> Alert Stats
+            </a>
+            </li><li role="presentation" >
+                <a href="device/device=1/tab=performance/">
+                <i class="fa fa-line-chart fa-lg icon-theme"  aria-hidden="true"></i> Performance
+                </a>
+                </li><li role="presentation" >
+            <a href="device/device=1/tab=notes/">
+            <i class="fa fa-file-text-o fa-lg icon-theme"  aria-hidden="true"></i> Notes
+            </a>
+            </li><div class="dropdown pull-right">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-cog fa-lg icon-theme"  aria-hidden="true"></i>
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://127.0.0.4" target="_blank" rel="noopener"><i class="fa fa-globe fa-lg icon-theme"  aria-hidden="true"></i> Web</a></li><li><a href="ssh://127.0.0.4" target="_blank" rel="noopener"><i class="fa fa-lock fa-lg icon-theme"  aria-hidden="true"></i> SSH</a></li>
+            <li><a href="telnet://127.0.0.4" target="_blank" rel="noopener"><i class="fa fa-terminal fa-lg icon-theme"  aria-hidden="true"></i> Telnet</a></li><li>
+                <a href="device/device=1/tab=edit/">
+                <i class="fa fa-pencil fa-lg icon-theme"  aria-hidden="true"></i> Edit </a>
+                </li><li><a href="device/device=1/tab=capture/">
+                <i class="fa fa-bug fa-lg icon-theme"  aria-hidden="true"></i> Capture
+                </a></li></ul>
+            </div></ul><div class="tabcontent">    <h2>Capture Debug Information</h2>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a data-toggle="tab" href="#discovery">Discovery</a></li>
+        <li role="presentation"><a data-toggle="tab" href="#poller">Poller</a></li>
+        <li role="presentation"><a data-toggle="tab" href="#snmp">SNMP</a></li>
+        <li role="presentation"><a data-toggle="tab" href="#alerts">Alerts</a></li>
+    </ul>
+    <div class="tab-content">
+            <div id="discovery" class="tab-pane fade  in active">
+        <div class="row"><div class="col-md-12">
+        <div class="btn-toolbar" role="toolbar" style="margin:5px 0 5px 0">
+        <button type="button" class="btn btn-success" id="run-discovery"><i class="fa fa-play fa-lg"></i> Run</button>
+        <button type="button" class="btn btn-primary" id="copy-discovery"><i class="fa fa-clipboard fa-lg"></i> Copy</button>
+        <a class="btn btn-warning" href="ajax_output.php?id=capture&format=download&type=discovery&hostname=127.0.0.4"><i class="fa fa-download fa-lg"></i> Download</a>
+        </div></div></div>
+        <div class="row"><div class="col-md-12">
+        <textarea readonly id="output-discovery" class="form-control" rows="30" placeholder="Output" style="resize:vertical;"></textarea>
+        </div></div>
+        </div>
+        <script type="text/javascript">
+
+            document.getElementById('copy-discovery').onclick = function() {
+                output = document.getElementById("output-discovery");
+                output.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    alert('Unsupported Browser!');
+                }
+            };
+
+            document.getElementById('run-discovery').onclick = function () {
+                output = document.getElementById("output-discovery");
+                xhr = new XMLHttpRequest();
+                xhr.open("GET", "ajax_output.php?id=capture&format=text&type=discovery&hostname=127.0.0.4", true);
+                xhr.onprogress = function (e) {
+                    output.innerHTML = e.currentTarget.responseText;
+                    output.scrollTop = output.scrollHeight - output.clientHeight; // scrolls the output area
+                };
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        console.log("Complete");
+                    }
+                };
+                xhr.send();
+            };
+        </script>
+                <div id="poller" class="tab-pane fade ">
+        <div class="row"><div class="col-md-12">
+        <div class="btn-toolbar" role="toolbar" style="margin:5px 0 5px 0">
+        <button type="button" class="btn btn-success" id="run-poller"><i class="fa fa-play fa-lg"></i> Run</button>
+        <button type="button" class="btn btn-primary" id="copy-poller"><i class="fa fa-clipboard fa-lg"></i> Copy</button>
+        <a class="btn btn-warning" href="ajax_output.php?id=capture&format=download&type=poller&hostname=127.0.0.4"><i class="fa fa-download fa-lg"></i> Download</a>
+        </div></div></div>
+        <div class="row"><div class="col-md-12">
+        <textarea readonly id="output-poller" class="form-control" rows="30" placeholder="Output" style="resize:vertical;"></textarea>
+        </div></div>
+        </div>
+        <script type="text/javascript">
+
+            document.getElementById('copy-poller').onclick = function() {
+                output = document.getElementById("output-poller");
+                output.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    alert('Unsupported Browser!');
+                }
+            };
+
+            document.getElementById('run-poller').onclick = function () {
+                output = document.getElementById("output-poller");
+                xhr = new XMLHttpRequest();
+                xhr.open("GET", "ajax_output.php?id=capture&format=text&type=poller&hostname=127.0.0.4", true);
+                xhr.onprogress = function (e) {
+                    output.innerHTML = e.currentTarget.responseText;
+                    output.scrollTop = output.scrollHeight - output.clientHeight; // scrolls the output area
+                };
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        console.log("Complete");
+                    }
+                };
+                xhr.send();
+            };
+        </script>
+                <div id="snmp" class="tab-pane fade ">
+        <div class="row"><div class="col-md-12">
+        <div class="btn-toolbar" role="toolbar" style="margin:5px 0 5px 0">
+        <button type="button" class="btn btn-success" id="run-snmp"><i class="fa fa-play fa-lg"></i> Run</button>
+        <button type="button" class="btn btn-primary" id="copy-snmp"><i class="fa fa-clipboard fa-lg"></i> Copy</button>
+        <a class="btn btn-warning" href="ajax_output.php?id=capture&format=download&type=snmpwalk&hostname=127.0.0.4"><i class="fa fa-download fa-lg"></i> Download</a>
+        </div></div></div>
+        <div class="row"><div class="col-md-12">
+        <textarea readonly id="output-snmp" class="form-control" rows="30" placeholder="Output" style="resize:vertical;"></textarea>
+        </div></div>
+        </div>
+        <script type="text/javascript">
+
+            document.getElementById('copy-snmp').onclick = function() {
+                output = document.getElementById("output-snmp");
+                output.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    alert('Unsupported Browser!');
+                }
+            };
+
+            document.getElementById('run-snmp').onclick = function () {
+                output = document.getElementById("output-snmp");
+                xhr = new XMLHttpRequest();
+                xhr.open("GET", "ajax_output.php?id=capture&format=text&type=snmpwalk&hostname=127.0.0.4", true);
+                xhr.onprogress = function (e) {
+                    output.innerHTML = e.currentTarget.responseText;
+                    output.scrollTop = output.scrollHeight - output.clientHeight; // scrolls the output area
+                };
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        console.log("Complete");
+                    }
+                };
+                xhr.send();
+            };
+        </script>
+                <div id="alerts" class="tab-pane fade ">
+        <div class="row"><div class="col-md-12">
+        <div class="btn-toolbar" role="toolbar" style="margin:5px 0 5px 0">
+        <button type="button" class="btn btn-success" id="run-alerts"><i class="fa fa-play fa-lg"></i> Run</button>
+        <button type="button" class="btn btn-primary" id="copy-alerts"><i class="fa fa-clipboard fa-lg"></i> Copy</button>
+        <a class="btn btn-warning" href="ajax_output.php?id=query&format=download&type=alerts&hostname=127.0.0.4"><i class="fa fa-download fa-lg"></i> Download</a>
+        </div></div></div>
+        <div class="row"><div class="col-md-12">
+        <textarea readonly id="output-alerts" class="form-control" rows="30" placeholder="Output" style="resize:vertical;"></textarea>
+        </div></div>
+        </div>
+        <script type="text/javascript">
+
+            document.getElementById('copy-alerts').onclick = function() {
+                output = document.getElementById("output-alerts");
+                output.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    alert('Unsupported Browser!');
+                }
+            };
+
+            document.getElementById('run-alerts').onclick = function () {
+                output = document.getElementById("output-alerts");
+                xhr = new XMLHttpRequest();
+                xhr.open("GET", "ajax_output.php?id=query&format=text&type=alerts&hostname=127.0.0.4", true);
+                xhr.onprogress = function (e) {
+                    output.innerHTML = e.currentTarget.responseText;
+                    output.scrollTop = output.scrollHeight - output.clientHeight; // scrolls the output area
+                };
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        console.log("Complete");
+                    }
+                };
+                xhr.send();
+            };
+        </script>
+        </div></div>    </div>
+  </div>
+</div>
+<script type="text/javascript">
+document.title = '127.0.0.4 - Capture - LibreNMS';
+</script>
+<script>
+        toastr.options.timeout = 10;
+        toastr.options.extendedTimeOut = 20;
+        </script>
+    <script type="text/javascript">
+    var no_refresh = true;
+    $(document).ready(function() {
+        $("#countdown_timer").html("Refresh disabled");
+        $("#countdown_timer_status").html("<i class=\"fa fa-pause fa-fw fa-lg\"></i>");
+        $("#countdown_timer_status").click("", function(event) {
+            event.preventDefault();
+        });
+     });
+</script><script type="text/javascript"></script></body>
+</html>

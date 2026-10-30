@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>I Love Hills - Home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body><div class="container" style="padding-top:60px">
+    <h1 class="text-center">I LOVE HILLS!</h1>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-info text-center">
+                <p>Welcome to my collection of hills I've climbed!</p>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Search For Hills</strong></div>
+                <div class="panel-body">
+                    <form method="post" action="/search">
+                        <div><label>Search for keywords i.e Grass,Hilly,Steep</label></div>
+                        <div><input name="q" class="form-control" placeholder="Search string...."></div>
+                        <div style="margin-top:15px">
+                            <a href="/feed?dir=hills"><img src="../images/feed.png" height="16"></a>
+                            <input type="submit" class="btn btn-success pull-right" value="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+# Nmap 7.99 scan initiated Fri Oct 30 07:52:30 2026 as: /usr/lib/nmap/nmap --privileged -Pn -p22,80,81,82,2222,8888,9999 -sV -sC -oN ./koth_10.10.124.38_1793346722/services.txt 10.10.124.38
+Nmap scan report for 10.10.124.38
+Host is up (0.11s latency).
+
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 c7:09:ca:52:e8:29:91:c8:36:67:40:16:b6:53:8b:92 (RSA)
+|   256 d3:36:d4:bd:74:04:66:cb:90:88:b3:d6:3c:3a:68:16 (ECDSA)
+|_  256 33:23:f8:be:48:2e:7e:57:ca:26:fd:eb:3c:76:07:7d (ED25519)
+80/tcp   open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+| http-title: Server Manager Login
+|_Requested resource was /login
+81/tcp   open  http    nginx 1.18.0 (Ubuntu)
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+|_http-title: Home Page
+82/tcp   open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: I Love Hills - Home
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+2222/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 4f:93:9a:3f:4b:cc:77:91:e3:c4:e2:67:93:fb:98:79 (RSA)
+|   256 00:f9:5e:65:86:74:d8:2d:e1:8d:62:f6:7d:be:a7:07 (ECDSA)
+|_  256 01:a0:a5:3c:2e:5e:02:fe:f5:d2:8a:dd:4c:44:1a:2b (ED25519)
+8888/tcp open  http    Werkzeug httpd 0.16.0 (Python 3.8.5)
+|_http-title: Site doesn't have a title (text/html; charset=utf-8).
+9999/tcp open  http    Golang net/http server
+|_http-title: Site doesn't have a title.
+| fingerprint-strings: 
+|   FourOhFourRequest, HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     Date: Fri, 30 Oct 2026 07:52:44 GMT
+|     Content-Length: 0
+|   GenericLines, Help, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, Socks5: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|     Request
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Date: Fri, 30 Oct 2026 07:52:43 GMT
+|     Content-Length: 0
+|   OfficeScan: 
+|     HTTP/1.1 400 Bad Request: missing required Host header
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|_    Request: missing required Host header
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port9999-TCP:V=7.99%I=7%D=10/30%Time=6AE44CC8%P=x86_64-pc-linux-gnu%r(G
+SF:etRequest,4B,"HTTP/1\.0\x20200\x20OK\r\nDate:\x20Fri,\x2030\x20Oct\x202
+SF:026\x2007:52:43\x20GMT\r\nContent-Length:\x200\r\n\r\n")%r(HTTPOptions,
+SF:4B,"HTTP/1\.0\x20200\x20OK\r\nDate:\x20Fri,\x2030\x20Oct\x202026\x2007:
+SF:52:44\x20GMT\r\nContent-Length:\x200\r\n\r\n")%r(FourOhFourRequest,4B,"
+SF:HTTP/1\.0\x20200\x20OK\r\nDate:\x20Fri,\x2030\x20Oct\x202026\x2007:52:4
+SF:4\x20GMT\r\nContent-Length:\x200\r\n\r\n")%r(GenericLines,67,"HTTP/1\.1
+SF:\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=ut
+SF:f-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%r(RTSPReques
+SF:t,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain
+SF:;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request
+SF:")%r(Help,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20te
+SF:xt/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x2
+SF:0Request")%r(SSLSessionReq,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCo
+SF:ntent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n
+SF:\r\n400\x20Bad\x20Request")%r(LPDString,67,"HTTP/1\.1\x20400\x20Bad\x20
+SF:Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:
+SF:\x20close\r\n\r\n400\x20Bad\x20Request")%r(SIPOptions,67,"HTTP/1\.1\x20
+SF:400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\
+SF:r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%r(Socks5,67,"HTT
+SF:P/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20char
+SF:set=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request")%r(Offi
+SF:ceScan,A3,"HTTP/1\.1\x20400\x20Bad\x20Request:\x20missing\x20required\x
+SF:20Host\x20header\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nCo
+SF:nnection:\x20close\r\n\r\n400\x20Bad\x20Request:\x20missing\x20required
+SF:\x20Host\x20header");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Oct 30 07:53:21 2026 -- 1 IP address (1 host up) scanned in 50.74 seconds

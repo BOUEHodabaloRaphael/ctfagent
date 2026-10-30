@@ -1,0 +1,16 @@
+Anonymous login successful
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	print$          Disk      Printer Drivers
+	public          Disk      
+	IPC$            IPC       IPC Service (Samba 4.9.1)
+Reconnecting with SMB1 for workgroup listing.
+Anonymous login successful
+
+	Server               Comment
+	---------            -------
+
+	Workgroup            Master
+	---------            -------
+	SAMBA                TYLER
