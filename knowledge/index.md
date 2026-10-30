@@ -192,6 +192,7 @@
 
 ### misc
 - [Cross-Forest AD Pro Lab Escalation: SQLAgent Proxy RCE to Cred Reuse to RBCD/S4U](knowledge/patterns/misc/ad-cross-forest-sqlagent-rbcd-s4u-chain.md)
+- [Methodologie Attack-Defense CTF — mecanique, ordre des operations, toolkit](knowledge/patterns/misc/attack-defense-methodology-toolkit.md)
 - [Bisection a variable unique pour quiz/formulaire a feedback global seul](knowledge/patterns/misc/c3sa-cwl-quiz-bisection.md)
 - [DANTE DC02 - AS-REP Roasting puis DCSync administrateur](knowledge/patterns/misc/dc02-asrep-roasting-dcsync.md)
 - [.NET Plugin DLL Hijack (namespace must match filename)](knowledge/patterns/misc/dotnet-plugin-dll-hijack.md)
@@ -214,6 +215,7 @@
 - [Coercition WebDAV via NetBIOS court (pas FQDN) pour relais NTLM->LDAP RBCD](knowledge/patterns/misc/intercept-webclient-coercion-ntlm-relay-rbcd.md)
 - [Kiosk / Electron Breakout via Crashed Driver Dialog](knowledge/patterns/misc/kiosk-electron-breakout-crash-dialog.md)
 - [Brute-force a small PRNG seed using the known flag prefix](knowledge/patterns/misc/known-prefix-seed-bruteforce.md)
+- [Methodologie King of the Hill — validee (2 victoires / 3 rounds TryHackMe)](knowledge/patterns/misc/koth-methodology-thm-validated.md)
 - [Malicious PDF: AcroForm-stashed JSFuck payload with layered decode and covert RSS C2](knowledge/patterns/misc/malicious-pdf-js-obfuscation-c2-pattern.md)
 - [ThunderCipher NightCipher - QR code cache, bruteforce SSH puis injection de variable dans script sudo](knowledge/patterns/misc/nightcipher-qr-ftp-sudo-var-injection.md)
 - [DANTE NIX02 - reutilisation de cle SSH root pivot](knowledge/patterns/misc/nix02-ssh-key-reuse.md)
