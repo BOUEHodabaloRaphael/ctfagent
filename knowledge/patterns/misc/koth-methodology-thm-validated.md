@@ -38,9 +38,10 @@ chain_summary: "Des Status:Running, nmap -p- complet immediat (pas de scan parti
 3. Sonder en parallele CHAQUE port non-standard trouve (curl HTTP, banner grab TCP brut, FTP/SMB anonyme) sans attendre la fin du scan -sV -sC complet.
 4. Des qu'un acces (RCE web, SSH, SQLi) est obtenu: fouiller systematiquement /home/*, /root, mails locaux, historiques bash/mysql, cron, tous les SUID/SGID (find / -xdev ( -perm -4000 -o -perm -2000 )), bases MySQL non-standard.
 5. Soumettre CHAQUE flag DES qu'il est trouve, ne jamais accumuler avant de soumettre — le classement bouge vite, un concurrent peut trouver le meme flag en premier.
-6. Une fois root (ou acces suffisant): ecrire son pseudo/nom d'equipe dans le fichier king/owner attendu par le mecanisme de la plateforme (chemin et nom a confirmer: strings sur un binaire demon type koth/agent si le nom exact n'est pas documente — voir koth_auto.sh phase 2 qui tente plusieurs candidats: king.txt, owner.txt, flag.txt dans /root, /opt/koth, /var/koth, /srv/koth).
-7. Apres soumission d'un flag: toujours re-scroller/re-screenshot la page avant de cliquer Submit si le DOM a bouge (un clic a l'aveugle sur une ancienne coordonnee peut manquer le champ).
-8. Entre les rounds: revenir sur la page du jeu et verifier si un round 'Scheduled' existe deja; sinon reprogrammer une verification a intervalle raisonnable (10-25 min).
+6. Une fois root (ou acces suffisant): ecrire son pseudo/nom d'equipe dans le fichier king/owner attendu par le mecanisme de la plateforme (chemin et nom a confirmer: strings sur un binaire demon type koth/agent si le nom exact n'est pas documente — voir koth_auto.sh phase 2 qui tente plusieurs candidats: king.txt, owner.txt, flag.txt dans /root, /opt/koth, /var/koth, /srv/koth). ATTENTION: si l'environnement est conteneurise (ps aux ne montre aucun process pour des services pourtant identifies au nmap sur d'autres ports), le VRAI fichier king peut vivre sur l'hote physique, invisible depuis les conteneurs applicatifs — toujours verifier /var/run/docker.sock (voir docker-sock-mounted-container-host-escape) avant de conclure que le king.txt local trouve est le bon.
+7. Des la premiere prise confirmee: NE JAMAIS s'arreter a une seule ecriture — lancer immediatement une boucle de reassertion en arriere-plan (voir koth-continuous-king-reassertion-loop) car le King Time cumule determine le classement final, pas l'instant de prise initial. Etre pret a une guerre de verrouillage chattr +i/-i si l'adversaire a aussi un acces privilegie.
+8. Apres soumission d'un flag: toujours re-scroller/re-screenshot la page avant de cliquer Submit si le DOM a bouge (un clic a l'aveugle sur une ancienne coordonnee peut manquer le champ — la position du champ de soumission KotH bouge a chaque rechargement du graphique de score).
+9. Entre les rounds: revenir sur la page du jeu et verifier si un round 'Scheduled' existe deja; sinon reprogrammer une verification a intervalle raisonnable (10-25 min).
 
 ## Common Mistakes
 
@@ -55,8 +56,11 @@ nmap -Pn -p- --min-rate 3000 -T4 --max-retries 1 <IP>  (scan complet, jamais un 
 ## Related Writeups
 
 - src/tools/ctf/koth_auto.sh (script d'automatisation adapte au format NCTF26)
+- knowledge/writeups/misc/thm-koth-h1hard-docker-sock-host-escape.md (round complet valide le 2026-10-30, 1ere place finale 450 vs 390 pts)
+- knowledge/patterns/misc/docker-sock-mounted-container-host-escape.md (PRISE: comment trouver le vrai mecanisme king quand il est hors des conteneurs applicatifs)
+- knowledge/patterns/misc/koth-continuous-king-reassertion-loop.md (MAINTIEN: boucle de reecriture + guerre de verrouillage chattr)
 
 ## Skill Impact
 
-- Related skill: pwn-triage / web-triage: ajouter 'KOTH actif -> nmap -p- complet immediat, jamais partiel' comme premiere action reflexe. Reglement NCTF26 interdit le bruteforce/DoS: koth_auto.sh ne fait que des sondes anonymes/par defaut, pas de bruteforce de mot de passe.
+- Related skill: pwn-triage / web-triage: ajouter 'KOTH actif -> nmap -p- complet immediat, jamais partiel' comme premiere action reflexe. Reglement NCTF26 interdit le bruteforce/DoS: koth_auto.sh ne fait que des sondes anonymes/par defaut, pas de bruteforce de mot de passe. Ce pattern couvrait seulement la PRISE de colline (phases 1-2); le MAINTIEN (King Time) est desormais couvert par les 2 patterns lies ci-dessus, comble suite a un round de prep NCTF26 ou le maintien a ete le facteur decisif.
 - Rule to add or update: (backlog only for now; promote if this pattern repeats)
