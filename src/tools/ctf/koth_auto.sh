@@ -66,9 +66,14 @@ HOLD_INTERVAL="${6:-15}"
 FLAG_REGEX="${FLAG_REGEX:-NCTF\{[^}]+\}|THM\{[^}]+\}}"
 
 # Noms de fichier "king"/"owner" candidats : chaque plateforme KOTH a sa
-# propre convention. On tente toutes les variantes connues + les chemins
-# qui se sont averes etre les vrais (hote physique, pas le conteneur appli).
-KING_FILENAMES=("king.txt" "owner.txt" "flag.txt")
+# propre convention. "king" (sans extension) en tete -- confirme par le
+# texte officiel NCTF26 (/connexion, releve le 2026-10-31): "ecrivez le
+# jeton de votre equipe ... dans son fichier « king »". Le contenu attendu
+# est le JETON D'EQUIPE affiche sur la page King of the Hill, pas un pseudo
+# libre -- a reconfirmer une fois la page ouverte le 2026-11-06 et le jeton
+# reel observe. Variantes ".txt" gardees en repli pour les autres plateformes
+# (TryHackMe, etc.) qui n'ont pas cette convention exacte.
+KING_FILENAMES=("king" "king.txt" "owner.txt" "flag.txt")
 KING_DIR_CANDIDATES=("/root" "/opt/koth" "/var/koth" "/srv/koth")
 
 if [[ -z "$IP" || -z "$TEAM" ]]; then

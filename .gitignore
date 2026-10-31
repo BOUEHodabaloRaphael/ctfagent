@@ -7,6 +7,8 @@ __pycache__/
 .env
 workspaces/*/.env
 workspaces/*/session/
+src/tools/ctf/nctf26_storage_state.json
+src/tools/ctf/.env
 
 # Local run artifacts, not source.
 logs/
