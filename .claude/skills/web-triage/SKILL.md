@@ -19,6 +19,7 @@ Treat it as a router: inspect evidence, then jump to the matching reference.
 | Template syntax `{{}}`, `${}`, `<%= %>` evaluating server-side | [ssti.md](references/ssti.md) |
 | Parameter affecting rows/errors, `AND 1=1` differential | [sqli.md](references/sqli.md) |
 | Reflected input in HTML/attributes, `onerror=alert(1)` | [xss.md](references/xss.md) |
+| Opaque Base64 blob (QR, ticket, voucher) that is not a JWT | [signed-blob.md](references/signed-blob.md) |
 
 ## Quick Decision Flow
 
@@ -57,7 +58,8 @@ python3 src/tools/web/<tool>.py <command> --target URL --param NAME
 2. Match evidence to a reference workflow
 3. Follow the reference's probe order
 4. Verify exploitation before expanding scope
-5. Save the case with `ctf-knowledge-capture`
+5. Got any shell or code execution? Run [post-shell-pivot.md](references/post-shell-pivot.md) before declaring the chain finished — a leaked secret or a container shell both hide cheap next steps.
+6. Save the case with `ctf-knowledge-capture`
 
 ## Exit Conditions
 

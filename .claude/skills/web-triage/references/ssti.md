@@ -84,6 +84,16 @@ Rules:
 - Do not start with long gadget chains.
 - Preserve the exact payload that first proved code execution.
 
+## Any File-Read Primitive (not just Jinja2)
+
+Once any template engine exposes a file-read capability — a dedicated
+builtin (e.g. Go `text/template` custom `.File` func), a gadget chain, or
+path-traversal in a "render this template" feature — the default next read
+target is `/proc/self/environ`, not just the flag file or `/etc/passwd`.
+Env secrets (API keys, HMAC/signing keys) routinely unlock further chains
+(see `knowledge/patterns/web/ssti-file-read-proc-environ-secret-leak.md`
+for the full escalation order and common mistakes).
+
 ## Local Lab
 
 Bundled lab:

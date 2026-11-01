@@ -115,6 +115,14 @@ python3 src/tools/pwn/leak_scaffold.py --analysis analysis.json --template canar
 - [`references/stack-overflow.md`](references/stack-overflow.md) - ret2win/ret2libc/generic exploit development
 - [`references/canary-pie.md`](references/canary-pie.md) - Leak strategies and combined exploit scaffold
 
+## After Getting a Shell
+
+If the shell lands inside a container (check `/.dockerenv`, cgroup/namespace
+hints), run the container-escape check in
+[`web-triage/references/post-shell-pivot.md`](../web-triage/references/post-shell-pivot.md)
+before reaching for kernel exploits — a mis-scoped bind mount is a cheap,
+non-destructive check worth ruling out first.
+
 ## Exit Conditions
 
 Switch to other skills when:
