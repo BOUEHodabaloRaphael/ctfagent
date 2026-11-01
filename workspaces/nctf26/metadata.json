@@ -1,0 +1,18 @@
+{
+  "id": "nctf26",
+  "title": "NCTF26",
+  "category": "mixed",
+  "platform": "ctfd-like",
+  "platform_id": "arena.ctf.tg",
+  "url": "https://arena.ctf.tg",
+  "attachments": [],
+  "tags": ["nctf26", "jeopardy", "koth", "team-event"],
+  "status": "in_progress",
+  "constraints": [
+    "Evenement complet (jeopardy + KotH) ouvre vendredi 2026-11-06 19:00 (heure de Lome).",
+    "Equipe de 5 joueurs. Objectif prioritaire: l'EQUIPE finit 1ere de la phase, pas le score individuel de l'agent.",
+    "On debute par le JEOPARDY, pas KotH (KotH ouvre avec l'epreuve mais n'est pas la priorite initiale).",
+    "Mot declencheur utilisateur: 'NCTF' -> voir notes.md pour le protocole complet.",
+    "Feu vert permanent donne par l'utilisateur pour la duree du CTF: pas de confirmation requise pour les actions de routine (recon, login, listing, tentative d'exploit, soumission UNIQUE de flag deja trouve) sauf regles de securite plateforme (art.7 anti-bruteforce) toujours respectees."
+  ]
+}
