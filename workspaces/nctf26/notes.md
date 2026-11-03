@@ -189,6 +189,62 @@ sans redemander de confirmation, dans cet ordre :
     d'acces/permission eventuelle (aucune difference de permission
     observee pour l'instant -- peut-etre parce que le plugin est
     simplement inactif pour tout le monde, donc rien a distinguer encore).
+- 2026-11-03 (suite) : question explicite de l'utilisateur -- "faut-il
+  installer quelque chose pour se connecter ?". Lecture passive de
+  `/connexion` (jamais explorée en detail avant), `/profile`, `/settings`,
+  `/support` et `/writeups` (routes racine, distinctes de `/plugins/
+  support/` et `/plugins/writeups/` deja documentees -- celles-ci renvoient
+  une page "la page n'existe pas, ou l'épreuve n'est pas encore ouverte",
+  pas un vrai support/writeups public). Session Playwright reutilisee
+  (`nctf26_storage_state.json`), pas de re-login, 1 requete/page, delai
+  ~2.5s, rien soumis. Resultats -- **`/connexion` repond a la question
+  en detail, page "SE CONNECTER AUX INSTANCES" avec 3 cas** :
+  1. **Challenge web (instance `https://xxxx.t.ctf.tg/`)** : rien a
+     installer, juste le navigateur.
+  2. **Service reseau (pwn/crypto, `ncat --ssl host 1337`)** : TLS
+     obligatoire, port 1337 fixe. Outil recommande = `ncat` (paquet nmap,
+     Linux/macOS a installer, fourni avec l'installeur Nmap sous Windows).
+     Alternatives explicitement citees si pas de ncat : `openssl s_client
+     -quiet -connect host:1337 -servername host` ou pwntools
+     `remote(host, 1337, ssl=True, sni=host)`. **Verifie cote agent** :
+     `ncat` installe le 2026-11-03 (`sudo apt install ncat`, version 7.991,
+     teste `ncat --version` OK) ; `openssl` et `pwntools` (module `pwn`
+     importable) deja fonctionnels en fallback. Les 3 methodes citees par
+     la plateforme sont desormais disponibles.
+  3. **VPN d'equipe (boot2root / admin systeme / multi-ports, reseau prive
+     10.100.x.y)** : necessite le client **WireGuard**
+     (wireguard.com/install), + un fichier de config personnel
+     `nctf-vpn.conf` a telecharger depuis une "page VPN" (bouton
+     "Telecharger ma configuration", **un par joueur**, re-telecharger
+     annule l'ancien) -- cette page VPN semble liee a un challenge/instance
+     specifique (lien pas dans la nav globale), donc **pas encore
+     accessible/visitee** (rien a instancier avant ouverture vendredi).
+     **Verifie cote agent** : `wg` et `wg-quick` (paquet `wireguard-tools`)
+     sont **deja installes** -- pret a importer la config le jour J, il ne
+     restera qu'a telecharger le `.conf` personnel une fois un challenge
+     a VPN lance.
+  - **KOTH ne necessite ni VPN ni installation** : adresses publiques
+    directes (web `http://...:port` ou `ssh -p port player@host`),
+    confirme sur `/connexion` (coherent avec `/plugins/koth/` deja note).
+  - **Precision importante sur "joignable uniquement depuis le Togo"** :
+    ce n'est **pas** un VPN fourni par les organisateurs pour acceder
+    depuis l'etranger -- c'est l'inverse : "Desactivez tout VPN commercial
+    ou proxy etranger" (le filtrage geo veut une IP togolaise native, pas
+    un tunnel organisateur). Le seul VPN fourni par la plateforme est le
+    WireGuard d'equipe ci-dessus, pour acceder au **sous-reseau prive de
+    l'equipe** une fois une instance VPN lancee -- deux choses distinctes.
+  - `/profile` et `/settings` : rien d'installation/VPN -- formulaires
+    standards (profil equipe/joueur, preferences compte). Aucune
+    identifiant VPN pre-rempli ou lien direct vers la page VPN visible
+    hors contexte d'un challenge instancie.
+  - Conclusion : **rien a installer pour l'instant dans l'absolu** (event
+    pas ouvert, aucune instance lancee) ; **cote outillage agent, tout est
+    deja pret pour le jour J** sauf `ncat` (facultatif, fallback deja
+    fonctionnels dispo) -- `wg`/`wg-quick` presents, `openssl`/`pwntools`
+    presents. Seule action potentielle a prevoir vendredi : telecharger le
+    `nctf-vpn.conf` personnel depuis la page VPN (visible seulement via un
+    challenge a instance VPN) et `wg-quick up` dessus.
+
 - Aucun flag soumis a ce jour.
 - Aucune collision coequipier observee (rien a observer avant ouverture).
 
