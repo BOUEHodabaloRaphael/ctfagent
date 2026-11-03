@@ -55,6 +55,7 @@ Chaque fois qu'un JWKS public est expose et que le role/alg n'est pas pinne cote
 ## Related Writeups
 
 - forge-jwt-rs256-hs256-alg-confusion
+- [AFRICC 2027 Qualifiers — full writeup](../../writeups/misc/africc2027-quals-full-writeup.md) — "Confused Deputy" (100pts, Web), a second independent confirmation of the exact same technique (public key from `/jwks.json`, forged `role=admin` HS256 token).
 
 ## Skill Impact
 

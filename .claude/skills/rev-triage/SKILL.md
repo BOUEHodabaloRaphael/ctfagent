@@ -92,6 +92,15 @@ If unpacking fails, note it as "needs manual RE" and keep going with raw strings
    - `set *(int*)addr = 0x90909090` in gdb
    - `LD_PRELOAD` a fake `ptrace` that returns 0
 
+## External Technique Reference (CEH/AFRICC)
+
+If the recovered logic turns out to be a crypto primitive rather than pure logic (custom
+cipher, RSA check, hash compare), switch to `knowledge/ceh/m20-cryptography.md` (hashcat
+recipes, cryptanalysis attack catalog, RsaCtfTool) and `knowledge/ceh/africc-links.md` (quick
+online solvers: dCode, quipqiup, CyberChef) instead of reinventing the attack by hand.
+Condensed cheat sheet for the active event: `workspaces/nctf26/prep-ceh-africc-cheatsheet.md`
+(section 5).
+
 ## Common RE Patterns
 
 | Pattern | Approach |

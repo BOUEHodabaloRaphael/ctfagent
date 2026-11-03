@@ -30,6 +30,16 @@ Treat it as a router: inspect evidence, then jump to the matching reference.
 5. **See SQL-like parameter influence?** → sqli.md
 6. **See reflected HTML with script potential?** → xss.md
 
+## External Technique Reference (CEH/AFRICC)
+
+Before improvising a payload, check the condensed CEHv13 technique notes for extra probe
+ideas/exact payload strings:
+- SQLi cheat sheet (error/UNION/blind, WAF bypass, NoSQL): `knowledge/ceh/m15-sql-injection.md`
+- Web app attacks (LFI, XXE, SSRF/XSPA, IDOR via param pollution, CORS, OAuth/CSRF chain,
+  rate-limit bypass via `X-Forwarded-For`): `knowledge/ceh/m14-web-apps.md`
+- Quick links/tools (dCode, CyberChef, RsaCtfTool...): `knowledge/ceh/africc-links.md`
+- Condensed per-category cheat sheet for the active event: `workspaces/nctf26/prep-ceh-africc-cheatsheet.md`
+
 ## Tool Reference
 
 All web tools are now at `src/tools/web/`:

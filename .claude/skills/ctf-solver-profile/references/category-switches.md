@@ -88,3 +88,27 @@ Cheap probes:
 - alphabet analysis
 - byte frequency
 - length and padding checks
+
+## External Technique Reference (CEH/AFRICC)
+
+Once a category is confirmed above, before improvising, pull extra probe ideas / exact
+payload strings from the condensed CEHv13 + AFRICC technique notes in `knowledge/ceh/`:
+
+| Category | File |
+|---|---|
+| Recon/scan | `knowledge/ceh/m03-scanning.md` |
+| Enumeration | `knowledge/ceh/m04-enumeration.md` |
+| Vuln analysis / triage order | `knowledge/ceh/m05-vuln-analysis.md` |
+| Web (LFI/XXE/SSRF/IDOR/OAuth) | `knowledge/ceh/m14-web-apps.md` |
+| SQLi | `knowledge/ceh/m15-sql-injection.md` |
+| Crypto (hashcat recipes, RSA, padding oracle, cryptanalysis catalog) | `knowledge/ceh/m20-cryptography.md` |
+| System hacking / privesc / post-exploit | `knowledge/ceh/m06-system-hacking.md` |
+| Quick online tools (dCode, CyberChef, RsaCtfTool, quipqiup, CrackStation) | `knowledge/ceh/africc-links.md` |
+
+Other modules (malware, sniffing, social engineering, DoS, session hijacking, IDS/firewall
+evasion, web servers, wireless, mobile, IoT/OT, cloud) land in `knowledge/ceh/` progressively —
+check the directory listing if the category isn't in the table yet.
+
+For the active event, a condensed cross-category cheat sheet also lives at
+`workspaces/nctf26/prep-ceh-africc-cheatsheet.md` — read it once the category is confirmed,
+it links back to the full files above per section.

@@ -115,6 +115,15 @@ python3 src/tools/pwn/leak_scaffold.py --analysis analysis.json --template canar
 - [`references/stack-overflow.md`](references/stack-overflow.md) - ret2win/ret2libc/generic exploit development
 - [`references/canary-pie.md`](references/canary-pie.md) - Leak strategies and combined exploit scaffold
 
+## External Technique Reference (CEH)
+
+Once past the memory-corruption primitive and into post-exploitation (shell obtained, or the
+challenge is actually a "system hacking" box rather than a classic ret2* chain), check
+`knowledge/ceh/m06-system-hacking.md` for concrete commands: password cracking (John/hashcat/
+Hydra), Linux/Windows privesc recon (SUID/sudo/cron, UAC bypass Metasploit modules, NFS
+no_root_squash), persistence, and anti-forensics. Condensed cheat sheet for the active event:
+`workspaces/nctf26/prep-ceh-africc-cheatsheet.md` (section 6).
+
 ## After Getting a Shell
 
 If the shell lands inside a container (check `/.dockerenv`, cgroup/namespace
