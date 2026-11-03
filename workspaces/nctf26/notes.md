@@ -245,6 +245,25 @@ sans redemander de confirmation, dans cet ordre :
     `nctf-vpn.conf` personnel depuis la page VPN (visible seulement via un
     challenge a instance VPN) et `wg-quick up` dessus.
 
+- 2026-11-03 (dernier check avant cloture prepa) : check de routine demande par
+  l'utilisateur -- login + 2 pages revisitees, rien d'autre. Session
+  Playwright reutilisee (pas de .env relu manuellement pour le navigateur,
+  `nctf26_client.py login` a bien source `.env`), 1 requete par chemin,
+  delai ~2.3s, aucune soumission/bruteforce/scan. Resultats : **rien n'a
+  change**.
+  - `nctf26_client.py login` -> OK, redirige vers
+    `https://arena.ctf.tg/challenges`, session renouvelee.
+  - `/plugins/defi_gate/` -> toujours **"DÉFI #1 / Le défi n'est pas actif
+    pour le moment."**, countdown generique affiche "ouverture dans 3j
+    11:20:50" (coherent avec vendredi 19h -- juste le temps qui avance,
+    rien d'anormal).
+  - `/challenges` -> toujours **HTTP 403** avec la meme page terminal
+    "nctf@arena:~$ ... [deny] acces refuse NCTF26 has not started yet",
+    countdown "3j 11:20:47" (meme etat, meme phrase qu'avant).
+  - Conclusion : plateforme toujours fermee comme attendu, pas de
+    changement a signaler avant l'ouverture de vendredi 2026-11-06 19h00
+    Lome.
+
 - Aucun flag soumis a ce jour.
 - Aucune collision coequipier observee (rien a observer avant ouverture).
 
