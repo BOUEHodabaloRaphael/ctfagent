@@ -112,7 +112,31 @@ Absents / contournements :
 - Vérifier qu'un coéquipier n'est pas déjà sur le challenge avant de consommer
   une instance.
 
-## 6. Installation reproductible (si besoin de refaire)
+## 6. Sauvegarde
+
+Archive locale (hors dépôt git, pour survivre à un reset de branche) :
+
+```text
+/home/kali/backups/ctfagent-nctf26-arsenal-2026-11-06.tar.gz
+sha256 b22e04ac72665f75b5f62c4f5e28fa88da47cbb644a9f72870ec32d32e9ce9b5
+```
+
+Contenu : `.claude/skills/` (16 skills), `knowledge/external/` (8 bibliothèques),
+`src/tools/rev/`, les 3 notes NCTF26, `CLAUDE.md`, `docs/skills.md`.
+
+Restauration :
+
+```bash
+cd /home/kali/ctfagent
+tar xzf /home/kali/backups/ctfagent-nctf26-arsenal-2026-11-06.tar.gz
+sha256sum -c /home/kali/backups/ctfagent-nctf26-arsenal-2026-11-06.sha256
+```
+
+État git : tout est committé (`83bc501`, puis `4138194`). Le push vers
+`origin` (GitHub `huanghuoguoguo/ctfagent`) échoue faute d'identifiants dans cet
+environnement — à faire avec un token/SSH si on veut une copie hors machine.
+
+## 7. Installation reproductible (si besoin de refaire)
 
 ```bash
 pip3 install --user --break-system-packages \
