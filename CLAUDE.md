@@ -55,6 +55,24 @@ Recommended invocation order:
 6. `ctf-knowledge-capture`
 7. `skill-maintainer`
 
+### Deep category playbooks (installed 2026-11-06 for NCTF26)
+
+The triage routers decide the category; these execute the deep work. Load one only
+after triage, never as a first step.
+
+- `ctf-reverse`, `ctf-pwn`, `ctf-web`, `ctf-crypto`, `ctf-forensics`, `ctf-misc`,
+  `ctf-malware`, `ctf-osint`, `ctf-ai-ml` — per-category playbooks (ljagiello/ctf-skills, MIT)
+- `solve-challenge` — first-pass dispatcher when the category is unknown
+- `ctf-writeup` / `ctf-similar-search` — post-solve documentation and writeup search
+- `reverse-engineering` — multi-platform RE playbook with headless Ghidra/Apk/.NET scripts
+- `reverse-skill-router` — pointer to 45+ deep RE modules in `knowledge/external/reverse-skill/`
+- `r2-reverse` — radare2 workflow
+- `ctf-evidence` — proof/report discipline before submitting a flag
+
+External libraries live under `knowledge/external/`; see
+`knowledge/external/INDEX.md` for provenance and entry points, and
+`workspaces/nctf26/prep-arsenal-2026-11-06.md` for the NCTF26 quickstart.
+
 ## Roadmap
 
 1. `skill-quality-bar-and-doc-alignment`

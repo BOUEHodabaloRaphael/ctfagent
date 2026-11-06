@@ -124,6 +124,19 @@ Hydra), Linux/Windows privesc recon (SUID/sudo/cron, UAC bypass Metasploit modul
 no_root_squash), persistence, and anti-forensics. Condensed cheat sheet for the active event:
 `workspaces/nctf26/prep-ceh-africc-cheatsheet.md` (section 6).
 
+## Deep Playbooks (use after this triage)
+
+- `ctf-pwn` — deep category playbook: heap/tcache/FSOP, ROP chains, kernel,
+  seccomp/sandbox escape, format strings, Windows chains.
+- `knowledge/external/pwn-htb/` — 7 skills HTB (recon, static/dynamic analysis,
+  heap, libc identification, exploit development, env setup).
+- `knowledge/external/security-skills/exploit-dev/` — exploit-dev references.
+- `knowledge/external/ctf-arsenal/commands/ctf-pwn.md` — triage checklist
+  (written for MCP tools; use the CLI equivalents in this repo).
+
+Tooling note: `ropper` does not install on Python 3.14 — use `ROPgadget` and
+`pwntools.ROP` (both present).
+
 ## After Getting a Shell
 
 If the shell lands inside a container (check `/.dockerenv`, cgroup/namespace

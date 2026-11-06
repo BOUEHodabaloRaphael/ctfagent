@@ -57,6 +57,15 @@ du code exécutable. Sous-ensemble copié (texte brut, aucun binaire) :
   mais hors du périmètre typique d'un CTF jeopardy/KOTH (web/pwn/rev/crypto/forensics/osint).
   À revisiter ponctuellement si une épreuve NCTF26 touche à l'AD ou au cloud.
 
+## Mise à jour 2026-11-06 — copie intégrale des fiches
+
+Ajout de `techniques/` : les **486 fiches `agents_md/`** du dépôt, copiées telles quelles
+en préservant l'arborescence (`vulns/`, `recon/`, `chains/`, `code/`, `infra/`,
+`container/`, `ai/`, `meta/` + `REGISTRY.md`). Les fiches curatées listées plus haut
+restent à la racine pour un accès rapide ; `techniques/` sert de référence exhaustive
+(recherche par CWE via `techniques/REGISTRY.md`). Ce sont des playbooks markdown, aucun
+code exécutable, même périmètre de licence (MIT) et mêmes précautions.
+
 ## Risques / code suspect
 
 Aucun. Le dépôt ne contient aucun script réseau exécuté lors de cette revue, aucune

@@ -20,12 +20,23 @@ skill 系统的目标只有三个：
   - `web-*`
   - `pwn-*`
   - `rev-*`
+- 深度题型 playbook（2026-11-06 引入，triage 之后才加载）
+  - `ctf-reverse` / `ctf-pwn` / `ctf-web` / `ctf-crypto`
+  - `ctf-forensics` / `ctf-misc` / `ctf-malware` / `ctf-osint` / `ctf-ai-ml`
+  - `solve-challenge`（分类未知时的第一跳）
+  - `reverse-engineering`（多平台 RE + 脚本） / `reverse-skill-router`（45+ 深度模块）
+  - `r2-reverse`（radare2 流程） / `ctf-evidence`（提交前证据纪律）
+  - `ctf-writeup` / `ctf-similar-search`
 - 能力辅助
   - `browser-automation-playwright`
   - `network-search-ddg`
 - 沉淀与维护
   - `ctf-knowledge-capture`
   - `skill-maintainer`
+
+外部参考库统一放在 `knowledge/external/`，来源与入口见
+`knowledge/external/INDEX.md`；NCTF26 速查见
+`workspaces/nctf26/prep-arsenal-2026-11-06.md`。
 
 ## 规则
 

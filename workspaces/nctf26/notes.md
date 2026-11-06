@@ -14,8 +14,9 @@ sans redemander de confirmation, dans cet ordre :
 2. **Reprise de contexte** : relire ce fichier + `knowledge/patterns/misc/
    nctf26-platform-connexion-mecanismes.md` + `prep-ceh-africc-cheatsheet.md` (ce workspace --
    techniques offensives condensees CEHv13+AFRICC par categorie, scan/enum/web/sqli/crypto/
-   system hacking) + l'etat du dernier round (section "Etat courant" ci-dessous) pour savoir
-   ou on s'etait arrete.
+   system hacking) + `prep-arsenal-2026-11-06.md` (routage categorie -> skill profond,
+   quickstart RE, etat des outils) + l'etat du dernier round (section "Etat courant"
+   ci-dessous) pour savoir ou on s'etait arrete.
 3. **Debut par le JEOPARDY** (pas KotH au lancement, sauf si l'utilisateur dit
    explicitement de basculer sur KotH) : lister les challenges non resolus
    (`nctf26_client.py list`, categorie/points/solves), prioriser par
@@ -264,6 +265,21 @@ sans redemander de confirmation, dans cet ordre :
     changement a signaler avant l'ouverture de vendredi 2026-11-06 19h00
     Lome.
 
+- 2026-11-06 (prépa arsenal) : intégration massive de skills/RE avant ouverture.
+  - `.claude/skills/` : ajout de `ctf-reverse`, `ctf-pwn`, `ctf-web`, `ctf-crypto`,
+    `ctf-forensics`, `ctf-misc`, `ctf-malware`, `ctf-osint`, `ctf-ai-ml`,
+    `solve-challenge`, `ctf-writeup`, `ctf-similar-search`, `reverse-engineering`,
+    `reverse-skill-router`, `r2-reverse`, `ctf-evidence`.
+  - `knowledge/external/` : `reverse-skill` (45+ modules), `reverse-skills-p4nda0s`,
+    `neurosploit/techniques` (486 fiches), `ctf-arsenal` (commandes/agents),
+    `security-skills`, `hacking-skills`, `pwn-htb`, `android-reverse-engineering` ;
+    catalogue `knowledge/external/INDEX.md`.
+  - Outils installés : `frida`, `vol` (Volatility 3), `capa`, `floss`, `lief`,
+    `apktool`, `jq`, `foremost`, `qemu-user-static`, `ltrace`, `unblob`, `cfr`.
+    Ghidra 11.4.3 headless via docker (`src/tools/rev/ghidra_headless.sh`, testé OK).
+  - Quickstart et tableau de routage : `workspaces/nctf26/prep-arsenal-2026-11-06.md`.
+  - Limites connues : `ropper`/`one_gadget` absents (utiliser `ROPgadget`/pwntools) ;
+    pas d'IDA/Binja/x64dbg ; MCP `ctf/r2mcp/cyberchef` indisponibles → CLI.
 - Aucun flag soumis a ce jour.
 - Aucune collision coequipier observee (rien a observer avant ouverture).
 

@@ -1,0 +1,21 @@
+{
+  "name": "pwn-htb",
+  "version": "1.0.0",
+  "description": "Binary exploitation (pwn) toolkit for Hack The Box challenges - structured methodology with pwntools, GDB/pwndbg integration, and exploit templates",
+  "author": {
+    "name": "Shayaun Nejad"
+  },
+  "keywords": [
+    "pwn",
+    "binary-exploitation",
+    "ctf",
+    "hack-the-box",
+    "htb",
+    "pwntools",
+    "reverse-engineering",
+    "security",
+    "exploit-development"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/allsmog/pwn-claude-plugin"
+}

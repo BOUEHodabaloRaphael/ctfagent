@@ -57,6 +57,15 @@ doesn't land on the first try:
   our own workflow): `knowledge/external/neurosploit/meta/recon.md`,
   `knowledge/external/neurosploit/meta/REGISTRY.md` (CWE-indexed catalog)
 
+## Deep Playbooks (use after this triage)
+
+- `ctf-web` — deep category playbook: auth/JWT/OAuth/SAML, client-side, prototype
+  pollution, SSTI/SSRF/XXE, request smuggling, file upload, CVEs.
+- `knowledge/external/security-skills/ctf/ctf-web/` — speed-run CTF web variant.
+- `knowledge/external/hacking-skills/skills/` — generic offensive web skills.
+- `knowledge/external/ctf-arsenal/commands/ctf-web.md` — triage checklist
+  (written for MCP tools; use the CLI equivalents in this repo).
+
 ## Tool Reference
 
 All web tools are now at `src/tools/web/`:

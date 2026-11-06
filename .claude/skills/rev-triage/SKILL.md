@@ -118,6 +118,26 @@ WASM, and firmware. Use it for platform-specific decompiler/tool-detection scaff
 when this skill's probe order isn't enough (e.g. an APK or firmware image instead of a
 plain ELF/PE).
 
+## Deep Playbooks (use after this triage)
+
+Once the artifact class is known, hand off instead of re-deriving everything:
+
+- `ctf-reverse` — category playbook: anti-analysis, custom VMs, Unicorn, r2pipe,
+  platform/language-specific notes, tool matrices.
+- `reverse-engineering` — multi-platform playbook (native, APK/DEX, .NET/Java, WASM,
+  firmware, Electron) + `scripts/triage.py`, `scripts/check_tools.py`,
+  `scripts/ghidra/` headless export.
+- `reverse-skill-router` — 45+ deep modules (APK, .NET, Go/Rust, macOS, firmware,
+  thick client, protocol, patch-diff, IDA/Ghidra/Binja/r2) under
+  `knowledge/external/reverse-skill/`.
+- `r2-reverse` — radare2 command workflow when you want to stay in one CLI.
+
+Ghidra is not installed locally; use Ghidra 11.4.3 headless through the helper:
+
+```bash
+./src/tools/rev/ghidra_headless.sh ./challenge_binary /tmp/ghidra_chall
+```
+
 ## Common RE Patterns
 
 | Pattern | Approach |
