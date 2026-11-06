@@ -280,6 +280,57 @@ sans redemander de confirmation, dans cet ordre :
   - Quickstart et tableau de routage : `workspaces/nctf26/prep-arsenal-2026-11-06.md`.
   - Limites connues : `ropper`/`one_gadget` absents (utiliser `ROPgadget`/pwntools) ;
     pas d'IDA/Binja/x64dbg ; MCP `ctf/r2mcp/cyberchef` indisponibles → CLI.
+- 2026-11-06 (session prépa finale, matin, ~05h57-06h00 Lomé) : enchaînement
+  complet demandé par l'utilisateur — recon externe, fusion skills, vérif
+  VPN, vérification finale, revue anti-doublon de l'arsenal. Résultats :
+  - **Recon GitHub (2 repos)** : `JoasASantos/NeuroSploit` (commit `92e8959`,
+    MIT, rien d'exécuté) exploité → 11 fiches curatées copiées dans
+    `knowledge/external/neurosploit/{meta,rev,web}/` et fusionnées dans
+    `web-triage` (nouvelle réf `xxe.md` + pointeurs JWT/SSTI/SSRF/deser) et
+    `rev-triage` (pointeurs triage binaire statique + obfuscation). Commit
+    `733d1b6`. `Durrell-229/hunter-bridge` (commit `f958d2b`) analysé en
+    détail et **écarté** : proxy Claude Code vers clés API tierces + tunnel
+    public Cloudflare/Chisel exposant le VPN équipe à "n'importe quelle IA
+    distante" + stockage du mot de passe sudo en clair — incompatible avec
+    l'art. VPN équipe du règlement. Rien copié de ce repo sur le moment.
+  - **Arsenal élargi** (commit `83bc501`, fait en parallèle/hors de cette
+    session de chat) : 16 skills (`ctf-reverse/-pwn/-web/-crypto/-forensics/
+    -misc/-malware/-osint/-ai-ml`, `solve-challenge`, `ctf-writeup`,
+    `ctf-similar-search`, `reverse-engineering` [plugin], `reverse-skill-router`,
+    `r2-reverse`, `ctf-evidence`) + 8 bibliothèques externes dans
+    `knowledge/external/` (voir `INDEX.md` pour provenance/licences). Révision
+    anti-doublon faite à la demande de l'utilisateur :
+    - `ctf-arsenal/` (ré-import partiel de `hunter-bridge`) vérifié ligne par
+      ligne — seulement `agents/*.md`+`commands/*.md`+`plugin.json`, grep
+      négatif sur `sudo|chisel|cloudflare|vpn|wireguard|colab` : le risque
+      identifié plus haut n'a PAS été réintroduit, seuls les playbooks texte
+      ont été repris. `web-triage`/`pwn-triage` notent explicitement d'utiliser
+      les équivalents CLI (pas les MCP `ctf`/`r2mcp` absents).
+    - `neurosploit/techniques/` (486 fiches brutes) coexiste sans conflit avec
+      notre sous-ensemble curaté `meta/rev/web` (redondance de stockage
+      inoffensive, pas de contradiction de contenu).
+    - Plusieurs bibliothèques RE en parallèle (`reverse-skill/`,
+      `reverse-skills-p4nda0s/`, `security-skills/reverse-engineering/`,
+      plugin `reverse-engineering`, skill `ctf-reverse`) : pas contradictoires,
+      ordonnées par la table de routage de `prep-arsenal-2026-11-06.md` et la
+      section "Deep Playbooks" de `rev-triage`/`web-triage`/`pwn-triage`.
+    - Conclusion : aucune action corrective nécessaire, arsenal cohérent.
+  - **Vérification réseau/VPN** : aucun VPN actif (process/interface/
+    NetworkManager), pas de proxy env, IP publique `102.64.168.122`
+    géolocalisée Lomé/TG (AS GVA Côte d'Ivoire) — rien à désactiver, pas de
+    risque de filtrage géo.
+  - **Vérification finale complète** : login OK (session renouvelée),
+    `/challenges` toujours 403 "has not started yet" (normal, ~13h avant
+    ouverture au moment du check), outillage réseau complet (`ncat 7.991`,
+    `openssl`, `pwntools`, `wg`/`wg-quick`), `koth_auto.sh` et
+    `parallel_dispatch.py` présents, repo propre.
+  - Plugin marketplace Claude Code passé en revue (3922 plugins scannés par
+    mots-clés ctf/rev/pwn/ghidra/radare/crackme) : très peu de hits réels ;
+    `reverse-engineering@anthropic-plugin-directory` installé (seul candidat
+    pertinent trouvé côté marketplace officiel).
+  - Page `docsbot.ai/prompts/technical/ctf-reverse-engineering-script` lue
+    par un agent : template de prompt marketing générique, aucun contenu
+    technique absent de notre `rev-triage` — ignoré, rien fusionné.
 - Aucun flag soumis a ce jour.
 - Aucune collision coequipier observee (rien a observer avant ouverture).
 
