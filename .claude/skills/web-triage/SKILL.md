@@ -20,6 +20,7 @@ Treat it as a router: inspect evidence, then jump to the matching reference.
 | Parameter affecting rows/errors, `AND 1=1` differential | [sqli.md](references/sqli.md) |
 | Reflected input in HTML/attributes, `onerror=alert(1)` | [xss.md](references/xss.md) |
 | Opaque Base64 blob (QR, ticket, voucher) that is not a JWT | [signed-blob.md](references/signed-blob.md) |
+| XML endpoint, SVG/DOCX/XLSX upload, SAML/RSS/XML-RPC | [xxe.md](references/xxe.md) |
 
 ## Quick Decision Flow
 
@@ -39,6 +40,22 @@ ideas/exact payload strings:
   rate-limit bypass via `X-Forwarded-For`): `knowledge/ceh/m14-web-apps.md`
 - Quick links/tools (dCode, CyberChef, RsaCtfTool...): `knowledge/ceh/africc-links.md`
 - Condensed per-category cheat sheet for the active event: `workspaces/nctf26/prep-ceh-africc-cheatsheet.md`
+
+## External Technique Reference (NeuroSploit)
+
+Compact payload variants not fully covered above — check when the standard reference
+doesn't land on the first try:
+- JWT `alg` confusion RS256→HS256, `jku`/`x5u`, `kid` injection:
+  `knowledge/external/neurosploit/web/jwt_alg_confusion.md`
+- SSTI polyglot across engines (Jinja2/Twig/Freemarker/Velocity/Thymeleaf/Pug):
+  `knowledge/external/neurosploit/web/ssti.md`
+- SSRF with cloud metadata focus (AWS/GCP/Azure):
+  `knowledge/external/neurosploit/web/ssrf.md`
+- Deserialization payload variants (Java/PHP/Python pickle/YAML):
+  `knowledge/external/neurosploit/web/insecure_deserialization.md`
+- Recon ordering and proof/false-positive discipline (useful as a second opinion on
+  our own workflow): `knowledge/external/neurosploit/meta/recon.md`,
+  `knowledge/external/neurosploit/meta/REGISTRY.md` (CWE-indexed catalog)
 
 ## Tool Reference
 

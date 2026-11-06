@@ -101,6 +101,23 @@ online solvers: dCode, quipqiup, CyberChef) instead of reinventing the attack by
 Condensed cheat sheet for the active event: `workspaces/nctf26/prep-ceh-africc-cheatsheet.md`
 (section 5).
 
+## External Technique Reference (NeuroSploit)
+
+Supplementary mobile/binary triage notes — not CTF-pwn (no ROP/shellcode content),
+but useful for packing/obfuscation classification and a decision tree on when to
+reach for Frida vs. reimplementing a decryptor by hand:
+- Static binary triage (ELF/Mach-O/PE, `file`/`readelf`/`checksec`/`r2`/Ghidra
+  headless ordering): `knowledge/external/neurosploit/rev/static_binary_triage.md`
+- Obfuscation classification and deobfuscation paths (string encryption,
+  control-flow flattening, API-hashing, packing; Frida hook vs. decryptor
+  reimplementation): `knowledge/external/neurosploit/rev/obfuscation_analysis_deobfuscation.md`
+
+Also installed: the `reverse-engineering` plugin (`reverse-engineering:reverse-engineering`
+skill) — a broader RE playbook covering native binaries, APK/DEX, .NET/Java bytecode,
+WASM, and firmware. Use it for platform-specific decompiler/tool-detection scaffolding
+when this skill's probe order isn't enough (e.g. an APK or firmware image instead of a
+plain ELF/PE).
+
 ## Common RE Patterns
 
 | Pattern | Approach |
