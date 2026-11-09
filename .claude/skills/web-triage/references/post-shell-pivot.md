@@ -43,7 +43,7 @@ Signals: `klist`/`net config workstation` works, `/etc/krb5.conf` present,
 (88/389/445/636) is reachable from this shell, or the challenge flavor text
 mentions a domain. Before improvising an AD attack path by hand, run
 `ctf-file-hunter`/`file-hunter` first (see
-[`ctf-file-hunter-sensitive-file-scanner`](../../../knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md))
+[`ctf-file-hunter-sensitive-file-scanner`](../../../../knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md))
 to surface any stray creds/keytabs, then consult the imported AD playbooks —
 this is where repeated boot2root blockers (ASREP-roast → ACL abuse → ADCS
 ESC1, DCSync vs a Samba DC, delegation/RBCD) have their methodology and
