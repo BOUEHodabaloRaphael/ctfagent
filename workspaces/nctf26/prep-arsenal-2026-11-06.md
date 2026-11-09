@@ -94,6 +94,38 @@ Absents / contournements :
 - MCP `ctf`, `r2mcp`, `cyberchef` : **non disponibles** dans cette session. Les
   commandes/agents `ctf-arsenal` qui les supposent doivent être jouées en CLI.
 
+## 3bis. Finale (mode Attack-Defense, Lomé 19-20 nov) — ajouté 2026-11-09
+
+La finale sur site est annoncée "offensif et défensif", donc un format A&D/KOTH,
+pas du jeopardy pur. Ce qui a été ajouté après ce doc (2026-11-06) pour couvrir
+ce mode, absent de la table de routage ci-dessus :
+
+| Besoin | Skill / outil | Notes |
+|---|---|---|
+| Méthodologie A&D (ordre reverse→exploit-boucle→patch) | [`attack-defense-methodology-toolkit`](../../knowledge/patterns/misc/attack-defense-methodology-toolkit.md) | doctrine validée, à lire en premier |
+| Toolkit opérationnel (4 panes tmux) | `src/tools/ctf/attack_defense_toolkit/` (`exploit_runner.py`, `sla_monitor.py`, `pcap_watch.py`, `submitter.py`) | remplir `config.py` (IPs équipes, FLAG_REGEX, endpoint) **une fois l'infra de la finale connue sur place** |
+| Chasse d'intrusion log-based + patch revu | `ctf-attack-defense` (skill) + `src/tools/ctf/attack_defense_log_hunt.py` (baseline/injections sweep, testé `tests/test_attack_defense_log_hunt.py`) | s'exécute **après** la doctrine ci-dessus (ne patche jamais avant que l'exploit tourne en boucle) |
+| KOTH spécifique (si variante pure KOTH) | [`koth-methodology-thm-validated`](../../knowledge/patterns/misc/koth-methodology-thm-validated.md), [`koth-continuous-king-reassertion-loop`](../../knowledge/patterns/misc/koth-continuous-king-reassertion-loop.md), `src/tools/ctf/koth_auto.sh` | nmap -p- complet immédiat, boucle de réassertion continue |
+| Patch réseau à chaud si pas le temps de corriger le code | [`ctf-attack-defense-tooling-reference`](../../knowledge/patterns/misc/ctf-attack-defense-tooling-reference.md) (firegex, CookieFarm, FAUST ctf-gameserver) | référence seulement, rien installé — installer firegex sur place seulement si l'équipe a déjà testé le déploiement avant la compétition |
+| AD/boot2root (si la finale inclut un volet domaine Windows) | `knowledge/external/claude-ad/skills/` (méthodologie AD, ADCS ESC1-17, ACL abuse), `knowledge/external/claude-red/{privesc,post-exploitation}/`, `knowledge/external/hack-skills/{tunneling-and-pivoting,container-escape-techniques}/` | importés 2026-11-09, voir `.claude/skills/web-triage/references/post-shell-pivot.md` section 3 |
+| Triage post-shell générique | `ctf-file-hunter` / `file-hunter` / `loot-hunter` | auto-déclenché depuis 2026-11-09 (session_sync.py + CLAUDE.md + ctf-solver-profile), voir [`ctf-file-hunter-sensitive-file-scanner`](../../knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md) |
+
+**Point d'attention réglé le 2026-11-09, action humaine encore ouverte :** la
+plateforme (`arena.ctf.tg`) renvoie un 403 Cloudflare WAF générique depuis cet
+environnement (voir section "Verification connectivite 2026-11-09" dans
+`notes.md`) — à retester depuis un autre réseau avant le 19-20 novembre.
+
+**Archive de sauvegarde rafraîchie le 2026-11-09** (celle du 2026-11-06 en
+section 6 ne contenait pas `ctf-attack-defense`, `attack_defense_log_hunt.py`,
+ni les 3 imports `claude-ad`/`claude-red`/`hack-skills`) :
+
+```text
+/home/kali/backups/ctfagent-nctf26-arsenal-2026-11-09.tar.gz
+sha256 ceb1300648d0b69aff100f798157e3720e45e0091928d46973a078ed4c5dccdf
+```
+
+Restauration : même procédure que section 6, juste changer le nom de fichier.
+
 ## 4. Discipline preuve (non négociable)
 
 1. Une commande, sa sortie brute, un hash de l'artefact — avant toute conclusion.

@@ -71,8 +71,14 @@ every team gets the same image).
 
 1. **Locate inputs.** Find the log files, note each one's format and size
    (`wc -l`, `du -h`). List the service source tree without reading it yet.
-2. **Baseline before hypotheses.** A dozen cheap one-liners before touching
-   any hypothesis:
+2. **Baseline before hypotheses.** Run
+   `python3 src/tools/ctf/attack_defense_log_hunt.py baseline <access.log>`
+   first — it streams the log line-by-line (rule 2: query, don't read) and
+   returns status histogram, top talkers, normalized top routes, flagged
+   automation user-agents, and MAD-based response-size outliers in one
+   shot. Covered by `tests/test_attack_defense_log_hunt.py` against a
+   synthetic fixture log. The dozen cheap one-liners it replaces, for when
+   you need a custom cut it doesn't cover:
    - time window covered by the logs
    - HTTP status histogram
    - top talkers by request count
@@ -94,7 +100,9 @@ every team gets the same image).
    3. top-talker outliers (one IP doing 50x the median request count)
    4. injection grammar in query strings/bodies (encoded quotes,
       `UNION`/`SELECT`, SQL comment markers `--`/`#`, boolean pairs like
-      `1=1`/`1=2`)
+      `1=1`/`1=2`) — `python3 src/tools/ctf/attack_defense_log_hunt.py
+      injections <access.log>` runs this sweep directly and URL-decodes
+      paths first so percent-encoded payloads still match
    5. sequential object enumeration (IDs incrementing in a tight loop)
    6. auth anomalies (password spray pattern, session reuse across IPs)
    7. size anomalies on normally-small responses
