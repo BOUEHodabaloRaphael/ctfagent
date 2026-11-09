@@ -70,6 +70,31 @@ Skills web/offensifs génériques (complément à `ctf-web`).
 ### `android-reverse-engineering/` — SimoneAvogadro @ `0c7cf89` (1 MB)
 Plugin APK complet (jadx/apktool/frida, SSL pinning, native `.so`).
 
+### `claude-ad/` — ADScanPro/Claude-AD @ `73efec5` (188 KB, import 2026-11-09)
+Plugin Claude Code **entièrement dédié à l'Active Directory offensif**, packagé
+exactement comme nos skills (`skills/` + `SKILL.md`, `agents/`, `commands/`).
+Combat les blocages boot2root/AD observés : `ad-methodology` (phases bout-en-bout),
+`ad-environment-constraints` (pièges NTLM désactivé/AES-only/LDAP channel
+binding/FQDN vs SPN court), `ad-opsec-telemetry` (Event IDs/MDI), `kerberos-attacks`,
+`adcs-attacks` (ESC1-ESC17 avec commandes `certipy`), `acl-abuse`, `coercion-ntlm-relay`,
+`compliance-mapping`. Voir `claude-ad/SOURCE.md`.
+
+### `claude-red/` — SnailSploit/Claude-Red @ `a8de813` (220 KB, sous-ensemble curé, import 2026-11-09)
+78 skills au total dans le dépôt source (10 500+ étoiles) ; seul le sous-ensemble
+boot2root est copié : `active-directory/{offensive-active-directory,offensive-netexec}`,
+`privesc/{offensive-linux-privesc,offensive-windows-privesc}`,
+`post-exploitation/{offensive-lateral-movement,offensive-persistence,
+offensive-data-exfiltration}`. Comble le trou "privesc Linux/Windows structuré" et
+"assume breach → pivot → persistence". Voir `claude-red/SOURCE.md`.
+
+### `hack-skills/` — yaklang/hack-skills @ `6fbf0bc` (332 KB, sous-ensemble curé, import 2026-11-09)
+~100 skills au total dans le dépôt source ; seul le sous-ensemble boot2root est copié,
+apportant l'angle **pivoting/tunneling** et **container/K8s escape** absent des deux
+imports précédents : `active-directory-{acl-abuse,certificate-services,
+kerberos-attacks}`, `ntlm-relay-coercion`, `{linux,windows}-privilege-escalation`,
+`{linux,windows}-lateral-movement`, `tunneling-and-pivoting`,
+`container-escape-techniques`, `kubernetes-pentesting`. Voir `hack-skills/SOURCE.md`.
+
 ## Ce qui n'a pas été copié
 
 - `AI-agent-master-cyber-skills-list` (27 MB, 751 skills) : majoritairement blue-team,
@@ -78,6 +103,16 @@ Plugin APK complet (jadx/apktool/frida, SSL pinning, native `.so`).
 - Dépôts purement "pentest produit" (`CloverSec-CTF-Pack`, `pownie`, `nicetrygpt`,
   `cybersecurity-claude-skills`, `awesome-skills-security`) : redondants avec
   `security-skills` + `ctf-skills`.
+- `davila7/claude-code-templates` (33k étoiles) et `zebbern/claude-code-guide` (4.7k
+  étoiles) : skills AD/privesc mentionnés mais non vérifiés en profondeur (dépôt
+  trop volumineux / contenu signalé comme générique par des scans tiers ; l'un
+  télécharge/exécute des scripts externes type `linpeas.sh` à l'exécution) — à
+  surveiller, pas à importer en l'état (recherche 2026-11-09).
+- `mohdhaji87/payloadsallthethings-skills`, `popey/claude-code-skills`,
+  `w34lthg3n1xx/Olga-bug_hunting` (fork de `hunter-bridge`) : contenu trop mince ou
+  hors périmètre boot2root/AD (recherche 2026-11-09).
+- Forks de `ctf-skills`/`hunter-bridge`/`security-skills` : aucun n'ajoute de contenu
+  boot2root notable par rapport aux copies déjà importées (vérifié 2026-11-09).
 
 ## Licences
 
@@ -87,3 +122,5 @@ Plugin APK complet (jadx/apktool/frida, SSL pinning, native `.so`).
 - `reverse-skills`, `security-skills`, `hacking-skills`, `pwn-htb`,
   `android-reverse-engineering`, `hunter-bridge` : MIT/Apache selon dépôt ; usage
   interne prépa CTF, conserver les notices.
+- `claude-ad`, `claude-red`, `hack-skills` : MIT (voir `SOURCE.md` de chacun pour le
+  copyright exact).
