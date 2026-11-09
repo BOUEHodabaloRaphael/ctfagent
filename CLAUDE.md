@@ -50,6 +50,7 @@ Current implemented Skills:
 8. `skill-maintainer/` - Turn solve feedback into the smallest safe repo upgrade and block uncontrolled skill growth
 9. `browser-automation/` - Headless browser control for XSS and DOM workflows
 10. `network-search/` - DuckDuckGo search fallback for external research
+11. `ctf-attack-defense/` - Attack-Defense/KOTH round methodology: log-based intrusion hunt, incident response from a lead, and reviewed-before-applied patching once the exploit-loop-first house doctrine (see `attack-defense-methodology-toolkit` pattern) says it's time to patch
 
 Recommended invocation order:
 

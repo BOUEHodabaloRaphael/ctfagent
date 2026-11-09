@@ -210,6 +210,7 @@
 - [Methodologie Attack-Defense CTF — mecanique, ordre des operations, toolkit](knowledge/patterns/misc/attack-defense-methodology-toolkit.md)
 - [Bisection a variable unique pour quiz/formulaire a feedback global seul](knowledge/patterns/misc/c3sa-cwl-quiz-bisection.md)
 - [Container bind-mount misconfig to setuid binary host escape](knowledge/patterns/misc/container-bindmount-setuid-escape.md)
+- [Attack-Defense/KOTH — reference tooling externe (firegex, CookieFarm, FAUST gameserver, neo)](knowledge/patterns/misc/ctf-attack-defense-tooling-reference.md)
 - [CTF-File-Hunter / loot-hunter - scanner recursif de fichiers sensibles post-acces (ctf-file-hunter/file-hunter/loot-hunter)](knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md)
 - [DANTE DC02 - AS-REP Roasting puis DCSync administrateur](knowledge/patterns/misc/dc02-asrep-roasting-dcsync.md)
 - [Socket Docker monte en RW dans un conteneur = evasion complete vers l'hote + tous les conteneurs voisins](knowledge/patterns/misc/docker-sock-mounted-container-host-escape.md)

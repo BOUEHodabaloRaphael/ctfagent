@@ -68,6 +68,13 @@ A `fact` must be traceable to an exact command output, log line, or file excerpt
 
 Read `references/category-switches.md` when classification is unstable.
 
+If the format turns out to be **Attack-Defense or King-of-the-Hill** — every
+team runs the same vulnerable service image, you both attack opponents and
+defend your own instance, repeated scored rounds with SLA/uptime checks —
+switch to `ctf-attack-defense` instead of treating it as solo jeopardy. That
+skill links the in-house exploit-loop-before-patch doctrine, the existing
+`src/tools/ctf/attack_defense_toolkit/`, and the KOTH-specific patterns.
+
 Use these examples:
 
 - A blank PHP page with a tiny query surface may be a webshell or backdoor, not a normal web app.
