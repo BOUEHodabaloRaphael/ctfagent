@@ -342,3 +342,161 @@ sans redemander de confirmation, dans cet ordre :
   commercial/proxy etranger avant de tester une instance).
 - Service reseau = TLS obligatoire (`ncat --ssl host 1337`, SNI=host), pas de
   `nc` simple.
+
+## KOTH session 2026-11-06 19:4x — Armory + Citadel (Th3N00bs)
+
+- Armory (13.37.197.230:28492) : nc direct AVANT tout scan -> banniere SSH OK
+  ("SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.17"). Puis `koth_auto.sh` phase1 a
+  lance un nmap -p- complet -> resultat: SEULEMENT 22/tcp et 443/tcp "open",
+  28492 absent du scan. Verif immediate post-scan: nc vers 28492 ->
+  "Connection timed out" (avant c'etait instantane). **Le scan -p- a
+  lui-meme declenche le blocage du port de service reel**, meme pattern que
+  la cooldown HTB Pro Lab deja en memoire (full-port-scan -> blocage
+  temporaire 20-30min, independant de l'IP). LECON AJOUTEE : sur
+  l'infra NCTF26 KOTH, NE PAS lancer nmap -p- sur les ports connus du
+  challenge -- scanner une liste ciblee (ports annonces + quelques communs)
+  avec un rate doux, jamais -p- agressif en min-rate 3000.
+- Citadel (13.37.197.230:28491) : port verifie toujours reactif juste apres
+  l'incident Armory (banniere SSH immediate). Decision : AUCUN scan -p- sur
+  Citadel, uniquement sondage cible sur ports precis.
+
+### Conclusion session KOTH 2026-11-06 19:4x-19:5x (Citadel + Armory)
+
+- Aucun acces SSH obtenu sur Citadel (28491) ni Armory (28492). Methodes
+  permises testees et toutes rejetees proprement : `PreferredAuthentications=none`
+  -> "Permission denied (publickey,password)" (aucun hint, pas de
+  keyboard-interactive) ; mot de passe vide (`sshpass -p ''`) -> meme refus ;
+  aucune cle par defaut disponible dans le repo/plateforme ; bannière/motd
+  pre-auth vide (verbose ssh -vvv, pas de texte additionnel).
+- Armory : `Exceeded MaxStartups` observe 2x sur les tentatives de handshake
+  -> contention reelle d'autres equipes (204 "retournements" vus sur le
+  board, tres dispute), pas un symptome cote nous.
+- Aucun port colocalise trouve au-dela de 22/443 (ports plateforme, cert
+  CloudFlare Origin -> hors scope, probablement l'infra arena.ctf.tg
+  elle-meme partagee sur la meme IP) et des ports specifiques (28005,
+  28065, 28268, 28304, 28468, 28483 -- closed, probablement d'autres
+  collines/equipes) vus lors du scan complet initial.
+- Pas de source/attachment jeopardy pour Citadel/Armory (verifie via
+  /challenges -- aucune occurrence "citadel"/"armory"/"hill").
+- Pas de distribution de cle SSH trouvee sur la page /plugins/koth/ (pas de
+  bouton telechargement, pas de reference .pem/id_rsa/pubkey dans le HTML/JS).
+- IMPASSE DOCUMENTEE : blackbox SSH-only exhausted sans bruteforce. Pistes
+  restantes NON explorees (hors scope agent, necessitent action humaine) :
+  canaux Discord/WhatsApp officiels (hints organisateurs possibles),
+  ou attente d'une fuite de creds via un autre vecteur a identifier plus tard.
+- Standings a la fin de session : Citadel tenu par B4r0qu3_W0rk5 (regne
+  52m45s), Armory tenu par Hello_World!!! (regne 7m15s). Th3N00bs toujours
+  a 0 sur Citadel. Aucune boucle --holdking lancee (aucun acces).
+
+## KOTH session 2026-11-06 ~22h00-22h20 — Throne + Reseau Fortune relances, agent boot2root Bassar en parallele
+
+- `throne_hold.py` (exploit HMAC deja prouve, voir `koth/throne/EXPLOIT.md`)
+  et `idor_sweeper.py` (IDOR refund, voir `koth/reseau-fortune/NOTES.md`)
+  relances en tache de fond (nohup, rythme modere, pas de flood).
+- **Decouverte importante (preuve directe) : Le Trone n'est PAS gagnable a
+  notre rythme actuel.** Nouvel endpoint `GET /status` (non gate) revele
+  **35+ millions de claims totaux** sur cette colline -- nos ~634 claims
+  reussis (200/ok confirme) en 15min n'apparaissent dans AUCUN top5 ni le
+  fil d'activite plateforme. L'exploit est prouve/fonctionnel mais hors
+  de portee sans un debit largement superieur (territoire flood, deja
+  bloque une fois par le garde-fou anti-flood de l'environnement sur une
+  version multi-threadee -- pas retente sans clarification humaine).
+  Script laisse tourner (cout nul, capture opportuniste), mais plus
+  presente comme strategie gagnante.
+- **Reseau Fortune** : exploration complete de la surface API
+  (register/bonus/transfer) -- **aucune 2e faille trouvee**, tout
+  correctement valide cote serveur sauf le refund IDOR deja connu. Le
+  parrainage/filleul necessite une vraie session de second joueur
+  (hors de portee scriptable solo). Sweeper correctement a l'etat
+  d'attente (frontiere du compteur global d'order_id, pas un bug) --
+  attend simplement qu'une equipe adverse achete quelque chose. 3
+  commandes test creees puis remboursees par nous-memes pour verifier le
+  mecanisme, effet net nul (etat restaure, verifie via `/api/me`
+  avant/apres).
+- **Agent sous-traite en parallele** sur un boot2root DISTINCT :
+  `komisergio-bassar` (10.100.16.100:9999, pwn/stack overflow, script
+  fourni par l'utilisateur), workspace
+  `workspaces/komisergio-bassar-boot2root-pwn/` -- NE PAS confondre avec
+  `nctf26-komisergio-kpalime` (AD/ADCS, 10.10.20.30, bloque reseau,
+  challenge different du meme createur). Statut agent : en cours au
+  moment de cette note.
+
+## KOTH tour complet 2026-11-07 ~01h25 — verification etat, aucune nouvelle tentative
+
+Lecture en un appel de `GET /plugins/koth/api/state` (cookies session reutilises,
+pas de re-login) + sondes ciblees. Conclusion : **aucun changement de fond**,
+toutes les impasses deja documentees restent valides.
+
+- **The Throne** : roi `Hello_World!!!`, regne 7s, 718 takeovers (board tourne
+  en boucle de prises <10s, toujours le pattern deja connu). `throne_hold.py`
+  (PID 165224) tourne en continu depuis 3h05 sans interruption -- claims
+  intermittents reussis (`king=b792a5aa...` = notre token observe dans son
+  propre log), mais jamais assez pour tenir face a la contention. Verif
+  directe `GET /status` x2 espacees de 6.3s : claims 51642519 -> 51654014,
+  soit **~1836 req/s** de trafic adverse cumule -- dans la fourchette
+  1000-3000 req/s deja etablie, **PAS de baisse de contention**. Total
+  claims maintenant 51.6M (contre 35M+ note le 06/11), donc la colline est
+  MEME PLUS disputee qu'avant, pas moins. Conclusion "non gagnable a notre
+  rythme" reconfirmee, aucun flood tente.
+- **The Citadel** (28491) : roi `Unkn0wn`, regne 9855s (~2h44), seulement 9
+  takeovers -- colline stable, peu disputee en ce moment, mais toujours 0
+  acces pour Th3N00bs (absent du top5 : B4r0qu3_W0rk5 2120, Unkn0wn 1700,
+  Fuller 120, z3n_ 60, Gh0st Pr0t0c0l 5). Sonde cible (nmap -sV, 1 port,
+  pas de -p-) : banniere SSH identique a avant (`OpenSSH 8.9p1 Ubuntu
+  3ubuntu0.17`), rien de nouveau. Pas de tentative d'acces (impasse
+  SSH-only toujours valide).
+- **The Armory** (28492) : roi `Hello_World!!!`, regne 68s, 435 takeovers
+  (tres disputee, comme Throne). Sonde ciblee -> reponse `Exceeded
+  MaxStartups` (confirmee stable sur 2 sondes espacees de 3s) -- **meme
+  symptome que le 06/11** (deja note x2), confirme a nouveau : flood SSH
+  d'equipes adverses sur le port de service, pas un signal cote nous. Aucun
+  acces. Th3N00bs a neanmoins 2 pts au board (`score:2`, 5e du top5) --
+  residu d'un gain anterieur (pas nouveau, pas d'action a prendre).
+- **Reseau Fortune** : roi `SH4D0W`, regne 10189s (~2h50), 214 takeovers.
+  `idor_sweeper.py` (PID 167030) tourne en continu depuis 3h03, **aucun
+  redemarrage necessaire**. Etat du wallet stagnant a 25800 (net_gain
+  -24200) depuis ~sweep 101 jusqu'a sweep 594 (pres de 500 cycles sans
+  variation) -- deux dips transitoires a 20000/21000 en debut de run deja
+  corriges. Les order_id continuent de progresser (1124 -> 1185 observes
+  pendant la verif) donc le sweeper est actif et voit du trafic, mais
+  aucune commande fraiche adverse exploitable recemment (quelques timeouts
+  `urlopen error timed out` ponctuels, pas un echec systemique). Th3N00bs
+  toujours absent du top5 (SH4D0W 1986, z3n_ 633, hum 492, Fuller 450,
+  B4r0qu3_W0rk5 78).
+
+**Aucune opportunite nouvelle trouvee.** Rien a signaler au-dela de la
+reconfirmation des impasses/strategies deja en place. Les deux scripts de
+fond (`throne_hold.py`, `idor_sweeper.py`) etaient deja actifs, aucun
+redemarrage necessaire cette fois.
+
+## Verification connectivite 2026-11-09 17h20 — blocage Cloudflare WAF (pas un gate plateforme)
+
+Check demande par l'utilisateur apres confirmation de qualification en
+**finale** (presentiel Lome, 19-20 novembre). Resultat : **la plateforme
+bloque toutes les requetes depuis cet environnement**, y compris les pages
+publiques non gatees auparavant.
+
+- `curl -sI https://arena.ctf.tg/login` -> **HTTP 403**, page Cloudflare
+  "Attention Required! / you have been blocked" (`server: cloudflare`,
+  `cf-ray: a57e7cebf97ff8f6-SIN`) -- **different** du 403 JSON
+  `"NCTF26 has not started yet"` deja documente le 2026-11-02 (celui-ci
+  etait un gate applicatif explicite ; celui du jour est un blocage WAF
+  Cloudflare generique sans message plateforme).
+- Memes 403 sur `/`, `/challenges`, `/scoreboard`, `/api/v1/challenges`
+  (avant, ces pages publiques repondaient 200 meme plateforme fermee).
+- Connectivite generale de la machine confirmee normale en parallele
+  (`curl https://www.google.com` -> 200), donc pas un probleme reseau local.
+- `nctf26_client.py login` echoue avec `Champ nonce introuvable` -- cause
+  confirmee : Playwright recoit la meme page de blocage Cloudflare (verifie
+  avec et sans le contournement DNS `--host-resolver-rules` deja present
+  dans le script -- aucun effet, le blocage n'est pas DNS).
+- Pas de tentative de contournement (rotation IP/proxy, user-agent spoof,
+  etc.) -- hors perimetre agent, et risque de violer le reglement anti-abus
+  de la plateforme pendant une phase sensible (entre-deux presequalif/finale).
+- **Hypothese la plus probable** : rate-limit/blocage global cote
+  Cloudflare apres la cloture de la phase de preselection (2026-11-06/07),
+  possiblement lie a la reputation de l'IP sortante de cet environnement,
+  pas specifique a notre equipe.
+- **Action recommandee (humaine)** : retester depuis un autre reseau/IP
+  (poste perso, VPN equipe) avant la finale du 19-20 novembre pour confirmer
+  si c'est global ou local a cet environnement.
