@@ -145,6 +145,13 @@ hints), run the container-escape check in
 before reaching for kernel exploits — a mis-scoped bind mount is a cheap,
 non-destructive check worth ruling out first.
 
+**Automatic step, not optional:** also run `ctf-file-hunter` (interruptible,
+CTF-friendly) or `loot-hunter` (non-interruptible, pentest-style full scan)
+right away to surface credential/config/flag-shaped files across `/home /root
+/var/www /tmp /dev/shm /mnt /opt` instead of hand-rolling `find`/`grep -r` —
+details and limits in
+[`ctf-file-hunter-sensitive-file-scanner`](../../../knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md).
+
 ## Exit Conditions
 
 Switch to other skills when:

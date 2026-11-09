@@ -66,7 +66,12 @@ AUTO_PIPELINE_DIRECTIVE = (
     "affirmation de progres doit citer une sortie de commande/log exacte (voir ctf-solver-profile "
     "Evidence Levels), jamais un resume du modele; apres ~2-3 rounds de sondes sans fait nouveau, "
     "marquer le workspace `blackbox-exhausted` dans notes.md plutot que de relancer la meme ligne "
-    "d'attaque."
+    "d'attaque. Des qu'un shell, une primitive de lecture stable (LFI, arbitrary read), une image "
+    "montee/archive extraite, ou un acces filesystem conteneur devient disponible, lancer "
+    "automatiquement `ctf-file-hunter` (ou `file-hunter <chemin>` pour un dossier precis; "
+    "`loot-hunter` seulement en contexte pentest reel, non interruptible) avant toute passe "
+    "manuelle `find`/`grep -r` -- ne pas attendre une demande explicite. Voir "
+    "`knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md`."
 )
 
 

@@ -88,6 +88,12 @@ Usage pattern:
 python3 src/tools/web/<tool>.py <command> --target URL --param NAME
 ```
 
+**Automatic step, not optional:** the moment an LFI/RCE/container pivot gives
+filesystem read access, run `ctf-file-hunter` / `file-hunter <path>`
+(external helper, launchers in `PATH`, see
+[`ctf-file-hunter-sensitive-file-scanner`](../../../knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md))
+to triage sensitive files instead of reading directories one by one.
+
 ## Workflow
 
 1. Fingerprint the target (stack, endpoints, auth mechanism)

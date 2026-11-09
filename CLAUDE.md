@@ -29,6 +29,12 @@ Do not force users to learn internal scripts before they can start.
 - Use `workspaces/<challenge-id>/` for challenge-local context and artifacts.
 - Keep reusable knowledge in `knowledge/`, not only in chat history.
 - Treat platform integration as optional. It is only needed for pull/download/spawn/submit workflows.
+- As soon as a shell, a stable file-read primitive (LFI, arbitrary read, mounted image,
+  extracted archive), or a container/host filesystem becomes reachable, **automatically**
+  run `ctf-file-hunter` (or `file-hunter <path>` for a specific directory; `loot-hunter`
+  only in a real pentest context since it is not interruptible) before any manual
+  `find`/`grep -r` pass — do not wait to be asked. See
+  `knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md` for scope and limits.
 
 ## Active Skills
 

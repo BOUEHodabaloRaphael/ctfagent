@@ -81,6 +81,12 @@ Use these examples:
 - Move to controlled execution probes: `phpinfo();`, `id`, `sleep(3)`, test strings, harmless file reads.
 - Escalate to real exploitation only after controlled probes confirm the path.
 - Enumerate for flags only after you have stable execution or a stable read primitive.
+- The moment that stable execution/read primitive exists (shell, LFI, mounted image,
+  extracted archive, container access), automatically run `ctf-file-hunter` /
+  `file-hunter <path>` (or `loot-hunter` in a pentest-only context) before any manual
+  `find`/`grep -r` enumeration — this is a default action, not something to ask
+  permission for. See
+  [`ctf-file-hunter-sensitive-file-scanner`](../../../knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md).
 
 ## Dead-End Detection
 

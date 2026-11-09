@@ -311,6 +311,13 @@ find / -perm -4000 2>/dev/null
 
 ## Linux Privilege Escalation Quick Checks
 
+**Automatic step, not optional:** before the manual checks below, run
+`ctf-file-hunter` (interruptible) or `loot-hunter` (non-interruptible,
+heavier pentest-style scan) to auto-surface
+sensitive files (`.conf/.env/.key/id_rsa/wp-config.php/...` + keyword grep) —
+see
+[`ctf-file-hunter-sensitive-file-scanner`](../../../knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md).
+
 ```bash
 # GECOS field passwords
 cat /etc/passwd  # Check 5th colon-separated field

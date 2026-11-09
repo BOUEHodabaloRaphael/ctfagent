@@ -234,6 +234,14 @@ See [windows.md](windows.md) for SAM details and [network-advanced.md](network-a
 - Log file fragments
 - Memory strings
 
+**Automatic step, not optional:** the moment a mounted image, extracted archive,
+or live filesystem becomes accessible, run `ctf-file-hunter` (auto-scan of
+`/home /root /var/www /tmp /dev/shm /mnt /opt`, interruptible) or
+`file-hunter <path>` (targeted directory) immediately, before any manual
+`find`/`grep -r` pass — see
+[`ctf-file-hunter-sensitive-file-scanner`](../../../knowledge/patterns/misc/ctf-file-hunter-sensitive-file-scanner.md)
+for scope/limits (fixed keyword/extension list, skips `.git`/`/var/lib/docker`/`/proc`).
+
 ## WMI Persistence Analysis
 
 **Pattern (Backchimney):** Malware uses WMI event subscriptions for persistence (MITRE T1546.003).
