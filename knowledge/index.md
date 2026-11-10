@@ -11,6 +11,8 @@
 - [Twin_Prime](knowledge/writeups/crypto/twin-prime-fermat-rsa.md)
 
 ### forensics
+- [battleCTF Qualifier (bugpwn) - OT#001 Modbus dosing controller (Oldsmar-themed)](knowledge/writeups/forensics/bugpwn-ot001-modbus-static-flag.md)
+- [battleCTF Qualifier (bugpwn) - OT#002 Aurora out-of-phase breaker reclose](knowledge/writeups/forensics/bugpwn-ot002-aurora-outofphase-reclose.md)
 - [Holmes CTF 2026 Sherlock 08 - Borrowed Name / DIOGENES (forensics reseau: beacon C2 + evenements NTLM)](knowledge/writeups/forensics/borrowedname-sherlock08-pcap-ntlm-c2-beacon.md)
 - [Holmes CTF 2026 Sherlock 08 - Borrowed Name / DIOGENES (acces initial via USB/LNK + sideload DLL)](knowledge/writeups/forensics/borrowedname-sherlock08-usb-lnk-dropper.md)
 - [Holmes CTF 2026 Sherlock 02 - Bottle Out (VM Windows RDP, triage initial)](knowledge/writeups/forensics/bottleout-sherlock02-windows-triage-questionnaire.md)
@@ -21,6 +23,11 @@
 
 ### misc
 - [AFRICC 2027 Qualifiers — full writeup (BOUE Hodabalo Raphael, Togo)](knowledge/writeups/misc/africc2027-quals-full-writeup.md)
+- [battleCTF Qualifier (bugpwn) - Operation BLACKHOLE 1-8 (pcap DDoS analysis)](knowledge/writeups/misc/bugpwn-blackhole-pcap-ddos-chain.md)
+- [battleCTF Qualifier (bugpwn) - out-context bonus: Discord, 0byte, Know Your Enemy](knowledge/writeups/misc/bugpwn-outcontext-bonus-challenges.md)
+- [battleCTF Qualifier (bugpwn) - VULN#003 c-ares CVE-2020-8277 (final trigger not captured)](knowledge/writeups/misc/bugpwn-vuln003-cares-cve-2020-8277.md)
+- [battleCTF Qualifier (bugpwn) - VULN#004 (solved, methodology not captured)](knowledge/writeups/misc/bugpwn-vuln004-flag-only.md)
+- [battleCTF Qualifier (bugpwn) - VULN#005 GoAhead 6.1.1 (solved, no bug confirmed in recorded recon)](knowledge/writeups/misc/bugpwn-vuln005-goahead-recon-gap.md)
 - [C3SA — Certified Cyber Security Analyst (CyberWarFare Labs)](knowledge/writeups/misc/c3sa-cwl-quiz-bisection.md)
 - [CEHv13 + AFRICC reference library (21 modules + links)](knowledge/writeups/misc/ceh-africc-reference-library.md)
 - [DANTE DC02 - AS-REP Roasting puis DCSync administrateur](knowledge/writeups/misc/dc02-asrep-roasting-dcsync.md)
@@ -68,6 +75,10 @@
 - [Endgame XEN - Owned (SeBackupPrivilege -> dump NTDS -> Domain Admin)](knowledge/writeups/misc/xen-owned-sebackupprivilege-ntds-dump.md)
 
 ### pwn
+- [battleCTF Qualifier (bugpwn) - PWN#001 (confirmed solved; investigation blocked by a suspected remote guard)](knowledge/writeups/pwn/bugpwn-pwn001-blocked-external-solve.md)
+- [battleCTF Qualifier (bugpwn) - PWN#004 Pet Shelter (custom heap UAF, single fake-chunk forge)](knowledge/writeups/pwn/bugpwn-pwn004-petshelter-heap-uaf-forge.md)
+- [battleCTF Qualifier (bugpwn) - PWN#Alpha (solved, methodology not captured)](knowledge/writeups/pwn/bugpwn-pwnalpha-flag-only.md)
+- [battleCTF Qualifier (bugpwn) - PWN#Delta PowerPC (solved via external tool/session)](knowledge/writeups/pwn/bugpwn-pwndelta-powerpc-external-solve.md)
 - [DANTE DC01 - EternalBlue (ms17_010_psexec) et pivot Metasploit](knowledge/writeups/pwn/dc01-eternalblue-psexec-pivot.md)
 - [Forge CI/CD (GhostNet CTF) - RCE via endpoint Run Pipeline (YAML script non sandboxe)](knowledge/writeups/pwn/forge-cicd-pipeline-yaml-rce.md)
 - [FullHouse - Ce qui a ete perdu (FullPowers + EfsPotato pour restaurer SeImpersonate)](knowledge/writeups/pwn/fullhouse-fullpowers-efspotato-privesc.md)
@@ -92,6 +103,9 @@
 ### web
 - [171.80.2.169 18148](knowledge/writeups/web/171-80-2-169-18148.md)
 - [AarMe — IDOR/BOLA sur GET /api/aarme/status](knowledge/writeups/web/aarme-idor-status-session-only-check.md)
+- [battleCTF Qualifier (bugpwn) - SwiftNotes (EJS outputFunctionName prototype-pollution RCE)](knowledge/writeups/web/bugpwn-swiftnotes-ejs-prototype-pollution-rce.md)
+- [battleCTF Qualifier (bugpwn) - TicketVault (NoSQL injection via query-string credential merge)](knowledge/writeups/web/bugpwn-ticketvault-nosql-querystring-bypass.md)
+- [battleCTF Qualifier (bugpwn) - WireVault (solved, methodology not captured)](knowledge/writeups/web/bugpwn-wirevault-flag-only.md)
 - [Abuivide](knowledge/writeups/web/abuivide-sqli-union.md)
 - [Audit QuizTech - logique metier et correction 100% cote client sur app React + Firestore](knowledge/writeups/web/audit-firebase-client-side-trust-quiz-app.md)
 - [ClearHouse - GraphQL IDOR to Path Traversal to js-yaml v3 toJSON RCE](knowledge/writeups/web/clearhouse-graphql-idor-traversal-jsyaml-tojson-rce.md)
