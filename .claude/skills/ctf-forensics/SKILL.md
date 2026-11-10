@@ -259,6 +259,14 @@ See [windows.md](windows.md#anti-forensics-detection-checklist) for the WMI repo
 
 ## Network Forensics Quick Reference
 
+- **First-pass credential/file extraction from PCAP:** `TERM=linux brutesharkcli -m
+  Credentials,FileExtracting,NetworkMap,DNS -i capture.pcap -o <existing_out_dir>`
+  (apt package `bruteshark`, already installed) auto-extracts plaintext creds
+  (IMAP/HTTP Basic/FTP/...), full NTLMv2 hashes from NTLMSSP handshakes, carved
+  files, network map, and DNS queries in one pass — faster than hand-rolling tshark
+  filters per protocol for an initial sweep. Needs `TERM=linux` (terminfo bug) and
+  the `-o` dir created beforehand. See
+  [`bruteshark-pcap-credential-extraction`](../../../knowledge/patterns/forensics/bruteshark-pcap-credential-extraction.md).
 - **TFTP netascii:** Binary transfers corrupted; fix with `data.replace(b'\r\n', b'\n').replace(b'\r\x00', b'\r')`
 - **TLS keylog decryption:** Import SSLKEYLOGFILE or RSA private key into Wireshark (Edit → Preferences → Protocols → TLS)
 - **TLS weak RSA:** Extract cert, factor modulus, generate private key with `rsatool`, add to Wireshark

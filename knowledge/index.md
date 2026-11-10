@@ -191,6 +191,7 @@
 
 ### forensics
 - [Holmes CTF 2026 Sherlock 08 - Borrowed Name / DIOGENES (forensics reseau: beacon C2 + evenements NTLM)](knowledge/patterns/forensics/borrowedname-sherlock08-pcap-ntlm-c2-beacon.md)
+- [BruteShark CLI — extraction automatique de credentials/fichiers/DNS depuis un PCAP](knowledge/patterns/forensics/bruteshark-pcap-credential-extraction.md)
 - [Holmes CTF 2026 Sherlock 08 - Borrowed Name / DIOGENES (acces initial via USB/LNK + sideload DLL)](knowledge/patterns/forensics/borrowedname-sherlock08-usb-lnk-dropper.md)
 - [Holmes CTF 2026 Sherlock 02 - Bottle Out (VM Windows RDP, triage initial)](knowledge/patterns/forensics/bottleout-sherlock02-windows-triage-questionnaire.md)
 - [Methodologie pivot SIEM (Wazuh/Kibana) pour investigation DFIR web](knowledge/patterns/forensics/btf-cwl-dfir-soc-exercises.md)
