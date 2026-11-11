@@ -500,3 +500,23 @@ publiques non gatees auparavant.
 - **Action recommandee (humaine)** : retester depuis un autre reseau/IP
   (poste perso, VPN equipe) avant la finale du 19-20 novembre pour confirmer
   si c'est global ou local a cet environnement.
+
+## Verification connectivite 2026-11-11 — panne DNS totale (different du blocage Cloudflare du 09/11)
+
+Re-check demande par l'utilisateur. Resultat **different** du constat du
+2026-11-09 (qui etait un blocage WAF Cloudflare 403, DNS resolu normalement
+jusqu'au serveur) :
+
+- `curl -v https://arena.ctf.tg/login` -> `curl: (6) Could not resolve host`
+  (echec DNS, pas de connexion TCP/TLS du tout).
+- `nslookup arena.ctf.tg` via le resolveur local ET via `1.1.1.1` (Cloudflare
+  DNS public) -> **SERVFAIL** sur les deux.
+- Connectivite generale confirmee normale en parallele (`curl
+  https://www.google.com` -> HTTP/2 200), donc **pas** un probleme reseau
+  local — specifique au nom de domaine `arena.ctf.tg`.
+- Hypotheses possibles (non tranchees) : probleme DNS temporaire cote
+  registrar/hebergeur du domaine, domaine expire/suspendu, ou maintenance
+  plateforme plus profonde que le simple blocage WAF du 09/11.
+- **Action recommandee (humaine)** : retester depuis un autre reseau/DNS
+  avant la finale (19-20 nov) ; si SERVFAIL persiste ailleurs aussi, c'est
+  cote plateforme/registrar, pas cote environnement de session.
