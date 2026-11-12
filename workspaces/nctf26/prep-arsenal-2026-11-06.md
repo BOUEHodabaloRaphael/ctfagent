@@ -115,13 +115,13 @@ plateforme (`arena.ctf.tg`) renvoie un 403 Cloudflare WAF générique depuis cet
 environnement (voir section "Verification connectivite 2026-11-09" dans
 `notes.md`) — à retester depuis un autre réseau avant le 19-20 novembre.
 
-**Archive de sauvegarde rafraîchie le 2026-11-11** (celle du 09 ne contenait
-pas encore `scripts/bootstrap-parrot.sh` ni les 17 writeups bugpwn ajoutés
-le 10-11/11) :
+**Archive de sauvegarde rafraîchie le 2026-11-12** (celle du 11 ne contenait
+pas encore `workspaces/ad-lab/`, `workspaces/saarctf-redis-bbq/` ni
+`workspaces/nctf26-finale/`) :
 
 ```text
-/home/kali/backups/ctfagent-nctf26-arsenal-2026-11-11.tar.gz
-sha256 5e1b5fc0e01f7b9458787a57208d5d66796e09f633a9a155c84c61b2c69f91c2
+/home/kali/backups/ctfagent-nctf26-arsenal-2026-11-12.tar.gz
+sha256 1616830ab879a247dc3dfba99d7b6e0ca45e8d8fc4bc108db1e9e2d7bf67011a
 ```
 
 Restauration : même procédure que section 6, juste changer le nom de fichier.
