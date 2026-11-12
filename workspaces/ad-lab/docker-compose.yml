@@ -1,0 +1,12 @@
+services:
+  vulnbox:
+    build: ./vulnbox
+    ports:
+      - "18080:8080"
+    environment:
+      - FLAG_ROTATE_SECONDS=30
+
+  gameserver:
+    build: ./gameserver
+    ports:
+      - "19090:9090"
