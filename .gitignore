@@ -19,3 +19,8 @@ flags/pending/
 # Full upstream clones kept locally for analysis only; too large / not ours to version.
 targets/expressvpn-lightway/lightway/
 targets/expressvpn-lightway/wolfssl-rs/
+
+# NCTF finale harvest — untrusted downloaded PDFs/binaries/cloned repos, keep out of git
+workspaces/**/downloads/
+workspaces/nctf26-finale/telegram-harvest/pdfs/
+workspaces/nctf26-finale/**/*.bak-*
