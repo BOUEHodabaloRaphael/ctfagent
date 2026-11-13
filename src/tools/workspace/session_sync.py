@@ -75,8 +75,24 @@ AUTO_PIPELINE_DIRECTIVE = (
 )
 
 
+FINALE_TECHNIQUE_DIRECTIVE = (
+    "**Catalogue de techniques NCTF -- auto-consultation (toujours actif):** Des qu'un challenge, "
+    "un service A&D, une cible ou une technique entre en jeu pendant la NCTF (jeopardy ou finale), "
+    "faire correspondre AUTOMATIQUEMENT le probleme au catalogue consolide "
+    "`workspaces/nctf26-finale/FINALE-PREP-MASTER.md` (techniques par categorie web/pwn/rev/crypto/"
+    "forensics/OT-ICS/AI-agent + plan Attack-Defense) et aux digests `workspaces/nctf26-finale/"
+    "discord-harvest/*-TECHNIQUES-FOR-NCTF.md` + `AFRICC-AD-PLAYBOOK-FOR-NCTF.md` -- sans attendre "
+    "que l'utilisateur demande de fouiller la memoire. Reflexe: avant d'improviser, (1) identifier "
+    "la categorie, (2) chercher le pattern correspondant dans FINALE-PREP-MASTER.md section 2 (et "
+    "le plan A&D section 1 si format defensif), (3) completer avec "
+    "`python3 src/memory/query.py --root . --kind pattern|writeup --category <cat>`. Les techniques "
+    "recurrentes de la scene africaine (voir memoire [[ctf-african-scene-technique-patterns]]) "
+    "predisent les challenges NCTF. Corpus complet: `workspaces/nctf26-finale/discord-harvest/INDEX.md`."
+)
+
+
 def build_summary() -> str:
-    parts = ["## ctfagent session sync", AUTO_PIPELINE_DIRECTIVE]
+    parts = ["## ctfagent session sync", AUTO_PIPELINE_DIRECTIVE, FINALE_TECHNIQUE_DIRECTIVE]
 
     memory_lines = read_memory_index()
     if memory_lines:

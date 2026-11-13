@@ -35,6 +35,13 @@ FLAG_REGEX = r"NCTF\{[^}]+\}"
 SUBMIT_URL = "http://scoreboard.example/api/submit"
 SUBMIT_METHOD = "POST"            # POST le plus courant, parfois flag brut sur un socket TCP
 SUBMIT_JSON_KEY = "flag"          # nom du champ JSON attendu par la plateforme
+# Forme de la valeur du champ JSON :
+#   False -> {SUBMIT_JSON_KEY: "<flag>"}      (un flag scalaire, defaut historique)
+#   True  -> {SUBMIT_JSON_KEY: ["<flag>"]}    (le flag dans une LISTE)
+# L'infra ICC (dry-run AFRICC, cf. nctf26-finale-ad-playbook) attend la forme LISTE :
+#   POST .../core.v1.FrontendService/SubmitFlags  avec  {"flags": ["<flag>"]}
+# => pour l'ICC/la finale, mettre SUBMIT_JSON_KEY = "flags" et SUBMIT_JSON_VALUE_LIST = True.
+SUBMIT_JSON_VALUE_LIST = False
 SUBMIT_HEADERS = {
     # "Authorization": "Bearer <team_token>",
 }

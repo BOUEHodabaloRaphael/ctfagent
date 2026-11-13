@@ -56,10 +56,13 @@ class FlagSubmitter:
         return results
 
     def _submit_http(self, flag: str) -> str:
+        # Forme de la valeur: scalaire par defaut, ou liste si la plateforme
+        # l'exige (ex. ICC: {"flags": ["<flag>"]}). getattr -> compat anciens config.
+        value = [flag] if getattr(config, "SUBMIT_JSON_VALUE_LIST", False) else flag
         r = requests.request(
             config.SUBMIT_METHOD,
             config.SUBMIT_URL,
-            json={config.SUBMIT_JSON_KEY: flag},
+            json={config.SUBMIT_JSON_KEY: value},
             headers=config.SUBMIT_HEADERS,
             timeout=config.SUBMIT_TIMEOUT,
         )
