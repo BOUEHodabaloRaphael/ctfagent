@@ -22,6 +22,7 @@
 - [ThunderCipher StegoVault - FTP anonyme, steghide passphrase vide puis GTFOBins docker](knowledge/writeups/forensics/stegovault-ftp-steghide-empty-pass-docker.md)
 
 ### misc
+- [HackerLab 2026 — Welcome Back (Discord rich-presence → Spotify playlist acrostic)](knowledge/writeups/misc/hackerlab-welcome-back-discord-spotify-acrostic.md)
 - [AFRICC 2027 Qualifiers — full writeup (BOUE Hodabalo Raphael, Togo)](knowledge/writeups/misc/africc2027-quals-full-writeup.md)
 - [battleCTF Qualifier (bugpwn) - Operation BLACKHOLE 1-8 (pcap DDoS analysis)](knowledge/writeups/misc/bugpwn-blackhole-pcap-ddos-chain.md)
 - [battleCTF Qualifier (bugpwn) - out-context bonus: Discord, 0byte, Know Your Enemy](knowledge/writeups/misc/bugpwn-outcontext-bonus-challenges.md)
@@ -75,6 +76,7 @@
 - [Endgame XEN - Owned (SeBackupPrivilege -> dump NTDS -> Domain Admin)](knowledge/writeups/misc/xen-owned-sebackupprivilege-ntds-dump.md)
 
 ### pwn
+- [NCTF — bss overflow flip admin flag](knowledge/writeups/pwn/nctf-bss-overflow-flip-admin-flag.md)
 - [battleCTF Qualifier (bugpwn) - PWN#001 (confirmed solved; investigation blocked by a suspected remote guard)](knowledge/writeups/pwn/bugpwn-pwn001-blocked-external-solve.md)
 - [battleCTF Qualifier (bugpwn) - PWN#004 Pet Shelter (custom heap UAF, single fake-chunk forge)](knowledge/writeups/pwn/bugpwn-pwn004-petshelter-heap-uaf-forge.md)
 - [battleCTF Qualifier (bugpwn) - PWN#Alpha (solved, methodology not captured)](knowledge/writeups/pwn/bugpwn-pwnalpha-flag-only.md)
@@ -138,6 +140,7 @@
 - [HTB SmartHire (Medium)](knowledge/writeups/web/htb-smarthire-mlflow-rce.md)
 - [HTB Stream (htb-airport.htb)](knowledge/writeups/web/htb-stream-xxe-clickhouse.md)
 - [HTB Takeoff - SSTI to env leak to HMAC forge to n8n root to bind-mount setuid escape](knowledge/writeups/web/htb-takeoff-ssti-hmac-forge-n8n-bindmount.md)
+- [HTB XO XO Exploit - splice()-in-loop filter bypass to XXE file read](knowledge/writeups/web/htb-xoxo-exploit-splice-bypass-xxe.md)
 - [ThunderCipher IDORium - triple IDOR (ID direct, base64, MD5 du user_id)](knowledge/writeups/web/idorium-triple-idor-id-base64-md5.md)
 - [Internal Resource Viewer](knowledge/writeups/web/internal-resource-viewer.md)
 - [Zephyr - internal domain - Abus Backup Operators -> dump distant ruches DC -> DCSync](knowledge/writeups/web/internal-zsm-local-backup-operators-dcsync.md)
@@ -342,6 +345,7 @@
 - [Node.js --inspect expose en local = privesc root generique](knowledge/patterns/web/htb-reactor-nextjs-rce.md)
 - [MLflow creds par defaut -> RCE pickle -> .pth privesc](knowledge/patterns/web/htb-smarthire-mlflow-rce.md)
 - [XXE aveugle sans OOB: exfiltration in-band via pipeline aval](knowledge/patterns/web/htb-stream-xxe-clickhouse.md)
+- [Array splice()-in-loop skips validation to XXE via entity-value injection](knowledge/patterns/web/splice-in-loop-filter-bypass-xxe-entity-value.md)
 - [IDOR: test de controle obligatoire avant de conclure a une faille (eviter le faux positif)](knowledge/patterns/web/idor-false-positive-control-test-methodology.md)
 - [ThunderCipher IDORium - triple IDOR (ID direct, base64, MD5 du user_id)](knowledge/patterns/web/idorium-triple-idor-id-base64-md5.md)
 - [Zephyr - internal domain - Abus Backup Operators -> dump distant ruches DC -> DCSync](knowledge/patterns/web/internal-zsm-local-backup-operators-dcsync.md)
@@ -392,3 +396,10 @@
 - [Zephyr - zsm.local - GenericAll CA Managers -> RBCD -> impersonation Administrator](knowledge/patterns/web/zephyr-zsm-local-rbcd-ca-managers.md)
 - [Zephyr - zsm.local - Shadow Credentials (Whisker/Rubeus) sur un compte machine](knowledge/patterns/web/zephyr-zsm-local-shadow-credentials-mgmt1.md)
 - [Gestionnaire wp_ajax_* oublie lors d'un correctif de controle d'autorisation](knowledge/patterns/web/zoom-wp-plugin-vczapi-sync-user-missing-auth.md)
+
+## Reference
+- [Reusable pentest techniques corpus (~90 sessions) — AD/web/pwn/boot2root; consult BEFORE re-deriving. Key: Impacket ON-HOST (flapping/no-tunnel), AD trust SID-History, EFS bypass, Kerberoast AES](knowledge/reference/reference_pentest_techniques.md)
+- [Discord rich-presence → Spotify playlist acrostic (misc/OSINT)](knowledge/patterns/misc/discord-rich-presence-spotify-playlist-acrostic.md)
+- [Overflow buffer global .bss/.data → flip drapeau d'état adjacent (pwn)](knowledge/patterns/pwn/bss-global-flag-overflow.md)
+- [KoTH : tenir la colline en continu + persistance on-box (misc/A&D)](knowledge/patterns/misc/koth-hold-the-hill-continuous-and-onbox-persistence.md)
+- [Privesc Linux — quick wins (prise de box rapide, A&D/KoTH)](knowledge/patterns/misc/linux-privesc-quick-wins.md)
