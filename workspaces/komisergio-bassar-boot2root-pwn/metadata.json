@@ -1,0 +1,14 @@
+{
+  "id": "komisergio-bassar-boot2root-pwn",
+  "title": "komisergio-bassar (boot2root pwn)",
+  "category": "pwn",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "10.100.16.100:9999",
+  "attachments": [
+    "attachments/script.py"
+  ],
+  "tags": [],
+  "status": "solved-by-teammate-duplicate-stopped",
+  "constraints": []
+}

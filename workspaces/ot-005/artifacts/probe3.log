@@ -1,0 +1,30 @@
+{
+  "steps": [
+    {
+      "action": "post_connect_capture",
+      "raw": "",
+      "len": 0
+    },
+    {
+      "action": "send_startdt_act",
+      "frame": "680407000000"
+    },
+    {
+      "action": "startdt_response",
+      "raw": "",
+      "len": 0
+    },
+    {
+      "action": "send_general_interrogation",
+      "frame": "680e0000000064010600010000000014"
+    },
+    {
+      "action": "gi_response_raw",
+      "raw_len": 0,
+      "raw": "",
+      "num_apdus": 0,
+      "apdus": []
+    }
+  ],
+  "connect_time": 0.1186223030090332
+}

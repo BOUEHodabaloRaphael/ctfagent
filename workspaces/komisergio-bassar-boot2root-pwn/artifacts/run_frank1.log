@@ -1,0 +1,39 @@
+/bin/sh: 0: can't access tty; job control turned off
+$ uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+$ 
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+
+!//bbiinn//sshh!/bin/sh
+/bin/sh: 0: can't access tty; job control turned off
+$ 
+uid=1000(frank) gid=1000(frank) groups=1000(frank)
+$ 
+frank
+$ 
+total 20
+drwxr-xr-x 2 frank frank 4096 Nov  7 02:54 .
+drwxr-xr-x 1 root  root  4096 Nov  7 02:54 ..
+-rw-r--r-- 1 frank frank  220 May  7  2026 .bash_logout
+-rw-r--r-- 1 frank frank 3526 May  7  2026 .bashrc
+-rw-r--r-- 1 frank frank  807 May  7  2026 .profile
+$ 
+cat: '/home/frank/*.txt': No such file or directory
+$ 
+/usr/lib/ruby/gems/3.1.0/gems/net-imap-0.2.3/lib/net/imap/flags.rb
+/sys/devices/pnp0/00:04/00:04:0/00:04:0.0/tty/ttyS0/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.3/tty/ttyS3/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.1/tty/ttyS1/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.2/tty/ttyS2/flags
+/sys/devices/virtual/net/eth1/flags
+/sys/devices/virtual/net/lo/flags
+/sys/devices/virtual/net/eth0/flags
+$ 
+Matching Defaults entries for frank on 8b29816a3b02:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin,
+    use_pty
+
+User frank may run the following commands on 8b29816a3b02:
+    (adm) NOPASSWD: /usr/bin/vim /var/www/html/jailuser/dev/jail.c
+$ 

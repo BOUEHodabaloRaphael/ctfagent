@@ -1,0 +1,68 @@
+id: uid=1001(adm) gid=4(adm) groups=4(adm)
+$ 
+keys dir: total 20
+drwx------ 2 adm  adm  4096 Nov  7 02:54 .
+drwxr-xr-x 3 root root 4096 Nov  7 02:54 ..
+-rw-r--r-- 1 adm  adm    22 Nov  7 02:54 .frank
+-rw------- 1 adm  adm  1482 Nov  7 02:54 keys.zip
+-rw------- 1 adm  adm   107 Nov  7 02:54 note.txt
+$ 
+frank key xxd: /bin/sh: 3: xxd: not found
+$ 
+frank key od:    V   h   x   z   k   v   w       u   i   l   n       Z   o   x
+   z   g   i   z   z  \n
+$ 
+note od:  50 6f 6c 69 74 69 71 75 65 20 64 75 20 63 6f 66
+ 66 72 65 20 3a 0a 20 20 6d 6f 74 20 64 65 20 70
+ 61 73 73 65 20 3d 20 4e 6f 6d 20 2b 20 34 20 63
+ 68 69 66 66 72 65 73 20 2b 20 31 20 73 79 6d 62
+ 6f 6c 65 0a 4c 65 20 6e 6f 6d 20 65 73 74 20 63
+ 61 63 68 65 20 64 61 6e 73 20 2e 66 72 61 6e 6b
+ 20 28 41 74 62 61 73 68 29 2e 0a
+$ 
+note cat: Politique du coffre :
+  mot de passe = Nom + 4 chiffres + 1 symbole
+Le nom est cache dans .frank (Atbash).
+$ 
+etc shadow: cat: /etc/shadow: Permission denied
+$ 
+sudoersd: total 24
+drwxr-xr-x 1 root root 4096 Nov  7 02:54 .
+drwxr-xr-x 1 root root 4096 Nov  7 02:54 ..
+-r--r----- 1 root root   59 Nov  7 02:54 10-nobody
+-r--r----- 1 root root   73 Nov  7 02:54 11-frank
+-r--r----- 1 root root 1096 Apr 11  2026 README
+cat: /etc/sudoers.d/10-nobody: Permission denied
+cat: /etc/sudoers.d/11-frank: Permission denied
+cat: /etc/sudoers.d/README: Permission denied
+$ 
+home frank hist: cat: /home/frank/.bash_history: No such file or directory
+$ 
+opt jail / srv ftp: /opt/jail:
+total 40
+drwxr-xr-x 1 root root  4096 Oct 29 21:44 .
+drwxr-xr-x 1 root root  4096 Oct 29 21:44 ..
+-rwxr-xr-x 1 root root   126 Oct 29 21:42 compile.sh
+-rwxr-xr-x 1 root root 16456 Oct 29 21:44 jail
+-rw-r--r-- 1 root root   903 Oct 29 21:42 jail.c
+-rwxr-xr-x 1 root root    30 Oct 29 21:42 run.sh
+
+/srv/ftp:
+total 20
+drwxr-xr-x 1 root ftp  4096 Nov  7 02:54 .
+drwxr-xr-x 1 root root 4096 Oct 29 21:44 ..
+-rw-r--r-- 1 root root   74 Nov  7 02:54 README.txt
+-rw-r--r-- 1 root root  903 Nov  7 02:54 jail.c
+
+/var/www/html/jailuser/dev:
+total 36
+drwxr-xr-x 2 root root  4096 Nov  7 02:54 .
+drwxr-xr-x 3 root root  4096 Nov  7 02:54 ..
+-rwxr-xr-x 1 root root   126 Nov  7 02:54 compile.sh
+-rwxr-xr-x 1 root root 16456 Nov  7 02:54 jail
+-rw-r--r-- 1 root root   903 Nov  7 02:54 jail.c
+$ 
+srv ftp readme: Bassar forge - dev drop
+build: ./compile.sh
+service: nc bassar.local 9999
+$ 

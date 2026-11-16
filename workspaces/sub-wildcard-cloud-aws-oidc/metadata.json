@@ -1,0 +1,17 @@
+{
+  "id": "sub-wildcard-cloud-aws-oidc",
+  "title": "sub-wildcard (cloud/aws/oidc)",
+  "category": "cloud",
+  "platform": "manual",
+  "platform_id": "50",
+  "url": "N/A (static files)",
+  "attachments": [
+    "attachments/trust-policy.json",
+    "attachments/role-permissions.json",
+    "attachments/oidc-token.json",
+    "attachments/release-secret.json"
+  ],
+  "tags": ["aws", "oidc", "sts", "trust-policy", "easy"],
+  "status": "solved",
+  "constraints": []
+}

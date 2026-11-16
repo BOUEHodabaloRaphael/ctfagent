@@ -1,0 +1,7 @@
+agent_id	badge_code	secret	revoked
+101	AT-YAO	rot_old_atelier_key	0
+102	OP-AMA	ops_desk_token_xx	0
+103	CK-KOM	NCTF{fr3t_s4v4n3_806637183321}	0
+104	LM-EFU	disabled_agent_secret	0
+105	KR-KWA	kara_rack_probe	0
+106	CK-SEL	revoked_cinkasse_bait	1

@@ -46,3 +46,13 @@ workspaces/**/*.cap
 workspaces/**/*.pcap
 workspaces/**/*.pcapng
 workspaces/nctf26/koth/reseau-fortune/leaderboard.json
+
+# Non-text challenge material: archives, keys/certs, compiled binaries, malware samples, embedded repos
+workspaces/**/*.zip
+workspaces/**/*.crt
+workspaces/**/*.pem
+workspaces/**/*.key
+workspaces/rekit-lab/work/
+workspaces/rekit-lab/samples_real/
+workspaces/rekit-lab/staging_filehunter/CTF-File-Hunter/
+workspaces/fret-savane-appui-boot2root-samba-sql/artifacts/smb_AppuiTech/printer.cfg

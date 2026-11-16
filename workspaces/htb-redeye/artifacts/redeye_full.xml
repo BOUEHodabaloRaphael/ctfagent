@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.991 scan initiated Sun Nov 15 02:02:44 2026 as: /usr/lib/nmap/nmap -&#45;privileged -Pn -T4 -&#45;min-rate 2000 -p- -oA redeye_full 10.129.31.56 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -Pn -T4 -&#45;min-rate 2000 -p- -oA redeye_full 10.129.31.56" start="1794726164" startstr="Sun Nov 15 02:02:44 2026" version="7.991" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1794726164" endtime="1794726230"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.129.31.56" addrtype="ipv4"/>
+<hostnames>
+<hostname name="redeye.htb" type="PTR"/>
+</hostnames>
+<ports><extraports state="filtered" count="65535">
+<extrareasons reason="no-response" count="65535" proto="tcp" ports="1-65535"/>
+</extraports>
+</ports>
+</host>
+<runstats><finished time="1794726230" timestr="Sun Nov 15 02:03:50 2026" summary="Nmap done at Sun Nov 15 02:03:50 2026; 1 IP address (1 host up) scanned in 66.14 seconds" elapsed="66.14" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

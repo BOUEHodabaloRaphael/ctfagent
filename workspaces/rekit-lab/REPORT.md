@@ -57,3 +57,40 @@ a UPX-packed copy, and the EICAR test string. No real malware was downloaded or 
 | XOR-ed config not decoded | Expected: not a REKit feature. |
 | EICAR not recognised | Expected: no AV signatures. |
 | RC4 alert fires again | Same noise as before. |
+
+## Real malware, sandboxed (theZoo `Linux.Mirai.B`, 2 static ARM EABI4 ELF)
+
+Zip downloaded encrypted (sha256 b50681094c04...41c2), extracted and analysed only inside the container
+(`sandbox/run_zip.sh`: no network, read-only root, tmpfs noexec, caps dropped). Never executed, never extracted on the host.
+
+| finding | evidence |
+|---|---|
+| IOCs useful | Dropper/C2 IPs 79.124.8.24 and 78.142.18.20, `fetch.sh`/`fetch.mips` URLs, dozens of router exploit strings (`User-Agent: Hakai/2.0`). Extracted correctly by `-s`/`-io`. |
+| checksec right | `PIE: Non`, `NX: Non` (GNU_STACK is RWE, confirmed with readelf), no canary, no Fortify. |
+| Bundled "IOCs" noisy | 45 URLs for the 283 KB sample incl. w3.org/xmlsoap schemas; trailing junk glued to URLs (`...fetch.sh+chmod+777+fetch.sh+sh+fetch.sh  GET`). |
+| Mirai config table not found | No algorithm/constant hit (table is XOR-obfuscated, no known constants). `0xdeadbeef` "Magic marker" is a coincidental constant. |
+| RC4 alert inconsistent | Fires on the 283 KB sample, not on the 179 KB one: no signal. |
+| Not tested | `-cap`/`-patch` (REKit forces x86 mode, binaries are ARM), PE malware, radare2/Ghidra modules. |
+
+## Options not covered at first (after the author's feedback)
+
+| option | result |
+|---|---|
+| `-a` | Runs 11 modules without crashing (crackme, Mirai in sandbox). It does NOT run `-cap`, `-r2`, `-gh`, `-unpack`: "Analyse complète" is misleading. |
+| `-e` | Dangerous-symbol list works on unstripped binaries (`system`, `strcpy`, `printf` found in `danger`) but returns `(aucun)` on the stripped copy: same `readelf -s` truncation as the canary bug. `\bscanf@` also cannot match `__isoc99_scanf`. |
+| `-d` | Works on x86-64. On ARM malware in the container objdump fails and REKit counts its error text: "Instructions totales : 5, Appels détectés : 0" with no warning. |
+| `-r` | Works, invalid regex handled cleanly. |
+| `-o`, `-x`, `-l` | Offsets and hexdump match `grep -b` / `xxd` exactly. |
+| `--patch-bytes` | Works (backup `.bak`, `75 → 74` flips the crackme: wrong password accepted). |
+| `-r2` | Works with `r2pipe` in a venv (functions, xrefs, disassembly of main correct). `r2pipe` is not installed by default and the README's install script does not exist. |
+| `-gh` | Not tested (Ghidra not installed). |
+
+## `-gh` (Ghidra headless), tested in containers `rekit-ghidra` (12.1.4) and `rekit-ghidra11` (11.4.3)
+
+| Ghidra | result |
+|---|---|
+| 11.4.3 | Works. `crackme` main decompiled correctly (`strcmp(local_48,"hunter2")` -> GRANTED/DENIED). The `.decompiled.c` also contains ~140 lines of Ghidra INFO log before the first function (stdout+stderr are written together). |
+| 12.1.4 | Fails: `decompile.py : Ghidra was not started with PyGhidra. Python is not available`. The embedded script is a `.py` and Ghidra 12 needs PyGhidra. REKit still prints `✓ Décompilation : <file>` and the file only holds the log: no check of the exit status or of the output. |
+
+Container notes: no network, read-only root, tmpfs home owned by uid 10001, `JAVA_HOME` set (otherwise Ghidra tries to prompt for a JDK).
+Cleanup: `docker rmi rekit-ghidra rekit-ghidra11` (about 2.6 GB).

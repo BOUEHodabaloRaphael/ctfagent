@@ -1,0 +1,126 @@
+=== echo SHELL_OK $(id) ===
+/bin/sh: 0: can't access tty; job control turned off
+$ SHELL_OK uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+$ 
+
+=== whoami ===
+nobody
+$ 
+
+=== hostname ===
+8b29816a3b02
+$ 
+
+=== pwd ===
+/
+$ 
+
+=== ls -la / ===
+total 80
+drwxr-xr-x    1 root root 4096 Nov  7 02:54 .
+drwxr-xr-x    1 root root 4096 Nov  7 02:54 ..
+-rwxr-xr-x    1 root root    0 Nov  7 02:54 .dockerenv
+lrwxrwxrwx    1 root root    7 Oct 27 00:00 bin -> usr/bin
+drwxr-xr-x    2 root root 4096 Jul  2 19:05 boot
+drwxr-xr-x    5 root root  340 Nov  7 02:54 dev
+drwxr-xr-x    1 root root 4096 Nov  7 02:54 etc
+drwxr-xr-x    1 root root 4096 Nov  7 02:54 home
+lrwxrwxrwx    1 root root    7 Oct 27 00:00 lib -> usr/lib
+lrwxrwxrwx    1 root root    9 Oct 27 00:00 lib64 -> usr/lib64
+drwxr-xr-x    2 root root 4096 Oct 27 00:00 media
+drwxr-xr-x    2 root root 4096 Oct 27 00:00 mnt
+drwxr-xr-x    2 root root 4096 Oct 29 22:11 nctf
+drwxr-xr-x    1 root root 4096 Oct 29 21:44 opt
+dr-xr-xr-x 1262 root root    0 Nov  7 02:54 proc
+drwx------    1 root root 4096 Nov  7 02:54 root
+drwxr-xr-x    1 root root 4096 Nov  7 03:01 run
+lrwxrwxrwx    1 root root    8 Oct 27 00:00 sbin -> usr/sbin
+drwxr-xr-x    1 root root 4096 Oct 29 21:44 srv
+-rwxr-xr-x    1 root root 2898 Oct 29 22:11 start.sh
+dr-xr-xr-x   13 root root    0 Nov  7 02:54 sys
+drwxrwxrwt    1 root root 4096 Nov  7 02:54 tmp
+drwxr-xr-x    1 root root 4096 Oct 27 00:00 usr
+drwxr-xr-x    1 root root 4096 Nov  7 02:54 var
+$ 
+
+=== ls -la /root 2>&1 ===
+ls: cannot open directory '/root': Permission denied
+$ 
+
+=== cat /etc/passwd ===
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+ftp:x:100:102:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin
+sshd:x:101:65534::/run/sshd:/usr/sbin/nologin
+frank:x:1000:1000::/home/frank:/bin/bash
+adm:x:1001:4::/home/adm:/bin/bash
+$ 
+
+=== find / -perm -4000 -type f 2>/dev/null ===
+/usr/lib/openssh/ssh-keysign
+/usr/bin/chsh
+/usr/bin/mount
+/usr/bin/umount
+/usr/bin/newgrp
+/usr/bin/su
+/usr/bin/gpasswd
+/usr/bin/passwd
+/usr/bin/chfn
+/usr/bin/sudo
+$ 
+
+=== sudo -l 2>&1 ===
+Matching Defaults entries for nobody on 8b29816a3b02:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin,
+    use_pty
+
+User nobody may run the following commands on 8b29816a3b02:
+    (frank) NOPASSWD: /usr/bin/less /var/log/syslog
+$ 
+
+=== getcap -r / 2>/dev/null ===
+$ 
+
+=== find / -writable -type f -not -path '/proc/*' 2>/dev/null | head -50 ===
+$ 
+
+=== cat /etc/crontab 2>&1 ===
+cat: /etc/crontab: No such file or directory
+$ 
+
+=== ls -la /var/spool/cron/crontabs 2>&1 ===
+ls: cannot access '/var/spool/cron/crontabs': No such file or directory
+$ 
+
+=== find / -iname 'flag*' 2>/dev/null ===
+/usr/lib/ruby/gems/3.1.0/gems/net-imap-0.2.3/lib/net/imap/flags.rb
+/sys/devices/pnp0/00:04/00:04:0/00:04:0.0/tty/ttyS0/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.3/tty/ttyS3/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.1/tty/ttyS1/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.2/tty/ttyS2/flags
+/sys/devices/virtual/net/eth1/flags
+/sys/devices/virtual/net/lo/flags
+/sys/devices/virtual/net/eth0/flags
+$ 
+
+=== find / -iname '*.txt' 2>/dev/null | grep -vi usr | head -30 ===
+/srv/ftp/README.txt
+$ 
+

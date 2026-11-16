@@ -1,0 +1,6 @@
+id: uid=1001(adm) gid=4(adm) groups=4(adm)
+$ 
+frank key base64: Vmh4emt2dyB1aWxuIFpveHpnaXp6Cg==
+$ 
+frank key len: 22 /var/adm/.keys/.frank
+$ 

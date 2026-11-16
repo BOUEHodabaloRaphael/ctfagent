@@ -1,0 +1,9 @@
+[x] Opening connection to 10.100.16.100 on port 9999
+[x] Opening connection to 10.100.16.100 on port 9999: Trying 10.100.16.100
+[+] Opening connection to 10.100.16.100 on port 9999: Done
+userpass @ 0x7ffe22560930 shell @ 0x4011c6
+Password: 
+[+] userpass = 0x7ffe22560930
+[+] shell    = 0x4011c6
+[*] Switching to interactive mode
+[*] Closed connection to 10.100.16.100 port 9999

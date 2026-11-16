@@ -1,0 +1,15 @@
+Fret Savane — note DB atelier (brouillon Kofi)
+==============================================
+Instance : MariaDB sur savane-atelier-01 (port TCP 3306)
+Database : savane_agents
+User RO  : savane_ro
+
+Password :
+  concatener le code materiel de la ligne entrepot Cinkasse dans inventory.csv
+  + '#'
+  + le contenu du fichier .db_epoch (racine de ce partage)
+
+Exemple de forme (valeurs fictives) : MaterielXYZ#abcd
+
+Droits : SELECT uniquement sur savane_agents.
+Root distant desactive.

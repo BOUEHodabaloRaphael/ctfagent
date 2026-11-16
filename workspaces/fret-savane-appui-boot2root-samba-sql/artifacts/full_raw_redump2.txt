@@ -1,0 +1,21 @@
+id	full_name	site	role	active
+101	Yao Mensah	Kara	tech_atelier	1
+102	Ama Koffi	Lome	ops	1
+103	Komlan Tete	Cinkasse	agent_entrepot	1
+104	Efua Sarpong	Lome	agent_entrepot	0
+105	Kwame Diallo	Kara	agent_entrepot	1
+106	Selom Agbeko	Cinkasse	agent_entrepot	1
+id	agent_id	action	warehouse	created_at
+1	105	EXPORT_MANIFEST	Kara	2025-03-01 08:10:00
+2	103	GATE_CHECK	Cinkasse	2025-03-10 09:00:00
+3	106	EXPORT_MANIFEST	Cinkasse	2025-03-11 07:30:00
+4	103	EXPORT_MANIFEST	Cinkasse	2025-03-12 16:45:00
+5	102	ADMIN_LOGIN	Lome	2025-03-12 18:00:00
+6	105	INVENTORY_SYNC	Kara	2025-03-13 10:00:00
+agent_id	badge_code	secret	revoked
+101	AT-YAO	rot_old_atelier_key	0
+102	OP-AMA	ops_desk_token_xx	0
+103	CK-KOM	NCTF{fr3t_s4v4n3_806637183321}	0
+104	LM-EFU	disabled_agent_secret	0
+105	KR-KWA	kara_rack_probe	0
+106	CK-SEL	revoked_cinkasse_bait	1

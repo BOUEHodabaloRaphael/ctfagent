@@ -1,0 +1,26 @@
+=== conn1 at Wed Oct 28 13:41:07 2026 ===
+
+--- sanity op1 ---
+sent  : 010400000000000000
+recv  : 9 bytes: 810400000001000000
+
+--- op4 Write 40-byte payload ---
+sent  : 042800000055000000414141414141414141414141414141414141414141414141414141414141414141414141
+recv  : 10 bytes: 84050000000000000004
+
+--- op3 Read same nodeid=0x55 after long write ---
+sent  : 030400000055000000
+recv  : 10 bytes: 83050000000000000004
+
+=== conn2 at Wed Oct 28 13:41:23 2026 ===
+
+--- sanity op1 ---
+sent  : 010400000000000000
+recv  : 9 bytes: 810400000001000000
+
+--- op2 Browse len-field BIG-ENDIAN(value=4) ---
+sent  : 020000000400000000
+    [closed/EOF]
+recv  : 0 bytes: 
+
+=== done at Wed Oct 28 13:41:29 2026 ===

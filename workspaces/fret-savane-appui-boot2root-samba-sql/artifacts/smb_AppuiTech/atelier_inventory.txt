@@ -1,0 +1,9 @@
+Fret Savane — Inventaire atelier IT (extrait)
+============================================
+Hostname     : savane-atelier-01
+Site code    : KRA
+Site name    : Kara Atelier Principal
+Rotation an. : 2025
+Relais SMTP  : smtp.atelier.fretsavane.local
+Entrepots    : Lome-Tokoin, Kara-Central, Cinkasse-Nord
+Note         : Site code KRA utilisé par les scripts locaux et la convention password.

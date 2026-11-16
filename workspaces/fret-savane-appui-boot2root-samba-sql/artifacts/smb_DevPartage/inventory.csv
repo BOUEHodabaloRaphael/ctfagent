@@ -1,0 +1,5 @@
+warehouse_id,label,city,materiel_code,status
+ENT-LOM,Entrepot Tokoin,Lome,TokoinBox,active
+ENT-KRA,Entrepot Kara Central,Kara,KaraRack01,active
+ENT-CKS,Entrepot Cinkasse Nord,Cinkasse,C1nkasse,active
+ENT-OLD,Ancien depot Agoe,Lome,AgoeLegacy,retired

@@ -1,0 +1,7 @@
+# Nmap 7.991 scan initiated Sun Nov 15 02:02:44 2026 as: /usr/lib/nmap/nmap --privileged -Pn -T4 --min-rate 2000 -p- -oA redeye_full 10.129.31.56
+Nmap scan report for redeye.htb (10.129.31.56)
+Host is up.
+All 65535 scanned ports on redeye.htb (10.129.31.56) are in ignored states.
+Not shown: 65535 filtered tcp ports (no-response)
+
+# Nmap done at Sun Nov 15 02:03:50 2026 -- 1 IP address (1 host up) scanned in 66.14 seconds

@@ -1,0 +1,12 @@
+{
+  "id": "fret-savane-appui-boot2root-samba-sql",
+  "title": "fret-savane-appui (boot2root samba/sql)",
+  "category": "pwn",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "10.100.16.100 (ports 139,445,3306)",
+  "attachments": [],
+  "tags": ["b2r", "togo", "samba", "sql", "nctf26"],
+  "status": "solved",
+  "constraints": []
+}

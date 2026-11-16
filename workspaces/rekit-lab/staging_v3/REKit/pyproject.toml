@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rekit-lab"
+version = "3.1.0a1"
+description = "Modular reverse engineering and malware triage toolkit with CTF and malware profiles"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "REKit contributors"}]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+yara = ["yara-python>=4.3"]
+capstone = ["capstone>=5.0"]
+
+[project.scripts]
+rekit = "rekit.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["rekit*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

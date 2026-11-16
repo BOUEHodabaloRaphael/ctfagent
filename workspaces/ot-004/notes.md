@@ -241,3 +241,81 @@ simplified op+len+data layer is a deliberate decoy and the real protocol entry p
 else entirely (different trigger sequence, different port, or non-opcode-based framing) that
 hasn't been identified. **Needs external input (Discord/organizer hint or a reference client) to
 make further progress — recommend pausing further blind probing on this challenge.**
+
+## Round 3 (2026-10-28) — all remaining listed theories tested, ALL still negative
+
+Picked up after the "FINAL ROUND" conclusion above. Ran every item from the handoff's "not yet
+tested" and "genuinely new" lists, cleanly, no cooldown in effect (last activity was 3 days prior).
+Scripts: `artifacts/probe2.py` (main single-connection batch, log in `artifacts/probe2.log`) and
+`artifacts/probe3.py` (two short follow-up connections for the two tests probe2's connection died
+before reaching, log in `artifacts/probe3.log`).
+
+### Tests run and results (all canon/invariant unless noted)
+1. **`len` field itself big-endian** (header = `[op][len BE][data]` instead of LE) — sent
+   `02 00000004 00000000` (BE-encoded len=4). Server never responded; connection sat waiting and
+   was eventually closed by the server (EOF), exactly as expected if it strictly parses len as LE
+   (BE bytes `00 00 00 04` read as LE = `0x04000000`, a huge expected length it never received).
+   **Confirms (does not refute) the existing LE-only framing conclusion — no new behavior.**
+2. **Structured OPC-UA string NodeId encoding** `[0x03][namespaceIndex:2 LE][length:4 LE][utf8]`
+   (the real OPC-UA on-wire discriminant for a String NodeId, as opposed to the raw ASCII tried
+   before) — tried for `"Objects"`, `"SafetySystem"`, `"ReactorController"`, `"SIS"`, `"Enabled"`,
+   each in both `ns=0` and `ns=1`, as a Browse argument, plus one as a Read argument. **All byte-
+   identical canon replies** (`82/83 05000000 0000000004`). Refuted.
+3. **Patient multi-recv wait (15s, looped recv) after a clean Browse**, redone outside any
+   cooldown window this time (earlier attempt was polluted). Got the canon 10-byte reply almost
+   immediately, then the connection was closed by the server (EOF) during the remainder of the
+   15s window — **no delayed/second-segment data ever arrives**. Refuted; also see the connection-
+   lifetime note below.
+4. **Browse with a truly empty payload (`len=0`, zero bytes sent)**, as opposed to `len=4` with
+   4 zero bytes — byte-identical canon reply. Refuted/no distinction from the zero-payload case.
+5. **Pagination/continuation-point theory**: sent the exact 5 payload bytes from a previous canon
+   Browse response (`00 00 00 00 04`) back as the *next* Browse request's data (i.e. treating the
+   reply as an opaque continuation cursor to hand back). Byte-identical canon reply, no different
+   behavior, no further children revealed. Refuted.
+6. **Read with an AttributeId-ONLY 1-byte payload** (no NodeId at all), immediately after a Browse
+   on root, testing whether "current node" is implicit session state set by the last Browse. Tried
+   AttributeId = 1 (NodeId), 2 (NodeClass), 3 (BrowseName), 4 (DisplayName), 13 (Value) — all five
+   gave the identical canon Read reply (`83 05000000 0000000004`). Refuted.
+7. **Write with a long (40-byte) payload** (`4-byte fake NodeId=0x55 + 36 bytes of 'A'`), to check
+   for parser overflow / divergent code path. Canon reply, no crash, no behavior change. A follow-
+   up Read on nodeid `0x55` right after also gave the canon Read reply (no state change visible).
+   Refuted.
+8. **Deliberate bad framing** (header claims `len=20`, only 4 bytes sent initially) — confirmed the
+   server just buffers and waits (0 bytes received during a 2s peek before completing the frame);
+   after sending the remaining 16 bytes, got the ordinary canon Browse reply. No one-shot different
+   behavior exposed by the partial-frame window. Refuted (matches already-documented buffering
+   behavior, not a new finding).
+
+### New operational finding: connections appear to have a bounded lifetime/request budget
+During probe2's single persistent connection, after roughly 20-22 requests over ~35-50s of active
+(non-idle) back-and-forth, the server closed the connection (clean EOF) with no error, cutting off
+the two queued tests (long-Write, BE-len) before they ran — they had to be redone on fresh short
+connections in probe3.py. This is distinct from the previously-documented "idle timeout well under
+20s" (that one was triggered by sending nothing at all); this one happened while the connection was
+actively used. Not yet disambiguated whether it's a hard request-count cap (~20) or a hard wall-
+clock connection lifetime (~50-60s) — worth keeping in mind for future rounds (don't assume a
+single connection can carry unlimited sequential probes; budget ~15-18 requests per connection or
+reconnect proactively around the 40-45s mark) but not pursued further here since it's orthogonal
+to the actual addressing blocker.
+
+### Updated conclusion
+Every theory explicitly listed in the prior handoff (both the "not yet tested" list and the
+"genuinely new ideas" list) has now been tried and is negative. op2/op3/op4 remain 100% content-
+invariant across the full combined space of encodings tested across all three rounds: raw/BE/LE
+integers (1/2/4/8 bytes), zero-length payloads, OPC-UA raw numeric NodeId encodings (2-byte and
+4-byte forms, ns=0 and ns=1), the real structured OPC-UA *string* NodeId encoding (type discriminant
++ ns + length + utf8) in ns=0 and ns=1, combined NodeId+AttributeId and NodeId+Value pairs,
+AttributeId-only payloads, ASCII names, slash/dot browse-paths, long/oversized payloads, and a
+reply-echoed "continuation cursor". The `len` field itself is confirmed LE-only (BE framing simply
+stalls/closes, consistent with — not contradicting — the existing framing model).
+
+**No flag obtained. No file written to `flags/pending/`.** This looks like a genuine dead end for
+black-box guessing against this specific `op+len+data` layer. Recommend, in order: (a) check the
+event Discord/organizer channel for a hint or reference client for OT#004 specifically (the
+briefing explicitly says node IDs are not given and must be discovered "by talking to the
+endpoint" — implying there IS a discoverable mechanism we're missing, not that brute-guessing
+encodings is the intended path), (b) re-examine whether a completely different trigger/handshake
+(not opcode 1-4 on this same layer) exists — e.g. is there possibly a distinct "magic" first byte
+or sequence that switches the server into a different mode before the op+len+data layer applies —
+this was not explicitly re-tested in this round, (c) de-prioritize this challenge versus others with
+better signal until new information surfaces.

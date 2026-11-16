@@ -1,0 +1,11 @@
+Conversation — Support Fret Savane / prestataire réseau
+Lomé ↔ Kara, mars 2025
+---
+ops: Salut Kofi, mon auth Samba sur DevPartage passe plus.
+kofi: normal, on a appliqué la convention atelier après le ticket FS-ATELIER-2417.
+kofi: le compte c'est toujours mon user linux court : kofi
+ops: et le mot de passe ?
+kofi: je le colle plus dans le chat. Regarde le ticket + l'inventaire site, et le fichier
+      .atelier_id à la racine de ce partage (suffixe vault de la rotation).
+ops: ok je prends note.
+kofi: Ama va migrer ça dans le vault — en attendant DevPartage reste sur cette convention.

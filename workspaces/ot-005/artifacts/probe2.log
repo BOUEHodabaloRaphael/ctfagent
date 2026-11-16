@@ -1,0 +1,19 @@
+{
+  "steps": [
+    {
+      "action": "startdt_act",
+      "response": ""
+    },
+    {
+      "action": "GI_sent_CA=1",
+      "frame": "680e0000000064010600010000000014"
+    },
+    {
+      "action": "GI_response_CA=1",
+      "raw_len": 0,
+      "raw": "",
+      "num_frames": 0,
+      "frames": []
+    }
+  ]
+}

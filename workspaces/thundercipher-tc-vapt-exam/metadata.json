@@ -1,0 +1,14 @@
+{
+  "id": "thundercipher-tc-vapt-exam",
+  "title": "ThunderCipher TC-VAPT Exam",
+  "category": "web",
+  "platform": "manual",
+  "platform_id": "",
+  "url": "",
+  "attachments": [],
+  "tags": [],
+  "status": "new",
+  "constraints": [
+    "Evidence-first: nmap/httpx/source read before exploitation. 12h hard timer - prioritize Vault (lowest pts/likely easiest) first."
+  ]
+}

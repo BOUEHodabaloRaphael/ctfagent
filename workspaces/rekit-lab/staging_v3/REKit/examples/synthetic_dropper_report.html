@@ -1,0 +1,100 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>REKit report — ex_dropper.exe</title><style>
+:root{--bg:#fff;--fg:#1b1f24;--mut:#59636e;--card:#f6f8fa;--bd:#d0d7de;--hi:#cf222e;--me:#bc4c00;--lo:#9a6700;--in:#0969da;--ok:#1a7f37}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--fg:#e6edf3;--mut:#8b949e;--card:#161b22;--bd:#30363d;--hi:#ff7b72;--me:#ffa657;--lo:#e3b341;--in:#79c0ff;--ok:#56d364}}
+body{margin:0;padding:24px;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+main{max-width:1100px;margin:auto}h1{font-size:22px}h2{margin-top:32px;border-bottom:1px solid var(--bd);padding-bottom:6px;font-size:17px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px 16px;margin:10px 0}
+.badge{display:inline-block;padding:1px 8px;border-radius:12px;font-size:12px;font-weight:600;color:#fff}
+.high{background:var(--hi)}.medium{background:var(--me)}.low{background:var(--lo)}.info{background:var(--in)}
+code,pre{font:12px ui-monospace,Menlo,Consolas,monospace}pre{white-space:pre-wrap;word-break:break-all;margin:6px 0}
+table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid var(--bd);padding:4px 8px;text-align:left;vertical-align:top}
+.mut{color:var(--mut)}.bar{height:10px;border-radius:5px;background:var(--bd);min-width:80px}.bar i{display:block;height:10px;border-radius:5px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.grid .card{text-align:center;font-size:22px;font-weight:700;margin:0}
+.grid span{display:block;font-size:12px;font-weight:400;color:var(--mut)}details summary{cursor:pointer}
+</style></head><body><main>
+<h1>REKit report <span class='mut'>— malware profile</span></h1>
+<p class='mut'>Static triage results are indicators, not proof that a file is benign or malicious. Indicators below are defanged.</p>
+<div class='card'><table>
+<tr><th>Target</th><td><code>/tmp/ex_dropper.exe</code></td></tr>
+<tr><th>Type</th><td><code>PE/DOS — PE 64-bit x86_64 (executable)</code></td></tr>
+<tr><th>Size</th><td><code>1556 bytes (1.52 KiB)</code></td></tr>
+<tr><th>SHA-256</th><td><code>10d3731ffffad2acb31f73411761d3405c8af3ee263f0a378a40bb17381394d8</code></td></tr>
+<tr><th>MD5</th><td><code>98a9c5902e46467df869913196f881db</code></td></tr>
+<tr><th>Entropy</th><td><code>2.18139</code></td></tr>
+<tr><th>Analysed (UTC)</th><td><code>2026-10-30T08:23:58.660574+00:00</code></td></tr>
+<tr><th>imphash</th><td><code>bd9987ccee71eae7ce6ec03554f0245c</code></td></tr>
+</table></div><div class='grid'>
+<div class='card'><span class='badge high'>high</span><br>1<span>findings</span></div>
+<div class='card'><span class='badge medium'>medium</span><br>3<span>findings</span></div>
+<div class='card'><span class='badge low'>low</span><br>3<span>findings</span></div>
+<div class='card'><span class='badge info'>info</span><br>7<span>findings</span></div>
+</div>
+<h2>Suggested next steps</h2><div class='card'><pre>rekit unpack &lt;file&gt;</pre></div>
+<h2>Structure</h2><p>PE 64-bit · x86_64 · executable · entry <code>0x140001000</code></p>
+<table><tr><th>#</th><th>name</th><th>vaddr</th><th>size</th><th>flags</th><th>entropy</th><th></th></tr>
+<tr><td>0</td><td><code>UPX0</code></td><td><code>0x140001000</code></td><td>512</td><td><code>rwx</code></td><td>0.2209</td><td><div class='bar'><i style='width:3%;background:var(--ok)'></i></div></td></tr>
+<tr><td>1</td><td><code>UPX1</code></td><td><code>0x140002000</code></td><td>512</td><td><code>r--</code></td><td>4.0855</td><td><div class='bar'><i style='width:51%;background:var(--ok)'></i></div></td></tr>
+</table>
+<h3>Protections</h3><div class='card'><table><tr><th>high_entropy_va</th><td>True</td></tr><tr><th>aslr</th><td>True</td></tr><tr><th>force_integrity</th><td>False</td></tr><tr><th>dep</th><td>True</td></tr><tr><th>appcontainer</th><td>False</td></tr><tr><th>cfg</th><td>False</td></tr><tr><th>safeseh_possible</th><td>False</td></tr><tr><th>rwx_sections</th><td>1</td></tr></table></div>
+<h3>Imports (10)</h3>
+<details><summary><code>kernel32.dll</code> <span class='mut'>(6)</span></summary><pre>VirtualAllocEx, WriteProcessMemory, CreateRemoteThread, IsDebuggerPresent, LoadLibraryA, GetProcAddress</pre></details>
+<details><summary><code>ws2_32.dll</code> <span class='mut'>(4)</span></summary><pre>connect, send, recv, socket</pre></details>
+<h2>Findings</h2>
+<div class='card'><span class='badge high'>HIGH</span> <strong>Process injection primitives</strong> <span class='mut'>MAL-CAP-INJECT · confidence high · ATT&amp;CK T1055</span><p>Strong combination of related APIs. Indicators are not a verdict: benign software can show any of these behaviours.</p>
+<details open><summary>Evidence</summary><pre>imports: CreateRemoteThread, VirtualAllocEx, WriteProcessMemory</pre></details>
+<p class='mut'>Limitations: Static presence only; reachability and arguments are unknown.</p>
+</div>
+<div class='card'><span class='badge medium'>MEDIUM</span> <strong>Writable and executable section(s)</strong> <span class='mut'>MAL-PE-RWX · confidence medium</span><p>UPX0</p>
+<p class='mut'>Limitations: Structural oddity; legitimate software can trigger it.</p>
+</div>
+<div class='card'><span class='badge medium'>MEDIUM</span> <strong>Packer detected: UPX</strong> <span class='mut'>MAL-PACK-001 · confidence medium</span><p>Packed code hides the real logic from static analysis.</p>
+<details open><summary>Evidence</summary><pre>UPX (medium): section name(s): UPX0, UPX1</pre></details>
+<details><summary>Next steps</summary><pre>rekit unpack &lt;file&gt;</pre></details>
+<p class='mut'>Limitations: Section names can be forged; entropy and structure were also checked.</p>
+</div>
+<div class='card'><span class='badge medium'>MEDIUM</span> <strong>Run-key persistence</strong> <span class='mut'>MAL-STR-RUNKEYPERSISTENCE · confidence medium · ATT&amp;CK T1547.001</span><p>Related APIs or strings are present. Indicators are not a verdict: benign software can show any of these behaviours.</p>
+<details open><summary>Evidence</summary><pre>strings: currentversion\run</pre></details>
+<p class='mut'>Limitations: Static presence only; reachability and arguments are unknown.</p>
+</div>
+<div class='card'><span class='badge low'>LOW</span> <strong>Non-standard section names</strong> <span class='mut'>MAL-PE-ODD-SECT · confidence medium</span><p>UPX0, UPX1</p>
+<p class='mut'>Limitations: Structural oddity; legitimate software can trigger it.</p>
+</div>
+<div class='card'><span class='badge low'>LOW</span> <strong>Dynamic API / library resolution</strong> <span class='mut'>MAL-CAP-DYNAPI · confidence medium · ATT&amp;CK T1027.007</span><p>Strong combination of related APIs. Indicators are not a verdict: benign software can show any of these behaviours.</p>
+<details open><summary>Evidence</summary><pre>imports: GetProcAddress, LoadLibraryA</pre></details>
+<p class='mut'>Limitations: Static presence only; reachability and arguments are unknown.</p>
+</div>
+<div class='card'><span class='badge low'>LOW</span> <strong>Network communication</strong> <span class='mut'>MAL-CAP-NETWORK · confidence high · ATT&amp;CK T1071</span><p>Strong combination of related APIs. Indicators are not a verdict: benign software can show any of these behaviours.</p>
+<details open><summary>Evidence</summary><pre>imports: connect, recv, send, socket</pre></details>
+<p class='mut'>Limitations: Static presence only; reachability and arguments are unknown.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>Overlay data after the last section</strong> <span class='mut'>MAL-PE-OVERLAY · confidence medium</span><p>20 bytes at 0x600 (installers, appended payloads, or signatures).</p>
+<p class='mut'>Limitations: Structural oddity; legitimate software can trigger it.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>Debugger detection / evasion</strong> <span class='mut'>MAL-CAP-ANTIDEBUG · confidence low · ATT&amp;CK T1622</span><p>Related APIs or strings are present. Indicators are not a verdict: benign software can show any of these behaviours.</p>
+<details open><summary>Evidence</summary><pre>imports: IsDebuggerPresent</pre></details>
+<p class='mut'>Limitations: Static presence only; reachability and arguments are unknown.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>Memory permission changes (RWX staging)</strong> <span class='mut'>MAL-CAP-MEMPERM · confidence low · ATT&amp;CK T1027, T1055</span><p>Related APIs or strings are present. Indicators are not a verdict: benign software can show any of these behaviours.</p>
+<details open><summary>Evidence</summary><pre>imports: VirtualAllocEx</pre></details>
+<p class='mut'>Limitations: Static presence only; reachability and arguments are unknown.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>Potential URLS indicators extracted</strong> <span class='mut'>MAL-IOC-URLS · confidence low</span><p>Static extraction found 1 candidate urls value(s).</p>
+<details open><summary>Evidence</summary><pre>hxxp[://]79[.]124[.]8[.]24/fetch.sh</pre></details>
+<p class='mut'>Limitations: Extracted strings are not proof of network activity or malicious intent; inspect references and context.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>Potential IPS indicators extracted</strong> <span class='mut'>MAL-IOC-IPS · confidence low</span><p>Static extraction found 1 candidate ips value(s).</p>
+<details open><summary>Evidence</summary><pre>79[.]124[.]8[.]24</pre></details>
+<p class='mut'>Limitations: Extracted strings are not proof of network activity or malicious intent; inspect references and context.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>Potential REGISTRY KEYS indicators extracted</strong> <span class='mut'>MAL-IOC-REGISTRY_KEYS · confidence low</span><p>Static extraction found 1 candidate registry_keys value(s).</p>
+<details open><summary>Evidence</summary><pre>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\x</pre></details>
+<p class='mut'>Limitations: Extracted strings are not proof of network activity or malicious intent; inspect references and context.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>Potential WINDOWS PATHS indicators extracted</strong> <span class='mut'>MAL-IOC-WINDOWS_PATHS · confidence low</span><p>Static extraction found 1 candidate windows_paths value(s).</p>
+<details open><summary>Evidence</summary><pre>C:\Users\Public\a.exe</pre></details>
+<p class='mut'>Limitations: Extracted strings are not proof of network activity or malicious intent; inspect references and context.</p>
+</div>
+<h2>Analysis limitations</h2><ul><li>Static triage only; the target is never executed.</li><li>No malware/benign verdict is produced automatically.</li><li>Disassembly-based analysis (xrefs, stack strings, main discovery) covers x86/x86-64 only; other architectures rely on headers, symbols and strings.</li></ul>
+<p class='mut'>Timings (ms): read+hash=0.6, parse=0.4, strings=0.4, malware=1.5, total=3.0 · REKit 3.1.0a1</p>
+</main></body></html>

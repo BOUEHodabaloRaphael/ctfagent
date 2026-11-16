@@ -1,0 +1,14 @@
+Database
+information_schema
+savane_agents
+CURRENT_USER()
+savane_ro@%
+Grants for savane_ro@%
+GRANT USAGE ON *.* TO `savane_ro`@`%` IDENTIFIED BY PASSWORD '*76FF5ABC33EDDD5C8AE97A9139861A88805D2487'
+GRANT SELECT ON `savane_agents`.* TO `savane_ro`@`%`
+n_access_logs
+6
+n_badges
+6
+n_agents
+6

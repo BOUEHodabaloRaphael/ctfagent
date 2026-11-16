@@ -1,0 +1,178 @@
+id: uid=1001(adm) gid=4(adm) groups=4(adm)
+$ 
+bash_history: cat /home/adm/.viminfo
+ls -la /opt/jail /var/www/html/jailuser/dev /srv/ftp 2>&1
+cat /srv/ftp/README.txt 2>&1
+grep -ril 'symbole\|mot de passe\|passphrase' /opt /srv /var/www /home 2>/dev/null | head
+id frank; ls -la /home/frank 2>&1 | head
+cat /home/frank/.bash_history 2>/dev/null | head -20
+sudo -n -l 2>&1 | head -20
+cat /var/adm/.keys/.frank | xxd | head -3
+od -An -c /var/adm/.keys/.frank
+od -An -tx1 /var/adm/.keys/note.txt | head -8
+cat /etc/shadow 2>&1 | head -3
+ls -la /etc/sudoers.d/ 2>&1; cat /etc/sudoers.d/* 2>&1
+ls -la /var/log/ 2>&1
+grep -r . /var/log/apache2/ 2>/dev/null | head -5
+find / -newer /start.sh -type f -not -path '/proc/*' -not -path '/sys/*' 2>/dev/null | head -20
+cat /home/adm/.bash_history 2>&1 | head -40
+cat /home/adm/.viminfo 2>&1 | head -40
+cat /etc/passwd | tail -6
+ls -la /home/ /home/adm 2>&1
+$ 
+groups info: root:x:0:
+adm:x:4:
+sudo:x:27:
+$ 
+find suid/sgid for adm-readable: /proc/185
+/proc/185/task
+/proc/185/task/185
+/proc/185/task/185/fdinfo
+/proc/185/task/185/net
+/proc/185/task/185/attr
+/proc/185/task/185/attr/smack
+/proc/185/task/185/attr/apparmor
+/proc/185/fdinfo
+/proc/185/net
+/proc/185/attr
+/proc/185/attr/smack
+/proc/185/attr/apparmor
+/proc/186
+/proc/186/task
+/proc/186/task/186
+/proc/186/task/186/fd
+/proc/186/task/186/fd/0
+/proc/186/task/186/fd/1
+/proc/186/task/186/fd/2
+/proc/186/task/186/fdinfo
+/proc/186/task/186/fdinfo/0
+/proc/186/task/186/fdinfo/1
+/proc/186/task/186/fdinfo/2
+/proc/186/task/186/ns
+/proc/186/task/186/ns/net
+/proc/186/task/186/ns/uts
+/proc/186/task/186/ns/ipc
+/proc/186/task/186/ns/pid
+/proc/186/task/186/ns/pid_for_children
+/proc/186/task/186/ns/user
+/proc/186/task/186/ns/mnt
+/proc/186/task/186/ns/cgroup
+/proc/186/task/186/ns/time
+/proc/186/task/186/ns/time_for_children
+/proc/186/task/186/net
+/proc/186/task/186/environ
+/proc/186/task/186/auxv
+/proc/186/task/186/status
+/proc/186/task/186/personality
+$ 
+capsh: /bin/sh: 5: capsh: not found
+$ 
+find capable files: $ 
+find world readable root-owned secrets: /usr/sbin/chgpasswd
+/usr/sbin/update-passwd
+/usr/sbin/chpasswd
+/usr/lib/tmpfiles.d/passwd.conf
+/usr/lib/apache2/modules/mod_proxy_fdpass.so
+/usr/lib/python3.11/__pycache__/getpass.cpython-311.pyc
+/usr/lib/python3.11/getpass.py
+/usr/include/rpcsvc/yppasswd.h
+/usr/include/rpcsvc/yppasswd.x
+/usr/share/base-passwd
+/usr/share/base-passwd/passwd.master
+/usr/share/doc-base/base-passwd.users-and-groups
+/usr/share/doc/base-passwd
+/usr/share/doc/passwd
+/usr/share/pam/common-password.md5sums
+/usr/share/pam/common-password
+/usr/share/perl5/Debconf/Element/Web/Password.pm
+/usr/share/perl5/Debconf/Element/Dialog/Password.pm
+/usr/share/perl5/Debconf/Element/Teletype/Password.pm
+/usr/share/perl5/Debconf/Element/Editor/Password.pm
+/usr/share/perl5/Debconf/Element/Noninteractive/Password.pm
+/usr/share/perl5/Debconf/Element/Gnome/Password.pm
+/usr/share/perl5/Debconf/FrontEnd/Passthrough.pm
+/usr/share/apache2/ask-for-passphrase
+/usr/share/vim/vim90/syntax/passwd.vim
+/usr/share/vim/vim90/ftplugin/passwd.vim
+/usr/share/perl/5.36.0/Test2/Event/Pass.pm
+/usr/share/ca-certificates/mozilla/Buypass_Class_2_Root_CA.crt
+/usr/share/ca-certificates/mozilla/Buypass_Class_3_Root_CA.crt
+/usr/share/rubygems-integration/all/gems/webrick-1.8.1/lib/webrick/httpauth/htpasswd.rb
+/usr/bin/gpasswd
+/usr/bin/passwd
+/usr/bin/htpasswd
+/sys/devices/pci0000:00/0000:00:04.0/nvme/nvme0/nvme0n1/passthru_err_log_enabled
+/sys/devices/pci0000:00/0000:00:04.0/nvme/nvme0/nvme0n1/queue/iostats_passthrough
+/sys/devices/pci0000:00/0000:00:04.0/nvme/nvme0/passthru_err_log_enabled
+/sys/devices/system/cpu/vulnerabilities/spec_store_bypass
+/sys/devices/virtual/block/loop1/queue/iostats_passthrough
+/sys/devices/virtual/block/loop6/queue/iostats_passthrough
+/sys/devices/virtual/block/loop4/queue/iostats_passthrough
+/sys/devices/virtual/block/loop2/queue/iostats_passthrough
+/sys/devices/virtual/block/loop0/queue/iostats_passthrough
+/sys/devices/virtual/block/loop7/queue/iostats_passthrough
+/sys/devices/virtual/block/loop5/queue/iostats_passthrough
+/sys/devices/virtual/block/loop3/queue/iostats_passthrough
+/sys/module/libata/parameters/atapi_passthru16
+/proc/sys/net/bridge/bridge-nf-pass-vlan-input-dev
+/proc/sys/net/core/bypass_prot_mem
+/var/lib/dpkg/info/base-passwd.list
+/var/lib/dpkg/info/passwd.postrm
+/var/lib/dpkg/info/base-passwd.templates
+/var/lib/dpkg/info/base-passwd.postrm
+/var/lib/dpkg/info/passwd.postinst
+/var/lib/dpkg/info/passwd.prerm
+/var/lib/dpkg/info/passwd.list
+/var/lib/dpkg/info/base-passwd.preinst
+/var/lib/dpkg/info/base-passwd.postinst
+/var/lib/dpkg/info/passwd.preinst
+/var/lib/dpkg/info/passwd.conffiles
+/var/lib/dpkg/info/passwd.md5sums
+/var/lib/dpkg/info/base-passwd.md5sums
+/var/lib/pam/password
+/etc/passwd
+/etc/pam.d/common-password
+/etc/pam.d/passwd
+/etc/pam.d/chpasswd
+/etc/passwd-
+/etc/apache2/mods-available/proxy_fdpass.load
+/etc/ssl/certs/Buypass_Class_3_Root_CA.pem
+/etc/ssl/certs/Buypass_Class_2_Root_CA.pem
+$ 
+var log listing: total 104
+drwxr-xr-x 1 root root  4096 Nov  7 02:54 .
+drwxr-xr-x 1 root root  4096 Nov  7 02:54 ..
+-rw-r--r-- 1 root root  5776 Oct 29 21:44 alternatives.log
+drwxr-x--- 1 root adm   4096 Oct 29 21:44 apache2
+drwxr-xr-x 1 root root  4096 Oct 29 21:44 apt
+-rw-rw---- 1 root utmp     0 Oct 27 00:00 btmp
+-rw-r--r-- 1 root root 59448 Oct 29 21:44 dpkg.log
+-rw-r--r-- 1 root root     0 Oct 27 00:00 faillog
+-rw-rw-r-- 1 root utmp     0 Oct 27 00:00 lastlog
+drwxr-xr-x 3 root root  4096 Oct 29 21:44 runit
+-rw-r--r-- 1 root root    20 Nov  7 02:54 syslog
+-rw-r----- 1 root adm      0 Nov  7 02:54 vsftpd.log
+-rw-rw-r-- 1 root utmp     0 Oct 27 00:00 wtmp
+$ 
+ssh keys: $ 
+crontab root: cat: /etc/crontab: No such file or directory
+30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/x86_64-linux-gnu/e2fsprogs/e2scrub_all_cron
+10 3 * * * root test -e /run/systemd/system || SERVICE_MODE=1 /sbin/e2scrub_all -A -r
+$ 
+find flag anywhere incl root via adm group: /usr/lib/x86_64-linux-gnu/perl/5.36.0/bits/waitflags.ph
+/usr/lib/x86_64-linux-gnu/perl/5.36.0/bits/ss_flags.ph
+/usr/lib/ruby/gems/3.1.0/gems/net-imap-0.2.3/lib/net/imap/flags.rb
+/usr/lib/ruby/3.1.0/racc/debugflags.rb
+/usr/lib/ruby/3.1.0/bundler/feature_flag.rb
+/usr/include/linux/tty_flags.h
+/usr/include/linux/kernel-page-flags.h
+/usr/include/x86_64-linux-gnu/asm/processor-flags.h
+/usr/include/x86_64-linux-gnu/bits/termios-c_oflag.h
+/usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h
+/usr/include/x86_64-linux-gnu/bits/termios-c_iflag.h
+/usr/include/x86_64-linux-gnu/bits/waitflags.h
+/usr/include/x86_64-linux-gnu/bits/ss_flags.h
+/usr/include/x86_64-linux-gnu/bits/termios-c_cflag.h
+/usr/include/x86_64-linux-gnu/bits/termios-c_lflag.h
+/proc/kpageflags
+$ 

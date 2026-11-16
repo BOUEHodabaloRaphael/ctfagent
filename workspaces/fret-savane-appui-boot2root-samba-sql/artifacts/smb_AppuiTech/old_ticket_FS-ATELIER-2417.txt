@@ -1,0 +1,26 @@
+Ticket FS-ATELIER-2417 — Rotation credentials Samba (atelier)
+Statut : RESOLU / archive hotline
+Auteur : Yao (ops)
+---
+Contexte :
+Les prestataires laissaient des mots de passe en clair dans les chats.
+
+Décision (mars 2025) :
+Convention password comptes atelier (Samba / postes) :
+
+  {PrenomCourt}!{SiteCode}{Year}
+
+Exemples historiques (OBSOLETES — ne plus utiliser tels quels) :
+  Ama!KRA2024
+  Kofi!KRA2025
+
+IMPORTANT — addendum vault (appliqué ensuite, voir chat) :
+Depuis la mise en place du fichier .atelier_id sur AppuiTech, la convention réelle est :
+
+  {PrenomCourt}!{SiteCode}{Year}-<contenu de .atelier_id>
+
+Le suffixe change à chaque redéploiement atelier (valeur courte hex).
+Sans ce suffixe, l'auth Samba est refusée.
+
+PrenomCourt = prénom avec majuscule initiale (Kofi, Ama, Yao).
+SiteCode / Year = voir atelier_inventory.txt

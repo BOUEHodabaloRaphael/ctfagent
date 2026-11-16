@@ -1,0 +1,130 @@
+=== connected to 169.58.126.107:6003 at Wed Oct 28 13:38:31 2026 ===
+
+--- 0. sanity op1 Hello ---
+sent  : 010400000000000000
+recv  : 9 bytes: 810400000001000000
+parsed: resp_op=0x81 len=4 payload=01000000
+
+--- 0b. sanity op2 Browse canon(4 zero bytes) ---
+sent  : 020400000000000000
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 4. op2 Browse len=0 (truly empty) ---
+sent  : 0200000000
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 5. op2 Browse with prior response payload as continuation cursor ---
+sent  : 02050000000000000004
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 6pre. op2 Browse (root) to set 'current node' before attr-only Read ---
+sent  : 020400000000000000
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 6. op3 Read AttributeId-only (1=NodeId) ---
+sent  : 030100000001
+recv  : 10 bytes: 83050000000000000004
+parsed: resp_op=0x83 len=5 payload=0000000004
+
+--- 6. op3 Read AttributeId-only (2=NodeClass) ---
+sent  : 030100000002
+recv  : 10 bytes: 83050000000000000004
+parsed: resp_op=0x83 len=5 payload=0000000004
+
+--- 6. op3 Read AttributeId-only (3=BrowseName) ---
+sent  : 030100000003
+recv  : 10 bytes: 83050000000000000004
+parsed: resp_op=0x83 len=5 payload=0000000004
+
+--- 6. op3 Read AttributeId-only (4=DisplayName) ---
+sent  : 030100000004
+recv  : 10 bytes: 83050000000000000004
+parsed: resp_op=0x83 len=5 payload=0000000004
+
+--- 6. op3 Read AttributeId-only (13=Value) ---
+sent  : 03010000000d
+recv  : 10 bytes: 83050000000000000004
+parsed: resp_op=0x83 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=0 'Objects' ---
+sent  : 020e000000030000070000004f626a65637473
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=1 'Objects' ---
+sent  : 020e000000030100070000004f626a65637473
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=0 'SafetySystem' ---
+sent  : 02130000000300000c00000053616665747953797374656d
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=1 'SafetySystem' ---
+sent  : 02130000000301000c00000053616665747953797374656d
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=0 'ReactorController' ---
+sent  : 02180000000300001100000052656163746f72436f6e74726f6c6c6572
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=1 'ReactorController' ---
+sent  : 02180000000301001100000052656163746f72436f6e74726f6c6c6572
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=0 'SIS' ---
+sent  : 020a00000003000003000000534953
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=1 'SIS' ---
+sent  : 020a00000003010003000000534953
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=0 'Enabled' ---
+sent  : 020e00000003000007000000456e61626c6564
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2. op2 Browse structured-string-NodeId ns=1 'Enabled' ---
+sent  : 020e00000003010007000000456e61626c6564
+recv  : 10 bytes: 82050000000000000004
+parsed: resp_op=0x82 len=5 payload=0000000004
+
+--- 2b. op3 Read structured-string-NodeId ns=1 'Enabled' ---
+sent  : 030e00000003010007000000456e61626c6564
+recv  : 10 bytes: 83050000000000000004
+parsed: resp_op=0x83 len=5 payload=0000000004
+
+--- 3. patient wait after Browse (15s, multi-recv) ---
+sent  : 020400000000000000
+    [recv_all_available] connection closed (EOF)
+recv over 15s: 10 bytes: 82050000000000000004
+
+--- 7. op4 Write long (40-byte) payload ---
+sent  : 042800000055000000414141414141414141414141414141414141414141414141414141414141414141414141
+    [recv_all_available] connection closed (EOF)
+recv  : 0 bytes: 
+
+--- 1. op2 Browse with len field itself BIG-ENDIAN (value=4) ---
+sent  : 020000000400000000
+    [recv_all_available] connection closed (EOF)
+recv  : 0 bytes: 
+
+=== reconnected for test 8 at Wed Oct 28 13:40:25 2026 ===
+--- 8. op2 Browse: header claims len=20, sending only 4 bytes now ---
+sent-partial: 021400000000000000
+recv-before-completion: 0 bytes: 
+sent-remainder: 00000000000000000000000000000000
+recv-after-completion: 10 bytes: 82050000000000000004
+
+=== done at Wed Oct 28 13:40:31 2026 ===

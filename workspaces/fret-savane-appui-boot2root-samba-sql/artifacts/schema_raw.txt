@@ -1,0 +1,29 @@
+*************************** 1. row ***************************
+       Table: access_logs
+Create Table: CREATE TABLE `access_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `agent_id` int(11) NOT NULL,
+  `action` varchar(64) NOT NULL,
+  `warehouse` varchar(64) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+*************************** 1. row ***************************
+       Table: badges
+Create Table: CREATE TABLE `badges` (
+  `agent_id` int(11) NOT NULL,
+  `badge_code` varchar(32) NOT NULL,
+  `secret` varchar(128) NOT NULL,
+  `revoked` tinyint(4) NOT NULL,
+  PRIMARY KEY (`agent_id`,`badge_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+*************************** 1. row ***************************
+       Table: agents
+Create Table: CREATE TABLE `agents` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(64) NOT NULL,
+  `site` varchar(32) NOT NULL,
+  `role` varchar(32) NOT NULL,
+  `active` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci

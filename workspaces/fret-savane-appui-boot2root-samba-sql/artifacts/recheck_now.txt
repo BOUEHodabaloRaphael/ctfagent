@@ -1,0 +1,4 @@
+NOW()
+2026-11-07 05:52:21
+agent_id	badge_code	secret	revoked
+103	CK-KOM	NCTF{fr3t_s4v4n3_806637183321}	0

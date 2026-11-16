@@ -1,0 +1,94 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>REKit report — t1_hard_s</title><style>
+:root{--bg:#fff;--fg:#1b1f24;--mut:#59636e;--card:#f6f8fa;--bd:#d0d7de;--hi:#cf222e;--me:#bc4c00;--lo:#9a6700;--in:#0969da;--ok:#1a7f37}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--fg:#e6edf3;--mut:#8b949e;--card:#161b22;--bd:#30363d;--hi:#ff7b72;--me:#ffa657;--lo:#e3b341;--in:#79c0ff;--ok:#56d364}}
+body{margin:0;padding:24px;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,Segoe UI,sans-serif}
+main{max-width:1100px;margin:auto}h1{font-size:22px}h2{margin-top:32px;border-bottom:1px solid var(--bd);padding-bottom:6px;font-size:17px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:12px 16px;margin:10px 0}
+.badge{display:inline-block;padding:1px 8px;border-radius:12px;font-size:12px;font-weight:600;color:#fff}
+.high{background:var(--hi)}.medium{background:var(--me)}.low{background:var(--lo)}.info{background:var(--in)}
+code,pre{font:12px ui-monospace,Menlo,Consolas,monospace}pre{white-space:pre-wrap;word-break:break-all;margin:6px 0}
+table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid var(--bd);padding:4px 8px;text-align:left;vertical-align:top}
+.mut{color:var(--mut)}.bar{height:10px;border-radius:5px;background:var(--bd);min-width:80px}.bar i{display:block;height:10px;border-radius:5px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.grid .card{text-align:center;font-size:22px;font-weight:700;margin:0}
+.grid span{display:block;font-size:12px;font-weight:400;color:var(--mut)}details summary{cursor:pointer}
+</style></head><body><main>
+<h1>REKit report <span class='mut'>— ctf profile</span></h1>
+<p class='mut'>Static triage results are indicators, not proof that a file is benign or malicious. Indicators below are defanged.</p>
+<div class='card'><table>
+<tr><th>Target</th><td><code>/tmp/t1_hard_s</code></td></tr>
+<tr><th>Type</th><td><code>ELF — ELF 64-bit x86_64 (shared object / PIE)</code></td></tr>
+<tr><th>Size</th><td><code>14472 bytes (14.13 KiB)</code></td></tr>
+<tr><th>SHA-256</th><td><code>2a3d8416c3c6bc82f6bc7300bbdd7e3b1fd37ba6528353becef707329f330132</code></td></tr>
+<tr><th>MD5</th><td><code>cbcecf034e937f624c12b81ea2b5dd5d</code></td></tr>
+<tr><th>Entropy</th><td><code>1.38861</code></td></tr>
+<tr><th>Analysed (UTC)</th><td><code>2026-10-30T08:23:58.759170+00:00</code></td></tr>
+</table></div><div class='grid'>
+<div class='card'><span class='badge high'>high</span><br>0<span>findings</span></div>
+<div class='card'><span class='badge medium'>medium</span><br>1<span>findings</span></div>
+<div class='card'><span class='badge low'>low</span><br>0<span>findings</span></div>
+<div class='card'><span class='badge info'>info</span><br>3<span>findings</span></div>
+</div>
+<h2>Suggested next steps</h2><div class='card'><pre>rekit disasm &lt;file&gt; --va 0x10a0 -n 80</pre><pre>rekit xrefs &lt;file&gt; --string &#x27;&lt;text&gt;&#x27;  # find the code that uses a string</pre></div>
+<h2>Structure</h2><p>ELF 64-bit · x86_64 · shared object / PIE · entry <code>0x1110</code></p>
+<table><tr><th>#</th><th>name</th><th>vaddr</th><th>size</th><th>flags</th><th>entropy</th><th></th></tr>
+<tr><td>1</td><td><code>.interp</code></td><td><code>0x318</code></td><td>28</td><td><code>r--</code></td><td>3.9408</td><td><div class='bar'><i style='width:49%;background:var(--ok)'></i></div></td></tr>
+<tr><td>2</td><td><code>.note.gnu.property</code></td><td><code>0x338</code></td><td>48</td><td><code>r--</code></td><td>1.9345</td><td><div class='bar'><i style='width:24%;background:var(--ok)'></i></div></td></tr>
+<tr><td>3</td><td><code>.note.gnu.build-id</code></td><td><code>0x368</code></td><td>36</td><td><code>r--</code></td><td>4.1361</td><td><div class='bar'><i style='width:52%;background:var(--ok)'></i></div></td></tr>
+<tr><td>4</td><td><code>.note.ABI-tag</code></td><td><code>0x38c</code></td><td>32</td><td><code>r--</code></td><td>1.5613</td><td><div class='bar'><i style='width:20%;background:var(--ok)'></i></div></td></tr>
+<tr><td>5</td><td><code>.gnu.hash</code></td><td><code>0x3b0</code></td><td>36</td><td><code>r--</code></td><td>1.7196</td><td><div class='bar'><i style='width:21%;background:var(--ok)'></i></div></td></tr>
+<tr><td>6</td><td><code>.dynsym</code></td><td><code>0x3d8</code></td><td>216</td><td><code>r--</code></td><td>0.6182</td><td><div class='bar'><i style='width:8%;background:var(--ok)'></i></div></td></tr>
+<tr><td>7</td><td><code>.dynstr</code></td><td><code>0x4b0</code></td><td>175</td><td><code>r--</code></td><td>4.7129</td><td><div class='bar'><i style='width:59%;background:var(--ok)'></i></div></td></tr>
+<tr><td>8</td><td><code>.gnu.version</code></td><td><code>0x560</code></td><td>18</td><td><code>r--</code></td><td>1.7961</td><td><div class='bar'><i style='width:22%;background:var(--ok)'></i></div></td></tr>
+<tr><td>9</td><td><code>.gnu.version_r</code></td><td><code>0x578</code></td><td>64</td><td><code>r--</code></td><td>2.494</td><td><div class='bar'><i style='width:31%;background:var(--ok)'></i></div></td></tr>
+<tr><td>10</td><td><code>.rela.dyn</code></td><td><code>0x5b8</code></td><td>192</td><td><code>r--</code></td><td>1.346</td><td><div class='bar'><i style='width:17%;background:var(--ok)'></i></div></td></tr>
+<tr><td>11</td><td><code>.rela.plt</code></td><td><code>0x678</code></td><td>72</td><td><code>r--</code></td><td>1.1154</td><td><div class='bar'><i style='width:14%;background:var(--ok)'></i></div></td></tr>
+<tr><td>12</td><td><code>.init</code></td><td><code>0x1000</code></td><td>27</td><td><code>r-x</code></td><td>4.2364</td><td><div class='bar'><i style='width:53%;background:var(--ok)'></i></div></td></tr>
+<tr><td>13</td><td><code>.plt</code></td><td><code>0x1020</code></td><td>64</td><td><code>r-x</code></td><td>3.8134</td><td><div class='bar'><i style='width:48%;background:var(--ok)'></i></div></td></tr>
+<tr><td>14</td><td><code>.plt.got</code></td><td><code>0x1060</code></td><td>16</td><td><code>r-x</code></td><td>3.375</td><td><div class='bar'><i style='width:42%;background:var(--ok)'></i></div></td></tr>
+<tr><td>15</td><td><code>.plt.sec</code></td><td><code>0x1070</code></td><td>48</td><td><code>r-x</code></td><td>3.4741</td><td><div class='bar'><i style='width:43%;background:var(--ok)'></i></div></td></tr>
+<tr><td>16</td><td><code>.text</code></td><td><code>0x10a0</code></td><td>422</td><td><code>r-x</code></td><td>5.3891</td><td><div class='bar'><i style='width:67%;background:var(--ok)'></i></div></td></tr>
+<tr><td>17</td><td><code>.fini</code></td><td><code>0x1248</code></td><td>13</td><td><code>r-x</code></td><td>3.2389</td><td><div class='bar'><i style='width:40%;background:var(--ok)'></i></div></td></tr>
+<tr><td>18</td><td><code>.rodata</code></td><td><code>0x2000</code></td><td>45</td><td><code>r--</code></td><td>4.1781</td><td><div class='bar'><i style='width:52%;background:var(--ok)'></i></div></td></tr>
+<tr><td>19</td><td><code>.eh_frame_hdr</code></td><td><code>0x2030</code></td><td>60</td><td><code>r--</code></td><td>3.1291</td><td><div class='bar'><i style='width:39%;background:var(--ok)'></i></div></td></tr>
+<tr><td>20</td><td><code>.eh_frame</code></td><td><code>0x2070</code></td><td>204</td><td><code>r--</code></td><td>3.6466</td><td><div class='bar'><i style='width:46%;background:var(--ok)'></i></div></td></tr>
+<tr><td>21</td><td><code>.init_array</code></td><td><code>0x3da8</code></td><td>8</td><td><code>rw-</code></td><td>1.0613</td><td><div class='bar'><i style='width:13%;background:var(--ok)'></i></div></td></tr>
+<tr><td>22</td><td><code>.fini_array</code></td><td><code>0x3db0</code></td><td>8</td><td><code>rw-</code></td><td>1.0613</td><td><div class='bar'><i style='width:13%;background:var(--ok)'></i></div></td></tr>
+<tr><td>23</td><td><code>.dynamic</code></td><td><code>0x3db8</code></td><td>496</td><td><code>rw-</code></td><td>1.4484</td><td><div class='bar'><i style='width:18%;background:var(--ok)'></i></div></td></tr>
+<tr><td>24</td><td><code>.got</code></td><td><code>0x3fa8</code></td><td>88</td><td><code>rw-</code></td><td>0.6582</td><td><div class='bar'><i style='width:8%;background:var(--ok)'></i></div></td></tr>
+<tr><td>25</td><td><code>.data</code></td><td><code>0x4000</code></td><td>16</td><td><code>rw-</code></td><td>0.6686</td><td><div class='bar'><i style='width:8%;background:var(--ok)'></i></div></td></tr>
+<tr><td>26</td><td><code>.bss</code></td><td><code>0x4010</code></td><td>0</td><td><code>rw-</code></td><td></td><td></td></tr>
+<tr><td>27</td><td><code>.comment</code></td><td><code>0x0</code></td><td>45</td><td><code>---</code></td><td>4.1278</td><td><div class='bar'><i style='width:52%;background:var(--ok)'></i></div></td></tr>
+<tr><td>28</td><td><code>.shstrtab</code></td><td><code>0x0</code></td><td>266</td><td><code>---</code></td><td>4.2751</td><td><div class='bar'><i style='width:53%;background:var(--ok)'></i></div></td></tr>
+</table>
+<h3>Protections</h3><div class='card'><table><tr><th>gnu_stack_flags</th><td>RW</td></tr><tr><th>nx</th><td>yes</td></tr><tr><th>pie</th><td>yes</td></tr><tr><th>relro</th><td>full</td></tr><tr><th>canary</th><td>yes</td></tr><tr><th>fortify</th><td>not detected</td></tr><tr><th>rwx_segments</th><td>0</td></tr><tr><th>textrel</th><td>False</td></tr><tr><th>stripped</th><td>True</td></tr><tr><th>static</th><td>False</td></tr><tr><th>no_section_headers</th><td>False</td></tr></table></div>
+<h3>Imports (8)</h3>
+<details><summary><code>(symbols)</code> <span class='mut'>(8)</span></summary><pre>__libc_start_main, _ITM_deregisterTMCloneTable, puts, __stack_chk_fail, strcmp, __gmon_start__, _ITM_registerTMCloneTable, __cxa_finalize</pre></details>
+<h2>Findings</h2>
+<div class='card'><span class='badge medium'>MEDIUM</span> <strong>Code that references success/failure/flag strings</strong> <span class='mut'>CTF-LEAD-001 · confidence medium</span><p>These functions print verdict-like strings: the input validation logic is almost certainly in or just before them.</p>
+<details open><summary>Evidence</summary><pre>&#x27;Correct password!&#x27; &lt;- lea @0x10fd in sub_10a0 (0x10a0)
+&#x27;Wrong password&#x27; &lt;- lea @0x10d4 in sub_10a0 (0x10a0)</pre></details>
+<details><summary>Next steps</summary><pre>rekit disasm &lt;file&gt; --va 0x10a0 -n 80</pre></details>
+<p class='mut'>Limitations: x86/x86-64 direct references only; strings loaded through tables or computed addresses are missed. Function starts are guessed from prologues when symbols are absent.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>Challenge-relevant strings</strong> <span class='mut'>CTF-STR-002 · confidence medium</span><p>Strings may help locate validation logic, secrets, or success/failure paths.</p>
+<details open><summary>Evidence</summary><pre>0x200c (.rodata, va 0x200c): Correct password!
+0x201e (.rodata, va 0x201e): Wrong password</pre></details>
+<details><summary>Next steps</summary><pre>rekit xrefs &lt;file&gt; --string &#x27;&lt;text&gt;&#x27;  # find the code that uses a string</pre></details>
+<p class='mut'>Limitations: Strings alone do not show how a value is used.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>ELF 64-bit x86_64: protections</strong> <span class='mut'>CTF-PROT-001 · confidence high</span><p>Hardening features that decide which exploitation techniques are viable.</p>
+<details open><summary>Evidence</summary><pre>NX      : yes
+PIE     : yes
+RELRO   : full
+CANARY  : yes
+FORTIFY : not detected
+STRIPPED: yes   DYNAMIC</pre></details>
+<p class='mut'>Limitations: Derived from headers and symbols; stripped static binaries may hide canary/fortify.</p>
+</div>
+<div class='card'><span class='badge info'>INFO</span> <strong>main() located</strong> <span class='mut'>CTF-MAIN-001 · confidence medium</span><p>main is at 0x10a0 (lea rdi,[rip+x] in _start). Entry point 0x1110.</p>
+<details><summary>Next steps</summary><pre>rekit disasm &lt;file&gt; --va 0x10a0 -n 60</pre></details>
+</div>
+<h2>Analysis limitations</h2><ul><li>Static triage only; the target is never executed.</li><li>No malware/benign verdict is produced automatically.</li><li>Disassembly-based analysis (xrefs, stack strings, main discovery) covers x86/x86-64 only; other architectures rely on headers, symbols and strings.</li></ul>
+<p class='mut'>Timings (ms): read+hash=0.9, parse=0.5, strings=0.7, ctf=2.2, total=5.0 · REKit 3.1.0a1</p>
+</main></body></html>

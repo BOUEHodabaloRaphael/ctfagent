@@ -1,0 +1,234 @@
+id: uid=1001(adm) gid=4(adm) groups=4(adm)
+$ 
+home frank full: total 20
+drwxr-xr-x 2 frank frank 4096 Nov  7 02:54 .
+drwxr-xr-x 1 root  root  4096 Nov  7 02:54 ..
+-rw-r--r-- 1 frank frank  220 May  7  2026 .bash_logout
+-rw-r--r-- 1 frank frank 3526 May  7  2026 .bashrc
+-rw-r--r-- 1 frank frank  807 May  7  2026 .profile
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+$ 
+www html: /var/www/html
+/var/www/html/index.html
+/var/www/html/jailuser
+/var/www/html/jailuser/dev
+/var/www/html/jailuser/dev/jail.c
+/var/www/html/jailuser/dev/jail
+/var/www/html/jailuser/dev/compile.sh
+$ 
+apache2 logs: total 20
+drwxr-x--- 1 root adm  4096 Oct 29 21:44 .
+drwxr-xr-x 1 root root 4096 Nov  7 02:54 ..
+-rw-r----- 1 root adm     0 Oct 29 21:44 access.log
+-rw-r----- 1 root adm   249 Nov  7 02:54 error.log
+-rw-r----- 1 root adm     0 Oct 29 21:44 other_vhosts_access.log
+$ 
+apache access: $ 
+apache err: [Sat Nov 07 02:54:14.959444 2026] [mpm_event:notice] [pid 92:tid 92] AH00489: Apache/2.4.68 (Debian) configured -- resuming normal operations
+[Sat Nov 07 02:54:14.959516 2026] [core:notice] [pid 92:tid 92] AH00094: Command line: '/usr/sbin/apache2'
+$ 
+var adm dir: total 16
+drwxr-xr-x 3 root root 4096 Nov  7 02:54 .
+drwxr-xr-x 1 root root 4096 Nov  7 02:54 ..
+drwx------ 2 adm  adm  4096 Nov  7 02:54 .keys
+$ 
+vsftpd conf: listen=YES
+listen_port=21
+anonymous_enable=YES
+anon_root=/srv/ftp
+local_enable=NO
+write_enable=NO
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+$ 
+ftp users: # /etc/ftpusers: list of users disallowed FTP access. See ftpusers(5).
+
+root
+daemon
+bin
+sys
+sync
+games
+man
+lp
+mail
+news
+uucp
+nobody
+/usr/sbin/vsftpd
+/usr/lib/tmpfiles.d/vsftpd.conf
+/usr/lib/systemd/system/vsftpd.service
+/usr/share/doc/vsftpd
+/usr/share/bug/vsftpd
+/usr/share/apport/package-hooks/vsftpd.py
+/usr/bin/vsftpdwho
+/var/lib/dpkg/info/vsftpd.md5sums
+/var/lib/dpkg/info/vsftpd.config
+/var/lib/dpkg/info/vsftpd.preinst
+/var/lib/dpkg/info/vsftpd.templates
+/var/lib/dpkg/info/vsftpd.postrm
+/var/lib/dpkg/info/vsftpd.list
+/var/lib/dpkg/info/vsftpd.prerm
+/var/lib/dpkg/info/vsftpd.postinst
+/var/lib/dpkg/info/vsftpd.conffiles
+/var/lib/systemd/deb-systemd-helper-enabled/multi-user.target.wants/vsftpd.service
+/var/lib/systemd/deb-systemd-helper-enabled/vsftpd.service.dsh-also
+/var/log/vsftpd.log
+/etc/logrotate.d/vsftpd
+/etc/init.d/vsftpd
+/etc/pam.d/vsftpd
+/etc/systemd/system/multi-user.target.wants/vsftpd.service
+/etc/vsftpd.conf
+/run/vsftpd
+/run/vsftpd/vsftpd.pid
+$ 
+ps aux: USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0   3940  3060 ?        Ss   02:54   0:00 /bin/bash /st
+root          62  0.0  0.0  15468  4476 ?        Ss   02:54   0:00 sshd: /usr/sb
+root          92  0.0  0.0   6600  4664 ?        Ss   02:54   0:00 /usr/sbin/apa
+www-data      95  0.0  0.0 1997708 4472 ?        Sl   02:54   0:00 /usr/sbin/apa
+www-data      96  0.0  0.0 1997708 4472 ?        Sl   02:54   0:00 /usr/sbin/apa
+root         163  0.0  0.0  10228  4412 ?        S    02:54   0:00 /usr/sbin/vsf
+root         169  0.0  0.0  10352  4580 ?        S    02:54   0:00 socat TCP-LIS
+root         170  0.0  0.0   2532  1384 ?        S    02:54   0:00 tail -f /dev/
+nobody       177  0.0  0.0   2592  1696 ?        Ss   02:56   0:00 /bin/sh -i
+root         178  0.0  0.0   5120  3704 ?        S    02:57   0:00 sudo -u frank
+frank        179  0.0  0.0   2876  2152 ?        S    02:57   0:00 /usr/bin/less
+frank        180  0.0  0.0   2592  1708 ?        S    02:57   0:00 sh -c /bin/ba
+frank        181  0.0  0.0   4072  3384 ?        S    02:57   0:00 /bin/bash
+root         185  0.0  0.0   5120  3708 ?        S    02:57   0:00 sudo -u adm /
+adm          186  0.0  0.0  30568 14228 ?        Sl   02:57   0:01 /usr/bin/vim 
+adm          188  0.0  0.0   4188  3456 ?        S    02:57   0:00 /bin/bash
+adm          195  0.0  0.0  99468 19396 ?        S    02:59   0:00 python3 -m ht
+root         409  0.0  0.0  10352  2956 ?        S    03:22   0:00 socat TCP-LIS
+nobody       410  0.0  0.0   2592  1720 ?        Ss   03:22   0:00 /bin/sh -i
+root         412  0.0  0.0   5120  3672 ?        S    03:22   0:00 sudo -u frank
+frank        413  0.0  0.0   2876  2164 ?        S    03:22   0:00 less /var/log
+frank        414  0.0  0.0   2592  1724 ?        S    03:22   0:00 sh -c /bin/ba
+frank        415  0.0  0.0   2592  1680 ?        S    03:22   0:00 /bin/sh
+root         416  0.0  0.0   5120  3756 ?        S    03:22   0:00 sudo -u adm v
+adm          417  0.0  0.0  30596 14172 ?        Sl   03:22   0:00 vim /var/www/
+adm          419  0.0  0.0   2592  1688 ?        S    03:22   0:00 /bin/sh
+adm          433  0.0  0.0   8104  4396 ?        R    03:23   0:00 ps aux
+$ 
+opt jail compile/run: #!/bin/sh
+# Build: no PIE, no stack canary, executable stack
+gcc -fno-stack-protector -z execstack -no-pie -O0 -o jail jail.c
+#!/bin/sh
+exec /opt/jail/jail
+$ 
+start.sh: #!/bin/bash
+set -e
+
+# --- users -------------------------------------------------------------
+id frank >/dev/null 2>&1 || useradd -m -s /bin/bash frank
+id adm   >/dev/null 2>&1 || useradd -m -s /bin/bash -g adm adm
+echo 'frank:frank' | chpasswd
+
+# --- sudo rules (the intended privesc ladder) -------------------------
+cat > /etc/sudoers.d/10-nobody <<'SUD'
+nobody ALL=(frank) NOPASSWD: /usr/bin/less /var/log/syslog
+SUD
+cat > /etc/sudoers.d/11-frank <<'SUD'
+frank ALL=(adm) NOPASSWD: /usr/bin/vim /var/www/html/jailuser/dev/jail.c
+SUD
+chmod 440 /etc/sudoers.d/10-nobody /etc/sudoers.d/11-frank
+
+# --- jail source + binary published (web and anonymous FTP) -----------
+mkdir -p /var/www/html/jailuser/dev /srv/ftp
+cp /opt/jail/jail.c /opt/jail/compile.sh /opt/jail/jail /var/www/html/jailuser/dev/
+cp /opt/jail/jail.c /srv/ftp/jail.c
+cat > /srv/ftp/README.txt <<'TXT'
+Bassar forge - dev drop
+build: ./compile.sh
+service: nc bassar.local 9999
+TXT
+cat > /var/www/html/index.html <<'TXT'
+<h1>Forge de Bassar</h1>
+<p>Espace de developpement : <a href="/jailuser/dev/">/jailuser/dev/</a></p>
+TXT
+
+# --- flag --------------------------------------------------------------
+if [ -z "${FLAG:-}" ]; then echo "FLAG manquant (injecte par l'instancier)" >&2; exit 1; fi
+echo "$FLAG" > /root/root.txt
+chmod 600 /root/root.txt
+unset FLAG CHALLENGE_SECRET TEAM_SECRET  # NCTF26 : jamais herite par les services (foothold != root)
+
+# --- root SSH access (key only) ---------------------------------------
+mkdir -p /root/.ssh
+cp /opt/keys/root_authorized.pub /root/.ssh/authorized_keys
+chmod 700 /root/.ssh && chmod 600 /root/.ssh/authorized_keys
+cat > /etc/ssh/sshd_config.d/90-lab.conf <<'SSH'
+Port 22
+PermitRootLogin prohibit-password
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+UsePAM no
+SSH
+ssh-keygen -A >/dev/null
+
+# --- adm vault ---------------------------------------------------------
+mkdir -p /var/adm/.keys
+cp /opt/keys/keys.zip /var/adm/.keys/keys.zip
+cat > /var/adm/.keys/note.txt <<'NOTE'
+Politique du coffre :
+  mot de passe = Nom + 4 chiffres + 1 symbole
+Le nom est cache dans .frank (Atbash).
+NOTE
+printf '%s\n' 'Vhxzkvw uiln Zoxzgizz' > /var/adm/.keys/.frank   # Atbash placeholder
+chown -R adm:adm /var/adm/.keys
+chmod 700 /var/adm/.keys
+chmod 600 /var/adm/.keys/*
+
+# --- services ----------------------------------------------------------
+mkdir -p /var/run/vsftpd/empty
+cat > /etc/vsftpd.conf <<'FTP'
+listen=YES
+listen_port=21
+anonymous_enable=YES
+anon_root=/srv/ftp
+local_enable=NO
+write_enable=NO
+secure_chroot_dir=/var/run/vsftpd/empty
+pam_service_name=vsftpd
+FTP
+mkdir -p /var/log
+echo 'bassar forge syslog' > /var/log/syslog
+chmod 644 /var/log/syslog
+service ssh start
+service apache2 start
+$ 
+nctf dir: total 12
+drwxr-xr-x 2 root root 4096 Oct 29 22:11 .
+drwxr-xr-x 1 root root 4096 Nov  7 02:54 ..
+-rwxr-xr-x 1 root root  521 Oct 29 21:42 entrypoint.sh
+#!/bin/sh
+# nctf-entrypoint.sh — généré par creators-sync : pose le flag PAR ÉQUIPE puis lance l'appli.
+# FLAG vient de l'instancier (prod). Hors arène (Lot-5), dérivé de TEAM_SECRET via openssl.
+F="${FLAG:-}"
+if [ -z "$F" ] && [ -n "${TEAM_SECRET:-}" ] && command -v openssl >/dev/null 2>&1; then
+  H=$(printf %s "boot2root-komisergio--bassar" | openssl dgst -sha256 -hmac "$TEAM_SECRET" 2>/dev/null | sed 's/^.* //')
+  [ -n "$H" ] && F="NCTF{$(printf %s "$H" | cut -c1-24)}"
+fi
+export FLAG="$F"
+exec /start.sh
+$ 
