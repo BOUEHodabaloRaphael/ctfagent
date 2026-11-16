@@ -1,0 +1,36 @@
+# Scoreboard  <https://arena.ctf.tg/scoreboard>
+# archivé via headless https://arena.ctf.tg/scoreboard
+
+NCTF26 
+Accès
+Défense
+KOTH
+Support
+Mes instances
+Writeups
+Users
+Teams
+Scoreboard
+Challenges
+ Notifications
+Team
+Profile
+Settings
+GRAND PRIX NCTF
+COURSE
+TABLE
+
+Aucun score pour le moment — la grille se remplit au premier flag validé.
+
+Organisé par CERT.tg
+Powered by Hibris · ramses.dagban.tg
+NCTF26
+// console
+phase
+ouverture imminente
+ouverture dans
+2j 18:17:41
+canal
+chiffré
+terminal
+sécurisé

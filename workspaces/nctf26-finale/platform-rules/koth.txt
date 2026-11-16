@@ -1,0 +1,42 @@
+# KOTH  <https://arena.ctf.tg/plugins/koth/>
+# archivé via headless https://arena.ctf.tg/plugins/koth/
+
+NCTF26 
+Accès
+Défense
+KOTH
+Support
+Mes instances
+Writeups
+Users
+Teams
+Scoreboard
+Challenges
+ Notifications
+Team
+Profile
+Settings
+👑 KING OF THE HILL
+
+LES COLLINES OUVRENT AVEC L'ÉPREUVE
+
+2 j 18 : 17 : 47
+
+Ouverture le jeudi 19 novembre à 10:00 (heure de Lomé).
+
+Prenez une colline et tenez-la : chaque tick rapporte des points à votre équipe tant que vous restez roi.
+
+Les points de King of the Hill s'ajoutent à votre score sur le scoreboard principal, tick après tick, tant que vous tenez la colline.
+
+Organisé par CERT.tg
+Powered by Hibris · ramses.dagban.tg
+NCTF26
+// console
+phase
+ouverture imminente
+ouverture dans
+2j 18:17:47
+canal
+chiffré
+terminal
+sécurisé

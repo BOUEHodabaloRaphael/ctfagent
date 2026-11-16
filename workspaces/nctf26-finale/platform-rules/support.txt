@@ -1,0 +1,51 @@
+# Support  <https://arena.ctf.tg/plugins/support/>
+# archivé via headless https://arena.ctf.tg/plugins/support/
+
+NCTF26 
+Accès
+Défense
+KOTH
+Support
+Mes instances
+Writeups
+Users
+Teams
+Scoreboard
+Challenges
+ Notifications
+Team
+Profile
+Settings
+SUPPORT
+
+Un challenge cassé, un souci de compte ou d'équipe, une question ? Écrivez à l'organisation. La réponse arrive par un message sur la plateforme et reste visible ici.
+
+Nous ne donnons aucun indice sur la résolution d'un challenge. Un challenge difficile n'est pas un challenge cassé : relisez l'énoncé avant de signaler. Pour un challenge, décrivez ce que vous observez (erreur exacte, instance qui ne démarre pas, service muet, flag refusé alors que vous êtes sûrs de vous).
+NOUVELLE DEMANDE
+Type de demande
+Challenge cassé ou injouable
+Compte, connexion, profil
+Équipe : rejoindre, membres, nom
+Autre question
+Challenge concerné
+— aucun —
+Objet
+Message
+2000 caractères au plus. Ne collez jamais de flag ni de mot de passe.
+Envoyer à l'organisation
+VOS DEMANDES
+
+Aucune demande pour l'instant.
+
+Organisé par CERT.tg
+Powered by Hibris · ramses.dagban.tg
+NCTF26
+// console
+phase
+ouverture imminente
+ouverture dans
+2j 18:17:45
+canal
+chiffré
+terminal
+sécurisé

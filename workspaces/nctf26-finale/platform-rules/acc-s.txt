@@ -1,0 +1,75 @@
+# Accès  <https://arena.ctf.tg/connexion>
+# archivé via headless https://arena.ctf.tg/connexion
+
+NCTF26 
+Accès
+Défense
+KOTH
+Support
+Mes instances
+Writeups
+Users
+Teams
+Scoreboard
+Challenges
+ Notifications
+Team
+Profile
+Settings
+SE CONNECTER AUX INSTANCES
+
+Chaque challenge « à instance » vous donne votre propre machine. Cliquez sur Lancer l'instance dans le challenge : l'adresse de connexion s'affiche sous le bouton. Elle est propre à votre équipe et change à chaque lancement.
+
+Il existe trois façons de s'y connecter, selon le challenge.
+
+Ce que vous voyez	Type	Comment faire
+https://xxxxxxxxxxxxxxxx.t.ctf.tg/	Site web	Ouvrez le lien dans votre navigateur
+ncat --ssl xxxxxxxxxxxxxxxx.t.ctf.tg 1337	Service réseau (pwn, crypto…)	Voir Service réseau
+10.100.x.y et des ports	Machine sur le réseau de votre équipe	Voir VPN
+SERVICE RÉSEAU : NCAT --SSL
+
+La connexion est chiffrée et passe toujours par le port 1337. C'est le nom (xxxx.t.ctf.tg) qui désigne votre instance.
+
+Linux / macOS : installez ncat (paquet nmap), puis copiez la commande affichée : ncat --ssl xxxxxxxxxxxxxxxx.t.ctf.tg 1337
+Windows : ncat est fourni avec l'installeur Nmap (nmap.org).
+Sans ncat : openssl s_client -quiet -connect xxxxxxxxxxxxxxxx.t.ctf.tg:1337 -servername xxxxxxxxxxxxxxxx.t.ctf.tg
+pwntools : remote("xxxxxxxxxxxxxxxx.t.ctf.tg", 1337, ssl=True, sni="xxxxxxxxxxxxxxxx.t.ctf.tg")
+
+Un simple nc sans TLS ne fonctionnera pas.
+
+VPN DE L'ÉQUIPE (WIREGUARD)
+
+Certains challenges (boot2root, administration système, services sur plusieurs ports) se jouent comme un vrai test d'intrusion : la machine a une adresse privée 10.100.x.y, joignable uniquement par le VPN de votre équipe.
+
+Ouvrez la page VPN et cliquez sur Télécharger ma configuration. Chaque joueur a la sienne. La re-télécharger annule l'ancienne.
+Installez WireGuard : wireguard.com/install (Windows, macOS, Linux, Android, iOS).
+Importez le fichier nctf-vpn.conf et activez le tunnel. Sous Linux : sudo wg-quick up ./nctf-vpn.conf
+Lancez l'instance du challenge et utilisez l'adresse 10.100.x.y affichée.
+
+Le VPN ne fait passer que le trafic vers le réseau de votre équipe : le reste de votre connexion Internet n'est pas modifié. Vous pouvez scanner votre sous-réseau ; les autres équipes et l'infrastructure ne sont pas joignables.
+
+KING OF THE HILL
+
+Les collines sont communes à toutes les équipes : pas de bouton à lancer, ni de VPN. Leurs adresses sont sur la page King of the Hill, qui ouvre le jeudi 6 novembre à 19:00 (heure de Lomé).
+
+Collines web (http://…:port) : ouvrez l'adresse dans votre navigateur.
+Collines SSH (ssh://player@…:port) : ssh -p <port> player@<adresse>.
+Pour marquer des points, prenez la colline et écrivez le jeton de votre équipe (affiché sur la page King of the Hill) dans son fichier « king ». Les points tombent à chaque tour tant que vous la tenez ; sur les boot2root, le fichier de root rapporte le double de celui de l'utilisateur.
+Il faut une équipe complète (4 à 5 joueurs) pour marquer.
+EN CAS DE PROBLÈME
+Les instances ne sont joignables que depuis le Togo. Désactivez tout VPN commercial ou proxy étranger.
+Le VPN ne se connecte pas : certains réseaux (entreprise, campus) bloquent l'UDP. Essayez une autre connexion, par exemple un partage de connexion mobile.
+« Instance introuvable » ou page vide : l'instance a peut-être expiré. Relancez-la depuis le challenge.
+Toujours bloqué ? Contactez l'organisation en précisant le challenge et le message affiché.
+Organisé par CERT.tg
+Powered by Hibris · ramses.dagban.tg
+NCTF26
+// console
+phase
+ouverture imminente
+ouverture dans
+2j 18:17:54
+canal
+chiffré
+terminal
+sécurisé

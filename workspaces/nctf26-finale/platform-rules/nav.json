@@ -1,0 +1,66 @@
+[
+  {
+    "text": "NCTF26",
+    "href": "https://arena.ctf.tg/"
+  },
+  {
+    "text": "Accès",
+    "href": "https://arena.ctf.tg/connexion"
+  },
+  {
+    "text": "Défense",
+    "href": "https://arena.ctf.tg/plugins/defend/"
+  },
+  {
+    "text": "KOTH",
+    "href": "https://arena.ctf.tg/plugins/koth/"
+  },
+  {
+    "text": "Support",
+    "href": "https://arena.ctf.tg/plugins/support/"
+  },
+  {
+    "text": "Mes instances",
+    "href": "https://arena.ctf.tg/plugins/team_instancer/mine"
+  },
+  {
+    "text": "Writeups",
+    "href": "https://arena.ctf.tg/plugins/writeups/"
+  },
+  {
+    "text": "Users",
+    "href": "https://arena.ctf.tg/users"
+  },
+  {
+    "text": "Teams",
+    "href": "https://arena.ctf.tg/teams"
+  },
+  {
+    "text": "Scoreboard",
+    "href": "https://arena.ctf.tg/scoreboard"
+  },
+  {
+    "text": "Challenges",
+    "href": "https://arena.ctf.tg/challenges"
+  },
+  {
+    "text": "Notifications",
+    "href": "https://arena.ctf.tg/notifications"
+  },
+  {
+    "text": "Team",
+    "href": "https://arena.ctf.tg/team"
+  },
+  {
+    "text": "Profile",
+    "href": "https://arena.ctf.tg/user"
+  },
+  {
+    "text": "Settings",
+    "href": "https://arena.ctf.tg/settings"
+  },
+  {
+    "text": "",
+    "href": "https://arena.ctf.tg/logout"
+  }
+]

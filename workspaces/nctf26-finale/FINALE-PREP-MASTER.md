@@ -22,10 +22,56 @@ BLOCKED: HITCON (sparse), HackTheBox #holmes-writeups (role-gated).
 Grounded in AFRICC's real ICC dry-run boxes (`downloads/africc-ad-live/`) + BattleCTF-2023 Final.
 Full playbook: `discord-harvest/AFRICC-AD-PLAYBOOK-FOR-NCTF.md`.
 
+### ★★★ RÈGLES RÉELLES de la plateforme — vérifiées le 2026-11-16 via client HEADLESS (arena.ctf.tg)
+> Texte intégral archivé : `platform-rules/{acc-s,d-fense,koth,support,mes-instances,scoreboard}.txt`.
+> **Ceci CORRIGE les hypothèses AFRICC ci-dessous là où elles diffèrent.** Plateforme = CTFd + thème
+> Hibris (ramses.dagban.tg), organisée par CERT.tg. Ouverture ~19 nov. Flags `NCTF{...}`.
+
+**La finale est MIXTE, pas un A&D équipe-vs-équipe classique :**
+- **Défense (`/plugins/defend/`) = patch-and-hold contre un ROBOT, PAS de vol de flags.**
+  Lancer sa box depuis le challenge → **SSH via le VPN d'équipe** → corriger sans casser les usages
+  légitimes → **demander une vérification au robot d'attaque**. **IL N'Y A PAS DE FLAG À SOUMETTRE
+  en défense.** 1 box/joueur, mêmes creds SSH pour toute l'équipe. 1ʳᵉ vérif réussie = challenge validé.
+  « Boîte de production » = la dernière box vérifiée, reste en service jusqu'à la fin. Challenge **« audit »**
+  = on reçoit un rapport de pentest, chaque constat corrigé (robot ne le reproduit plus + usages OK) =
+  points **1×/équipe**. **Défense continue : toutes les 5 min le robot attaque la box de prod ; si elle
+  tient = +5 pts.** Relancer l'instance **= correctifs perdus**. Délai entre vérifs = **120 s**.
+  → Notre kit `tools-offline/` (defkit + usecases SLA + patchs juice-todo/pwn-sample) est PILE adapté.
+  → `submitter.py` flags-list sert au **jeopardy (Challenges)**, **PAS à la défense**.
+- **Attaque/flags = section Challenges (`/challenges`)** jeopardy classique (modale Hibris, pas d'URL /id).
+- **KOTH (`/plugins/koth/`)** : collines **communes à toutes les équipes, SANS VPN, sans bouton lancer**.
+  Ouvre **jeu. 19 nov 10:00 (Lomé)**. Collines **web** (`http://…:port`) et **SSH** (`ssh -p <port> player@<adr>`).
+  Scorer = prendre la colline + écrire le **jeton d'équipe** dans son fichier **« king »** ; points à chaque
+  tick tant qu'on tient. **Boot2root : le fichier root = 2× le fichier user.** **Équipe complète (4-5) requise
+  pour marquer.** Les points KOTH s'ajoutent au scoreboard principal. → `koth_finale/hold_hill.py` + `onbox_persist.sh`.
+
+**Accès (`/connexion`) — 3 types de connexion aux instances :**
+1. **Web** : `https://<rand>.t.ctf.tg/` → navigateur.
+2. **Service réseau** : `ncat --ssl <rand>.t.ctf.tg 1337` — **TOUJOURS TLS sur le port 1337**, un `nc` nu
+   NE MARCHE PAS. pwntools : `remote("<rand>.t.ctf.tg", 1337, ssl=True, sni="<rand>.t.ctf.tg")` ;
+   fallback `openssl s_client -quiet -connect <rand>.t.ctf.tg:1337 -servername <rand>.t.ctf.tg`.
+3. **VPN d'équipe (WireGuard)** : machines `10.100.x.y` (boot2root/multi-ports). Config **par joueur**
+   (`Télécharger ma configuration`, la re-télécharger annule l'ancienne), `sudo wg-quick up ./nctf-vpn.conf`.
+   Le VPN ne route QUE le sous-réseau d'équipe (autres équipes/infra injoignables, pas de DoS inter-équipes).
+- **⚠️ CONTRAINTE GÉO (répond à la question VPN) : « les instances ne sont joignables que depuis le Togo.
+  Désactiver tout VPN commercial ou proxy étranger. »** → seul le WireGuard NCTF doit être actif ; couper
+  tout VPN/proxy tiers (vérifié 2026-11-16 : aucun VPN commercial ne tourne). Si WireGuard ne monte pas
+  (UDP bloqué sur réseau entreprise/campus) → partage de connexion mobile (SIM Togo).
+- **Mes instances (`/plugins/team_instancer/mine`)** : **max 6 instances simultanées/équipe** ; on ne peut
+  détruire/prolonger que SES propres instances → en détruire pour libérer un slot.
+- **Support (`/plugins/support/`)** : ticket orga (challenge cassé / compte / équipe) ; **ne jamais coller
+  de flag ni de mot de passe**. Pas d'indices donnés.
+
+---
+
 **Box anatomy** (expect this shape): one vulnerable box per team at `10.3.<team>.2`
 (web `:8080`, pwn `:31337`), a single editable `patchable/` dir, **two flags/box** mounted
 read-only, Docker (compose.yaml + Dockerfile). Submit API = `POST .../FrontendService/SubmitFlags`,
 header `Authorization: Bearer <token>`, body **`{"flags":[...]}` (a LIST)**, tick ~120s.
+
+> ⚠️ _Le bloc « Box anatomy » / « SubmitFlags » ci-dessus décrit le dry-run **AFRICC** (10.3.x, flags à
+> soumettre). Sur arena.ctf.tg la **défense n'a pas de flag** (robot) — voir « RÈGLES RÉELLES » plus haut.
+> Garder cette section comme référence A&D générique, mais c'est la section headless qui fait foi pour la finale._
 
 **Doctrine**: exploit-first, patch-later. Never hold a flag submission to finish a patch.
 

@@ -1,0 +1,44 @@
+# Défense  <https://arena.ctf.tg/plugins/defend/>
+# archivé via headless https://arena.ctf.tg/plugins/defend/
+
+NCTF26 
+Accès
+Défense
+KOTH
+Support
+Mes instances
+Writeups
+Users
+Teams
+Scoreboard
+Challenges
+ Notifications
+Team
+Profile
+Settings
+DÉFENSE
+
+Lancez une boîte depuis le challenge, connectez-vous en SSH par le VPN de l'équipe, corrigez-la sans casser ses usages légitimes, puis demandez une vérification au robot d'attaque.
+
+Une boîte par joueur : chacun peut lancer la sienne ; toutes les boîtes de l'équipe ont les mêmes identifiants SSH.
+Patch → validation : la première vérification réussie valide le challenge pour l'équipe. Il n'y a pas de flag à soumettre.
+Boîte de production : la dernière boîte de l'équipe qui a tenu une vérification. Elle reste en service jusqu'à la fin de l'épreuve ; les autres boîtes expirent comme toute instance.
+Challenge « audit » : vous recevez un rapport de test d'intrusion. Chaque constat corrigé (le robot ne le reproduit plus, et les usages légitimes marchent toujours) rapporte des points, une seule fois par équipe. La boîte que vous avez fait vérifier en dernier reste en service.
+Défense continue : toutes les 5 min, le robot attaque la boîte de production de chaque équipe ; si elle tient (usages OK, aucune attaque réussie), l'équipe gagne 5 points.
+Relancer une instance remet la boîte vulnérable d'origine : les corrections sont perdues. Délai entre deux vérifications demandées par l'équipe : 120 s.
+L'épreuve n'est pas ouverte : les vérifications reprendront au départ.
+
+Aucun challenge de défense ouvert pour le moment.
+
+Organisé par CERT.tg
+Powered by Hibris · ramses.dagban.tg
+NCTF26
+// console
+phase
+ouverture imminente
+ouverture dans
+2j 18:17:52
+canal
+chiffré
+terminal
+sécurisé

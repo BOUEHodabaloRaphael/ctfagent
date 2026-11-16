@@ -1,0 +1,37 @@
+# Mes instances  <https://arena.ctf.tg/plugins/team_instancer/mine>
+# archivé via headless https://arena.ctf.tg/plugins/team_instancer/mine
+
+NCTF26 
+Accès
+Défense
+KOTH
+Support
+Mes instances
+Writeups
+Users
+Teams
+Scoreboard
+Challenges
+ Notifications
+Team
+Profile
+Settings
+MES INSTANCES
+
+Les instances actives de votre équipe. Le nombre simultané est limité : détruisez-en une pour libérer un emplacement. Vous ne pouvez détruire ou prolonger que les instances que vous avez lancées.
+
+0 / 6 instance(s) active(s) pour l'équipe.
+
+Aucune instance active. Lancez-en une depuis la page d'un challenge.
+Organisé par CERT.tg
+Powered by Hibris · ramses.dagban.tg
+NCTF26
+// console
+phase
+ouverture imminente
+ouverture dans
+2j 18:17:43
+canal
+chiffré
+terminal
+sécurisé
