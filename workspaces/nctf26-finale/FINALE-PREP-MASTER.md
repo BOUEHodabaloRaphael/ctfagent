@@ -3,6 +3,7 @@
 Built 2026-11-13 from a full sweep of every CTF server in the user's Discord. This is the
 single entry point: it consolidates every technique/writeup found and points to the detailed
 digests. Finale = **attack-defense** (Lomé). Flag format for the finale: `NCTF{...}`.
+_Updated 2026-11-15: added §2 Boot2root / AD & exploitation-resilience (HTB RedEye/airways) and §2 HackerLab 2026 drop (Kevine WhatsApp — DFIR/OT/reverse)._
 
 Detailed digests (read for depth): `discord-harvest/INDEX.md` lists all of them.
 Downloaded corpora (UNTRUSTED — read-only, never execute): `flagyard-writeups/downloads/`,
@@ -60,6 +61,21 @@ sends a single-flag JSON, but ICC wants `{"flags":[...]}` (list). Fix the body s
 - DEFEND: only `patchable/firewall_filter.py` is editable → block `/`,`..`,non-alnum on cmd7;
   cap cmd1 ≤15 bytes; forbid `%` in cmd2; cap cmd8; wrap main in try/except (if the filter
   crashes, the wrapper fails OPEN — so never let it throw).
+
+**★ KoTH hold-the-hill — apply from t+0 if there's a KoTH round** (confirmed: finale will have KoTH;
+full method `knowledge/patterns/misc/koth-hold-the-hill-continuous-and-onbox-persistence.md`, template
+`workspaces/nctf26-finale/djo-whatsapp-2026-11-06/zip-extract/`):
+- Identify the score channel (HTTP claim endpoint / king-file on an SSH box / economic exploit / signed socket).
+- **Hold continuously from t+0**: N parallel claims/pumps (distinct accounts/threads ≈ Nx throughput),
+  watchdog + auto-restart, `setsid nohup`, cron `@reboot`, status report ("am I #1? margin?"). Run it on an
+  **always-on host**; honor any **geo-IP constraint** (run from the required country: Togo SIM via Termux / local Pi / local VPS, not a foreign VPN).
+- **If we get a shell on the hill box**: privesc (`sudo -n /usr/bin/env true`, SUID…) → **purge rivals'**
+  persistence (their `/etc/cron.d/*`, hidden `/usr/lib/.*`, authorized_keys, sudoers.d) → restore our access →
+  install **on-box persistence** (`setsid` loop rewriting the king file + `/etc/cron.d` `* * * * *` and `@reboot`)
+  that survives our host being off, until container reset. Hold other scoreboards from that box too (its IP is already allowed).
+- **Economic KoTH** (MLM/wallet app, e.g. « Réseau Fortune »): find a compounding loop — login-without-OTP →
+  buy VIP → referrer +20% → **refund returns 100% without clawing back the commission** → re-inject → parallelize.
+- Rules: in-scope targets only, no DoS, no attacking other teams/infra.
 
 ---
 ## 2. TECHNIQUE CATALOG BY CATEGORY (jeopardy side)
@@ -138,10 +154,58 @@ sends a single-flag JSON, but ICC wants `{"flags":[...]}` (list). Fix the body s
   its refusal messages, carry the per-session nonce, drive its `escalate`→`fetch_url` tool as SSRF
   to `*.internal` (169.254.169.254 metadata decoy).
 
+### Boot2root / AD & exploitation-resilience  (added 2026-11-15 from HTB RedEye/airways solve — scene has many boot2root/AD boxes: nctf26-boot2root-c2, komisergio-bassar, fret-savane samba-sql, fullaccess5-securecorp)
+- **Impacket ON-HOST when the reverse tunnel is impossible / box flaps** (RedEye signature):
+  a dual-homed Linux RCE foothold where the service restarts every ~30s and reaps every spawned
+  process → chisel/ligolo reverse SOCKS die, but **synchronous** RCE commands are reliable.
+  Fix: bundle impacket WITHOUT depending on the target's Python —
+  `pip download pycryptodomex cryptography pyOpenSSL cffi --only-binary=:all: --python-version <tgt> --platform manylinux2014_x86_64`
+  (abi3/manylinux wheels = old-glibc + any py3.9+), add pure `impacket ldap3 pyasn1 six`, `tar czf`,
+  serve over HTTP, deploy to `/tmp/adlib`, run **synchronously** via the RCE:
+  `GetUserSPNs.py`, `secretsdump.py`, or `SMBConnection(...).login(u,'',dom,'',nthash)` + `getFile('C$',path)`
+  for Pass-the-Hash and flag reads over the **internal** net (no tunnel needed). Detail: `project_redeye_airways` memory.
+- **AD chain cheatsheet** (RedEye): foothold RCE → domain creds → **Kerberoast** SPN → DCSync → NT hash
+  → **Pass-the-Hash** SMB C$ to read `user.txt`/`root.txt`. Modern/hardened DCs: **RC4 disabled → roast
+  AES only (hashcat `-m 19700`)**; LDAP **signing + channel-binding enforced → use `impacket.ldap`
+  (GetUserSPNs), NOT ldap3 simple/NTLM** (else strongerAuthRequired/invalidCredentials).
+- **AD trust / SID-History golden ticket**: `KDC_ERR_TGT_REVOKED` on a forged golden ticket → the DC
+  likely rejects RC4, re-forge with **`-aesKey <krbtgt aes256_hmac>`**. Child-domain golden ticket +
+  `-extra-sid <ROOT>-519,-500` is more reliable than an inter-realm ticket. impacket doesn't chain
+  inter-realm referrals → fall back to MIT `kinit`/`kvno` with a two-realm `krb5.conf`, then reuse the
+  ccache. `smbclient.py -k` `domain` param must be the ticket's **source** realm.
+- **EFS** is never decryptable over the network / as SYSTEM, even as Domain/Enterprise Admin: reset the
+  target's password via SYSTEM access then drive a **real interactive RDP logon** headless
+  (`Xvfb :99` + `xfreerdp3` + `xdotool`) to `type <efs_file> > out.txt` and exfil the plaintext over SMB.
+- **Foothold example**: GeoNetwork 4.4.11 XSLT-injection RCE (pre-stage the payload). General reflex:
+  as soon as a stable RCE/file-read lands, run `ctf-file-hunter` before manual find/grep.
+
 ### Misc / scene-specific
+- **Discord rich-presence → Spotify playlist acrostic** (HackerLab « Welcome Back », solved 2026-11-15):
+  hints about listening/music/"what does Discord say I'm doing?" → open the author's Discord profile,
+  read the Spotify activity (often frozen = a pointer), open the linked public playlist, the flag = the
+  **first letter of each track title in order** (incl. `{`/`}` tracks, leet `0=O 3=E`). Pattern:
+  `knowledge/patterns/misc/discord-rich-presence-spotify-playlist-acrostic.md`.
 - Discord BOTS as challenge targets (OAuth invite abuse, bot-mediated SQLi).
 - Themed Vigenère keys from Dahomey/Benin history; OSINT needs exact French names/accents
   (Wayback, Wikipedia, specialist registries).
+
+### HackerLab 2026 drop — Kevine WhatsApp (added 2026-11-15; full digest: `kevine-whatsapp-2026-11-15/KEVINE-WHATSAPP-TECHNIQUES-FOR-NCTF.md`)
+Same scene as NCTF (HackerLab « Opération Tervalis / Designated Survivor » DFIR campaign + reverse/OSINT):
+- **DFIR**: cross-IOC attribution (same operator email as phisher AND C2 owner; one `/24` across 3 cases) → one APT,
+  but keep **false-flag** doubt (nation tags are forgeable). **DKIM homograph**: `d=` shows punycode
+  `xn--varelcrp-s4a.var` ≠ displayed From. Process **masquerade** (fake `smss.exe`, wrong parent/PID). Linux
+  persistence to hunt: `curl` beacon hidden in `/etc/update-motd.d/*`, cron/sudoers backdoor, `/dev/shm/.f`.
+- **OT**: `dnp3d` on **tcp/20000** forged-frame → RCE uid=0; IT→OT via historian; gateway config vault (StrongBox)
+  weak-crypto → substation master key; **C2 session RC4 key=`VARELID`**; radio telemetry WAVE → **AFSK** decode = exfil.
+- **Web**: SSTI `{{7*7}}`→RCE at `POST /espace-usager/reclamation`; **CORS** Origin-reflection+`credentials:true`→CSRF
+  transfer; **CVE-2022-44268** (ImageMagick PNG arb-read)→`.env`; `/.git/config` leaked creds → malicious pipeline commit (supply-chain).
+- **Reverse/malware**: xz/liblzma backdoor (**CVE-2024-3094** style) dependency hijack; **Unicorn-emulate the implant to
+  extract a malware-derived key** (start at entry point, serve SEED via fake `getrandom`/`/dev/urandom`, inject forged
+  C2 `op:encrypt` task, hook `encrypt()` entry → read `rsi`=key ptr); custom **4-round SPN + CBC**, IV=SHA256(key),
+  tables from xorshift32 seed `0x4c594e58`. Reusable `femu.py`/`emu.py` template in `zip-extract/ashen_seal_kit/`.
+- **Misc/OSINT**: AI-audio tell = ID3 `TSSE: Lavf61.1.100` (FFmpeg) + **AudioSeal** watermark on a short slice;
+  **MD5-collision login bypass** (Wang 2004 pair, base64) over Tor; container escape `lxc.apparmor.profile=unconfined`.
+- **Infra**: HackerLab = **dynvpn/WireGuard** instances (`GET /api/v1/dynvpn/config`, route `172.28.0.0/16`), per-instance rotating flags.
 
 ---
 ## 3. PRE-STAGE TOOLKIT CHECKLIST (do before the finale, offline)
@@ -152,6 +216,12 @@ sends a single-flag JSON, but ICC wants `{"flags":[...]}` (list). Fix the body s
 - Volatility3 + Registry Explorer; scapy; a hand-rolled Modbus client + per-opcode framing harness.
 - gRPC/HTTP2 pcap extractor (lift `grpc_messages()`/`protobuf()`/`varint()` from FLAGYARD hokan).
 - uharfbuzz (font shaping); AFL++/libFuzzer+ASAN (vuln-research track).
+- **HackerLab/DFIR-OT (Kevine drop)**: Unicorn+pyelftools (malware-key emulation, see ashen_seal `femu.py`); an
+  **AFSK/WAVE demod** (minimodem/scipy); DNP3 dissector; AudioSeal detector + ffprobe/mutagen (ID3 tell); a ready
+  MD5-collision pair (Wang) + Tor socks5; ImageMagick CVE-2022-44268 PoC. WireGuard client for dynvpn instances.
+- **AD/boot2root**: pre-build the offline impacket bundle (abi3/manylinux wheels, see Boot2root §) so
+  it deploys to a flapping/tunnel-less foothold; stage nxc/netexec, impacket suite, hashcat `-m 19700`
+  (Kerberoast AES), BloodHound collector, xfreerdp3+Xvfb+xdotool (EFS/RDP automation).
 
 ---
 ## 4. Pointers
@@ -161,6 +231,10 @@ sends a single-flag JSON, but ICC wants `{"flags":[...]}` (list). Fix the body s
   (Automated technique-extraction agent was stopped by Claude's cyber safeguards; open the PDFs
   directly for the details.)
 - All digests + corpora: `discord-harvest/INDEX.md`.
+- AD/boot2root technique source (full detail): `knowledge/reference/reference_pentest_techniques.md`
+  (§Impacket ON-HOST, §AD trust SID-History) + ctfagent memory `project_redeye_airways.md`.
+- HackerLab 2026 drop (Kevine WhatsApp, 2026-11-15) raw files + digest:
+  `workspaces/nctf26-finale/kevine-whatsapp-2026-11-15/` (`KEVINE-WHATSAPP-TECHNIQUES-FOR-NCTF.md`, `incoming/`, `zip-extract/`).
 - A&D playbook (actionable): `discord-harvest/AFRICC-AD-PLAYBOOK-FOR-NCTF.md`.
 - Pending/blocked: HTB Holmes CTF 2026 writeups (role-gated — would need external search or
   higher HTB access); NICCTF-2026 Notion (JS-only, needs headless render).
@@ -176,6 +250,37 @@ Deux apports réellement actionnables pour défendre nos box en A&D : (1) **dét
 flags** via des binaires Linux légitimes (LOLBins) ou des listeners non prévus ; (2) **reconnaître une
 auth web challenge-response reconstructible côté client sur HTTP clair** (cas ZTE). Le reste des PDFs
 (5 phases, ingénierie sociale, sécu physique) est secondaire (voir 5.6).
+
+## 5.0bis Boîte à outils défense — pré-staged hors-ligne (`tools-offline/`)
+(Ajout 2026-11-16. Dossier `tools-offline/` = outils prêts sans réseau + `README.md` d'emploi.)
+- **`defkit.sh`** (coéquipier) — kit défense A&D rejouable : `backup` (baseline ports/services/SUID)
+  → `recon` (audit **lecture seule** : UID 0 pirates, world-writable, SUID GTFOBins, sudo NOPASSWD,
+  cron, services exposés, **grep code à risque** SQLi/cmdi/LFI/désérialisation/debug, secrets, fichiers
+  <2j) → `fix` (bas-risque **réversible** : perms, world-write, strip-SUID, sysctl, quarantaine web ;
+  **ne touche ni SSH ni le code app**) → `check` (filet SLA via `usecases.sh`) → `rollback`.
+  **Doctrine** : exploit d'abord ; defkit **complète** le patch app à la main dans `patchable/`
+  (paramétrer SQLi, `jwt.verify({algorithms:[...]})`, whitelist path), il ne le remplace pas.
+- **`usecases.sh`** — filet SLA lu par `defkit.sh check`. **À adapter** aux vrais endpoints
+  (`UC_HOST`/`UC_WEB_PORT`/`UC_PWN_PORT`) AVANT le premier `fix` : sans lui, un correctif peut casser
+  le checker en silence. Template fourni pour juice-todo (`/todos`, `/api/token`, tâche vide=400) + pwn-sample.
+- **`linpeas.sh`** (PEASS-ng) / **`linux-exploit-suggester.sh`** (The-Z-Labs) — enum privesc
+  **post-shell** (box adverse ou audit de la nôtre). Rapides, autonomes.
+- **Écartés pour la finale** (trop lourds / orientés gouvernance / risque SLA) : OpenVAS (sync feed
+  horaire, scans lents), OpenSCAP, ANSSI `actionnable-linux` (« illustration » selon l'ANSSI),
+  `ansible-lockdown` (durcissement CIS/STIG massif → casse le checker). Pertinents pour un pentest
+  d'infra sur la durée, pas pour des rounds de ~120 s.
+- **Ordre par round** : `backup` (t+0, avant tout) → lancer l'exploit-loop → `recon|tee` (t+1) →
+  patch app `patchable/` (t+3) → `cp usecases.sh /root/.defkit/ && ./defkit.sh fix` **sans `-y`** →
+  `check` (t+4, SLA vert ? sinon `rollback`).
+- **Patchs app pré-écrits & testés** (`tools-offline/patches/`, depuis la vraie source dry-run AFRICC) :
+  - **juice-todo** : `app.js` (SQLi→paramétré), `apiRoutes.js` (`jwt.decode`→`jwt.verify` HS256),
+    `adminRoutes.js` (md5 5-hex + fuite hash → compare hash complet temps-constant ; `/admin/file`
+    traversal → confiné). Copier dans `patchable/` + restart. SLA préservé (todos, `/api/token`, 400).
+  - **pwn-sample** : `firewall_filter.py` patché (managed patch **fail-closed**, contrat 1 verdict/ligne) —
+    KILL sur cmd1 overflow / cmd2 `%` / cmd4 double-free / cmd5 heap-overflow / cmd7 traversal `/flag` /
+    cmd8 backdoor (sha256 pw) + overflow command. Bénins (cmd3/6/9) = PASS. Testé bénin→PASS, attaque→KILL.
+  - ⚠️ La finale réutilise *le concept*, pas forcément ces fichiers : ré-appliquer la **logique** si
+    noms/lignes diffèrent. Détails + flux SLA à ne pas casser : `tools-offline/patches/README.md`.
 
 ## 5.1 Checklist AVANT match (préparer nos propres box)
 - [ ] Inventorier les binaires réseau présents : `which nc ncat curl wget openssl busybox php ruby finger whois socat`.
