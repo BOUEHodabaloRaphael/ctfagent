@@ -22,6 +22,22 @@
 # king peut vivre HORS des conteneurs applicatifs, sur l'hote physique —
 # toujours verifier /var/run/docker.sock une fois root/acces privilegie.
 #
+# Lecon NCTF26 (2026-11-06, The Armory/The Citadel, meme IP partagee pour
+# plusieurs collines) : le nmap -p- --min-rate 3000 de la phase 1 a
+# lui-meme declenche un blocage temporaire du port SSH reel de la cible
+# (The Armory 28492 : "open" avec banniere SSH complete AVANT le scan,
+# "Connection timed out" juste APRES le meme -p- complet — le port cible
+# etait absent de la liste "open" du scan, noye dans les 65527 "filtered").
+# Meme pattern que la cooldown HTB Pro Lab deja documentee en memoire
+# (nmap -p- -> blocage reseau 20-30min, independant de l'IP). Sur une
+# infra ou plusieurs collines KOTH partagent la MEME IP publique (cas
+# NCTF26), NE PAS lancer -p- --min-rate eleve sur le port de service
+# connu du challenge : faire un scan cible (liste de ports precise,
+# ex. -p 21,22,25,80,443,2222,8080,<port_connu>) avec un rate doux
+# (-T2/-T3, pas de --min-rate agressif, --max-retries par defaut) pour
+# ne pas risquer de se couper soi-meme l'acces au port qu'on cherche a
+# exploiter.
+#
 # Usage:
 #   ./koth_auto.sh <IP> <NOM_EQUIPE_OU_PSEUDO> [SSH_USER] [SSH_PASS] [SSH_PORT]
 #   ./koth_auto.sh --holdking <IP> <NOM_EQUIPE_OU_PSEUDO> <SSH_USER> <SSH_PASS> [SSH_PORT] [INTERVAL_SEC]

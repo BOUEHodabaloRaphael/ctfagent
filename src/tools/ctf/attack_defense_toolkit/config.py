@@ -46,6 +46,14 @@ SUBMIT_HEADERS = {
     # "Authorization": "Bearer <team_token>",
 }
 SUBMIT_TIMEOUT = 5
+# Marqueurs (sous-chaînes, insensibles à la casse) d'un échec TRANSITOIRE dans la
+# réponse du scoreboard : si l'un apparaît, le flag n'est PAS marqué "déjà soumis"
+# et sera réessayé au tick suivant. Les exceptions transport et les HTTP 5xx sont
+# déjà réessayés automatiquement. Laisser vide par défaut ; à remplir UNIQUEMENT si
+# l'orga renvoie un message de type transitoire pour un flag encore valide
+# (ex. "service down", "try again", "not active yet"). NE PAS y mettre "invalid",
+# "expired", "too old" ni "own flag" (rejets définitifs → ne jamais boucler dessus).
+SUBMIT_RETRY_SUBSTRINGS = []
 
 # Certaines plateformes A/D soumettent via un simple socket TCP texte
 # (une ligne par flag, une ligne de réponse). Si c'est le cas, laisser

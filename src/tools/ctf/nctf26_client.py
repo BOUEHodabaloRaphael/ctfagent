@@ -57,16 +57,20 @@ def login(headless: bool = True) -> None:
         sys.exit(1)
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
+        browser = p.chromium.launch(headless=headless, args=["--host-resolver-rules=MAP arena.ctf.tg 104.21.67.127"])
         page = browser.new_page()
-        page.goto(f"{BASE_URL}/login", wait_until="networkidle")
+        page.goto(f"{BASE_URL}/login", wait_until="domcontentloaded", timeout=45000)
+        page.wait_for_timeout(1500)
 
         nonce = get_nonce(page)
         page.fill("input[name='name']", user)
         page.fill("input[name='password']", password)
         # Le champ nonce est deja rempli par le serveur, pas besoin de le re-remplir
         page.click("input[name='_submit']")
-        page.wait_for_load_state("networkidle")
+        # networkidle ne se declenche jamais pendant l'evenement live (polling
+        # continu du cote plateforme) -- attendre un chargement simple + delai fixe.
+        page.wait_for_load_state("domcontentloaded", timeout=45000)
+        page.wait_for_timeout(1500)
 
         if "login" in page.url:
             print(f"ECHEC login probable (toujours sur {page.url}) -- verifier creds/MFA/nonce.", file=sys.stderr)
@@ -84,7 +88,7 @@ def _authenticated_page(p, headless: bool = True) -> tuple:
     if not STATE_FILE.exists():
         print("Pas de session sauvegardee -- lancer 'login' d'abord.", file=sys.stderr)
         sys.exit(1)
-    browser = p.chromium.launch(headless=headless)
+    browser = p.chromium.launch(headless=headless, args=["--host-resolver-rules=MAP arena.ctf.tg 104.21.67.127"])
     context = browser.new_context(storage_state=str(STATE_FILE))
     page = context.new_page()
     return browser, page
@@ -93,24 +97,59 @@ def _authenticated_page(p, headless: bool = True) -> tuple:
 def list_challenges() -> None:
     with sync_playwright() as p:
         browser, page = _authenticated_page(p)
-        page.goto(f"{BASE_URL}/challenges", wait_until="networkidle")
+        page.goto(f"{BASE_URL}/challenges", wait_until="domcontentloaded", timeout=60000)
+        page.wait_for_timeout(2000)
         # Structure exacte a confirmer une fois le compte cree -- ceci est
         # un point de depart, pas une implementation finale.
         print(f"URL finale: {page.url}")
-        print(page.content()[:2000])
+        print(page.content()[:4000])
         browser.close()
 
 
-def submit_flag(challenge_id: str, flag: str) -> None:
+def submit_flag(challenge_name: str, flag: str) -> None:
     """Soumet UN SEUL flag pour UN SEUL challenge. Pas de boucle, pas de
-    retry automatique -- conforme au reglement anti-bruteforce (art. 7)."""
+    retry automatique -- conforme au reglement anti-bruteforce (art. 7).
+
+    challenge_name: le nom affiche du challenge tel qu'il apparait sur la
+    carte (ex: 'uart-capture', 'algorithme123--tisserands-dapaong'). Le
+    theme (hibris) ouvre une modale via un bouton (pas de navigation vers
+    /challenges/<id>), donc on clique le bouton correspondant sur la page
+    /challenges plutot que de naviguer directement.
+    """
     with sync_playwright() as p:
         browser, page = _authenticated_page(p)
-        page.goto(f"{BASE_URL}/challenges/{challenge_id}", wait_until="networkidle")
-        print(f"Page chargee: {page.url}")
-        print("STRUCTURE DE SOUMISSION NON ENCORE CONFIRMEE -- inspecter la page")
-        print("manuellement (ou via read_page) avant d'automatiser cette etape.")
-        print(f"Flag preparer pour soumission (PAS ENCORE ENVOYE): {flag}")
+        page.goto(f"{BASE_URL}/challenges", wait_until="domcontentloaded", timeout=60000)
+        page.wait_for_timeout(2000)
+
+        # Le bouton de challenge contient le nom en texte (parfois avec les
+        # points dans un span separe) -- on cherche un bouton dont le texte
+        # contient exactement le nom demande.
+        btn = page.get_by_role("button", name=challenge_name, exact=False).first
+        btn.wait_for(state="visible", timeout=10000)
+        btn.click()
+
+        flag_input = page.get_by_placeholder("Flag")
+        flag_input.wait_for(state="visible", timeout=10000)
+        flag_input.fill(flag)
+
+        submit_btn = page.get_by_role("button", name="Submit")
+        submit_btn.click()
+
+        # Le resultat (Correct/Incorrect) apparait comme une alerte/notice
+        # dans la modale -- on attend un court instant puis on capture le
+        # texte visible le plus pertinent.
+        page.wait_for_timeout(2000)
+        result_text = None
+        for sel in ["[role=alert]", ".alert", ".notice", ".toast"]:
+            el = page.query_selector(sel)
+            if el:
+                txt = el.inner_text().strip()
+                if txt:
+                    result_text = txt
+                    break
+        print(f"Challenge: {challenge_name}")
+        print(f"Flag soumis: {flag}")
+        print(f"Resultat: {result_text!r}")
         browser.close()
 
 

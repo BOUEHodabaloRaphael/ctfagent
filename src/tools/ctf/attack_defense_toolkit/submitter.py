@@ -38,11 +38,19 @@ class FlagSubmitter:
         return self.flag_re.findall(text)
 
     def submit(self, flags: list[str]) -> dict:
-        """Soumet chaque flag non-déjà-vu. Retourne {flag: result_str}."""
+        """Soumet chaque flag non-déjà-vu. Retourne {flag: result_str}.
+
+        Un flag n'est marqué "déjà soumis" (et donc jamais re-soumis) QUE si la
+        soumission a effectivement abouti. Une erreur transport (timeout, reset),
+        un HTTP 5xx, ou un marqueur transitoire configuré (config.SUBMIT_RETRY_SUBSTRINGS)
+        laissent le flag NON-vu → il sera réessayé au tick suivant. Sans ça, un
+        simple timeout faisait perdre définitivement un flag valide en A/D.
+        """
         results = {}
         for flag in flags:
             if flag in self.seen:
                 continue
+            retryable = False
             try:
                 if config.SUBMIT_TCP_HOST:
                     result = self._submit_tcp(flag)
@@ -50,10 +58,24 @@ class FlagSubmitter:
                     result = self._submit_http(flag)
             except Exception as e:
                 result = f"ERROR: {e}"
+                retryable = True  # échec transport → réessayer au prochain tick
+            else:
+                retryable = self._is_retryable(result)
             results[flag] = result
-            self.seen.add(flag)
-            _mark_seen(flag)
+            if not retryable:
+                self.seen.add(flag)
+                _mark_seen(flag)
         return results
+
+    @staticmethod
+    def _is_retryable(result: str) -> bool:
+        """Vrai si la réponse indique un échec transitoire (à re-soumettre),
+        pas un rejet définitif (flag invalide/expiré/own-flag, qu'on marque vu)."""
+        head = result.split(" ", 1)[0]
+        if head.isdigit() and 500 <= int(head) <= 599:  # HTTP 5xx côté scoreboard
+            return True
+        low = result.lower()
+        return any(s.lower() in low for s in getattr(config, "SUBMIT_RETRY_SUBSTRINGS", []))
 
     def _submit_http(self, flag: str) -> str:
         # Forme de la valeur: scalaire par defaut, ou liste si la plateforme

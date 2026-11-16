@@ -24,3 +24,13 @@ targets/expressvpn-lightway/wolfssl-rs/
 workspaces/**/downloads/
 workspaces/nctf26-finale/telegram-harvest/pdfs/
 workspaces/nctf26-finale/**/*.bak-*
+# WhatsApp harvests — untrusted received files + extracted archives (incl. malware bins)
+workspaces/nctf26-finale/*-whatsapp-*/incoming/
+workspaces/nctf26-finale/*-whatsapp-*/zip-extract/
+
+# KoTH finale toolkit — pre-staged exploit binaries (large, untrusted, not ours) + runtime/secrets
+src/tools/ctf/koth_finale/privesc-arsenal/
+src/tools/ctf/koth_finale/hill.env
+src/tools/ctf/koth_finale/koth.log
+src/tools/ctf/koth_finale/recon_*.txt
+src/tools/ctf/attack_defense_toolkit/submitted_flags.txt
