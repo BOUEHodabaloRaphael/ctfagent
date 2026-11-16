@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NCTF26 — National CTF du Togo</title>
+  <meta name="description" content="NCTF26, la compétition nationale de cybersécurité du Togo organisée par le CERT.tg : présélection en ligne les 6–7 novembre 2026, finale à Lomé les 19–20 novembre.">
+  <meta name="theme-color" content="#0a0d0b">
+  <meta property="og:title" content="NCTF26 — National CTF du Togo">
+  <meta property="og:description" content="La compétition nationale de cybersécurité du Togo, organisée par le CERT.tg. Présélection en ligne les 6–7 novembre, finale à Lomé les 19–20 novembre 2026.">
+  <meta property="og:image" content="https://ctf.tg/images/logoctf.png">
+  <meta property="og:url" content="https://ctf.tg/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://ctf.tg/">
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="preload" href="/fonts/Tourney.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/images/hero-2026.webp" as="image" media="(min-width: 861px)">
+  <link rel="preload" href="/images/hero-2026-m.webp" as="image" media="(max-width: 860px)">
+  <link rel="stylesheet" href="/css/site.css?v=aa16b2b6">
+</head>
+<body>
+  <script>
+    /* =====================================================================
+       NCTF26 — CONFIGURATION DE LA VITRINE
+       Tout le contenu modifiable de l'intro et du hero est ici.
+       Chiffres = challenges VISIBLES en prod au 29/10/2026 (370 épreuves).
+       ===================================================================== */
+    window.NCTF = {
+      intro: {
+        /* "once"   : une fois par navigateur (localStorage)
+           "always" : à chaque visite (vidéoprojecteur) — aussi ?intro=always dans l'URL
+           "off"    : jamais */
+        mode: "once",
+        /* incrémenter pour rejouer l'intro à tous les visiteurs */
+        version: 2,
+        /* durée de chaque scène, en millisecondes */
+        durations: { boot: 3600, brand: 3000, arsenal: 3200, sectors: 4200, calendar: 4000, end: 2800 }
+      },
+      brand: { name: "NCTF", year: "26", tagline: "Championnat national de cybersécurité · Togo" },
+      boot: [
+        { text: "nctf.core :: initialisation du terminal", status: "ok" },
+        { text: "signature CERT.tg vérifiée", status: "ok" },
+        { text: "liaison arène · TLS 1.3", status: "ok" },
+        { text: "chargement des épreuves · secteurs", status: "ok" },
+        { text: "console cyberdéfense", status: "EN LIGNE", live: true }
+      ],
+      /* l'arsenal — value: null masque la ligne ; chiffres de la prod (challenges visibles) */
+      arsenal: [
+        { label: "épreuves", value: 370 },
+        { label: "secteurs", value: "auto" },           /* = nombre d'entrées de sectors */
+        { label: "avec instance dédiée", value: 132 },
+        { label: "fichiers à télécharger", value: 469 }
+      ],
+      /* secteurs (catégories des épreuves visibles) et nombre d'épreuves */
+      sectors: [
+        { name: "web", count: 67 }, { name: "crypto", count: 59 }, { name: "forensics", count: 35 },
+        { name: "reverse", count: 16 }, { name: "warmup", count: 16 }, { name: "boot2root", count: 14 },
+        { name: "cloud", count: 14 }, { name: "stego", count: 14 }, { name: "supplychain", count: 14 },
+        { name: "ai", count: 13 }, { name: "sysadmin", count: 13 }, { name: "pwn", count: 12 },
+        { name: "blockchain", count: 11 }, { name: "ml", count: 11 }, { name: "misc", count: 10 },
+        { name: "networking", count: 10 }, { name: "ppc", count: 10 }, { name: "osint", count: 9 },
+        { name: "hardware", count: 8 }, { name: "mobile", count: 8 }, { name: "chains", count: 6 }
+      ],
+      /* heure de Lomé = GMT ; les dates pilotent aussi le bandeau d'état et les boutons */
+      calendar: {
+        registration: { at: "2026-10-30T00:00:00Z", label: "30 octobre" },
+        qualifiers: { from: "2026-11-06T19:00:00Z", to: "2026-11-07T23:59:00Z", label: "6 → 7 nov.", meta: "en ligne · ~29 h non-stop · par équipe" },
+        final: { from: "2026-11-19T08:00:00Z", to: "2026-11-21T00:00:00Z", label: "19 → 20 nov.", meta: "Lomé · 10 équipes · 24 h" }
+      },
+      flagFormat: "NCTF{...}",
+      arena: "https://arena.ctf.tg"
+    };
+
+    /* avant le premier rendu : intro cinématique, ou courte séquence d'ouverture, ou rien */
+    (function () {
+      var c = NCTF.intro, root = document.documentElement, key = "nctf-intro-seen";
+      var motion = window.matchMedia && matchMedia("(prefers-reduced-motion: no-preference)").matches;
+      var mode = /[?&]intro=always\b/.test(location.search) ? "always" : c.mode;
+      var seen = null;
+      try { seen = localStorage.getItem(key); } catch (e) {}
+      var direct = !location.hash;
+      NCTF.introPlay = motion && mode !== "off" && direct &&
+        (mode === "always" || seen !== String(c.version));
+      NCTF.introKey = key;
+      if (NCTF.introPlay) root.classList.add("cine-on");
+      else if (motion) root.classList.add("intro");
+    })();
+  </script>
+
+  <div class="cine" id="cine" role="dialog" aria-modal="true" aria-label="Introduction NCTF26">
+    <div class="cine-bg" aria-hidden="true"><div class="cine-glow"></div></div>
+    <div class="cine-top">
+      <span class="cine-mark"><b>●</b> ctf.tg // nctf26</span>
+      <button class="cine-skip" type="button" id="cine-skip">Passer l'intro <kbd>Échap</kbd></button>
+    </div>
+    <div class="cine-stage" aria-hidden="true">
+      <section class="scene" data-scene="boot"><ol class="boot" id="cine-boot"></ol></section>
+      <section class="scene" data-scene="brand">
+        <div class="brandmark">
+          <p class="big"><span class="n" id="cine-name">NCTF</span><span class="r" id="cine-year">26</span></p>
+          <div class="tri"></div>
+          <p class="tag" id="cine-tagline"></p>
+        </div>
+      </section>
+      <section class="scene" data-scene="arsenal"><p class="cap">l'arsenal</p><dl class="nums" id="cine-nums"></dl></section>
+      <section class="scene" data-scene="sectors"><p class="cap">les secteurs</p><ul class="secs" id="cine-secs"></ul></section>
+      <section class="scene" data-scene="calendar"><p class="cap">le calendrier</p><div class="cal" id="cine-cal"></div><p class="cal-note" id="cine-reg"></p></section>
+      <section class="scene" data-scene="end">
+        <div class="fin">
+          <p class="w">Bienvenue dans <span>l'arène</span></p>
+          <p class="f">format des flags <b id="cine-flag"></b></p>
+        </div>
+      </section>
+    </div>
+    <div class="cine-bottom">
+      <ol class="cine-progress" id="cine-progress" aria-hidden="true"><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li></ol>
+      <span class="cine-hint">Toucher ou → pour avancer</span>
+    </div>
+  </div>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="tricolore" aria-hidden="true"></div>
+
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="National CTF, accueil">
+        <img src="/images/logoctf2.png" alt="" width="34" height="34">
+        National CTF
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a class="section-link" href="#principe">Principe</a>
+        <a class="section-link" href="#deroule">Déroulé</a>
+        <a class="section-link" href="#regles">Règles</a>
+        <a class="section-link" href="#palmares">Palmarès</a>
+        <a class="section-link" href="https://arena.ctf.tg/scoreboard">Classement</a>
+        <a class="cta-sm" href="https://arena.ctf.tg/login">Plateforme <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="status-bar" id="status" data-state="soon">
+    <div class="wrap">
+      <span class="state">Inscriptions le 30 octobre</span>
+      <span class="detail">Présélection en ligne du vendredi 6 novembre 19:00 au samedi 7 novembre 23:59 (GMT)</span>
+      <a href="https://arena.ctf.tg/register">Préparer son équipe →</a>
+    </div>
+  </div>
+
+  <main id="contenu">
+
+    <section class="hero hero-visual" id="top">
+      <div class="hero-bg" data-video-webm="/images/hero-2026.webm" data-video-mp4="/images/hero-2026.mp4">
+        <picture>
+          <source media="(max-width: 860px)" srcset="/images/hero-2026-m.webp">
+          <img src="/images/hero-2026.webp" alt="" width="1728" height="864" fetchpriority="high">
+        </picture>
+      </div>
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">CTF national · édition 2026</p>
+          <h1 class="one" aria-label="NCTF26" tabindex="-1"><span>NCTF</span><span class="r26" data-decode>26</span></h1>
+          <p class="lead">
+            La compétition nationale de cybersécurité du Togo. Analyse, exploite,
+            défends — en équipe, contre la montre. Présélection en ligne du 6 au
+            7 novembre (~29 h, non-stop), finale à Lomé les 19–20 novembre.
+            Format des flags&nbsp;: <code class="flagfmt">NCTF{...}</code>.
+          </p>
+          <div class="actions" id="hero-actions">
+            <a class="btn btn-primary" href="https://arena.ctf.tg/register">Créer mon équipe <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="https://arena.ctf.tg/challenges">Entrer dans l'arène</a>
+            <a class="btn btn-ghost" href="https://arena.ctf.tg/scoreboard">Voir le classement</a>
+          </div>
+          <button class="replay" type="button" id="replay-intro">↺ revoir l'intro</button>
+          <div class="countdown" id="countdown" aria-live="off">
+            <p class="countdown-label"><span class="cd-what">Ouverture des inscriptions dans</span> <strong class="cd-when">— vendredi 30 octobre, 00:00 GMT</strong></p>
+            <ol>
+              <li><span class="n" data-u="d">--</span><span class="u">jours</span></li>
+              <li><span class="n" data-u="h">--</span><span class="u">heures</span></li>
+              <li><span class="n" data-u="m">--</span><span class="u">min</span></li>
+              <li><span class="n" data-u="s">--</span><span class="u">s</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="wrap">
+        <dl class="stats">
+          <div><dt>Éditions</dt><dd data-decode>3</dd></div>
+          <div><dt>Depuis</dt><dd data-decode>2023</dd></div>
+          <div><dt>Épreuves</dt><dd data-decode data-stat="challenges"></dd></div>
+          <div><dt>Secteurs</dt><dd data-decode data-stat="sectors"></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="principe">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">01 — Principe</p>
+            <h2>Capturer<br>le drapeau</h2>
+          </div>
+          <p>
+            Chaque épreuve cache un <em>flag</em>&nbsp;: une chaîne secrète qu'on
+            n'obtient qu'en résolvant un vrai problème de sécurité. Le soumettre
+            sur la plateforme rapporte des points à son équipe. Les systèmes sont
+            conçus pour être attaqués&nbsp;: c'est la manière la plus directe — et
+            la plus sûre — d'apprendre par la pratique.
+          </p>
+        </div>
+
+        <ol class="flow" aria-label="Du problème aux points">
+          <li><span class="k">1 · Résoudre</span><span class="v">nc chall.ctf.tg 31337</span><span class="d">Une épreuve, un service ou un fichier à faire parler.</span></li>
+          <li><span class="k">2 · Soumettre</span><span class="v"><span class="g">$</span> submit NCTF{<span class="y">r3v3rs3_m3_1f_y0u_c4n</span>}</span><span class="d">Le flag trouvé est soumis sur arena.ctf.tg.</span></li>
+          <li><span class="k">3 · Marquer</span><span class="v">+ 500 pts <span class="g">→</span> équipe</span><span class="d">Score dynamique : moins une épreuve est résolue, plus elle rapporte.</span></li>
+        </ol>
+
+        <div class="grid">
+          <article class="card">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/><path d="M8.5 11h5M11 8.5v5"/></svg>
+            <span class="tag">Analyser</span>
+            <h3>Comprendre un système</h3>
+            <p>Lire du code, rétro-concevoir un binaire, disséquer un trafic réseau ou un fichier suspect.</p>
+            <p class="ex">forensics · capture.pcapng : retrouver le mot de passe passé en clair</p>
+          </article>
+          <article class="card">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/><path d="M13.5 4l-3 16"/></svg>
+            <span class="tag">Exploiter</span>
+            <h3>Trouver la faille</h3>
+            <p>Repérer la vulnérabilité, construire l'exploitation, aller jusqu'à la preuve.</p>
+            <p class="ex">web · un formulaire de connexion vulnérable à l'injection SQL</p>
+          </article>
+          <article class="card">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.3-7.5 9.5-4.3-1.2-7.5-4.9-7.5-9.5V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span class="tag">Défendre</span>
+            <h3>Tenir la position</h3>
+            <p>Durcir, surveiller et garder le contrôle d'un service face aux autres équipes.</p>
+            <p class="ex">king of the hill · garder l'accès root sur une colline partagée</p>
+          </article>
+          <article class="card">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8.5" r="3"/><circle cx="16.5" cy="9.5" r="2.5"/><path d="M2.5 19.5c.6-3 2.9-5 5.5-5s4.9 2 5.5 5"/><path d="M14.5 14.6c.6-.2 1.3-.3 2-.3 2.2 0 4 1.7 4.5 4.2"/></svg>
+            <span class="tag">Coopérer</span>
+            <h3>Jouer en équipe</h3>
+            <p>Répartir les spécialités, partager les pistes, décider vite sous la pression du temps.</p>
+            <p class="ex">présélection · 29 h non-stop, une seule équipe au classement</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="deroule">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">02 — Déroulé</p>
+            <h2>Deux temps</h2>
+          </div>
+          <p>
+            Une présélection ouverte en ligne du 6 au 7 novembre, puis une finale
+            sur site à Lomé les 19 et 20 novembre, réservée aux meilleures équipes.
+            Les annonces passent par la plateforme et le serveur Discord.
+          </p>
+        </div>
+
+        <ol class="timeline">
+          <li data-at="2026-10-30T00:00:00Z"><span class="when">30 oct.</span><span class="what">Ouverture des inscriptions</span><span class="note">arena.ctf.tg/register</span></li>
+          <li data-at="2026-11-06T19:00:00Z"><span class="when">6 → 7 nov.</span><span class="what">Présélection en ligne</span><span class="note">ven. 19:00 → sam. 23:59 GMT · ~29 h non-stop</span></li>
+          <li data-at="2026-11-19T08:00:00Z"><span class="when">19 – 20 nov.</span><span class="what">Finale sur site</span><span class="note">Lomé · équipes qualifiées</span></li>
+        </ol>
+
+        <div class="phases">
+          <article class="phase">
+            <span class="phase-num" aria-hidden="true">01</span>
+            <span class="step">Étape 1 · En ligne · 6–7 nov.</span>
+            <h3>Présélection</h3>
+            <p>
+              Un tableau d'épreuves <em>Jeopardy</em> de toutes catégories et de
+              difficulté croissante, plus des collines <em>King of the Hill</em>,
+              à résoudre en 29 heures.
+            </p>
+            <dl>
+              <dt>Format</dt><dd>Jeopardy + KotH, en ligne</dd>
+              <dt>Participation</dt><dd>En équipes, sur inscription</dd>
+              <dt>Enjeu</dt><dd>Se qualifier pour la finale</dd>
+            </dl>
+          </article>
+          <div class="phase-link" aria-hidden="true"><span>qualification</span></div>
+          <article class="phase">
+            <span class="phase-num" aria-hidden="true">02</span>
+            <span class="step">Étape 2 · Lomé · 19–20 nov.</span>
+            <h3>Finale</h3>
+            <p>
+              Les équipes qualifiées se retrouvent à Lomé pour prendre le
+              contrôle des cibles et le conserver face aux autres. Le classement
+              repart de zéro.
+            </p>
+            <dl>
+              <dt>Format</dt><dd>Sur site, offensif et défensif</dd>
+              <dt>Participation</dt><dd>Équipes qualifiées</dd>
+              <dt>Enjeu</dt><dd>Le titre national</dd>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="regles">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">03 — Règles</p>
+            <h2>Jouer<br>loyalement</h2>
+          </div>
+          <p>
+            Le CTF est un terrain d'entraînement légal. Il le reste parce que chacun
+            respecte quelques règles simples&nbsp;; leur non-respect entraîne la
+            disqualification.
+          </p>
+        </div>
+        <ol class="rules">
+          <li><div><strong>Un compte, une équipe</strong><span>Une seule inscription par personne, sous sa vraie identité, dans une seule équipe.</span></div></li>
+          <li class="severe"><div><strong>Aucun partage de flag</strong><span>Donner ou recevoir un flag disqualifie les deux équipes, sans avertissement.</span></div></li>
+          <li><div><strong>Rester dans le périmètre</strong><span>Seuls les services désignés par une épreuve sont des cibles. La plateforme et les autres équipes n'en sont pas.</span></div></li>
+          <li><div><strong>Ni bruteforce ni déni de service</strong><span>Pas de soumission en masse, aucune action qui dégrade le jeu des autres.</span></div></li>
+          <li><div><strong>Pas de write-up avant la clôture</strong><span>Solutions, flags et indices restent privés jusqu'à la fin officielle.</span></div></li>
+          <li><div><strong>Les journaux font foi</strong><span>Chaque soumission est horodatée. Le jury entend l'équipe avant de trancher ; sa décision est définitive.</span></div></li>
+        </ol>
+        <p class="rules-full"><span>Règlement complet en 11 articles, seul opposable.</span><a href="https://arena.ctf.tg/tos">Lire sur arena.ctf.tg/tos ↗</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="palmares" hidden>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">04 — Palmarès</p>
+            <h2>Wall of fame</h2>
+          </div>
+          <p>
+            Les podiums de chaque édition du National CTF, depuis la première
+            en 2023. Leurs noms restent ici, d'une édition à l'autre.
+          </p>
+        </div>
+        <div class="fame" id="fame"></div>
+      </div>
+    </section>
+
+    <script type="application/json" id="palmares-data">
+    [
+      { "annee": 2025, "format": "Équipes", "podium": [
+          { "rang": 1, "equipe": "1NTRUD3R5", "points": 13921 },
+          { "rang": 2, "equipe": "FireTeam", "points": 11514 },
+          { "rang": 3, "equipe": "APT17", "points": 7077 } ],
+        "mentions": [ "Prix spécial de la participation féminine : Trinity-Wonder Bodjona" ] },
+      { "annee": 2024, "format": "Équipes", "podium": [
+          { "rang": 1, "equipe": "n0_m3rcy_f0r_7h3m!!", "points": 5751 },
+          { "rang": 2, "equipe": "Bl4ck_Kn1Gh7", "points": 3851 },
+          { "rang": 3, "equipe": "Cyb3rKn1ght5", "points": 901 } ] },
+      { "annee": 2023, "format": "Individuel", "podium": [
+          { "rang": 1, "equipe": "Sergio Komi Hognaglo" },
+          { "rang": 2, "equipe": "Kodjo Boaz Agnigbagno" },
+          { "rang": 3, "equipe": "Arafat Ouro-Djobo" } ] }
+    ]
+    </script>
+
+    <section class="section" id="createurs">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">05 — Créateurs</p>
+            <h2>Les épreuves<br>sont conçues par</h2>
+          </div>
+          <p>
+            Les épreuves de NCTF26 sont écrites, testées et hébergées par une
+            équipe de joueurs et d'anciens finalistes.
+          </p>
+        </div>
+        <ul class="creators">
+          <li><a href="https://www.linkedin.com/in/hi3ris/" rel="noopener" title="Hibris : architecte de la plateforme"><span class="mono-av" aria-hidden="true">Hi</span>Hibris<span class="creator-count" aria-label="Hibris : architecte de la plateforme">∞</span></a></li>
+          <li><a href="https://github.com/Algorithme123" title="Algorithme123 : 18 épreuves"><span class="mono-av" aria-hidden="true">Al</span>Algorithme123<span class="creator-count" aria-label="Algorithme123 : 18 épreuves">18</span></a></li>
+          <li><a href="https://github.com/BoazAK" title="BoazAK : 50 épreuves"><span class="mono-av" aria-hidden="true">Bo</span>BoazAK<span class="creator-count" aria-label="BoazAK : 50 épreuves">50</span></a></li>
+          <li><a href="https://github.com/thierry8petstar" title="thierry8petstar : 11 épreuves"><span class="mono-av" aria-hidden="true">Th</span>thierry8petstar<span class="creator-count" aria-label="thierry8petstar : 11 épreuves">11</span></a></li>
+          <li><a href="https://github.com/Oxdefault" title="Oxdefault : 17 épreuves"><span class="mono-av" aria-hidden="true">Ox</span>Oxdefault<span class="creator-count" aria-label="Oxdefault : 17 épreuves">17</span></a></li>
+          <li><a href="https://github.com/The-darknova" title="The-darknova : 3 épreuves"><span class="mono-av" aria-hidden="true">Da</span>The-darknova<span class="creator-count" aria-label="The-darknova : 3 épreuves">3</span></a></li>
+          <li><a href="https://github.com/fullaccess5" title="fullaccess5 : 2 épreuves"><span class="mono-av" aria-hidden="true">Fu</span>fullaccess5<span class="creator-count" aria-label="fullaccess5 : 2 épreuves">2</span></a></li>
+          <li><a href="https://github.com/isid0r3" title="isid0r3 : 10 épreuves"><span class="mono-av" aria-hidden="true">Is</span>isid0r3<span class="creator-count" aria-label="isid0r3 : 10 épreuves">10</span></a></li>
+          <li><a href="https://github.com/komisergio" title="komisergio : 10 épreuves"><span class="mono-av" aria-hidden="true">Ko</span>komisergio<span class="creator-count" aria-label="komisergio : 10 épreuves">10</span></a></li>
+          <li><a href="https://github.com/44r0nMeta" title="44r0nMeta : 7 épreuves"><span class="mono-av" aria-hidden="true">44</span>44r0nMeta<span class="creator-count" aria-label="44r0nMeta : 7 épreuves">7</span></a></li>
+        </ul>
+        <p class="creators-note">Épreuves NCTF26 · 10 auteurs</p>
+      </div>
+    </section>
+
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="community">
+          <div>
+            <p class="section-num">Communauté</p>
+            <h2>Rejoindre le serveur</h2>
+            <p>
+              Annonces des prochaines éditions, entraide, échanges entre passionnés
+              de sécurité&nbsp;: tout se passe sur le serveur Discord.
+            </p>
+          </div>
+          <a class="btn btn-primary btn-lg" href="https://discord.gg/QU6W794CRx">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-ico"><path d="M19.3 5.3A16.6 16.6 0 0 0 15.2 4l-.5 1a15.4 15.4 0 0 0-5.4 0l-.5-1a16.5 16.5 0 0 0-4.1 1.3C2.1 9.2 1.4 13 1.8 16.8a16.7 16.7 0 0 0 5 2.5l1.1-1.7c-.6-.2-1.2-.5-1.7-.8l.4-.3a11.9 11.9 0 0 0 10.8 0l.4.3c-.5.3-1.1.6-1.7.8l1.1 1.7a16.6 16.6 0 0 0 5-2.5c.5-4.4-.7-8.2-2.9-11.5zM8.7 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg>
+            Rejoindre le Discord <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="partenaires">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">06 — Organisation</p>
+            <h2>Partenaires</h2>
+          </div>
+          <p>
+            Le National CTF est organisé par le CERT.tg, l'équipe nationale de
+            réponse aux incidents de sécurité informatique du Togo, avec le
+            soutien de ses partenaires institutionnels.
+          </p>
+        </div>
+        <div class="partners">
+          <figure>
+            <a href="https://cert.tg/"><img class="mono" src="/images/cert.png" alt="CERT.tg" height="44"></a>
+            <figcaption>Organisateur</figcaption>
+          </figure>
+          <figure>
+            <a href="https://www.cda.tg/"><img src="/images/cda2.png" alt="Cyber Defense Africa" height="44"></a>
+            <figcaption>Partenaire</figcaption>
+          </figure>
+          <figure>
+            <a href="https://ancy.gouv.tg/"><img class="mono" src="/images/ancy.png" alt="Agence Nationale de la Cybersécurité" height="44"></a>
+            <figcaption>Partenaire</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap foot-main">
+      <a class="brand" href="/" aria-label="National CTF, accueil">
+        <img src="/images/logoctf2.png" alt="" width="34" height="34">
+        National CTF
+      </a>
+      <span class="foot-tag">Une compétition du CERT.tg, Togo.</span>
+      <nav aria-label="Liens utiles">
+        <a href="https://arena.ctf.tg/register">Inscription</a>
+        <a href="https://arena.ctf.tg/scoreboard">Classement</a>
+        <a href="https://arena.ctf.tg/tos">Règlement</a>
+        <a href="https://discord.gg/QU6W794CRx">Discord</a>
+        <a href="https://cert.tg/">CERT.tg</a>
+      </nav>
+    </div>
+    <div class="wrap signature">
+      <a href="https://ramses.dagban.tg/" target="_blank" rel="noopener">Powered by <strong>Hibris</strong> · ramses.dagban.tg</a>
+    </div>
+  </footer>
+
+  <script src="/js/site.js?v=aa16b2b6"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5666064dade6f0e',t:'MTc5Mzk5MTk5OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5666064dade6f0e',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

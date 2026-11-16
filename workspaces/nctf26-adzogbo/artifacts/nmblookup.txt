@@ -1,0 +1,12 @@
+Looking up status of 10.100.16.101
+	D3EE8B7402AF    <00> -         M <ACTIVE> 
+	D3EE8B7402AF    <03> -         M <ACTIVE> 
+	D3EE8B7402AF    <20> -         M <ACTIVE> 
+	ADZOGBO         <1b> -         M <ACTIVE> 
+	ADZOGBO         <1c> - <GROUP> M <ACTIVE> 
+	ADZOGBO         <00> - <GROUP> M <ACTIVE> 
+	__SAMBA__       <00> - <GROUP> M <ACTIVE> <PERMANENT> 
+	__SAMBA__       <20> - <GROUP> M <ACTIVE> <PERMANENT> 
+
+	MAC Address = B0-FA-1B-61-DC-70
+

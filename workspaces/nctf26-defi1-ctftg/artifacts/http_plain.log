@@ -1,0 +1,14 @@
+=== plain HTTP ===
+HTTP/1.1 301 Moved Permanently
+Date: Fri, 06 Nov 2026 19:10:16 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Location: https://ctf.tg/
+X-Content-Type-Options: nosniff
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=YXr3Xt1NXB1nivmMfRqIA2kkWKDL2sBXSW88G%2FgNoS4cG1mX5FEL6dhfi8ATjM%2BDdHNqcMHgR3BdH%2FW3L3GqnSD9RdM0aRy80%2FgMEURgJE0dsi4Ef6lMr%2Fg%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a56665ba9a583cb3-CDG
+alt-svc: h3=":443"; ma=86400
+

@@ -1,0 +1,12 @@
+smbXcli_negprot_smb1_done: No compatible protocol selected by server.
+Anonymous login successful
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	sysvol          Disk      
+	netlogon        Disk      
+	public          Disk      
+	IPC$            IPC       IPC Service (Samba 4.15.13-Ubuntu)
+Reconnecting with SMB1 for workgroup listing.
+Protocol negotiation to server 10.100.16.101 (for a protocol between LANMAN1 and NT1) failed: NT_STATUS_INVALID_NETWORK_RESPONSE
+Unable to connect with SMB1 -- no workgroup available

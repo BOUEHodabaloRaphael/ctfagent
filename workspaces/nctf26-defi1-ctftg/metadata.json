@@ -1,0 +1,20 @@
+{
+  "id": "nctf26-defi1-ctftg",
+  "title": "NCTF26 - Defi d'ouverture misc : Prends le controle de ctf.tg",
+  "category": "misc/web",
+  "platform": "live-production-site",
+  "platform_id": "ctf.tg",
+  "url": "https://ctf.tg/",
+  "attachments": [],
+  "tags": ["nctf26", "defi", "misc", "500pts", "0solve", "web-defacement-objective"],
+  "status": "in_progress",
+  "team_name": "Th3N00bs",
+  "constraints": [
+    "Cible autorisee UNIQUEMENT https://ctf.tg (site public). Rien sur l'infra hebergeur, rien sur arena.ctf.tg (autres equipes/comptes).",
+    "INTERDIT: DoS/flood/stress/bruteforce volumetrique, ingenierie sociale, phishing, acces physique.",
+    "Pas de bruteforce de soumission de flag (art.7 reglement general NCTF26).",
+    "N'usurpe pas une autre equipe, ne sabote aucune equipe.",
+    "Objectif: faire apparaitre le nom d'equipe EN GRAND sur la home page publique, visible par tout visiteur (pas juste la session de l'agent).",
+    "STOP avant modification reelle/persistante en production -- rapporter faille + PoC exact et attendre confirmation explicite avant execution reelle."
+  ]
+}

@@ -1,0 +1,97 @@
+[sweep 1] order 12: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 1] order 17: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 1] order 21: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 1] order 24: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 1] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 2] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 3] order 30: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 3] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 4] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 5] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 6] order 38: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 6] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 7] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 8] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 9] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 10] me={'error': '<urlopen error timed out>'}
+[sweep 11] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 12] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 13] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 14] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 15] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 16] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 17] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 18] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 19] order 66: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 19] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 20] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 21] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 22] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 23] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 24] order 77: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 24] order 78: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 24] order 79: unexpected None {'error': 'timed out'}
+[sweep 24] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 25] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 26] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 27] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 28] me={'error': '<urlopen error timed out>'}
+[sweep 29] order 90: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 29] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 30] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 31] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 32] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 33] order 101: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 33] me={'error': '<urlopen error timed out>'}
+[sweep 34] order 106: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 34] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 35] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 36] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 37] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 38] me={'activated': True, 'code': 'T002506', 'commissions': 0, 'net_gain': -24200, 'phone': None, 'sponsor': None, 'wallet': 25800}
+[sweep 39] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -25200, 'phone': None, 'sponsor': None, 'wallet': 24800}
+[sweep 40] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 41] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 42] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 43] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 44] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 45] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 46] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 47] order 133: unexpected None {'error': '<urlopen error timed out>'}
+[sweep 47] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 48] me={'error': '<urlopen error timed out>'}
+[sweep 49] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 50] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 51] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 52] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 53] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 54] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 55] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 56] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 57] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 58] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 59] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 60] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 61] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 62] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 63] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 64] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 65] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 66] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 67] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 68] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 69] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 70] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 71] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 72] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 73] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 74] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 75] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 76] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 77] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 78] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 79] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 80] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 81] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 82] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}
+[sweep 83] me={'activated': True, 'code': 'T002506', 'commissions': 4000, 'net_gain': -20200, 'phone': None, 'sponsor': None, 'wallet': 29800}

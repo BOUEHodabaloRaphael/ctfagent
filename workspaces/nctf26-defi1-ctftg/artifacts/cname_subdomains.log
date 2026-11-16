@@ -1,0 +1,22 @@
+--- www.ctf.tg ---
+www.ctf.tg.		300	IN	A	172.67.174.201
+www.ctf.tg.		300	IN	A	104.21.67.127
+--- mail.ctf.tg ---
+mail.ctf.tg.		300	IN	A	104.21.67.127
+mail.ctf.tg.		300	IN	A	172.67.174.201
+--- staging.ctf.tg ---
+--- dev.ctf.tg ---
+--- preview.ctf.tg ---
+--- api.ctf.tg ---
+--- deploy.ctf.tg ---
+--- admin.ctf.tg ---
+--- mg.ctf.tg ---
+--- smtp.ctf.tg ---
+--- blog.ctf.tg ---
+--- shop.ctf.tg ---
+--- status.ctf.tg ---
+--- docs.ctf.tg ---
+--- cdn.ctf.tg ---
+--- beta.ctf.tg ---
+--- demo.ctf.tg ---
+--- portal.ctf.tg ---

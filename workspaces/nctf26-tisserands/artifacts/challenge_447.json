@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "data": {
+    "id": 447,
+    "name": "algorithme123--tisserands-dapaong",
+    "value": 150,
+    "description": "Festival fictif Dapaong Terre & Fibres : affiche officielle + guide des motifs.\nRetrouve le message tissé destiné aux partenaires.",
+    "attribution": "",
+    "connection_info": null,
+    "next_id": null,
+    "category": "stego",
+    "state": "visible",
+    "max_attempts": 0,
+    "position": 0,
+    "logic": "any",
+    "initial": 150,
+    "decay": 25,
+    "minimum": 150,
+    "function": "logarithmic",
+    "type": "dynamic",
+    "type_data": {
+      "id": "dynamic",
+      "name": "dynamic",
+      "templates": {
+        "create": "/plugins/dynamic_challenges/assets/create.html",
+        "update": "/plugins/dynamic_challenges/assets/update.html",
+        "view": "/plugins/dynamic_challenges/assets/view.html"
+      },
+      "scripts": {
+        "create": "/plugins/dynamic_challenges/assets/create.js",
+        "update": "/plugins/dynamic_challenges/assets/update.js",
+        "view": "/plugins/dynamic_challenges/assets/view.js"
+      }
+    },
+    "solves": 15,
+    "solved_by_me": false,
+    "attempts": 37,
+    "files": [
+      "/files/7baf2447df857cb6b0f5b7fe1c02178b/README_vitrine.txt?token=eyJ1c2VyX2lkIjo1OSwidGVhbV9pZCI6MjMsImZpbGVfaWQiOjQ4MH0.au53jg.h3fq9DXopfpqsI0XGiHTqJhPZY4",
+      "/files/8c338c2ccd1822cd7d39918d5799979d/affiche.png?token=eyJ1c2VyX2lkIjo1OSwidGVhbV9pZCI6MjMsImZpbGVfaWQiOjQ4MX0.au53jg.ucA3PHB9F1rdpYiDe78YqGcMMIM",
+      "/files/f81cf35b558db64a75c77c4a2cb53a09/guide-motifs.pdf?token=eyJ1c2VyX2lkIjo1OSwidGVhbV9pZCI6MjMsImZpbGVfaWQiOjQ4Mn0.au53jg.Z8nhPTdH6z0R6ETMNZ1wrQ3APi8"
+    ],
+    "tags": [
+      "stego",
+      "easy-medium",
+      "togo",
+      "dapaong",
+      "creator:Algorithme123"
+    ],
+    "hints": [],
+    "rating": null,
+    "ratings": {
+      "up": 0,
+      "down": 0,
+      "count": 0
+    },
+    "solution_id": null,
+    "solution_state": "hidden",
+    "view": "<div class=\"modal-dialog\" role=\"document\">\n\t<div class=\"modal-content\">\n\t\t<div class=\"modal-body\">\n\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n\t\t\t\t<span aria-hidden=\"true\">&times;</span>\n\t\t\t</button>\n\t\t\t<ul class=\"nav nav-tabs\">\n\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t<a class=\"nav-link active\" href=\"#challenge\">Challenge</a>\n\t\t\t\t</li>\n\t\t\t\t\n\t\t\t\t\t<li class=\"nav-item\">\n\t\t\t\t\t\t<a class=\"nav-link challenge-solves\" href=\"#solves\">\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t15 Solves\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t\t\n\t\t\t</ul>\n\t\t\t<div role=\"tabpanel\">\n\t\t\t\t<div class=\"tab-content\">\n\t\t\t\t\t<div role=\"tabpanel\" class=\"tab-pane fade show active\" id=\"challenge\">\n\t\t\t\t\t\t<h2 class='challenge-name text-center pt-3'>\n\t\t\t\t\t\t\talgorithme123--tisserands-dapaong\n\t\t\t\t\t\t</h2>\n\t\t\t\t\t\t<h3 class=\"challenge-value text-center\">\n\t\t\t\t\t\t\t150\n\t\t\t\t\t\t</h3>\n\n\t\t\t\t\t\t<div class=\"challenge-tags text-center\">\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<span class='badge badge-info challenge-tag'>stego</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<span class='badge badge-info challenge-tag'>easy-medium</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<span class='badge badge-info challenge-tag'>togo</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<span class='badge badge-info challenge-tag'>dapaong</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<span class='badge badge-info challenge-tag'>creator:Algorithme123</span>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t<span class=\"challenge-desc\"><p>Festival fictif Dapaong Terre &amp; Fibres : affiche officielle + guide des motifs.\nRetrouve le message tissé destiné aux partenaires.</p>\n</span>\n\n\t\t\t\t\t\t<span class=\"challenge-connection-info\">\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t</span>\n\n\t\t\t\t\t\t<div class=\"challenge-hints hint-row row\">\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t<div class=\"row challenge-files text-center pb-3\">\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<div class='col-md-4 col-sm-4 col-xs-12 file-button-wrapper d-block'>\n\t\t\t\t\t\t\t\t\t<a class='btn btn-info btn-file mb-1 d-inline-block px-2 w-100 text-truncate'\n\t\t\t\t\t\t\t\t\t   href='/files/7baf2447df857cb6b0f5b7fe1c02178b/README_vitrine.txt?token=eyJ1c2VyX2lkIjo1OSwidGVhbV9pZCI6MjMsImZpbGVfaWQiOjQ4MH0.au53jg.h3fq9DXopfpqsI0XGiHTqJhPZY4'>\n\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>\n\t\t\t\t\t\t\t\t\t\t<small>\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\tREADME_vitrine.txt\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t</small>\n\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<div class='col-md-4 col-sm-4 col-xs-12 file-button-wrapper d-block'>\n\t\t\t\t\t\t\t\t\t<a class='btn btn-info btn-file mb-1 d-inline-block px-2 w-100 text-truncate'\n\t\t\t\t\t\t\t\t\t   href='/files/8c338c2ccd1822cd7d39918d5799979d/affiche.png?token=eyJ1c2VyX2lkIjo1OSwidGVhbV9pZCI6MjMsImZpbGVfaWQiOjQ4MX0.au53jg.ucA3PHB9F1rdpYiDe78YqGcMMIM'>\n\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>\n\t\t\t\t\t\t\t\t\t\t<small>\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\taffiche.png\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t</small>\n\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<div class='col-md-4 col-sm-4 col-xs-12 file-button-wrapper d-block'>\n\t\t\t\t\t\t\t\t\t<a class='btn btn-info btn-file mb-1 d-inline-block px-2 w-100 text-truncate'\n\t\t\t\t\t\t\t\t\t   href='/files/f81cf35b558db64a75c77c4a2cb53a09/guide-motifs.pdf?token=eyJ1c2VyX2lkIjo1OSwidGVhbV9pZCI6MjMsImZpbGVfaWQiOjQ4Mn0.au53jg.Z8nhPTdH6z0R6ETMNZ1wrQ3APi8'>\n\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>\n\t\t\t\t\t\t\t\t\t\t<small>\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\tguide-motifs.pdf\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t</small>\n\t\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\n\n\t\t\t\t\t\t<div class=\"row submit-row\">\n\t\t\t\t\t\t\t<div class=\"col-md-9 form-group\">\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<input id=\"challenge-id\" class=\"challenge-id\" type=\"hidden\" value=\"447\">\n\t\t\t\t\t\t\t\t\t<input id=\"challenge-input\" class=\"challenge-input\" type=\"text\" name=\"answer\" placeholder=\"Flag\"/>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-md-3 form-group key-submit\">\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t<button id=\"challenge-submit\" class=\"challenge-submit\" type=\"submit\">\n\t\t\t\t\t\t\t\t\tSubmit\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t<div class=\"row notification-row\">\n\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t<div id=\"result-notification\" class=\"alert alert-dismissable text-center w-100\"\n\t\t\t\t\t\t\t\t\t role=\"alert\" style=\"display: none;\">\n\t\t\t\t\t\t\t\t\t<strong id=\"result-message\"></strong>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div role=\"tabpanel\" class=\"tab-pane fade\" id=\"solves\">\n\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t<div class=\"col-md-12\">\n\t\t\t\t\t\t\t\t<table class=\"table table-striped text-center\">\n\t\t\t\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t\t\t<td><b>Name</b>\n\t\t\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t\t\t<td><b>Date</b>\n\t\t\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t\t\t\t</thead>\n\t\t\t\t\t\t\t\t\t<tbody id=\"challenge-solves-names\">\n\t\t\t\t\t\t\t\t\t</tbody>\n\t\t\t\t\t\t\t\t</table>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+  }
+}

@@ -34,3 +34,15 @@ src/tools/ctf/koth_finale/hill.env
 src/tools/ctf/koth_finale/koth.log
 src/tools/ctf/koth_finale/recon_*.txt
 src/tools/ctf/attack_defense_toolkit/submitted_flags.txt
+
+# Challenge artifact binaries — reproducible downloads/captures; keep the repo text-only
+workspaces/**/*.png
+workspaces/**/*.jpg
+workspaces/**/*.jpeg
+workspaces/**/*.gif
+workspaces/**/*.bmp
+workspaces/**/*.pdf
+workspaces/**/*.cap
+workspaces/**/*.pcap
+workspaces/**/*.pcapng
+workspaces/nctf26/koth/reseau-fortune/leaderboard.json

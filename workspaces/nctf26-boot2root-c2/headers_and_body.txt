@@ -1,0 +1,13 @@
+HTTP/1.0 200 OK
+Server: PhantomQueue/2.1 Python/3.10.12
+Date: Sat, 07 Nov 2026 13:11:21 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 286
+
+<!doctype html>
+<title>Phantom Wire :: queue</title>
+<h1>PHANTOM WIRE &mdash; operator queue</h1>
+<p>Node: <b>stage-01</b> &middot; worker user: <code>www</code></p>
+<p>Submit a job manifest (YAML) to <code>POST /api/queue</code>. Example body:</p>
+<pre>task: beacon
+interval: 60</pre>

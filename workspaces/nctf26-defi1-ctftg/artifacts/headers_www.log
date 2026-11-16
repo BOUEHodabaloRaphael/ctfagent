@@ -1,0 +1,12 @@
+=== curl -I https://www.ctf.tg/ ===
+HTTP/2 301 
+date: Fri, 06 Nov 2026 19:05:44 GMT
+content-type: text/html; charset=UTF-8
+location: https://ctf.tg/
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=xdiZ%2FlKxz0nbQY6Oy9aJ7NC8Yl%2BS%2B2P1llOBdxjDCCSzz90bsCh1NGx3Hm6xRwkwX0tIWC1%2B1XDEQXDLvP85J7miXfaAauyEZetoPQsmlMhbNbeGWQ3GHqMqIb5V"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-ray: a5665f12be76d347-CDG
+

@@ -1,0 +1,20 @@
+{
+  "id": "nctf26-komisergio-kpalime",
+  "title": "komisergio--kpalime (NCTF26 #504)",
+  "category": "boot2root",
+  "platform": "CTFd/arena.ctf.tg",
+  "platform_id": "504",
+  "url": "",
+  "attachments": [],
+  "tags": [
+    "nctf26",
+    "boot2root",
+    "active-directory",
+    "adcs",
+    "blocked-network"
+  ],
+  "status": "new",
+  "constraints": [
+    "Pas de bruteforce/DoS. Pas de scan -p- agressif, scan cible a faible debit uniquement. Un seul flag soumis par l'agent principal, jamais par ce sous-agent."
+  ]
+}

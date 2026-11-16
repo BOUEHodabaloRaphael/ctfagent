@@ -1,0 +1,10 @@
+# Shallow Fords — the griot's river scroll
+# p : the river (prime modulus)
+# g : a generator of the crossing
+# A : the griot's public stone, A = g^x mod p
+# g_q : the 'deep current' generator (order q). The griot insists the
+#       secret rides this deep current and it cannot be crossed.
+p = 18736736941112975355948146170840899734557629462200018283315496531
+g = 16326998516218999779682044863524121912387380625157210997950312047
+A = 9834203014839060825352429660836264532717980906418421253742877219
+g_q = 5074537661100647587717526809622856358210806379317068158687102580

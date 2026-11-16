@@ -1,0 +1,4 @@
+=== TLS cert SANs ctf.tg:443 ===
+            X509v3 Subject Alternative Name: 
+                DNS:ctf.tg, DNS:*.ctf.tg
+            X509v3 Certificate Policies: 

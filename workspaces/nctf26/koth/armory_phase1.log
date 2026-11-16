@@ -1,0 +1,20 @@
+==================================================
+ KOTH AUTO — cible: 13.37.197.230   equipe/pseudo: 4ddaf012ffc96fec
+ Format de flag : NCTF\{[^]+\}|THM\{[^}]+\}}
+==================================================
+[1;34m[*][0m Phase 1 : scan complet des ports sur 13.37.197.230 (peut prendre 30-60s)...
+[1;32m[+][0m Ports ouverts : 22 443 
+[1;33m[!][0m Rappel : ne pas s'arreter aux ports 'probables' (80/22/etc.) — les vecteurs KOTH vivent souvent sur un port custom ci-dessus.
+[1;34m[*][0m Scan de version/scripts sur ces ports...
+[1;34m[*][0m [SSH:22] Banner : 
+[1;34m[*][0m [TCP:443] Banner brut : 
+[1;32m[+][0m Scan de version termine — voir ./koth_13.37.197.230_1794012133/services.txt
+
+[1;32m[+][0m === FIN PHASE 1 ===
+[1;33m[!][0m Regarde les fichiers dans ./koth_13.37.197.230_1794012133 pour la suite manuelle (chaque box KOTH a ses propres vulnerabilites).
+[1;33m[!][0m Des que tu as des creds SSH (trouves a la main), relance :
+  /home/kali/ctfagent/src/tools/ctf/koth_auto.sh 13.37.197.230 4ddaf012ffc96fec <user> <pass> <port>
+
+==================================================
+[1;33m[!][0m Aucun flag trouve automatiquement cette fois — exploitation manuelle requise.
+==================================================

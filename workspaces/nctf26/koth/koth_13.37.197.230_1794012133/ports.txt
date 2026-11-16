@@ -1,0 +1,16 @@
+# Nmap 7.991 scan initiated Fri Nov  6 19:42:13 2026 as: /usr/lib/nmap/nmap --privileged -Pn -p- --min-rate 3000 -T4 --max-retries 1 -oN ./koth_13.37.197.230_1794012133/ports.txt 13.37.197.230
+Warning: 13.37.197.230 giving up on port because retransmission cap hit (1).
+Nmap scan report for ec2-13-37-197-230.eu-west-3.compute.amazonaws.com (13.37.197.230)
+Host is up (0.12s latency).
+Not shown: 65527 filtered tcp ports (no-response)
+PORT      STATE  SERVICE
+22/tcp    open   ssh
+443/tcp   open   https
+28005/tcp closed unknown
+28065/tcp closed unknown
+28268/tcp closed unknown
+28304/tcp closed unknown
+28468/tcp closed unknown
+28483/tcp closed unknown
+
+# Nmap done at Fri Nov  6 19:42:58 2026 -- 1 IP address (1 host up) scanned in 45.12 seconds

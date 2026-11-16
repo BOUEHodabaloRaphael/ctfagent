@@ -1,0 +1,7 @@
+20:12:00 id=471 {"error":"Maximum 4 instances simultanees par equipe.","success":false}
+20:12:09 id=411 {"error":"Maximum 4 instances simultanees par equipe.","success":false}
+20:12:21 id=397 {"error":"Maximum 4 instances simultanees par equipe.","success":false}
+20:12:32 id=408 {"error":"Maximum 4 instances simultanees par equipe.","success":false}
+20:12:41 id=416 {"error":"Maximum 4 instances simultanees par equipe.","success":false}
+20:13:40 id=471 {"connection":{"access":"https","display":["https://qvepxngv7fu6yxmo.t.ctf.tg/"],"host":"qvepxngv7fu6yxmo.t.ctf.tg","port":443,"url":"https://qvepxngv7fu6yxmo.t.ctf.tg/"},"remaining":3598,"status":"running","success":true}
+20:13:40 SLOT FREED on id=471 SPAWNED

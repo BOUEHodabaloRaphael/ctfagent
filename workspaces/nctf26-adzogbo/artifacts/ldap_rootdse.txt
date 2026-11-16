@@ -1,0 +1,74 @@
+# extended LDIF
+#
+# LDAPv3
+# base <> with scope baseObject
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+#
+dn:
+configurationNamingContext: CN=Configuration,DC=adzogbo,DC=local
+defaultNamingContext: DC=adzogbo,DC=local
+rootDomainNamingContext: DC=adzogbo,DC=local
+schemaNamingContext: CN=Schema,CN=Configuration,DC=adzogbo,DC=local
+subschemaSubentry: CN=Aggregate,CN=Schema,CN=Configuration,DC=adzogbo,DC=local
+supportedCapabilities: 1.2.840.113556.1.4.800
+supportedCapabilities: 1.2.840.113556.1.4.1670
+supportedCapabilities: 1.2.840.113556.1.4.1791
+supportedCapabilities: 1.2.840.113556.1.4.1935
+supportedCapabilities: 1.2.840.113556.1.4.2080
+supportedLDAPVersion: 2
+supportedLDAPVersion: 3
+vendorName: Samba Team (https://www.samba.org)
+isSynchronized: TRUE
+dsServiceName: CN=NTDS Settings,CN=D3EE8B7402AF,CN=Servers,CN=Default-First-Si
+ te-Name,CN=Sites,CN=Configuration,DC=adzogbo,DC=local
+serverName: CN=D3EE8B7402AF,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=
+ Configuration,DC=adzogbo,DC=local
+dnsHostName: d3ee8b7402af.adzogbo.local
+ldapServiceName: adzogbo.local:d3ee8b7402af$@ADZOGBO.LOCAL
+currentTime: 20261107021144.0Z
+supportedControl: 1.2.840.113556.1.4.1413
+supportedControl: 1.2.840.113556.1.4.1413
+supportedControl: 1.2.840.113556.1.4.1413
+supportedControl: 1.2.840.113556.1.4.1413
+supportedControl: 1.2.840.113556.1.4.1413
+supportedControl: 1.2.840.113556.1.4.528
+supportedControl: 1.2.840.113556.1.4.841
+supportedControl: 1.2.840.113556.1.4.319
+supportedControl: 2.16.840.1.113730.3.4.9
+supportedControl: 1.2.840.113556.1.4.473
+supportedControl: 1.2.840.113556.1.4.1504
+supportedControl: 1.2.840.113556.1.4.801
+supportedControl: 1.2.840.113556.1.4.801
+supportedControl: 1.2.840.113556.1.4.801
+supportedControl: 1.2.840.113556.1.4.805
+supportedControl: 1.2.840.113556.1.4.1338
+supportedControl: 1.2.840.113556.1.4.529
+supportedControl: 1.2.840.113556.1.4.417
+supportedControl: 1.2.840.113556.1.4.2064
+supportedControl: 1.2.840.113556.1.4.1339
+supportedControl: 1.2.840.113556.1.4.1340
+supportedControl: 1.2.840.113556.1.4.1413
+supportedControl: 1.2.840.113556.1.4.1341
+namingContexts: DC=adzogbo,DC=local
+namingContexts: CN=Configuration,DC=adzogbo,DC=local
+namingContexts: CN=Schema,CN=Configuration,DC=adzogbo,DC=local
+namingContexts: DC=DomainDnsZones,DC=adzogbo,DC=local
+namingContexts: DC=ForestDnsZones,DC=adzogbo,DC=local
+supportedSASLMechanisms: GSS-SPNEGO
+supportedSASLMechanisms: GSSAPI
+supportedSASLMechanisms: NTLM
+highestCommittedUSN: 4090
+domainFunctionality: 4
+forestFunctionality: 4
+domainControllerFunctionality: 4
+isGlobalCatalogReady: TRUE
+
+# search result
+search: 2
+result: 0 Success
+
+# numResponses: 2
+# numEntries: 1

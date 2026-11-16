@@ -1,0 +1,10 @@
+=== Host header tamper (SNI=ctf.tg, Host: evil-test.invalid) ===
+HTTP/2 403 
+server: cloudflare
+date: Fri, 06 Nov 2026 19:10:19 GMT
+content-type: text/html
+content-length: 151
+cf-ray: a56665ce7b2e019e-CDG
+
+--- body diff check (grep evil-test) ---
+0

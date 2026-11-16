@@ -1,0 +1,22 @@
+=== dig ctf.tg ANY/common ===
+104.21.67.127
+172.67.174.201
+--- AAAA ---
+2606:4700:3032::6815:437f
+2606:4700:3033::ac43:aec9
+--- NS ---
+wally.ns.cloudflare.com.
+hal.ns.cloudflare.com.
+--- MX ---
+10 mxa.mailgun.org.
+10 mxb.mailgun.org.
+--- TXT ---
+"v=spf1 include:amazonses.com include:mailgun.org ~all"
+"brevo-code:d8ea80d65260d0c9bb14f1f46d859d35"
+--- www A ---
+104.21.67.127
+172.67.174.201
+--- CNAME www ---
+--- arena A (comparatif, pas de scan, juste resolution) ---
+104.21.67.127
+172.67.174.201

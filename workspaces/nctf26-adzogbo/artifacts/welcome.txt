@@ -1,0 +1,10 @@
+Welcome to Olympio Corp internal network.
+
+Departments:
+  - Accounting (a.mensah)
+  - IT Support (k.eyadema)
+  - Marketing (d.agbeko)
+  - Backup Services (svc-backup)
+  - Project Management (j.olympio)
+
+For IT requests, contact the helpdesk.

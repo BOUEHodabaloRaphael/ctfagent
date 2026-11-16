@@ -1,0 +1,8 @@
+# Nmap 7.991 scan initiated Sat Nov  7 08:11:08 2026 as: /usr/lib/nmap/nmap -sS -T3 --top-ports 1000 -oN artifacts_scan1.txt 10.100.16.100
+Nmap scan report for 10.100.16.100
+Host is up (0.12s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE
+8080/tcp open  http-proxy
+
+# Nmap done at Sat Nov  7 08:11:15 2026 -- 1 IP address (1 host up) scanned in 7.58 seconds

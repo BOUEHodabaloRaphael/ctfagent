@@ -1,0 +1,7 @@
+=== NS records authoritative (fresh) ===
+ctf.tg.			5	IN	NS	wally.ns.cloudflare.com.
+ctf.tg.			5	IN	NS	hal.ns.cloudflare.com.
+--- www mail staging dev preview api deploy admin mg smtp blog shop status docs cdn arena.ctf.tg ---
+=== DoH google apex CNAME/A ===
+{"Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,"Question":[{"name":"ctf.tg.","type":5}],"Authority":[{"name":"ctf.tg.","type":6,"TTL":1800,"data":"hal.ns.cloudflare.com. dns.cloudflare.com. 2419216606 10000 2400 604800 1800"}],"Comment":"Response from 172.64.32.200."}{"Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,"Question":[{"name":"ctf.tg.","type":1}],"Answer":[{"name":"ctf.tg.","type":1,"TTL":300,"data":"104.21.67.127"},{"name":"ctf.tg.","type":1,"TTL":300,"data":"172.67.174.201"}],"Comment":"Response from 108.162.193.217."}=== DoH cloudflare apex CNAME/A ===
+{"Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,"Question":[{"name":"ctf.tg","type":5}],"Authority":[{"name":"ctf.tg","type":6,"TTL":1800,"data":"hal.ns.cloudflare.com. dns.cloudflare.com. 2419216606 10000 2400 604800 1800"}]}{"Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,"Question":[{"name":"ctf.tg","type":1}],"Answer":[{"name":"ctf.tg","type":1,"TTL":300,"data":"172.67.174.201"},{"name":"ctf.tg","type":1,"TTL":300,"data":"104.21.67.127"}]}

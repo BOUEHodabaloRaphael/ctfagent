@@ -1,0 +1,19 @@
+{
+  "id": "nctf26-relay",
+  "title": "relay (NCTF26 #267)",
+  "category": "chains",
+  "platform": "CTFd/arena.ctf.tg",
+  "platform_id": "267",
+  "url": "",
+  "attachments": [],
+  "tags": [
+    "nctf26",
+    "chains",
+    "team_instance",
+    "blocked-quota"
+  ],
+  "status": "new",
+  "constraints": [
+    "Pas de bruteforce/DoS. Pas de scan -p- agressif. Un seul flag soumis par l'agent principal, jamais par ce sous-agent."
+  ]
+}

@@ -1,0 +1,134 @@
+=== GET /robots.txt ===
+HTTP/2 200 
+date: Fri, 06 Nov 2026 19:06:23 GMT
+content-type: text/plain; charset=utf-8
+content-length: 1248
+server: cloudflare
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+cross-origin-opener-policy: same-origin
+content-security-policy: default-src 'self'; script-src 'self' 'sha256-Vh7FmTaedCFZVsbAZ5ROkMZwnOawgSmMmwBZiuanRyA=' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'
+age: 103
+cache-control: max-age=14400
+cf-cache-status: HIT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=oP8yU3fTjRjfG%2FZpV0r6jCn8JL180xOXxx6hFj3CRmAbaqiYPs8HTo5FOyZexjwL7hpZTbqh6UY162PQGi8qr72Wd86PDO1cPtg7zAbmGJfs5NH8Jien6%2Bc%3D"}]}
+cf-ray: a5666008a83acb5a-CDG
+alt-svc: h3=":443"; ma=86400
+
+--- body (first 40 lines) ---
+# As a condition of accessing this website, you agree to abide by the following
+# content signals:
+
+# (a)  If a content-signal = yes, you may collect content for the corresponding
+#      use.
+# (b)  If a content-signal = no, you may not collect content for the
+#      corresponding use.
+# (c)  If the website operator does not include a content signal for a
+#      corresponding use, the website operator neither grants nor restricts
+#      permission via content signal with respect to the corresponding use.
+
+# The content signals and their meanings are:
+
+# search:   building a search index and providing search results (e.g., returning
+#           hyperlinks and short excerpts from your website's contents). Search does not
+#           include providing AI-generated search summaries.
+# ai-input: inputting content into one or more AI models (e.g., retrieval
+#           augmented generation, grounding, or other real-time taking of content for
+#           generative AI search answers).
+# ai-train: training or fine-tuning AI models.
+
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
+# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
+# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
+
+=== GET /sitemap.xml ===
+HTTP/2 404 
+date: Fri, 06 Nov 2026 19:06:28 GMT
+content-type: text/html
+server: cloudflare
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=G3UW%2B%2F9nAM7I93yuMalKe8dvGe%2Bvp3qGAEJIW3%2BHfY6v%2BEGZtAC%2BpC%2FFRyx31OLK6%2B5L8Cdw9t9EDjWWf1zEGAetWfORY6qDTSYT%2BK%2BVE45GpxAdoTwWQeo%3D"}]}
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+cross-origin-opener-policy: same-origin
+content-security-policy: default-src 'self'; script-src 'self' 'sha256-Vh7FmTaedCFZVsbAZ5ROkMZwnOawgSmMmwBZiuanRyA=' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'
+cf-cache-status: DYNAMIC
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-ray: a5666028fa783772-CDG
+alt-svc: h3=":443"; ma=86400
+
+--- body (first 40 lines) ---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page introuvable — NCTF26</title>
+  <meta name="theme-color" content="#0a0d0b">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+  <div class="tricolore" aria-hidden="true"></div>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="National CTF, accueil">
+        <img src="/images/logoctf2.png" alt="" width="34" height="34">
+        National CTF
+      </a>
+      <nav class="nav nav-static" aria-label="Navigation principale">
+        <a class="cta-sm" href="/">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="notfound">
+    <div>
+      <p class="code" aria-label="Erreur 404"><span>4</span><span>0</span><span>4</span></p>
+      <p>Cette page n'existe pas — ou elle est très bien cachée.</p>
+      <a class="btn btn-primary" href="/">Retour à l'accueil <span class="arrow" aria-hidden="true">→</span></a>
+      <p class="octal">160157167145162145144040142171040150061063162151163</p>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap signature">
+      <a href="https://ramses.dagban.tg/" target="_blank" rel="noopener">Powered by <strong>Hibris</strong> · ramses.dagban.tg</a>
+    </div>
+  </footer>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5666028fa783772',t:'MTc5Mzk5MTk4OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5666028fa783772',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+=== GET /.well-known/security.txt ===
+HTTP/2 403 
+date: Fri, 06 Nov 2026 19:06:33 GMT
+content-type: text/html
+server: cloudflare
+strict-transport-security: max-age=31536000
+x-content-type-options: nosniff
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
+cross-origin-opener-policy: same-origin
+content-security-policy: default-src 'self'; script-src 'self' 'sha256-Vh7FmTaedCFZVsbAZ5ROkMZwnOawgSmMmwBZiuanRyA=' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'
+cf-cache-status: DYNAMIC
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=oOng76hf7R86mNijsADKQ4ebjFhOKdRPkKlwd8%2BW98d6pO7PHJkQvxBIikdTPhdHulgzbXJhdbcMczLDt7FErvvq6vvQyBBtbOAmB05xYozvlewMQ85iXcc%3D"}]}
+cf-ray: a56660469dc3d383-CDG
+alt-svc: h3=":443"; ma=86400
+
+--- body (first 40 lines) ---
+<html>
+<head><title>403 Forbidden</title></head>
+<body>
+<center><h1>403 Forbidden</h1></center>
+<hr><center>nginx/1.27.5</center>
+</body>
+</html>
+

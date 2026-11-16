@@ -1,0 +1,1783 @@
+[
+  {
+    "id": 220,
+    "type": "dynamic",
+    "name": "atbash-cipher",
+    "value": 25,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "classical"
+      },
+      {
+        "value": "atbash"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 221,
+    "type": "dynamic",
+    "name": "base32-decode",
+    "value": 25,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "encoding"
+      },
+      {
+        "value": "base32"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 222,
+    "type": "dynamic",
+    "name": "base64-decode",
+    "value": 25,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "encoding"
+      },
+      {
+        "value": "base64"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 223,
+    "type": "dynamic",
+    "name": "base85-decode",
+    "value": 25,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "encoding"
+      },
+      {
+        "value": "base85"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 224,
+    "type": "dynamic",
+    "name": "binary-ascii",
+    "value": 25,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "encoding"
+      },
+      {
+        "value": "binary"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 225,
+    "type": "dynamic",
+    "name": "csv-cell",
+    "value": 25,
+    "position": 0,
+    "solves": 53,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "misc"
+      },
+      {
+        "value": "csv"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 226,
+    "type": "dynamic",
+    "name": "hex-decode",
+    "value": 25,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "encoding"
+      },
+      {
+        "value": "hex"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 227,
+    "type": "dynamic",
+    "name": "html-entities",
+    "value": 25,
+    "position": 0,
+    "solves": 55,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "web"
+      },
+      {
+        "value": "encoding"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 228,
+    "type": "dynamic",
+    "name": "morse-code",
+    "value": 25,
+    "position": 0,
+    "solves": 53,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "classical"
+      },
+      {
+        "value": "morse"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 229,
+    "type": "dynamic",
+    "name": "reverse-string",
+    "value": 25,
+    "position": 0,
+    "solves": 56,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "misc"
+      },
+      {
+        "value": "reverse"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 230,
+    "type": "dynamic",
+    "name": "rot13-decode",
+    "value": 25,
+    "position": 0,
+    "solves": 56,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "classical"
+      },
+      {
+        "value": "rot13"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 231,
+    "type": "dynamic",
+    "name": "rot47-decode",
+    "value": 25,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "classical"
+      },
+      {
+        "value": "rot47"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 232,
+    "type": "dynamic",
+    "name": "tap-code",
+    "value": 25,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "classical"
+      },
+      {
+        "value": "tap-code"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 233,
+    "type": "dynamic",
+    "name": "url-encoding",
+    "value": 25,
+    "position": 0,
+    "solves": 55,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "web"
+      },
+      {
+        "value": "encoding"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 234,
+    "type": "dynamic",
+    "name": "vigenere-known-key",
+    "value": 25,
+    "position": 0,
+    "solves": 55,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "classical"
+      },
+      {
+        "value": "vigenere"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 235,
+    "type": "dynamic",
+    "name": "zip-comment",
+    "value": 25,
+    "position": 0,
+    "solves": 46,
+    "solved_by_me": true,
+    "category": "warmup",
+    "tags": [
+      {
+        "value": "warmup"
+      },
+      {
+        "value": "forensics"
+      },
+      {
+        "value": "zip"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 3,
+    "type": "dynamic",
+    "name": "oracle-encoding-smuggle",
+    "value": 50,
+    "position": 0,
+    "solves": 52,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "prompt-injection"
+      },
+      {
+        "value": "encoding"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 4,
+    "type": "dynamic",
+    "name": "oracle-fake-system",
+    "value": 50,
+    "position": 0,
+    "solves": 45,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "prompt-injection"
+      },
+      {
+        "value": "role-confusion"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 6,
+    "type": "dynamic",
+    "name": "oracle-reverse-emit",
+    "value": 50,
+    "position": 0,
+    "solves": 47,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "output-filter"
+      },
+      {
+        "value": "guardrail-bypass"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 11,
+    "type": "dynamic",
+    "name": "calldata-cache",
+    "value": 50,
+    "position": 0,
+    "solves": 48,
+    "solved_by_me": true,
+    "category": "blockchain",
+    "tags": [
+      {
+        "value": "blockchain"
+      },
+      {
+        "value": "evm"
+      },
+      {
+        "value": "abi"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 37,
+    "type": "dynamic",
+    "name": "leaky-prefix",
+    "value": 50,
+    "position": 0,
+    "solves": 44,
+    "solved_by_me": true,
+    "category": "cloud",
+    "tags": [
+      {
+        "value": "cloud"
+      },
+      {
+        "value": "aws"
+      },
+      {
+        "value": "s3"
+      },
+      {
+        "value": "bucket-policy"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 112,
+    "type": "dynamic",
+    "name": "intel-hex",
+    "value": 50,
+    "position": 0,
+    "solves": 49,
+    "solved_by_me": true,
+    "category": "hardware",
+    "tags": [
+      {
+        "value": "hardware"
+      },
+      {
+        "value": "intel-hex"
+      },
+      {
+        "value": "memory-dump"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 122,
+    "type": "dynamic",
+    "name": "git-archaeology",
+    "value": 50,
+    "position": 0,
+    "solves": 46,
+    "solved_by_me": true,
+    "category": "forensics",
+    "tags": [
+      {
+        "value": "misc"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 140,
+    "type": "dynamic",
+    "name": "tree-path",
+    "value": 50,
+    "position": 0,
+    "solves": 48,
+    "solved_by_me": true,
+    "category": "ml",
+    "tags": [
+      {
+        "value": "ml"
+      },
+      {
+        "value": "decision-tree"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 148,
+    "type": "dynamic",
+    "name": "strings-goldmine",
+    "value": 50,
+    "position": 0,
+    "solves": 44,
+    "solved_by_me": true,
+    "category": "mobile",
+    "tags": [
+      {
+        "value": "mobile"
+      },
+      {
+        "value": "android"
+      },
+      {
+        "value": "hardcoded-secret"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 153,
+    "type": "dynamic",
+    "name": "eui64-slaac",
+    "value": 50,
+    "position": 0,
+    "solves": 48,
+    "solved_by_me": true,
+    "category": "networking",
+    "tags": [
+      {
+        "value": "networking"
+      },
+      {
+        "value": "ipv6"
+      },
+      {
+        "value": "eui64"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 160,
+    "type": "dynamic",
+    "name": "ct-log-pivot",
+    "value": 50,
+    "position": 0,
+    "solves": 45,
+    "solved_by_me": true,
+    "category": "osint",
+    "tags": [
+      {
+        "value": "osint"
+      },
+      {
+        "value": "dns"
+      },
+      {
+        "value": "certificate-transparency"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 169,
+    "type": "dynamic",
+    "name": "hull-cipher",
+    "value": 50,
+    "position": 0,
+    "solves": 45,
+    "solved_by_me": true,
+    "category": "ppc",
+    "tags": [
+      {
+        "value": "ppc"
+      },
+      {
+        "value": "geometry"
+      },
+      {
+        "value": "convex-hull"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 181,
+    "type": "dynamic",
+    "name": "stack-smash-reveal",
+    "value": 50,
+    "position": 0,
+    "solves": 41,
+    "solved_by_me": true,
+    "category": "pwn",
+    "tags": [
+      {
+        "value": "pwn"
+      },
+      {
+        "value": "stack-overflow"
+      },
+      {
+        "value": "ret2win"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 263,
+    "type": "dynamic",
+    "name": "ai0-leaked-transcript",
+    "value": 50,
+    "position": 0,
+    "solves": 50,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 434,
+    "type": "dynamic",
+    "name": "boazak--kabou",
+    "value": 50,
+    "position": 0,
+    "solves": 39,
+    "solved_by_me": true,
+    "category": "stego",
+    "tags": [
+      {
+        "value": "misc"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:KodjoDoDjango"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 435,
+    "type": "dynamic",
+    "name": "boazak--petit-fally",
+    "value": 50,
+    "position": 0,
+    "solves": 54,
+    "solved_by_me": true,
+    "category": "misc",
+    "tags": [
+      {
+        "value": "misc"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:KodjoDoDjango"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 486,
+    "type": "team_instance",
+    "name": "thierry8petstar--oui-ou-non-1",
+    "value": 50,
+    "position": 0,
+    "solves": 35,
+    "solved_by_me": true,
+    "category": "misc",
+    "tags": [
+      {
+        "value": "misc"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:thierry8petstar"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 523,
+    "type": "dynamic",
+    "name": "44r0nmeta--dzesido",
+    "value": 50,
+    "position": 0,
+    "solves": 38,
+    "solved_by_me": true,
+    "category": "crypto",
+    "tags": [
+      {
+        "value": "crypto"
+      },
+      {
+        "value": "creator:44r0nMeta"
+      },
+      {
+        "value": "stage:prequals"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 182,
+    "type": "dynamic",
+    "name": "byte-drift",
+    "value": 53,
+    "position": 0,
+    "solves": 40,
+    "solved_by_me": true,
+    "category": "reverse",
+    "tags": [
+      {
+        "value": "reverse"
+      },
+      {
+        "value": "x86-64"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 214,
+    "type": "dynamic",
+    "name": "mask-slip",
+    "value": 58,
+    "position": 0,
+    "solves": 38,
+    "solved_by_me": true,
+    "category": "sysadmin",
+    "tags": [
+      {
+        "value": "sysadmin"
+      },
+      {
+        "value": "ci-cd"
+      },
+      {
+        "value": "secrets"
+      },
+      {
+        "value": "beginner"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 445,
+    "type": "dynamic",
+    "name": "algorithme123--greffe-espaces-lome",
+    "value": 58,
+    "position": 0,
+    "solves": 46,
+    "solved_by_me": true,
+    "category": "stego",
+    "tags": [
+      {
+        "value": "stego"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "whitespace"
+      },
+      {
+        "value": "togo"
+      },
+      {
+        "value": "creator:Algorithme123"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 518,
+    "type": "dynamic",
+    "name": "oxdefault--flush",
+    "value": 66,
+    "position": 0,
+    "solves": 39,
+    "solved_by_me": true,
+    "category": "forensics",
+    "tags": [
+      {
+        "value": "forensics"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:Oxdefault"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 202,
+    "type": "dynamic",
+    "name": "build-cache-poison",
+    "value": 72,
+    "position": 0,
+    "solves": 32,
+    "solved_by_me": true,
+    "category": "supplychain",
+    "tags": [
+      {
+        "value": "supplychain"
+      },
+      {
+        "value": "build-cache"
+      },
+      {
+        "value": "makefile"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 453,
+    "type": "team_instance",
+    "name": "boazak--agokoli",
+    "value": 85,
+    "position": 0,
+    "solves": 15,
+    "solved_by_me": true,
+    "category": "web",
+    "tags": [
+      {
+        "value": "web"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:KodjoDoDjango"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 1,
+    "type": "dynamic",
+    "name": "oracle-canary-decoy",
+    "value": 100,
+    "position": 0,
+    "solves": 44,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "guardrail-bypass"
+      },
+      {
+        "value": "reversing"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 2,
+    "type": "dynamic",
+    "name": "oracle-doc-injection",
+    "value": 100,
+    "position": 0,
+    "solves": 46,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "prompt-injection"
+      },
+      {
+        "value": "indirect-injection"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 5,
+    "type": "dynamic",
+    "name": "oracle-multi-turn",
+    "value": 100,
+    "position": 0,
+    "solves": 44,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "prompt-injection"
+      },
+      {
+        "value": "multi-turn"
+      },
+      {
+        "value": "hard"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 7,
+    "type": "dynamic",
+    "name": "oracle-tool-args",
+    "value": 100,
+    "position": 0,
+    "solves": 46,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "tool-abuse"
+      },
+      {
+        "value": "path-filter-bypass"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 265,
+    "type": "team_instance",
+    "name": "clinic",
+    "value": 100,
+    "position": 0,
+    "solves": 38,
+    "solved_by_me": true,
+    "category": "chains",
+    "tags": [
+      {
+        "value": "chains"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 508,
+    "type": "dynamic",
+    "name": "oxdefault--decode",
+    "value": 100,
+    "position": 0,
+    "solves": 36,
+    "solved_by_me": true,
+    "category": "crypto",
+    "tags": [
+      {
+        "value": "crypto"
+      },
+      {
+        "value": "hard"
+      },
+      {
+        "value": "creator:Oxdefault"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 433,
+    "type": "team_instance",
+    "name": "algorithme123--zemidjan-classement",
+    "value": 121,
+    "position": 0,
+    "solves": 18,
+    "solved_by_me": true,
+    "category": "forensics",
+    "tags": [
+      {
+        "value": "misc"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "togo"
+      },
+      {
+        "value": "creator:Algorithme123"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 9,
+    "type": "dynamic",
+    "name": "allowance-drift",
+    "value": 149,
+    "position": 0,
+    "solves": 5,
+    "solved_by_me": false,
+    "category": "blockchain",
+    "tags": [
+      {
+        "value": "blockchain"
+      },
+      {
+        "value": "evm"
+      },
+      {
+        "value": "erc20"
+      },
+      {
+        "value": "easy"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 371,
+    "type": "team_instance",
+    "name": "ai1-naive-guard",
+    "value": 150,
+    "position": 0,
+    "solves": 15,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "llm"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 372,
+    "type": "team_instance",
+    "name": "ai2-output-filter",
+    "value": 150,
+    "position": 0,
+    "solves": 11,
+    "solved_by_me": true,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "served"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 373,
+    "type": "team_instance",
+    "name": "ai3-tool-abuse",
+    "value": 150,
+    "position": 0,
+    "solves": 1,
+    "solved_by_me": false,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "llm"
+      },
+      {
+        "value": "hard"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 374,
+    "type": "team_instance",
+    "name": "agent-tool-abuse",
+    "value": 150,
+    "position": 0,
+    "solves": 3,
+    "solved_by_me": false,
+    "category": "ai",
+    "tags": [
+      {
+        "value": "ai"
+      },
+      {
+        "value": "llm"
+      },
+      {
+        "value": "hard"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 384,
+    "type": "team_instance",
+    "name": "adversarial-gate",
+    "value": 150,
+    "position": 0,
+    "solves": 16,
+    "solved_by_me": true,
+    "category": "ml",
+    "tags": [
+      {
+        "value": "ml"
+      },
+      {
+        "value": "hard"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 385,
+    "type": "team_instance",
+    "name": "pickle-rce",
+    "value": 150,
+    "position": 0,
+    "solves": 15,
+    "solved_by_me": true,
+    "category": "ml",
+    "tags": [
+      {
+        "value": "ml"
+      },
+      {
+        "value": "web"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 386,
+    "type": "team_instance",
+    "name": "model-inversion",
+    "value": 150,
+    "position": 0,
+    "solves": 14,
+    "solved_by_me": true,
+    "category": "ml",
+    "tags": [
+      {
+        "value": "ml"
+      },
+      {
+        "value": "hard"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 436,
+    "type": "dynamic",
+    "name": "oxdefault--les-murmures-de-l-omni",
+    "value": 150,
+    "position": 0,
+    "solves": 14,
+    "solved_by_me": false,
+    "category": "misc",
+    "tags": [
+      {
+        "value": "misc"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:Oxdefault"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 447,
+    "type": "dynamic",
+    "name": "algorithme123--tisserands-dapaong",
+    "value": 150,
+    "position": 0,
+    "solves": 14,
+    "solved_by_me": false,
+    "category": "stego",
+    "tags": [
+      {
+        "value": "stego"
+      },
+      {
+        "value": "easy-medium"
+      },
+      {
+        "value": "togo"
+      },
+      {
+        "value": "dapaong"
+      },
+      {
+        "value": "creator:Algorithme123"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  },
+  {
+    "id": 487,
+    "type": "team_instance",
+    "name": "thierry8petstar--oui-ou-non-2",
+    "value": 150,
+    "position": 0,
+    "solves": 14,
+    "solved_by_me": true,
+    "category": "misc",
+    "tags": [
+      {
+        "value": "misc"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:thierry8petstar"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 509,
+    "type": "team_instance",
+    "name": "oxdefault--fast-enough",
+    "value": 150,
+    "position": 0,
+    "solves": 20,
+    "solved_by_me": true,
+    "category": "crypto",
+    "tags": [
+      {
+        "value": "crypto"
+      },
+      {
+        "value": "medium"
+      },
+      {
+        "value": "creator:Oxdefault"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 522,
+    "type": "team_instance",
+    "name": "44r0nmeta--adzogbo",
+    "value": 200,
+    "position": 0,
+    "solves": 0,
+    "solved_by_me": false,
+    "category": "boot2root",
+    "tags": [
+      {
+        "value": "boot2root"
+      },
+      {
+        "value": "creator:44r0nMeta"
+      },
+      {
+        "value": "stage:prequals"
+      }
+    ],
+    "template": "/plugins/team_instancer/assets/view.html",
+    "script": "/plugins/team_instancer/assets/view.js"
+  },
+  {
+    "id": 539,
+    "type": "dynamic",
+    "name": "Prends le contrôle de ctf.tg",
+    "value": 500,
+    "position": 0,
+    "solves": 0,
+    "solved_by_me": false,
+    "category": "misc",
+    "tags": [
+      {
+        "value": "misc"
+      },
+      {
+        "value": "event"
+      },
+      {
+        "value": "creator:hibris"
+      },
+      {
+        "value": "creator:Clawd"
+      }
+    ],
+    "template": "/plugins/dynamic_challenges/assets/view.html",
+    "script": "/plugins/dynamic_challenges/assets/view.js"
+  }
+]
