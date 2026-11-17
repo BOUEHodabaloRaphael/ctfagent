@@ -82,3 +82,8 @@ défense ne se valide pas par un flag.
 - Jamais de bouton « abandon » sans décision humaine. Jamais les identifiants user dans un service tiers hors
   arena.ctf.tg. KoTH/persistance : **colline in-scope uniquement, pas de DoS, pas d'attaque d'autres équipes /
   de l'infra orga**. Objectif = l'ÉQUIPE finit devant.
+- **Accès plateforme délégué (décision user 2026-11-16, choix « A »)** : l'agent utilise la session
+  (`src/tools/ctf/nctf26_storage_state.json` + `src/tools/ctf/.env`) **en headless uniquement**, et en
+  **lecture seule avant l'ouverture**. **Confirmation explicite du user requise avant** : toute soumission de
+  flag, tout lancement/destruction d'instance, tout téléchargement de config VPN, toute modification de
+  profil/équipe. Aucun secret (mot de passe, cookies, clé VPN) n'est recopié dans le chat ni dans un commit.
