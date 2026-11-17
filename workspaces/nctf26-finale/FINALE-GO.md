@@ -22,8 +22,9 @@ Lecture seule. À lancer quand le user me lance la veille ou avant le coup d'env
   [[ctf-african-scene-technique-patterns]]. Auto-consulter le catalogue pour CHAQUE challenge/service.
 
 ## 2. Reconnaissance plateforme (headless)
-- Énumérer **Challenges**, **Défense**, **KOTH**, **Mes instances**, **Scoreboard**. Noter : IPs des
-  services A&D de notre équipe + adverses, l'API de la/les colline(s) KoTH, l'endpoint de soumission.
+- Énumérer **Challenges**, **Défense**, **KOTH**, **Mes instances**, **Scoreboard**. Noter : nos IPs
+  d'instances (les autres équipes ne sont **pas** joignables — le VPN ne route que `10.100.16.0/24`),
+  l'API/les ports de la/les colline(s) KoTH, et l'endpoint de soumission jeopardy.
 
 ## 3. KoTH — tenir la colline DÈS t+0 (tenir du début à la fin)
 **MODÈLE PROBABLE (recherche 2026-11-15) : KoTH CTFd = "contrôler la BOX / posséder le FICHIER roi".**
@@ -44,13 +45,29 @@ KoTH officiel CTFd). = exactement le "Citadel/king file" du préqual. Donc :
   (observe le trafic + IP d'instances + notre identifiant d'équipe), puis appliquer la bonne voie.
 - Contrainte géo-IP possible (préqual = IP togolaise) → sur site à Lomé c'est OK.
 
-## 4. Défense / A&D
-- Remplir `src/tools/ctf/attack_defense_toolkit/config.py` avec l'infra réelle (TEAMS, SUBMIT_URL,
-  `SUBMIT_HEADERS={"Authorization":"Bearer <token>"}`, `SUBMIT_JSON_KEY="flags"`+`SUBMIT_JSON_VALUE_LIST=True`
-  pour la forme ICC, FLAG_REGEX=`NCTF\{...\}`, SERVICES).
-- Doctrine : **reverse d'abord (15-20 min) → exploit en boucle sur TOUTES les équipes AVANT de patcher →
-  patcher nos services sans casser le SLA → ne jamais couper `sla_monitor.py`.** (submitter.py corrigé :
-  retry seen-only-on-success + forme liste.)
+## 4. Défense (`/plugins/defend/`) — patch-and-hold contre un ROBOT, PAS de flag
+
+⚠️ **Modèle CORRIGÉ le 2026-11-16** (règles réelles lues headless : `FINALE-PREP-MASTER.md` §1 +
+`platform-rules/d-fense.txt`). Le modèle AFRICC « exploiter toutes les équipes + soumettre des flags »
+**ne s'applique PAS** : le VPN d'équipe ne route que `10.100.16.0/24` (aucun accès inter-équipes) et la
+défense ne se valide pas par un flag.
+
+- **1 box/joueur**, mêmes creds SSH pour toute l'équipe → SSH via le WireGuard d'équipe → corriger sans
+  casser les usages légitimes → **demander la vérification au robot**. **Aucun flag à soumettre** ;
+  1ʳᵉ vérif réussie = challenge validé.
+- **Séquence** : `tools-offline/defkit.sh backup` (t+0, AVANT tout) → patch app à la main dans `patchable/`
+  (paramétrer SQLi, `jwt.verify({algorithms:['HS256']})`, whitelist de chemins) →
+  `cp usecases.sh /root/.defkit/ && ./defkit.sh fix` (**sans `-y`**) → `./defkit.sh check` (SLA vert ? sinon `rollback`).
+- ⚠️ **Adapter `usecases.sh`** (`UC_HOST`/`UC_WEB_PORT`/`UC_PWN_PORT`) **avant le premier `fix`**, sinon on casse
+  le checker en silence. Le checker/SLA ne doit JAMAIS être bloqué.
+- **Défense continue** : toutes les **5 min** le robot attaque la box de prod ; si elle tient = **+5 pts**.
+  Délai entre deux vérifs = **120 s**. « Box de prod » = la dernière box vérifiée (reste en service).
+  **Relancer l'instance = correctifs perdus.**
+- **Challenge « audit »** : un rapport de pentest est fourni → chaque constat réellement corrigé (le robot ne
+  le reproduit plus ET les usages passent) = points, compté **1×/équipe**.
+- `attack_defense_toolkit/submitter.py` (forme `{"flags":[...]}`) = **jeopardy uniquement** (`nctf26_client.py`),
+  **pas** la défense. Les valeurs `SUBMIT_JSON_KEY`/`SUBMIT_JSON_VALUE_LIST` de `config.py` ne servent qu'à ça.
+- Règles d'or : patch réversible d'abord, jamais de kill aveugle, preuve (pcap/log) avant action, `rollback` prêt.
 
 ## 5. Jeopardy
 - Router par catégorie (web/pwn/rev/crypto/forensics/misc/osint/ml) via le catalogue + skills ; soumettre

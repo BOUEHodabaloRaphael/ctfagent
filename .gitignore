@@ -9,6 +9,9 @@ workspaces/*/.env
 workspaces/*/session/
 src/tools/ctf/nctf26_storage_state.json
 src/tools/ctf/.env
+# NCTF team VPN config = WireGuard PrivateKey (secret d'accès infra). Jamais versionné.
+workspaces/**/nctf-vpn*.conf
+workspaces/**/wg*.conf
 
 # Local run artifacts, not source.
 logs/
@@ -56,3 +59,9 @@ workspaces/rekit-lab/work/
 workspaces/rekit-lab/samples_real/
 workspaces/rekit-lab/staging_filehunter/CTF-File-Hunter/
 workspaces/fret-savane-appui-boot2root-samba-sql/artifacts/smb_AppuiTech/printer.cfg
+
+# Gros artefacts locaux (images disque, extractions, clones d'outils) — texte seul dans le repo.
+# Ces deux workspaces hors-NCTF ne sont pas de la prépa finale : on les garde locaux (2,8 Go + secrets
+# d'événements passés). Pour versionner les notes seules : `git add -f workspaces/<dir>/notes.md`.
+workspaces/cmctf-megadl/
+workspaces/hlb-thehunt/
