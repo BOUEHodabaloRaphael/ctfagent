@@ -1,0 +1,16 @@
+[Unit]
+Description=NCTF26 KoTH hill holder (detache + watchdog)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Adapter ce chemin au depot sur la machine qui doit tenir la colline.
+WorkingDirectory=/home/kali/ctfagent/src/tools/ctf/koth_finale
+ExecStart=/bin/bash -lc 'rm -f STOP; exec bash koth_hold.sh _supervise'
+Restart=always
+RestartSec=5
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

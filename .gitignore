@@ -36,6 +36,13 @@ src/tools/ctf/koth_finale/privesc-arsenal/
 src/tools/ctf/koth_finale/hill.env
 src/tools/ctf/koth_finale/koth.log
 src/tools/ctf/koth_finale/recon_*.txt
+src/tools/ctf/koth_finale/status.json
+src/tools/ctf/koth_finale/pid.json
+src/tools/ctf/koth_finale/supervisor.pid
+src/tools/ctf/koth_finale/STOP
+src/tools/ctf/koth_finale/ssh_koth.log
+src/tools/ctf/koth_finale/ssh_status.json
+src/tools/ctf/koth_finale/*.tmp
 src/tools/ctf/attack_defense_toolkit/submitted_flags.txt
 
 # Challenge artifact binaries — reproducible downloads/captures; keep the repo text-only

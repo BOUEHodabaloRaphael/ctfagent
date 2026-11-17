@@ -40,7 +40,13 @@ KoTH officiel CTFd). = exactement le "Citadel/king file" du préqual. Donc :
   La persistance réécrit le fichier roi en boucle (setsid + cron @reboot) → **tient TOUTE SEULE jusqu'au reset,
   même sans terminal ouvert** → user+agent libres pour Défense + challenges. C'est la cible n°1 à t+0.
 - **Voie FALLBACK (HTTP-claim)** si une colline est une éco/claim HTTP (comme le "Throne/Réseau Fortune" du
-  préqual) : `python3 recon_koth.py` → remplir `hill.env` → **user lance** `bash run_hold.sh` (watchdog, log koth.log).
+  préqual) : `python3 recon_koth.py` → je remplis `hill.env` → **user lance UNE commande** :
+  `bash koth_hold.sh start` (détaché + watchdog + log ; `status` / `stop` pour suivre et arrêter).
+- **Voie SSH + fichier « king »** (`ssh -p <port> player@<ip>`) : `bash koth_ssh_takeover.sh` — root →
+  jeton dans le king file → persistance on-box (`/usr/lib/.koth-hold` + `cron @reboot`) → **re-assertion
+  toutes les 20 s** (survit aux resets du conteneur). `--once` pour une prise unique, `--purge` pour
+  neutraliser la persistance rivale sur cette box.
+- **Vérif du kit avant le jour J** : `bash koth_hold.sh selftest` (fausse colline + rival, hors-ligne).
 - **recon à t+0** : `cd src/tools/ctf/koth_finale && python3 recon_koth.py` pour savoir LEQUEL des deux modèles
   (observe le trafic + IP d'instances + notre identifiant d'équipe), puis appliquer la bonne voie.
 - Contrainte géo-IP possible (préqual = IP togolaise) → sur site à Lomé c'est OK.
