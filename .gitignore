@@ -72,3 +72,4 @@ workspaces/fret-savane-appui-boot2root-samba-sql/artifacts/smb_AppuiTech/printer
 # d'événements passés). Pour versionner les notes seules : `git add -f workspaces/<dir>/notes.md`.
 workspaces/cmctf-megadl/
 workspaces/hlb-thehunt/
+src/tools/ctf/koth_finale/koth_finale_*.zip

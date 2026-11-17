@@ -6,10 +6,10 @@ NCTF26 FINALE — recon KoTH (headless, reutilise la session du client).
   - les vrais endpoints API de la colline (claim/status) en observant le trafic
     XHR/fetch que la page KOTH emet elle-meme ;
   - notre identifiant d'equipe + les IP d'instances (page /team, "Mes instances").
-→ de quoi remplir  hill.env  en 1 minute, puis lancer run_hold.sh.
+→ de quoi remplir  hill.env  en 1 minute, puis lancer koth_run.sh.
 
 Ne CLIQUE rien d'offensif : il observe seulement. (Le premier claim se fait
-ensuite via hold_hill.py / run_hold.sh.)
+ensuite via hill_hold.py / koth_run.sh.)
 
 USAGE :  python3 recon_koth.py            # dump KOTH + team + instances
          python3 recon_koth.py /plugins/koth/   # page de depart custom
@@ -84,7 +84,7 @@ def main():
             rel = url.replace(BASE, "")
             print(f"{meth:5s} {rel}" + (f"   body={body[:160]}" if body else ""))
         print("\n→ Reporter claim/status dans hill.env (KOTH_CLAIM_PATH/METHOD/BODY, KOTH_STATUS_PATH),")
-        print("  KOTH_OUR_ID = notre identifiant d'equipe, puis : bash run_hold.sh")
+        print("  KOTH_OUR_ID = notre identifiant d'equipe, puis : bash koth_run.sh")
         browser.close()
 
 if __name__ == "__main__":

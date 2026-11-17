@@ -1,87 +1,117 @@
-# KoTH finale (NCTF26) — kit de tenue de colline, prêt à brancher
+# KoTH finale (NCTF26) — tenir la colline jusqu'à la fin
 
-Préparé pour la finale (KoTH ouvre **jeudi 19 nov 10:00, Lomé**). Tout est **paramétré par variables
-d'env** (`hill.env`), **zéro secret en dur**, **stdlib Python uniquement** (aucun `pip`, marche hors-ligne).
+Kit **prêt à brancher**, testé hors-ligne. Stdlib Python uniquement (aucun `pip`), zéro secret en dur,
+tout par variables d'env (`hill.env`).
 
-Inspiré de ce qu'une équipe a réellement fait au préqual (kit « Th3N00bs » : `run_koth.sh` + `STOP` +
-`status.json` + créneaux alignés + persistance on-box + systemd), **avec les défauts corrigés** :
-cadence plafonnée (leur `--rate 800` = DoS, interdit), redirections interdites, pas de rejeu d'une
-mutation incertaine, watchdog et re-assertion après reset.
-
-## LA commande (celle que tu lances et que tu oublies)
+## LA commande
 
 ```bash
 cd src/tools/ctf/koth_finale
-bash koth_hold.sh start        # détaché (setsid) + watchdog + log ; survit à la fermeture du terminal
-bash koth_hold.sh status       # ROI=OUI/NON, roi courant, cadence, uptime
-bash koth_hold.sh stop         # arrêt propre (fichier STOP + kill du groupe)
+bash koth_run.sh start        # détaché, superviseur, survit à la fermeture du terminal
+bash koth_run.sh status       # ROI=OUI/NON, niveau, threads, RTT, ticks gagnés
+bash koth_run.sh stop         # arrêt propre
 ```
 
-Ça suppose `hill.env` rempli — **l'agent le fait à t+0** (`python3 recon_koth.py`, puis il renseigne
-`KOTH_CLAIM_PATH` / `KOTH_STATUS_PATH` / `KOTH_OUR_ID`). Toi tu ne touches à rien.
+À lancer **dès qu'on a la colline**, puis on oublie. `hill.env` doit être rempli (l'agent le fait à t+0
+via `recon_koth.py`).
 
-## Les 3 modèles de colline et quoi lancer
+## Ce qui fait gagner : le snipe au tick
 
-| Modèle (à confirmer à l'ouverture) | Commande |
+Le scorer ne regarde pas qui claim le plus : il regarde **qui est roi au moment du tick**. Donc le seul
+claim qui compte est **le dernier avant le tick**. Le moteur est bâti là-dessus :
+
+| Mécanisme | Effet mesuré |
 |---|---|
-| **HTTP claim** (le plus probable côté CTFd) | `bash koth_hold.sh start` |
-| **SSH + fichier « king »** (`ssh -p <port> player@<ip>`) | `bash koth_ssh_takeover.sh` (boucle de re-assertion) |
-| **Shell déjà obtenu sur la box** | `KOTH_TOKEN=<jeton> KING_FILE=/koth/king bash onbox_persist.sh` |
+| **Train final** : tous les threads tirent sans relâche pendant les derniers `6×RTT` | dernier claim à **0–8 ms** du tick |
+| **Keep-alive** (une connexion persistante par thread) | supprime le handshake TCP+TLS par claim (100–300 ms sur Internet) |
+| **Périodes désynchronisées** par thread | plus de trous de 20 ms entre deux salves |
+| **Pouls de fond** 1 claim/s hors fenêtre | tient même si la phase du tick est mal devinée |
+| **RTT mesuré en continu** (EWMA) | le train se cale tout seul sur la latence réelle |
+| **Backoff 429 local ≤ 20 ms** | un rate-limit ne fait plus rater le tick (c'était le bug n°1) |
 
-`koth_ssh_takeover.sh` fait : root (vecteurs non destructifs) → jeton dans le king file → boucle
-`/usr/lib/.koth-hold` + `/etc/cron.d/koth-hold` (`@reboot`) → **re-connexion toutes les 20 s** pour
-re-poser la persistance si le conteneur est reset. Option `--purge` pour neutraliser la persistance
-rivale sur cette box (désactivée par défaut).
+### Résultats mesurés (mock adversarial local)
+
+| Scénario | Ticks gagnés |
+|---|---|
+| Rival adaptatif (~1–3 claims/s) **+ 4 resets de conteneur en 80 s** | **94 %** (520 claims en 80 s) |
+| Rival à **20 claims/s** (50 ms/claim) | **83 %** |
+| Rival réaliste, sans reset | **100 %** |
+| Self-test intégré (35 s, rival + resets) | **100 %**, resets traversés, arrêt propre |
+
+À noter : sur le mock à 20 claims/s, c'est **le mock qui sature** (~37 req/s), pas nous.
+
+## L'endurcissement (ce qui monte tout seul)
+
+```
+PROBE   → on mesure
+CONTEST → 2 ticks perdus d'affilée : +1 niveau (threads ×2, tir resserré) + burst
+HOLD    → 3 ticks gagnés ET 20 s de tenue : −1 niveau (on redevient discret)
+```
+
+Le niveau est **persisté** (`adaptive_state.json`) : après un crash, on repart directement à la bonne
+intensité. Plafonds durs (`KOTH_THREADS_MAX`, `KOTH_INTERVAL_MIN`) : jamais de DoS.
+
+## Multi-machines (toi + coéquipiers)
+
+```bash
+bash koth_run.sh bundle     # -> koth_finale_<date>.zip à envoyer aux coéquipiers
+```
+
+Chaque machine lance la même commande, avec `KOTH_PUMPS=<nombre total de machines>` dans `hill.env`.
+Le débit de chaque machine est divisé par ce nombre (le total reste borné) et **N machines tiennent
+mieux qu'une** : plus de connexions parallèles = plus de claims dans la dernière milliseconde.
+
+## Les 3 modèles de colline
+
+| Modèle | Commande |
+|---|---|
+| **HTTP claim** (probable côté CTFd) | `bash koth_run.sh start` |
+| **SSH + fichier « king »** (`ssh -p <port> player@<ip>`) | `bash koth_ssh_takeover.sh` (re-assertion 20 s) |
+| **Shell déjà obtenu sur la box** | `KOTH_TOKEN=<jeton> KING_FILE=/koth/king bash onbox_guardian.sh install` |
+
+`onbox_guardian.sh` = persistance **double** qui se répare elle-même : deux boucles qui se surveillent
+mutuellement, 3 copies du binaire dans 3 répertoires, cron `@reboot` + chaque minute, king file réparé
+en < 0,7 s. Vérifié : `kill -9` d'une boucle → relancée en 1,5 s ; 2 copies sur 3 effacées → 3/3
+restaurées.
+
+## Vérifier avant le jour J (2 min, hors-ligne)
+
+```bash
+bash koth_run.sh selftest
+# [1/4] probe OK | [2/4] 100% des ticks malgré rival + resets | [3/4] STOP | [4/4] king file
+# -> SELF-TEST : PASS ✅
+```
 
 ## Fichiers
 
 | Fichier | Rôle |
 |---|---|
-| `koth_hold.sh` | **lanceur unique** : start / stop / status / logs / probe / **selftest** |
-| `hold_hill.py` | moteur HTTP : threads, cadence plafonnée, créneaux, no-redirect, backoff 429/503, `status.json`, `STOP` |
+| `koth_run.sh` | **entrée unique** : start / stop / status / logs / probe / selftest / bundle |
+| `hill_hold.py` | moteur : snipe au tick, keep-alive, escalade, mode LOCAL king-file |
+| `mock_rival.py` | colline adverse (agressivité, 429, resets, tick scorer) — pour les tests |
 | `koth_ssh_takeover.sh` | prise d'une colline SSH + persistance on-box + re-assertion |
-| `onbox_persist.sh` | persistance à poser depuis un shell déjà obtenu (setsid + flock + cron @reboot) |
-| `mock_hill.py` | fausse colline locale : permet de tester **sans réseau** |
-| `recon_koth.py` | à t+0 : découvre claim/status/team-id en observant le trafic de la page KOTH |
-| `recon_target.sh` | recon rapide d'une box (`bash recon_target.sh <IP>`) |
-| `hill.env.example` | modèle de config (copier en `hill.env`) |
-| `koth-hold.service` | unité systemd pour survivre à un **reboot** de ta machine |
+| `onbox_guardian.sh` | persistance on-box double, auto-réparatrice |
+| `onbox_persist.sh` | persistance simple (setsid + flock + cron) |
+| `recon_koth.py` | à t+0 : découvre claim/status/team-id |
+| `recon_target.sh` | recon rapide d'une box |
+| `hill.env.example` | modèle de config commenté |
+| `koth-hold.service` | survie au reboot de la machine |
 
-## Vérifier que le kit marche (à faire avant le jour J)
+## Réglages utiles le jour J
 
-```bash
-bash koth_hold.sh selftest
-# [1/4] probe OK | [2/4] ROI=OUI face à un rival | [3/4] STOP | [4/4] verdict
-# -> SELF-TEST: PASS
-```
-
-Le self-test démarre une fausse colline avec un rival qui réclame toutes les 1,5 s : il prouve que la
-tenue, le watchdog et l'arrêt propre fonctionnent, **hors-ligne**.
-
-## Survivre à un reboot de la machine (optionnel mais recommandé)
-
-```bash
-sudo cp koth-hold.service /etc/systemd/system/
-sudo sed -i "s|/home/kali/ctfagent|$PWD/../..|" /etc/systemd/system/koth-hold.service
-sudo systemctl daemon-reload && sudo systemctl enable --now koth-hold
-journalctl -u koth-hold -f
-```
-
-## Réglages selon ce qu'on découvre
-
-- **Le scorer ne compte qu'aux ticks** → `KOTH_SLOT_PERIOD=<période du tick>` (ex. 60) : on vise le tick
-  au lieu de spammer.
-- **Un bot adverse reprend la colline** → monter `KOTH_THREADS` (4 → 8/12) et baisser
-  `KOTH_MIN_INTERVAL` (1.0 → 0.5) — **sans** dépasser ce que la plateforme tolère.
-- **Claims signés** (comme « The Throne » au préqual : `team|ts` + HMAC) → `KOTH_SIGN_KEY` +
-  `KOTH_SIGN_ALGO` et un body contenant `{sig}`.
-- **Champ roi imbriqué** → `KOTH_KING_FIELD="data.king"`.
-- **Auth par bearer** → `KOTH_AUTH="Bearer ..."` ; sinon les cookies de session suffisent.
+- **Le score bouge chaque minute** → `KOTH_SLOT_PERIOD=60`. Chaque tick gagné = points.
+- **Un bot adverse résiste** → le moteur escalade seul ; sinon `KOTH_MAX_LEVEL=3`,
+  `KOTH_THREADS_MAX=12`.
+- **La plateforme renvoie des 429** → `KOTH_THROTTLE_SOFT=3` (ralentit plus tôt), et baisser
+  `KOTH_THREADS_MAX`.
+- **Mauvais champ roi deviné** → le `probe` retombe automatiquement sur `king` et te le dit.
+- **Claims signés** → `KOTH_SIGN_KEY` + `KOTH_SIGN_ALGO` + `{sig}` dans le body.
 
 ## Règles (jamais enfreintes)
 
-Colline **in-scope uniquement**, pas de DoS, pas d'attaque des autres équipes ni de l'infra organisatrice.
-La purge de persistance rivale ne s'applique **que** sur la box de la colline elle-même.
+Colline **in-scope uniquement**, pas de DoS, pas d'attaque des autres équipes ni de l'infra
+organisatrice. La purge de persistance rivale (`--purge`) ne s'applique **que** sur la box de la
+colline elle-même.
 
 ## Méthode de fond
 

@@ -43,9 +43,9 @@ case "$ACC" in
 esac
 
 echo "-- 3. Toolkit KoTH --"
-python3 -I -c "import py_compile;py_compile.compile('$KF/hold_hill.py',doraise=True)" 2>/dev/null && ok "hold_hill.py compile" || ko "hold_hill.py"
+python3 -I -c "import py_compile;py_compile.compile('$KF/hill_hold.py',doraise=True)" 2>/dev/null && ok "hill_hold.py compile" || ko "hill_hold.py"
 python3 -I -c "import py_compile;py_compile.compile('$KF/recon_koth.py',doraise=True)" 2>/dev/null && ok "recon_koth.py compile" || ko "recon_koth.py"
-bash -n "$KF/run_hold.sh" 2>/dev/null && ok "run_hold.sh syntaxe" || ko "run_hold.sh"
+bash -n "$KF/koth_run.sh" 2>/dev/null && ok "koth_run.sh syntaxe" || ko "koth_run.sh"
 bash -n "$KF/onbox_persist.sh" 2>/dev/null && ok "onbox_persist.sh syntaxe" || ko "onbox_persist.sh"
 bash -n "$KF/recon_target.sh" 2>/dev/null && ok "recon_target.sh syntaxe" || ko "recon_target.sh"
 command -v nmap >/dev/null 2>&1 && ok "nmap présent (recon_target)" || wa "nmap absent → apt install nmap"
@@ -71,7 +71,7 @@ done
 
 echo "============================================================================"
 if [ "$FAIL" = 0 ]; then
-  printf " \033[32mGO\033[0m — préparation saine. Le jour J : 'finale' → recon_koth.py → remplir hill.env → tu lances run_hold.sh.\n"
+  printf " \033[32mGO\033[0m — préparation saine. Le jour J : 'finale' → recon_koth.py → remplir hill.env → tu lances koth_run.sh.\n"
 else
   printf " \033[31mÀ CORRIGER\033[0m — voir les [!!] ci-dessus avant le lancement.\n"
 fi
